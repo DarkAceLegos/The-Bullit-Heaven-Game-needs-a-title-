@@ -15,13 +15,15 @@ public class LevelingUp : GameBaseState
     private Transform upgradeHolder;
     private LevelEntry entryPrefab;
 
-    private List<ulong> readyPlayers = new();
+    //private List<ulong> readyPlayers = new();
 
     public override void EnterState(GameStateManager gameState)
     {
+        allAttacks = Player.LoaclInstance.GetAllPlayerUnlockedAttacks();
+
         //Debug.Log("entered Leveling Up");
         _gameStateManager = gameState;
-        readyPlayers.Clear();
+        //readyPlayers.Clear();
 
         levelScreen = gameState.GetLevelScreen();
         waitingScreen = gameState.GetWaitingScreen();
@@ -91,17 +93,23 @@ public class LevelingUp : GameBaseState
     internal void SetReady()
     {
         waitingScreen.SetActive(true);
-        SetReadyRpc(Player.LoaclInstance.GetPlayerId());
+
+        Debug.Log("trying to send Rpc");
+
+        _gameStateManager.GSMSetReadyRpc(Player.LoaclInstance.GetPlayerId());
     }
 
-    [Rpc(SendTo.Server)]
-    private void SetReadyRpc(ulong playerId)
+    public void SetReadyRpc()
     {
-        if(readyPlayers.Contains(playerId)) return;
+        /*if(readyPlayers.Contains(playerId)) return;
 
         readyPlayers.Add(playerId);
 
+        Debug.Log($"I am ready {playerId}");
+
         if (readyPlayers.Count < PlayerHealth._allPlayers.Count) return;
+
+        Debug.Log($"everbody is ready {playerId}");//*/
 
         _gameStateManager.SwitchState(_gameStateManager.GameRunning);
     }

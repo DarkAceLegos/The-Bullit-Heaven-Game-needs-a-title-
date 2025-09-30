@@ -856,10 +856,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 893b9bf111c4d2442b6252e805fb581e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelScreen: {fileID: 0}
-  waitingScreen: {fileID: 0}
-  upgradeHolder: {fileID: 0}
-  entryPrefab: {fileID: 0}
+  levelScreen: {fileID: 518380668}
+  waitingScreen: {fileID: 1007241092}
+  upgradeHolder: {fileID: 768909160}
+  entryPrefab: {fileID: 2706848168105179137, guid: 020a50cf7d96a97458f53b20f69a546f, type: 3}
 --- !u!114 &797258135
 MonoBehaviour:
   m_ObjectHideFlags: 0

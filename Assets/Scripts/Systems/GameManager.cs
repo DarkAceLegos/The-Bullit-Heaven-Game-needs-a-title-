@@ -90,7 +90,7 @@ public class GameManager : NetworkBehaviour
         Debug.Log("Added " + sender + " to Player list with an id of " + e.clientId);
     }
 
-    [Rpc(SendTo.ClientsAndHost)]
+    [Rpc(SendTo.Everyone)]
     private void RemoveEnemyToListRpc(NetworkObjectReference enemy)
     {
         enemy.TryGet(out NetworkObject enemyObject);

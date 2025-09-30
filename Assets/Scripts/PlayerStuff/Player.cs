@@ -29,10 +29,9 @@ public class Player : NetworkBehaviour
     [SerializeField] private CinemachineCamera vc;
     [SerializeField] private AudioListener listener;
 
-    private void Awake()
-    {
-        
-    }
+    [SerializeField] private List<AttackData> allAttacksPlayerUnlocked = new();
+
+    public List<AttackData> GetAllPlayerUnlockedAttacks() { return allAttacksPlayerUnlocked; }
 
     void Start()
     {

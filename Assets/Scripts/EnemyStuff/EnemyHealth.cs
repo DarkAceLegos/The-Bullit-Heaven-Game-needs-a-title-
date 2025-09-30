@@ -3,7 +3,7 @@ using System.ComponentModel;
 using Unity.Netcode;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+public class EnemyHealth : NetworkBehaviour
 {
     [SerializeField] private int maxHealth = 10;
     [SerializeField] private int experience = 1;

@@ -537,6 +537,8 @@ MonoBehaviour:
   rb: {fileID: 5004031360651103395}
   vc: {fileID: 7165954268988903130}
   listener: {fileID: 3491062094786061297}
+  allAttacksPlayerUnlocked:
+  - {fileID: 11400000, guid: cdb35b85e414ec444a26bbcde2a7eac5, type: 2}
 --- !u!114 &3400757655122143848
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,8 @@
+using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class GameStateManager : MonoBehaviour
+public class GameStateManager : NetworkBehaviour
 {
     public GameBaseState currentState;
 
@@ -13,6 +15,8 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] private GameObject waitingScreen;
     [SerializeField] private Transform upgradeHolder;
     [SerializeField] private LevelEntry entryPrefab;
+
+    private List<ulong> readyPlayers = new();
 
     public GameObject GetLevelScreen() {  return levelScreen; }
     public GameObject GetWaitingScreen() { return waitingScreen; }
@@ -40,7 +44,30 @@ public class GameStateManager : MonoBehaviour
     public void SwitchState(GameBaseState state)
     {
         currentState.ExitState(this);
+        readyPlayers.Clear();
         currentState = state;
         state.EnterState(this);
+    }
+
+    [Rpc(SendTo.Server)]
+    public void GSMSetReadyRpc(ulong playerId)
+    {
+        if (readyPlayers.Contains(playerId)) return;
+
+        readyPlayers.Add(playerId);
+
+        Debug.Log($"I am ready {playerId}");
+
+        if (readyPlayers.Count < PlayerHealth._allPlayers.Count) return;
+
+        Debug.Log($"everbody is ready {playerId}");
+
+        TellEveryOneWeAreDownLevelingUpRpc();
+    }
+
+    [Rpc(SendTo.Everyone)]
+    private void TellEveryOneWeAreDownLevelingUpRpc()
+    {
+        LevelingUp.SetReadyRpc();
     }
 }

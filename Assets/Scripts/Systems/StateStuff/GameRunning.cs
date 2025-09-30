@@ -15,6 +15,7 @@ public class GameRunning : GameBaseState
         //if(!IsServer) { return; }
 
         PlayerHealth.onPlayerDied += OnPlayerDeid;
+        LevelManager.Instance.OnLevelChange += LevelManager_OnLevelChange;
     }
 
     private void OnPlayerDeid(ulong playerId)
@@ -28,13 +29,19 @@ public class GameRunning : GameBaseState
             if (!player.Value.isDowned)
                 return;
 
-            _gameStateManager.SwitchState(_gameStateManager.GameLost);
+            _gameStateManager?.SwitchState(_gameStateManager.GameLost);
         }
+    }
+
+    private void LevelManager_OnLevelChange(object sender, LevelManager.OnLevelChangeEventArgs e)
+    {
+        _gameStateManager?.SwitchState(_gameStateManager.LevelingUp);
     }
 
     public override void ExitState(GameStateManager gameState)
     {
         PlayerHealth.onPlayerDied -= OnPlayerDeid;
+        LevelManager.Instance.OnLevelChange -= LevelManager_OnLevelChange;
 
         Debug.Log("exit game running");
     }

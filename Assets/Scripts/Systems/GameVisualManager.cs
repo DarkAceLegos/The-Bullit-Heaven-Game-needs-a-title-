@@ -42,7 +42,7 @@ public class GameVisualManager : NetworkBehaviour
         AddEnemyToListRpc(enemyNetworkObject);
     }
 
-    [Rpc(SendTo.ClientsAndHost)]
+    [Rpc(SendTo.Everyone)]
     private void AddEnemyToListRpc(NetworkObjectReference enemy)
     {
         enemy.TryGet(out NetworkObject enemyObject);

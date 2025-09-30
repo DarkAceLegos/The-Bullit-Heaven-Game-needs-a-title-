@@ -1,7 +1,6 @@
 using System;
 using Unity.Netcode;
 using UnityEngine;
-using static PlayerHealth;
 
 public class LevelManager : NetworkBehaviour
 {
