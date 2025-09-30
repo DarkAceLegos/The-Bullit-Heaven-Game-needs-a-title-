@@ -10,11 +10,10 @@ public class LevelingUp : GameBaseState
 
     private GameStateManager _gameStateManager;
 
-    [Header("UI")]
-    [SerializeField] private GameObject levelScreen;
-    [SerializeField] private GameObject waitingScreen;
-    [SerializeField] private Transform upgradeHolder;
-    [SerializeField] private LevelEntry entryPrefab;
+    private GameObject levelScreen;
+    private GameObject waitingScreen;
+    private Transform upgradeHolder;
+    private LevelEntry entryPrefab;
 
     private List<ulong> readyPlayers = new();
 
@@ -23,6 +22,11 @@ public class LevelingUp : GameBaseState
         //Debug.Log("entered Leveling Up");
         _gameStateManager = gameState;
         readyPlayers.Clear();
+
+        levelScreen = gameState.GetLevelScreen();
+        waitingScreen = gameState.GetWaitingScreen();
+        upgradeHolder = gameState.GetUpgradeHolder();
+        entryPrefab = gameState.GetLevelEntry();
 
         SetUpLevelOptions();
         levelScreen.SetActive(true);
