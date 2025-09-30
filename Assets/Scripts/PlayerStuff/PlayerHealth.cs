@@ -56,9 +56,9 @@ public class PlayerHealth : NetworkBehaviour
     }
 
     [Rpc(SendTo.Server)]
-    private void AddPlayerHealthToThePlayerHealthListAllPlayersRpc(ulong playerId)
+    private void AddPlayerHealthToThePlayerHealthListAllPlayersRpc(ulong playerId) // could use ServerRpcParams serverRpcParams = default
     {
-        allPlayers[playerId] = this;
+        allPlayers[playerId] = this; // playerId could be serverRpcParam.Receive.SenderClientId
 
         //Debug.Log("added " + playerId + " to the list");
     }

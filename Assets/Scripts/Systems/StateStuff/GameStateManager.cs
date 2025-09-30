@@ -71,4 +71,10 @@ public class GameStateManager : NetworkBehaviour
     {
         LevelingUp.SetReadyRpc();
     }
+
+    [Rpc(SendTo.Everyone)]
+    private void StateSyncRpc()
+    {
+
+    }
 }
