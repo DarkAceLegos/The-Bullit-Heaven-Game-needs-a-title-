@@ -28,13 +28,15 @@ public class GameRunning : GameBaseState
 
             if (!player.Value.isDowned)
                 return;
-
-            _gameStateManager?.SwitchState(_gameStateManager.GameLost);
         }
+
+        _gameStateManager?.SwitchState(_gameStateManager.GameLost);
     }
 
     private void LevelManager_OnLevelChange(object sender, LevelManager.OnLevelChangeEventArgs e)
     {
+        Debug.Log("tring to get level up reward");
+
         _gameStateManager?.SwitchState(_gameStateManager.LevelingUp);
     }
 

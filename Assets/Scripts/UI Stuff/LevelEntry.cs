@@ -18,12 +18,14 @@ public class LevelEntry : MonoBehaviour
         _attack = attack;
         _levelingUp = levelingUp;
         icon.sprite = attack.icon;
-       nameText.text = attack.attackName;
-        descriptionText.text = attack.GetLevelDescription(AttackHandler.LoaclInstance.getLevel(attack.attackId));
+        nameText.text = attack.attackName;
+        descriptionText.text = attack.GetLevelDescription(AttackHandler.LoaclInstance.getLevel(attack.attackId) + 1);
     }
 
     public void PickUpgrade()
     {
+
+        Debug.Log(AttackHandler.LoaclInstance);
         if (AttackHandler.LoaclInstance == null) return;
 
         AttackHandler.LoaclInstance.addAttack(_attack);

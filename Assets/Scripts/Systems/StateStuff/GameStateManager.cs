@@ -46,6 +46,7 @@ public class GameStateManager : NetworkBehaviour
         currentState.ExitState(this);
         readyPlayers.Clear();
         currentState = state;
+        Debug.Log($"changing state to {state}");
         state.EnterState(this);
     }
 

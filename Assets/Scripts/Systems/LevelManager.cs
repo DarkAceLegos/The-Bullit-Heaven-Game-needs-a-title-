@@ -8,6 +8,8 @@ public class LevelManager : NetworkBehaviour
 
     [SerializeField] private int expToLevel = 5;
 
+    [SerializeField] private int visualExpToNextLevel;
+
     [SerializeField] private int experiance = 0;
     [SerializeField] private int level = 0;
 
@@ -23,7 +25,7 @@ public class LevelManager : NetworkBehaviour
         public int newLevel;
     }
 
-    private int expToNextLevel => expToLevel * (level + 1);
+    [SerializeField] private int expToNextLevel => expToLevel * (level + 1);
 
     private void Awake()
     {
@@ -65,10 +67,11 @@ public class LevelManager : NetworkBehaviour
     private void SyncLevelRpc(int newLevel)
     {
         level = newLevel;
-        expToLevel = expToNextLevel;
+        visualExpToNextLevel = expToNextLevel;
         OnLevelChange?.Invoke(this, new OnLevelChangeEventArgs
         {
             newLevel = newLevel,
         });
+        Debug.Log("We leveled up");
     }
 }

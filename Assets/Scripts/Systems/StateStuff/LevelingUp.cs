@@ -15,8 +15,6 @@ public class LevelingUp : GameBaseState
     private Transform upgradeHolder;
     private LevelEntry entryPrefab;
 
-    //private List<ulong> readyPlayers = new();
-
     public override void EnterState(GameStateManager gameState)
     {
         allAttacks = Player.LoaclInstance.GetAllPlayerUnlockedAttacks();
@@ -54,8 +52,10 @@ public class LevelingUp : GameBaseState
         foreach (Transform child in upgradeHolder)
             UnityEngine.Object.Destroy(child.gameObject);
 
+        Debug.Log("Upgrade Holder is clear");
+
         List<AttackData> availableAttacks = GetAvailableAttacks();
-        if (availableAttacks==null || availableAttacks.Count <= 0)
+        if (availableAttacks == null || availableAttacks.Count <= 0)
         {
             Debug.Log("no available attacks for level up");
             return;
@@ -78,7 +78,7 @@ public class LevelingUp : GameBaseState
 
     private List<AttackData> GetAvailableAttacks()
     {
-        if(AttackHandler.LoaclInstance == null) return null;
+        if (AttackHandler.LoaclInstance == null) { Debug.Log("the Attack Handler is null"); return null; }
 
         List<AttackData> availableAttacks = new List<AttackData>();
         foreach(var attack in allAttacks)
@@ -101,16 +101,6 @@ public class LevelingUp : GameBaseState
 
     public void SetReadyRpc()
     {
-        /*if(readyPlayers.Contains(playerId)) return;
-
-        readyPlayers.Add(playerId);
-
-        Debug.Log($"I am ready {playerId}");
-
-        if (readyPlayers.Count < PlayerHealth._allPlayers.Count) return;
-
-        Debug.Log($"everbody is ready {playerId}");//*/
-
         _gameStateManager.SwitchState(_gameStateManager.GameRunning);
     }
 }
