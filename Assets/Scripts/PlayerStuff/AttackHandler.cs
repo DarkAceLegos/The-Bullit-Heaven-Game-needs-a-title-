@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ public class AttackHandler : NetworkBehaviour
 {
     private Dictionary<string, Attack> activeAttacks = new();
     [SerializeField] private List<AttackData> initialAttacks = new();
+
+    //[SerializeField] private Array veiwingActiveAttacks;
 
     public static AttackHandler LoaclInstance { get; private set; }
 
@@ -33,20 +36,29 @@ public class AttackHandler : NetworkBehaviour
     {
         if(activeAttacks.TryGetValue(data.attackId, out var attack1))
         {
+            Debug.Log($"attack {data.name} leveled up now it has {attack1.level}");
+
             int newLevel = attack1.level + 1;
+            Debug.Log($"attack {data.name} leveled up now it has {newLevel}");
+
             attack1.initialize(data, newLevel);
+
+            Debug.Log($"attack {data.name} leveled up now it has {attack1.data}");
+
             return;
         }
         var attack = Instantiate(data.prefab, transform);
         attack.initialize(data, 0);
         activeAttacks[data.attackId] = attack;
 
-        Debug.Log("added the attack " + data.prefab + " " + transform);
+
+        Debug.Log($" we got {data.name} attack");
+        //Debug.Log("added the attack " + data.prefab + " " + transform);
     }
 
     public int getLevel(string id)
     {
-        return activeAttacks.TryGetValue(id,out var attack1) ? attack1.level : 0;
+        return activeAttacks.TryGetValue(id,out var attack1) ? attack1.level : -1;
     }
 
     private void Update()
@@ -63,7 +75,7 @@ public class AttackHandler : NetworkBehaviour
         {
             //Debug.Log("tryed to tick");
 
-            SpawnProjectileRpc(GameManager.Instance.playerList[0], attack.Key);
+            SpawnProjectileRpc(GameManager.Instance.playerList[0], attack.Key); //needs to be the exact player not just the first player in list 
 
             //Debug.Log("this is the key " + attack.Key);
         }
