@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Netcode;
 using Unity.Services.Authentication;
 using UnityEditor.PackageManager;
@@ -9,6 +10,8 @@ public class PlayerHealth : NetworkBehaviour
 {
     private static readonly Dictionary<ulong, PlayerHealth> allPlayers = new();
     public static Dictionary<ulong, PlayerHealth> _allPlayers => allPlayers;
+
+    //private static readonly Dictionary<ulong, PlayerHealth> serverAllPlayers = new();
 
     public event EventHandler<OnHeathChangeEventArgs> OnHeathChange;
     public class OnHeathChangeEventArgs :EventArgs
@@ -61,6 +64,25 @@ public class PlayerHealth : NetworkBehaviour
         allPlayers[playerId] = this; // playerId could be serverRpcParam.Receive.SenderClientId
 
         //Debug.Log("added " + playerId + " to the list");
+
+        foreach (var player in allPlayers.ToArray()) 
+        {
+            player.Value.TryGetComponent<NetworkObject>(out NetworkObject component);
+
+            SyncPlayerListRpc(player.Key, component);
+        }
+    }
+
+    [Rpc(SendTo.Everyone)]
+    private void SyncPlayerListRpc(ulong playerId, NetworkObjectReference playersHealth)
+    {
+        playersHealth.TryGet(out NetworkObject playerHealthObject);
+
+        playerHealthObject.TryGetComponent<PlayerHealth>(out PlayerHealth playerHealth);
+
+        allPlayers[playerId] = playerHealth;
+
+        Debug.Log(allPlayers.Count);
     }
 
     public void changeHealth(int heathChange)

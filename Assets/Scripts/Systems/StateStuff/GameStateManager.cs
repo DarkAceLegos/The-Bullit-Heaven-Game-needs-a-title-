@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Unity.Netcode;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class GameStateManager : NetworkBehaviour
@@ -75,6 +76,6 @@ public class GameStateManager : NetworkBehaviour
     [Rpc(SendTo.Everyone)]
     private void StateSyncRpc()
     {
-
+        //currentState = 
     }
 }

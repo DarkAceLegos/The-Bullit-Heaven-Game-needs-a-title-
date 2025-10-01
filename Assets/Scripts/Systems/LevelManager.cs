@@ -39,7 +39,7 @@ public class LevelManager : NetworkBehaviour
         SyncExpRpc(experiance);
         CheckForLeveling();
 
-        Debug.Log($"amount of exp is {experiance} and our level is {level}");
+        //Debug.Log($"amount of exp is {experiance} and our level is {level}");
     }
 
     private void CheckForLeveling()
