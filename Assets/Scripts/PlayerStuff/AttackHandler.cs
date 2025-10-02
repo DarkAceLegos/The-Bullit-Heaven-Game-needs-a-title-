@@ -44,7 +44,7 @@ public class AttackHandler : NetworkBehaviour
 
             attack1.initialize(data, newLevel);
 
-            if (!IsServer) { SyncPlayersActiveAttacks(); }
+            if (!IsServer) { SyncPlayersActiveAttacksRpc(); }
 
             //Debug.Log($"attack {data.name} leveled up now it has {attack1.data}");
 
@@ -54,14 +54,14 @@ public class AttackHandler : NetworkBehaviour
         attack.initialize(data, 0);
         activeAttacks[data.attackId] = attack;
 
-        if (!IsServer) { SyncPlayersActiveAttacks(); }
+        if (!IsServer) { SyncPlayersActiveAttacksRpc(); }
 
         //Debug.Log($" we got {data.name} attack");
         //Debug.Log("added the attack " + data.prefab + " " + transform);
     }
 
     [Rpc(SendTo.Server)]
-    private void SyncPlayersActiveAttacks(/*take in data and level for the client players*/)
+    private void SyncPlayersActiveAttacksRpc(/*take in data and level for the client players*/)
     {
         //initialize the attack data and level on server side so it can spawn proporly
     }

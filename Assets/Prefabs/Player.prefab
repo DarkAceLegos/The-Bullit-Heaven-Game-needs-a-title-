@@ -555,6 +555,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   initialAttacks:
   - {fileID: 11400000, guid: cdb35b85e414ec444a26bbcde2a7eac5, type: 2}
+  - {fileID: 11400000, guid: bc69d618b4e58524181ed23b8a964c1e, type: 2}
 --- !u!114 &7764768885865692774
 MonoBehaviour:
   m_ObjectHideFlags: 0
