@@ -19,9 +19,9 @@ public class AttackHandler : NetworkBehaviour
     {
         enabled = IsOwner;
 
-        if (!IsOwner && !IsServer) return;
+        if (IsOwner) { LoaclInstance = this; }
 
-        LoaclInstance = this;
+        if (!IsOwner && !IsServer) return;
 
         Debug.Log("I am the owner");
 
@@ -36,14 +36,15 @@ public class AttackHandler : NetworkBehaviour
     {
         if(activeAttacks.TryGetValue(data.attackId, out var attack1))
         {
-            Debug.Log($"attack {data.name} leveled up now it has {attack1.level}");
+            //Debug.Log($"attack {data.name} leveled up now it has {attack1.level}");
 
             int newLevel = attack1.level + 1;
-            Debug.Log($"attack {data.name} leveled up now it has {newLevel}");
+            
+            //Debug.Log($"attack {data.name} leveled up now it has {newLevel}");
 
             attack1.initialize(data, newLevel);
 
-            Debug.Log($"attack {data.name} leveled up now it has {attack1.data}");
+            //Debug.Log($"attack {data.name} leveled up now it has {attack1.data}");
 
             return;
         }
