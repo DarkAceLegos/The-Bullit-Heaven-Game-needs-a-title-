@@ -44,6 +44,8 @@ public class AttackHandler : NetworkBehaviour
 
             attack1.initialize(data, newLevel);
 
+            if (!IsServer) { SyncPlayersActiveAttacks(); }
+
             //Debug.Log($"attack {data.name} leveled up now it has {attack1.data}");
 
             return;
@@ -52,7 +54,7 @@ public class AttackHandler : NetworkBehaviour
         attack.initialize(data, 0);
         activeAttacks[data.attackId] = attack;
 
-        
+        if (!IsServer) { SyncPlayersActiveAttacks(); }
 
         //Debug.Log($" we got {data.name} attack");
         //Debug.Log("added the attack " + data.prefab + " " + transform);
