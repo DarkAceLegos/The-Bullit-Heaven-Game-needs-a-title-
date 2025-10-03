@@ -44,7 +44,7 @@ public class AttackHandler : NetworkBehaviour
 
             attack1.initialize(data, newLevel);
 
-            if (!IsServer) { SyncPlayersActiveAttacksRpc(); }
+            if (!IsServer) { SyncPlayersActiveAttacksRpc(1, data.attackId, newLevel); }
 
             //Debug.Log($"attack {data.name} leveled up now it has {attack1.data}");
 
@@ -54,16 +54,22 @@ public class AttackHandler : NetworkBehaviour
         attack.initialize(data, 0);
         activeAttacks[data.attackId] = attack;
 
-        if (!IsServer) { SyncPlayersActiveAttacksRpc(); }
+        if (!IsServer) { SyncPlayersActiveAttacksRpc(1, data.attackId, 0); }
 
         //Debug.Log($" we got {data.name} attack");
         //Debug.Log("added the attack " + data.prefab + " " + transform);
     }
 
     [Rpc(SendTo.Server)]
-    private void SyncPlayersActiveAttacksRpc(/*take in data and level for the client players*/)
+    private void SyncPlayersActiveAttacksRpc(ulong playerId, string attackId, int Level/*take in data and level for the client players*/)
     {
         //initialize the attack data and level on server side so it can spawn proporly
+
+        PlayerHealth._allPlayers[playerId].TryGetComponent<AttackHandler>(out var attackHandlerServerClient);
+
+        attackHandlerServerClient.activeAttacks.TryGetValue(attackId, out var attack);
+
+        attack.initialize(attack.GetComponent<AttackData>(), Level);
     }
 
     public int getLevel(string id)
