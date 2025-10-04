@@ -18,6 +18,9 @@ public class BasicAttack : Attack
     protected override void OnInitialize()
     {
         var basicAttackData = (BasicAttackData)data;
+
+        //Debug.Log(basicAttackData);
+
         levelData = basicAttackData.GetLevelData(level);
     }
 

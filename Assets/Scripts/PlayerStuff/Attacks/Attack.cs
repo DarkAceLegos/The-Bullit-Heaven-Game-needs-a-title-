@@ -10,11 +10,11 @@ public abstract class Attack : NetworkBehaviour
     {
         this.data = data;
 
-        Debug.Log(data);
+        //Debug.Log(data);
 
         this.level = level;
 
-        Debug.Log(level);
+        //Debug.Log(level);
 
         OnInitialize();
     }

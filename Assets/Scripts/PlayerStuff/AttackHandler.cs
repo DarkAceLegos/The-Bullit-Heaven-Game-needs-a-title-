@@ -14,6 +14,8 @@ public class AttackHandler : NetworkBehaviour
 
     public static AttackHandler LoaclInstance { get; private set; }
 
+    private AttackData newAttack;
+
     private List<AttackData> attackList /*= Player.LoaclInstance.GetAllPlayerUnlockedAttacks()*/;
 
     // Need to keep watch of this to see if it is corect
@@ -48,7 +50,7 @@ public class AttackHandler : NetworkBehaviour
 
             attack1.initialize(data, newLevel);
 
-            if (!IsServer) { SyncPlayersActiveAttacksRpc(Player.LoaclInstance.NetworkObjectId, data.attackId, newLevel); }
+            if (!IsServer) { SyncPlayersActiveAttacksWhenLevelingUpAnAttackRpc(Player.LoaclInstance.NetworkObjectId, data.attackId, newLevel); }
 
             //Debug.Log($"attack {data.name} leveled up now it has {attack1.data}");
 
@@ -59,8 +61,8 @@ public class AttackHandler : NetworkBehaviour
         activeAttacks[data.attackId] = attack;
 
         if (!IsServer) 
-        { 
-            SyncPlayersActiveAttacksRpc(Player.LoaclInstance.NetworkObjectId, data.attackId, 0); 
+        {
+            SyncPlayersActiveAttacksWhenGettingNewAttackRpc(Player.LoaclInstance.NetworkObjectId, data.attackId);
         }
 
         //Debug.Log($" we got {data.name} attack");
@@ -68,7 +70,7 @@ public class AttackHandler : NetworkBehaviour
     }
 
     [Rpc(SendTo.Server)]
-    private void SyncPlayersActiveAttacksRpc(ulong playerId, string attackId, int Level/*take in data and level for the client players*/)
+    private void SyncPlayersActiveAttacksWhenLevelingUpAnAttackRpc(ulong playerId, string attackId, int Level/*take in data and level for the client players*/)
     {
         //initialize the attack data and level on server side so it can spawn proporly
 
@@ -76,22 +78,31 @@ public class AttackHandler : NetworkBehaviour
 
         attackHandlerServerClient.activeAttacks.TryGetValue(attackId, out var attack);
 
-        Debug.Log(attack);
-
-        if(attack == null) 
-        {
-            Debug.Log("attack is null so lets instantiate");
-
-            Debug.Log(attackList[1].prefab);
-
-            Debug.Log(attackHandlerServerClient.transform);
-
-            attack = Instantiate(attackList[1].prefab, attackHandlerServerClient.transform);
-
-            Debug.Log(attack.data);
-        }
+        //Debug.Log(attack);
 
         attack.initialize(attack.data, Level);
+    }
+
+    [Rpc(SendTo.Server)]
+    private void SyncPlayersActiveAttacksWhenGettingNewAttackRpc(ulong playerId, string attackId)
+    {
+        PlayerHealth._allPlayers[playerId].TryGetComponent<AttackHandler>(out var attackHandlerServerClient);
+
+        for (int i = 0; i < attackList.Count; i++)
+        { 
+            if(attackId == attackList[i].attackId) 
+            { 
+                Debug.Log(attackList[i]);
+
+                newAttack = attackList[i];
+            }
+        }
+
+        var attack = Instantiate(newAttack.prefab, attackHandlerServerClient.transform);
+
+        attack.initialize(newAttack, 0);
+
+        attackHandlerServerClient.activeAttacks[attackList[1].attackId] = attack;
     }
 
     public int getLevel(string id)
