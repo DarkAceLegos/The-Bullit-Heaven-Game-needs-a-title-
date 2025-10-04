@@ -14,9 +14,13 @@ public class AttackHandler : NetworkBehaviour
 
     public static AttackHandler LoaclInstance { get; private set; }
 
+    private List<AttackData> attackList /*= Player.LoaclInstance.GetAllPlayerUnlockedAttacks()*/;
+
     // Need to keep watch of this to see if it is corect
     public override void OnNetworkSpawn()
     {
+        attackList = Player.LoaclInstance.GetAllPlayerUnlockedAttacks();
+
         enabled = IsOwner;
 
         if (IsOwner) { LoaclInstance = this; }
@@ -44,7 +48,7 @@ public class AttackHandler : NetworkBehaviour
 
             attack1.initialize(data, newLevel);
 
-            if (!IsServer) { SyncPlayersActiveAttacksRpc(1, data.attackId, newLevel); }
+            if (!IsServer) { SyncPlayersActiveAttacksRpc(Player.LoaclInstance.NetworkObjectId, data.attackId, newLevel); }
 
             //Debug.Log($"attack {data.name} leveled up now it has {attack1.data}");
 
@@ -54,7 +58,10 @@ public class AttackHandler : NetworkBehaviour
         attack.initialize(data, 0);
         activeAttacks[data.attackId] = attack;
 
-        if (!IsServer) { SyncPlayersActiveAttacksRpc(1, data.attackId, 0); }
+        if (!IsServer) 
+        { 
+            SyncPlayersActiveAttacksRpc(Player.LoaclInstance.NetworkObjectId, data.attackId, 0); 
+        }
 
         //Debug.Log($" we got {data.name} attack");
         //Debug.Log("added the attack " + data.prefab + " " + transform);
@@ -69,7 +76,22 @@ public class AttackHandler : NetworkBehaviour
 
         attackHandlerServerClient.activeAttacks.TryGetValue(attackId, out var attack);
 
-        attack.initialize(attack.GetComponent<AttackData>(), Level);
+        Debug.Log(attack);
+
+        if(attack == null) 
+        {
+            Debug.Log("attack is null so lets instantiate");
+
+            Debug.Log(attackList[1].prefab);
+
+            Debug.Log(attackHandlerServerClient.transform);
+
+            attack = Instantiate(attackList[1].prefab, attackHandlerServerClient.transform);
+
+            Debug.Log(attack.data);
+        }
+
+        attack.initialize(attack.data, Level);
     }
 
     public int getLevel(string id)
@@ -87,11 +109,20 @@ public class AttackHandler : NetworkBehaviour
 
         //Debug.Log("tryed to tick out of Rpc with " + GameManager.Instance.playerList[0]);
 
+        PlayerHealth._allPlayers.TryGetValue(Player.LoaclInstance.NetworkObjectId, out PlayerHealth player);
+
+        //Debug.Log(player);
+
+        player.TryGetComponent<NetworkObject>(out var playerObject);
+
         foreach (var attack in activeAttacks)
         {
             //Debug.Log("tryed to tick");
 
-            SpawnProjectileRpc(GameManager.Instance.playerList[0], attack.Key); //needs to be the exact player not just the first player in list 
+            SpawnProjectileRpc( 
+                playerObject
+                //GameManager.Instance.playerList[0]
+                , attack.Key); //needs to be the exact player not just the first player in list 
 
             //Debug.Log("this is the key " + attack.Key);
         }
@@ -109,7 +140,9 @@ public class AttackHandler : NetworkBehaviour
 
         //Debug.Log("the player " + player);
 
-        activeAttacks.TryGetValue(key, out Attack attack);
+        //Debug.Log(key);
+
+        player.GetComponent<AttackHandler>().activeAttacks.TryGetValue(key, out Attack attack);
 
         //Debug.Log("this is the attack " + attack);
 

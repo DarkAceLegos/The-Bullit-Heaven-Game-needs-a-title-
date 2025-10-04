@@ -9,7 +9,13 @@ public abstract class Attack : NetworkBehaviour
     public void initialize(AttackData data, int level)
     {
         this.data = data;
+
+        Debug.Log(data);
+
         this.level = level;
+
+        Debug.Log(level);
+
         OnInitialize();
     }
 
