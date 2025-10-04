@@ -21,7 +21,7 @@ public class AttackHandler : NetworkBehaviour
     // Need to keep watch of this to see if it is corect
     public override void OnNetworkSpawn()
     {
-        attackList = Player.LoaclInstance.GetAllPlayerUnlockedAttacks();
+        attackList = Player.LoaclInstance.GetAllPlayerUnlockedAttacks(); //caution will need to change to fix if some players have different unlocked attacks
 
         enabled = IsOwner;
 
