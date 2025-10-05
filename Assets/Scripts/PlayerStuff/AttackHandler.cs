@@ -92,7 +92,7 @@ public class AttackHandler : NetworkBehaviour
         { 
             if(attackId == attackList[i].attackId) 
             { 
-                Debug.Log(attackList[i]);
+                //Debug.Log(attackList[i]);
 
                 newAttack = attackList[i];
             }
