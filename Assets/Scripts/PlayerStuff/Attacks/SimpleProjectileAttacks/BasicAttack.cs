@@ -8,13 +8,6 @@ public class BasicAttack : Attack
     private BasicAttackData.LevelData levelData;
     private float lastCast;
 
-    private void Update()
-    {
-        if(!IsSpawned) { return; }
-
-        //Tick(GameManager.Instance.playerList[0]);
-    }
-
     protected override void OnInitialize()
     {
         var basicAttackData = (BasicAttackData)data;

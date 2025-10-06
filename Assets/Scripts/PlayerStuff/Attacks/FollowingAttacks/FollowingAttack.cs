@@ -3,25 +3,34 @@ using UnityEngine;
 
 public class FollowingAttack : Attack
 {
-    public override void Tick(NetworkObject player)
-    {
-        throw new System.NotImplementedException();
-    }
+    [SerializeField] private BasicProj proj;
+
+    private BasicAttackData.LevelData levelData;
+    private float lastCast;
 
     protected override void OnInitialize()
     {
-        throw new System.NotImplementedException();
+        var basicAttackData = (BasicAttackData)data;
+
+        //Debug.Log(basicAttackData);
+
+        levelData = basicAttackData.GetLevelData(level);
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public override void Tick(NetworkObject player)
     {
-        
-    }
+        //Debug.Log("in the tick");
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (lastCast + levelData.cooldown > Time.time) { return; }
+        lastCast = Time.time;
+
+        for (int i = 0; i < levelData.projCount; i++)
+        {
+            var direction = Random.insideUnitCircle;
+            direction.Normalize();
+            var proj1 = Instantiate(proj, player.transform.position, Quaternion.identity);
+            proj1.GetComponent<NetworkObject>().Spawn(true);
+            proj1.Initialize(levelData.damage, levelData.speed);//*/
+        }
     }
 }
