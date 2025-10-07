@@ -15,13 +15,17 @@ public static class Loader
     }
 
 
-    public static void Load(Scene targetSceen)
+    public static void Load(Scene targetScene)
     {
-        Loader.targetScene = targetSceen;
+        Loader.targetScene = targetScene;
 
-        SceneManager.LoadScene(Loader.)
+        SceneManager.LoadScene(Scene.LoadingScene.ToString());
 
-        SceneManager.LoadScene(targetSceen.ToString());
     }
 
+
+    public static void LoaderCallBack()
+    {
+        SceneManager.LoadScene(targetScene.ToString());
+    }
 }

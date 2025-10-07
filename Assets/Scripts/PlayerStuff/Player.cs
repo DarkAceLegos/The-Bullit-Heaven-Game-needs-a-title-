@@ -7,6 +7,7 @@ using Unity.Cinemachine;
 using UnityEditor.Rendering;
 using UnityEngine.EventSystems;
 using System;
+using Unity.Services.Matchmaker.Models;
 
 public class Player : NetworkBehaviour
 {
@@ -77,5 +78,10 @@ public class Player : NetworkBehaviour
     public ulong GetPlayerId()
     {
         return NetworkObjectId;
+    }
+
+    public override void OnDestroy()
+    {
+        moveAction.Dispose();
     }
 }

@@ -20,11 +20,15 @@ public class GameManager : NetworkBehaviour
     private float acuualSpawnInterval => spawnInterval / NetworkManager.Singleton.ConnectedClients.Count; //move to game manager
     [SerializeField] private List<EnemyHealth> spawnedEnemies = new(); //move to game manager
     private float lastSpawnTime; //move to game manager
+    private bool isGamePaused = false;
 
     public event EventHandler<AfterXTimeEventArgs> AfterXTime;
     public class AfterXTimeEventArgs : EventArgs {
         public NetworkObject player;
     }
+
+    public event EventHandler OnGamePaused;
+    public event EventHandler OnGameUnpaused;
 
     private void Awake()
     {
@@ -40,6 +44,12 @@ public class GameManager : NetworkBehaviour
     {
         EnemyHealth.onEnemyKilled += OnEnemyKilled; //move to game manager
         Player.OnAnyPlayerSpawned += Player_OnAnyPlayerSpawned;
+        GameInputs.Instance.OnPauseAction += GameInputs_OnPauseAction;
+    }
+
+    private void GameInputs_OnPauseAction(object sender, EventArgs e)
+    {
+        TogglePause();
     }
 
     private void FixedUpdate()
@@ -103,6 +113,22 @@ public class GameManager : NetworkBehaviour
     {
         EnemyHealth.onEnemyKilled -= OnEnemyKilled; //move to game manager
         Player.OnAnyPlayerSpawned -= Player_OnAnyPlayerSpawned;
+    }
+
+    public void TogglePause()
+    {
+        isGamePaused = !isGamePaused;
+        if(isGamePaused)
+        {
+            Time.timeScale = 0f;
+            OnGamePaused?.Invoke(this, EventArgs.Empty);
+        }else
+        {
+            Time.timeScale = 1f;
+            OnGameUnpaused?.Invoke(this, EventArgs.Empty);
+        }
+
+        
     }
 
 }

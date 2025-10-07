@@ -28,5 +28,7 @@ public class MainMenuUi : MonoBehaviour
         {
 
         });
+
+        Time.timeScale = 1.0f;
     }
 }
