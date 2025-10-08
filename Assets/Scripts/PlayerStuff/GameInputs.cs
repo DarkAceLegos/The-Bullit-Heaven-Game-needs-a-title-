@@ -9,6 +9,13 @@ public class GameInputs : MonoBehaviour
     public event EventHandler OnPauseAction;
 
     private InputAction pauseAction;
+    private PlayerInput playerInput;
+
+    public enum Binding
+    {
+        Interact,
+        Pause
+    }
 
     private void Awake()
     {
@@ -17,6 +24,8 @@ public class GameInputs : MonoBehaviour
         pauseAction = InputSystem.actions.FindAction("Pause");
 
         pauseAction.performed += pauseAction_Performed;
+
+        //Debug.Log(GetBindingText(Binding.Pause));
     }
 
     private void pauseAction_Performed(InputAction.CallbackContext context)
@@ -30,4 +39,15 @@ public class GameInputs : MonoBehaviour
 
         pauseAction.Dispose();
     }
+
+    /*public string GetBindingText(Binding binding)
+    {
+        switch (binding)
+        {
+            default:
+            case Binding.Pause:
+               return pauseAction.ToDisplayString();
+
+        }
+    }*/
 }
