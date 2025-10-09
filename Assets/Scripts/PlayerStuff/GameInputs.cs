@@ -9,7 +9,7 @@ public class GameInputs : MonoBehaviour
     public event EventHandler OnPauseAction;
 
     private InputAction pauseAction;
-    private PlayerInput playerInput;
+    private InputAction interactAction;
 
     public enum Binding
     {
@@ -23,9 +23,11 @@ public class GameInputs : MonoBehaviour
 
         pauseAction = InputSystem.actions.FindAction("Pause");
 
+        //interactAction = InputSystem.actions.FindAction("Interact");
+
         pauseAction.performed += pauseAction_Performed;
 
-        Debug.Log(GetBindingText(Binding.Pause));
+        //Debug.Log(GetBindingText(Binding.Pause));
     }
 
     private void pauseAction_Performed(InputAction.CallbackContext context)
@@ -47,7 +49,25 @@ public class GameInputs : MonoBehaviour
             default:
             case Binding.Pause:
                return pauseAction.GetBindingDisplayString();
+            /*case Binding.Interact:
+                return interactAction.GetBindingDisplayString();*/
 
         }
+    }
+
+    public void RebindBinding(Binding binding, Action onActionRebound) 
+    {
+        InputSystem.actions.Disable();
+
+        pauseAction.PerformInteractiveRebinding()
+            .OnComplete(callback =>
+        {
+            //Debug.Log(callback.action.bindings[0].path);
+            //Debug.Log(callback.action.bindings[0].overridePath);
+            callback.Dispose();
+            InputSystem.actions.Enable();
+            onActionRebound();
+
+        }).Start();
     }
 }

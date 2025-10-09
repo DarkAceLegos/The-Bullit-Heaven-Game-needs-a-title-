@@ -37,6 +37,9 @@ public class Player : NetworkBehaviour
     void Start()
     {
         moveAction = InputSystem.actions.FindAction("Move");
+
+        //Debug.Log(moveAction.GetBindingDisplayString(1));
+        //Debug.Log(GetBindingText(Binding.Up));
     }
 
     public enum Binding
@@ -64,8 +67,6 @@ public class Player : NetworkBehaviour
         {
             vc.Priority = 0;
         }
-
-        Debug.Log(GetBindingText(Binding.Up));
     }
 
     void Update()
@@ -101,7 +102,13 @@ public class Player : NetworkBehaviour
         {
             default:
             case Binding.Up:
-                return moveAction.GetBindingIndex(group: "Keyboard").ToString(); //not working
+                return moveAction.GetBindingDisplayString(2);
+            case Binding.Down:
+                return moveAction.GetBindingDisplayString(4);
+            case Binding.Left:
+                return moveAction.GetBindingDisplayString(6);
+            case Binding.Right:
+                return moveAction.GetBindingDisplayString(8);
 
         }
     }
