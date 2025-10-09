@@ -39,6 +39,14 @@ public class Player : NetworkBehaviour
         moveAction = InputSystem.actions.FindAction("Move");
     }
 
+    public enum Binding
+    {
+        Up,
+        Down,
+        Left,
+        Right
+    }
+
     public override void OnNetworkSpawn()
     {
         if (IsOwner)
@@ -56,6 +64,8 @@ public class Player : NetworkBehaviour
         {
             vc.Priority = 0;
         }
+
+        Debug.Log(GetBindingText(Binding.Up));
     }
 
     void Update()
@@ -83,5 +93,16 @@ public class Player : NetworkBehaviour
     public override void OnDestroy()
     {
         moveAction.Dispose();
+    }
+
+    public string GetBindingText(Binding binding)
+    {
+        switch (binding)
+        {
+            default:
+            case Binding.Up:
+                return moveAction.GetBindingIndex(group: "Keyboard").ToString(); //not working
+
+        }
     }
 }

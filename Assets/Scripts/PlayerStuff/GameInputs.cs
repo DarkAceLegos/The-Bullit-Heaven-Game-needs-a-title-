@@ -25,7 +25,7 @@ public class GameInputs : MonoBehaviour
 
         pauseAction.performed += pauseAction_Performed;
 
-        //Debug.Log(GetBindingText(Binding.Pause));
+        Debug.Log(GetBindingText(Binding.Pause));
     }
 
     private void pauseAction_Performed(InputAction.CallbackContext context)
@@ -40,14 +40,14 @@ public class GameInputs : MonoBehaviour
         pauseAction.Dispose();
     }
 
-    /*public string GetBindingText(Binding binding)
+    public string GetBindingText(Binding binding)
     {
         switch (binding)
         {
             default:
             case Binding.Pause:
-               return pauseAction.ToDisplayString();
+               return pauseAction.GetBindingDisplayString();
 
         }
-    }*/
+    }
 }
