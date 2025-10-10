@@ -47,13 +47,15 @@ public class OptionsUI : MonoBehaviour
         {
             Hide();
         });
-
         pauseButtom.onClick.AddListener(() => 
         { 
             RebindBinding(GameInputs.Binding.Pause);
         });
-
-        //Hide();
+        interactButtom.onClick.AddListener(() => { RebindBinding(GameInputs.Binding.Interact); });
+        moveUpButtom.onClick.AddListener(() => { PlayerMoveRebindBinding(Player.Binding.Up); });
+        moveDownButtom.onClick.AddListener(() => { PlayerMoveRebindBinding(Player.Binding.Down); });
+        moveRightButtom.onClick.AddListener(() => { PlayerMoveRebindBinding(Player.Binding.Right); });
+        moveLeftButtom.onClick.AddListener(() => { PlayerMoveRebindBinding(Player.Binding.Left); });
     }
 
     private void Start()
@@ -81,7 +83,7 @@ public class OptionsUI : MonoBehaviour
         moveDownText.text = Player.LoaclInstance.GetBindingText (Player.Binding.Down);
         moveRightText.text = Player.LoaclInstance.GetBindingText (Player.Binding.Right);
         moveLeftText.text = Player.LoaclInstance.GetBindingText (Player.Binding.Left);
-        //interactText.text = GameInputs.Instance.GetBindingText(GameInputs.Binding.Interact);
+        interactText.text = GameInputs.Instance.GetBindingText(GameInputs.Binding.Interact);
         pauseText.text = GameInputs.Instance.GetBindingText (GameInputs.Binding.Pause);
     }
 
@@ -111,6 +113,16 @@ public class OptionsUI : MonoBehaviour
         {
             HidePressToRebindKey();
             UpdateVisual();            
+        });
+    }
+
+    private void PlayerMoveRebindBinding(Player.Binding binding)
+    {
+        ShowPressToRebindKey();
+        Player.LoaclInstance.RebindBinding(binding, () =>
+        {
+            HidePressToRebindKey();
+            UpdateVisual();
         });
     }
 }

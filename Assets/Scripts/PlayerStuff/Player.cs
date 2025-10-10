@@ -112,4 +112,39 @@ public class Player : NetworkBehaviour
 
         }
     }
+
+    public void RebindBinding(Binding binding, Action onActionRebound)
+    {
+        InputSystem.actions.Disable();
+
+        int bindingIndex;
+
+        switch (binding)
+        {
+            default:
+                case Binding.Up:
+                bindingIndex = 2;
+                break;
+                case Binding.Down:
+                bindingIndex = 4;
+                break;
+                case Binding.Left:
+                bindingIndex = 6;
+                break;
+                case Binding.Right:
+                bindingIndex = 8;
+                break;
+        }
+
+        moveAction.PerformInteractiveRebinding(bindingIndex)
+            .OnComplete(callback =>
+            {
+                //Debug.Log(callback.action.bindings[0].path);
+                //Debug.Log(callback.action.bindings[0].overridePath);
+                callback.Dispose();
+                InputSystem.actions.Enable();
+                onActionRebound();
+
+            }).Start();
+    }
 }

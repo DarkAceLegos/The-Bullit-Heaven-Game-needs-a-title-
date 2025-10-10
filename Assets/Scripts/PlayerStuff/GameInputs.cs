@@ -23,7 +23,7 @@ public class GameInputs : MonoBehaviour
 
         pauseAction = InputSystem.actions.FindAction("Pause");
 
-        //interactAction = InputSystem.actions.FindAction("Interact");
+        interactAction = InputSystem.actions.FindAction("Interact");
 
         pauseAction.performed += pauseAction_Performed;
 
@@ -49,8 +49,8 @@ public class GameInputs : MonoBehaviour
             default:
             case Binding.Pause:
                return pauseAction.GetBindingDisplayString();
-            /*case Binding.Interact:
-                return interactAction.GetBindingDisplayString();*/
+            case Binding.Interact:
+                return interactAction.GetBindingDisplayString();
 
         }
     }
@@ -59,7 +59,23 @@ public class GameInputs : MonoBehaviour
     {
         InputSystem.actions.Disable();
 
-        pauseAction.PerformInteractiveRebinding()
+        int bindingIndex;
+        InputAction inputAction;
+
+        switch (binding)
+        {
+            default:
+            case Binding.Pause:
+                inputAction = pauseAction;
+                bindingIndex = 0;
+                break;
+            case Binding.Interact:
+                inputAction = interactAction;
+                bindingIndex = 0;
+                break;
+        }
+
+        inputAction.PerformInteractiveRebinding(bindingIndex)
             .OnComplete(callback =>
         {
             //Debug.Log(callback.action.bindings[0].path);
