@@ -17,6 +17,8 @@ public class GameManager : NetworkBehaviour
     [SerializeField] private float spawnInterval = 2f; //move to game manager
     [SerializeField] private int maxEnemies = 20; //move to game manager
 
+    [SerializeField] private Transform playerPrefab;
+
     private float acuualSpawnInterval => spawnInterval / NetworkManager.Singleton.ConnectedClients.Count; //move to game manager
     [SerializeField] private List<EnemyHealth> spawnedEnemies = new(); //move to game manager
     private float lastSpawnTime; //move to game manager
@@ -45,6 +47,22 @@ public class GameManager : NetworkBehaviour
         EnemyHealth.onEnemyKilled += OnEnemyKilled; //move to game manager
         Player.OnAnyPlayerSpawned += Player_OnAnyPlayerSpawned;
         GameInputs.Instance.OnPauseAction += GameInputs_OnPauseAction;
+    }
+
+    public override void OnNetworkSpawn()
+    {
+        if (IsServer)
+        {
+            NetworkManager.Singleton.SceneManager.OnLoadEventCompleted += SceneManager_OnLoadEventCompleted;
+        }
+    }
+private void SceneManager_OnLoadEventCompleted(string sceneName, UnityEngine.SceneManagement.LoadSceneMode loadSceneMode, List<ulong> clientsCompleted, List<ulong> clientsTimedOut)
+    {
+        foreach (ulong clientId in NetworkManager.Singleton.ConnectedClientsIds)
+        {
+            Transform playerTransform = Instantiate(playerPrefab);
+            playerTransform.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, true);
+        }
     }
 
     private void GameInputs_OnPauseAction(object sender, EventArgs e)

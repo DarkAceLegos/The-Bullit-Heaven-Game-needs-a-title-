@@ -2708,6 +2708,7 @@ MonoBehaviour:
   - {fileID: 1435160574}
   spawnInterval: 10
   maxEnemies: 20
+  playerPrefab: {fileID: 5004031360651103394, guid: 7e21efb47cb46324a8346bc068eaa3e3, type: 3}
   spawnedEnemies: []
 --- !u!4 &797258132
 Transform:
