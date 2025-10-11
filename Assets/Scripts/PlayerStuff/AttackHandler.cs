@@ -120,11 +120,11 @@ public class AttackHandler : NetworkBehaviour
 
         //Debug.Log("tryed to tick out of Rpc with " + GameManager.Instance.playerList[0]);
 
-        PlayerHealth._allPlayers.TryGetValue(Player.LoaclInstance.NetworkObjectId, out PlayerHealth player);
+        PlayerHealth._allPlayers.TryGetValue(Player.LoaclInstance.NetworkObjectId, out PlayerHealth player); // need to make it not get every update
 
         //Debug.Log(player);
 
-        player.TryGetComponent<NetworkObject>(out var playerObject);
+        player.TryGetComponent<NetworkObject>(out var playerObject); // need to make it not get every update
 
         foreach (var attack in activeAttacks)
         {

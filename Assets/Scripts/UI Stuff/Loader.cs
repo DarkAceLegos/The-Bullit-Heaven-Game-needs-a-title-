@@ -1,3 +1,4 @@
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,9 +10,10 @@ public static class Loader
     public enum Scene
     {
         MainMenuScene,
-        Lobby,
-        Level,
-        LoadingScene
+        LobbyScene,
+        LevelScene,
+        LoadingScene,
+        LobbyPlayScene
     }
 
 
@@ -21,6 +23,11 @@ public static class Loader
 
         SceneManager.LoadScene(Scene.LoadingScene.ToString());
 
+    }
+
+    public static void LoadNetwork(Scene targetScene)
+    {
+        NetworkManager.Singleton.SceneManager.LoadScene(targetScene.ToString(), LoadSceneMode.Single);
     }
 
 

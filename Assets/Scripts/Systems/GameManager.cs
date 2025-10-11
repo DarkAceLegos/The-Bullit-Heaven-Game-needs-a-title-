@@ -120,11 +120,15 @@ public class GameManager : NetworkBehaviour
         isGamePaused = !isGamePaused;
         if(isGamePaused)
         {
-            Time.timeScale = 0f;
+            if (NetworkManager.ConnectedClients.Count == 1)
+            {
+                Time.timeScale = 0f;
+            }
             OnGamePaused?.Invoke(this, EventArgs.Empty);
         }else
         {
-            Time.timeScale = 1f;
+            if (NetworkManager.ConnectedClients.Count == 1)
+                Time.timeScale = 1f;
             OnGameUnpaused?.Invoke(this, EventArgs.Empty);
         }
 

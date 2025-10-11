@@ -23,7 +23,7 @@ public class GameInputs : MonoBehaviour
 
         pauseAction = InputSystem.actions.FindAction("Pause");
 
-        interactAction = InputSystem.actions.FindAction("Interact");
+        interactAction = InputSystem.actions.FindAction("Interact2");
 
         pauseAction.performed += pauseAction_Performed;
 
@@ -78,8 +78,8 @@ public class GameInputs : MonoBehaviour
         inputAction.PerformInteractiveRebinding(bindingIndex)
             .OnComplete(callback =>
         {
-            //Debug.Log(callback.action.bindings[0].path);
-            //Debug.Log(callback.action.bindings[0].overridePath);
+            Debug.Log(callback.action.bindings[0].path);
+            Debug.Log(callback.action.bindings[0].overridePath);
             callback.Dispose();
             InputSystem.actions.Enable();
             onActionRebound();

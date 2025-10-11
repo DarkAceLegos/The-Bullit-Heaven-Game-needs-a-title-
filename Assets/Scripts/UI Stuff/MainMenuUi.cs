@@ -14,11 +14,11 @@ public class MainMenuUi : MonoBehaviour
     {
         playButton.onClick.AddListener(() =>
         {
-            Loader.Load(Loader.Scene.Level);
+            Loader.Load(Loader.Scene.LevelScene);
         });
         playButtonMulti.onClick.AddListener(() =>
         {
-
+            Loader.Load(Loader.Scene.LobbyScene);
         });
         quitButton.onClick.AddListener(() =>
         {
