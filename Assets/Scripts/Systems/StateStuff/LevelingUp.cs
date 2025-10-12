@@ -96,7 +96,7 @@ public class LevelingUp : GameBaseState
 
         Debug.Log("trying to send Rpc");
 
-        _gameStateManager.GSMSetReadyRpc(Player.LoaclInstance.GetPlayerId());
+        _gameStateManager.GSMSetReadyRpc(Player.LoaclInstance.OwnerClientId);
     }
 
     public void SetReadyRpc()

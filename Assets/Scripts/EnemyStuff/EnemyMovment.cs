@@ -61,6 +61,8 @@ public class EnemyMovment : NetworkBehaviour
         //closestPlayer = 4;
 
         PlayerHealth._allPlayers.TryGetValue(closestPlayer, out targetPlayer);
+
+        Debug.Log(targetPlayer);
     }
 
     private void FixedUpdate()
@@ -76,6 +78,9 @@ public class EnemyMovment : NetworkBehaviour
         if (!targetPlayer) return;
 
         var targetPos = targetPlayer.transform.position;
+
+        Debug.Log(targetPos);
+
         var direction = (targetPos - transform.position).normalized;
         rb.linearVelocity = direction * moveSpeed;
 

@@ -60,7 +60,7 @@ public class Player : NetworkBehaviour
             OnAnyPlayerSpawned?.Invoke(this, new OnAnyPlayerSpawnedEventArgs
             {
                 player = Player.LoaclInstance.NetworkObject,
-                clientId = NetworkObjectId,
+                clientId = Player.LoaclInstance.OwnerClientId,
             });
         }
         else
@@ -76,7 +76,9 @@ public class Player : NetworkBehaviour
     {
         if (clientId == OwnerClientId) 
         {
+            Debug.Log(PlayerHealth._allPlayers[clientId].ToString());
             PlayerHealth._allPlayers.Remove(clientId);
+            Debug.Log(PlayerHealth._allPlayers[clientId].ToString());
         }
     }
 

@@ -50,7 +50,7 @@ public class AttackHandler : NetworkBehaviour
 
             attack1.initialize(data, newLevel);
 
-            if (!IsServer) { SyncPlayersActiveAttacksWhenLevelingUpAnAttackRpc(Player.LoaclInstance.NetworkObjectId, data.attackId, newLevel); }
+            if (!IsServer) { SyncPlayersActiveAttacksWhenLevelingUpAnAttackRpc(Player.LoaclInstance.OwnerClientId, data.attackId, newLevel); }
 
             //Debug.Log($"attack {data.name} leveled up now it has {attack1.data}");
 
@@ -62,7 +62,7 @@ public class AttackHandler : NetworkBehaviour
 
         if (!IsServer) 
         {
-            SyncPlayersActiveAttacksWhenGettingNewAttackRpc(Player.LoaclInstance.NetworkObjectId, data.attackId);
+            SyncPlayersActiveAttacksWhenGettingNewAttackRpc(Player.LoaclInstance.OwnerClientId, data.attackId);
         }
 
         //Debug.Log($" we got {data.name} attack");
@@ -120,7 +120,7 @@ public class AttackHandler : NetworkBehaviour
 
         //Debug.Log("tryed to tick out of Rpc with " + GameManager.Instance.playerList[0]);
 
-        PlayerHealth._allPlayers.TryGetValue(Player.LoaclInstance.NetworkObjectId, out PlayerHealth player); // need to make it not get every update
+        PlayerHealth._allPlayers.TryGetValue(Player.LoaclInstance.OwnerClientId, out PlayerHealth player); // need to make it not get every update
 
         //Debug.Log(player);
 

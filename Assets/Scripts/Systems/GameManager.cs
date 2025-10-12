@@ -92,9 +92,11 @@ private void SceneManager_OnLoadEventCompleted(string sceneName, UnityEngine.Sce
 
         //Debug.Log("try to go in the for loop");
 
+        Debug.Log(PlayerHealth._allPlayers[Player.LoaclInstance.OwnerClientId].GetComponent<NetworkObject>());
+
         AfterXTime?.Invoke(this, new AfterXTimeEventArgs
         {
-            player = playerList[0]
+            player = PlayerHealth._allPlayers[Player.LoaclInstance.OwnerClientId].GetComponent<NetworkObject>(),
         });
     }
 
