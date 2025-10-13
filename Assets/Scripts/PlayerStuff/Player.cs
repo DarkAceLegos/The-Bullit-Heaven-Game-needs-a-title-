@@ -76,9 +76,9 @@ public class Player : NetworkBehaviour
     {
         if (clientId == OwnerClientId) 
         {
-            Debug.Log(PlayerHealth._allPlayers[clientId].ToString());
+            //Debug.Log(PlayerHealth._allPlayers[clientId].ToString());
             PlayerHealth._allPlayers.Remove(clientId);
-            Debug.Log(PlayerHealth._allPlayers[clientId].ToString());
+            //Debug.Log(PlayerHealth._allPlayers[clientId].ToString());
         }
     }
 

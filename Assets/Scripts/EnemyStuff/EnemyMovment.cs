@@ -54,7 +54,7 @@ public class EnemyMovment : NetworkBehaviour
             }
         }
 
-        if (closestPlayer == default) return;
+        //if (closestPlayer == default) return;
 
         //Debug.Log("we have closet player");
 
@@ -79,7 +79,7 @@ public class EnemyMovment : NetworkBehaviour
 
         var targetPos = targetPlayer.transform.position;
 
-        Debug.Log(targetPos);
+        //Debug.Log(targetPos);
 
         var direction = (targetPos - transform.position).normalized;
         rb.linearVelocity = direction * moveSpeed;
