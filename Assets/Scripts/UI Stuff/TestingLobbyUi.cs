@@ -11,11 +11,11 @@ public class TestingLobbyUi : MonoBehaviour
     {
         hostGameButton.onClick.AddListener(() =>
         {
-            NetworkManager.Singleton.StartHost();
+            GameMultiplayerConnectionAppoval.Instance.StartHost();
             Loader.LoadNetwork(Loader.Scene.LobbyPlayScene);
         });
-        joinGameButton.onClick.AddListener(() => { 
-            NetworkManager.Singleton.StartClient();
+        joinGameButton.onClick.AddListener(() => {
+            GameMultiplayerConnectionAppoval.Instance.StartClient();
         });
     }
 }

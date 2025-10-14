@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine;
 public class CharaterReady : NetworkBehaviour
 {
     public static CharaterReady instance { get; private set; }
+
+    public event EventHandler OnReadyChanged;
 
     private Dictionary<ulong, bool> playerReadyDictionary;
 
@@ -27,6 +30,8 @@ public class CharaterReady : NetworkBehaviour
         //Debug.Log(clientId);
         //Debug.Log(NetworkManager.Singleton.ConnectedClientsIds[0]);
 
+        SetPlayerReadyRpc(clientId);
+
         playerReadyDictionary[clientId] = true;
 
         bool allClientsReady = true;
@@ -43,5 +48,18 @@ public class CharaterReady : NetworkBehaviour
         {
             Loader.LoadNetwork(Loader.Scene.LevelScene);
         }
+    }
+
+    [Rpc(SendTo.Everyone)]
+    private void SetPlayerReadyRpc(ulong clientId)
+    {
+        playerReadyDictionary[clientId] = true;
+
+        OnReadyChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    public bool IsPlayerReady(ulong clientId)
+    { 
+        return playerReadyDictionary.ContainsKey(clientId) && playerReadyDictionary[clientId];
     }
 }

@@ -22,12 +22,7 @@ public static class Loader
     {
         Loader.targetScene = targetScene;
 
-        //InputSystem.actions.Enable();
-        if (SceneManager.GetActiveScene().ToString() == Loader.Scene.LevelScene.ToString())
-        {
-            Debug.Log("Rpc Set actions active");
-            Player.LoaclInstance.OnPlayerDisconnectedRpc();
-        }
+        InputSystem.actions.Enable();
 
         SceneManager.LoadScene(Scene.LoadingScene.ToString());
 

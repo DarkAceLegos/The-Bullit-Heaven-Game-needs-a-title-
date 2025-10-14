@@ -29,6 +29,7 @@ public class Player : NetworkBehaviour
 
     [SerializeField] private CinemachineCamera vc;
     [SerializeField] private AudioListener listener;
+    [SerializeField] PlayerVisual playerVisual;
 
     [SerializeField] private List<AttackData> allAttacksPlayerUnlocked = new();
 
@@ -38,6 +39,8 @@ public class Player : NetworkBehaviour
     {
         moveAction = InputSystem.actions.FindAction("Move");
 
+        PlayerData playerData = GameMultiplayerConnectionAppoval.Instance.GetPlayerDataFromClientId(OwnerClientId);
+        playerVisual.SetPlayerColor(GameMultiplayerConnectionAppoval.Instance.GetPlayerColor(playerData.colorId));
         //Debug.Log(moveAction.GetBindingDisplayString(1));
         //Debug.Log(GetBindingText(Binding.Up));
     }
@@ -80,8 +83,6 @@ public class Player : NetworkBehaviour
             PlayerHealth._allPlayers.Remove(clientId);
             //Debug.Log(PlayerHealth._allPlayers[clientId].ToString());
         }
-
-        OnPlayerDisconnectedRpc();
     }
 
     void Update()
@@ -108,6 +109,7 @@ public class Player : NetworkBehaviour
 
     public override void OnDestroy()
     {
+        if(!IsOwner) { return; }
         moveAction.Dispose();
     }
 
@@ -161,13 +163,5 @@ public class Player : NetworkBehaviour
                 onActionRebound();
 
             }).Start();
-    }
-
-    [Rpc(SendTo.Everyone)]
-    public void OnPlayerDisconnectedRpc()
-    {
-        Debug.Log("Reenable inputs");
-
-        InputSystem.actions.Enable();
     }
 }
