@@ -62,7 +62,7 @@ public class EnemyMovment : NetworkBehaviour
 
         PlayerHealth._allPlayers.TryGetValue(closestPlayer, out targetPlayer);
 
-        Debug.Log(targetPlayer);
+        //Debug.Log(targetPlayer);
     }
 
     private void FixedUpdate()

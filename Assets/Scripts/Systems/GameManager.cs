@@ -92,7 +92,7 @@ private void SceneManager_OnLoadEventCompleted(string sceneName, UnityEngine.Sce
 
         //Debug.Log("try to go in the for loop");
 
-        Debug.Log(PlayerHealth._allPlayers[Player.LoaclInstance.OwnerClientId].GetComponent<NetworkObject>());
+        //Debug.Log(PlayerHealth._allPlayers[Player.LoaclInstance.OwnerClientId].GetComponent<NetworkObject>());
 
         AfterXTime?.Invoke(this, new AfterXTimeEventArgs
         {
@@ -117,7 +117,7 @@ private void SceneManager_OnLoadEventCompleted(string sceneName, UnityEngine.Sce
     private void Player_OnAnyPlayerSpawned(object sender, Player.OnAnyPlayerSpawnedEventArgs e)
     {
         playerList.Add(e.player);
-        Debug.Log("Added " + sender + " to Player list with an id of " + e.clientId);
+        //Debug.Log("Added " + sender + " to Player list with an id of " + e.clientId);
     }
 
     [Rpc(SendTo.Everyone)]

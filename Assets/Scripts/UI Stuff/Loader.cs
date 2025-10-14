@@ -1,5 +1,6 @@
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public static class Loader 
@@ -21,12 +22,21 @@ public static class Loader
     {
         Loader.targetScene = targetScene;
 
+        //InputSystem.actions.Enable();
+        if (SceneManager.GetActiveScene().ToString() == Loader.Scene.LevelScene.ToString())
+        {
+            Debug.Log("Rpc Set actions active");
+            Player.LoaclInstance.OnPlayerDisconnectedRpc();
+        }
+
         SceneManager.LoadScene(Scene.LoadingScene.ToString());
 
     }
 
     public static void LoadNetwork(Scene targetScene)
     {
+        InputSystem.actions.Enable();
+
         NetworkManager.Singleton.SceneManager.LoadScene(targetScene.ToString(), LoadSceneMode.Single);
     }
 

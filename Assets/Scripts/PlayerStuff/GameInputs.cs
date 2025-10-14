@@ -77,13 +77,13 @@ public class GameInputs : MonoBehaviour
 
         inputAction.PerformInteractiveRebinding(bindingIndex)
             .OnComplete(callback =>
-        {
-            Debug.Log(callback.action.bindings[0].path);
-            Debug.Log(callback.action.bindings[0].overridePath);
-            callback.Dispose();
-            InputSystem.actions.Enable();
-            onActionRebound();
+            {
+                //Debug.Log(callback.action.bindings[0].path);
+                //Debug.Log(callback.action.bindings[0].overridePath);
+                callback.Dispose();
+                InputSystem.actions.Enable();
+                onActionRebound();
 
-        }).Start();
+            }).Start();
     }
 }

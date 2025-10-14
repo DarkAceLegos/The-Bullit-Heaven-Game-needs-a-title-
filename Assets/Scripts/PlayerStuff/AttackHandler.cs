@@ -29,12 +29,12 @@ public class AttackHandler : NetworkBehaviour
 
         if (!IsOwner && !IsServer) return;
 
-        Debug.Log("I am the owner");
+        //Debug.Log("I am the owner");
 
         foreach (var attack in initialAttacks)
         {
             addAttack(attack);
-            Debug.Log("we got an attack " +  attack.attackId);
+            //Debug.Log("we got an attack " +  attack.attackId);
         }
     }
 

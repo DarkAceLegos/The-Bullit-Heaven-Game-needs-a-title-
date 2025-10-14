@@ -82,7 +82,7 @@ public class PlayerHealth : NetworkBehaviour
 
         allPlayers[playerId] = playerHealth;
 
-        Debug.Log(allPlayers.Count);
+        //Debug.Log(allPlayers.Count);
     }
 
     public void changeHealth(int heathChange)

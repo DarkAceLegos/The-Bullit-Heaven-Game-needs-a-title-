@@ -80,6 +80,8 @@ public class Player : NetworkBehaviour
             PlayerHealth._allPlayers.Remove(clientId);
             //Debug.Log(PlayerHealth._allPlayers[clientId].ToString());
         }
+
+        OnPlayerDisconnectedRpc();
     }
 
     void Update()
@@ -159,5 +161,13 @@ public class Player : NetworkBehaviour
                 onActionRebound();
 
             }).Start();
+    }
+
+    [Rpc(SendTo.Everyone)]
+    public void OnPlayerDisconnectedRpc()
+    {
+        Debug.Log("Reenable inputs");
+
+        InputSystem.actions.Enable();
     }
 }

@@ -16,17 +16,16 @@ public class CharaterReady : NetworkBehaviour
 
     public void SetPlayerReady()
     {
-        Debug.Log(NetworkManager.LocalClientId);
+        //Debug.Log(NetworkManager.LocalClientId);
 
         SetPlayerReadyServerRpc(NetworkManager.LocalClientId);
     }
 
     [Rpc(SendTo.Server)]
-    //[ServerRpc(RequireOwnership = false)]
     private void SetPlayerReadyServerRpc(ulong clientId)
     {
-        Debug.Log(clientId);
-        Debug.Log(NetworkManager.Singleton.ConnectedClientsIds[0]);
+        //Debug.Log(clientId);
+        //Debug.Log(NetworkManager.Singleton.ConnectedClientsIds[0]);
 
         playerReadyDictionary[clientId] = true;
 
