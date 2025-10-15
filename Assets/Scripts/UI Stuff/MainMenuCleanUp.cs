@@ -9,5 +9,7 @@ public class MainMenuCleanUp : MonoBehaviour
             Destroy(NetworkManager.Singleton.gameObject);
         if(GameMultiplayerConnectionAppoval.Instance != null)
             Destroy(GameMultiplayerConnectionAppoval.Instance.gameObject);
+        if(GameLobby.instance != null)
+            Destroy(GameLobby.instance.gameObject);
     }
 }
