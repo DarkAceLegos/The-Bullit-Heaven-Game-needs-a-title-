@@ -66,4 +66,11 @@ public class PlayerVisualForLobby : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+    private void OnDestroy()
+    {
+        GameMultiplayerConnectionAppoval.Instance.OnPlayerDataNetworkChanged -= GameMultiplayerConnectionAppoval_OnPlayerDataNetworkChanged;
+        CharaterReady.instance.OnReadyChanged -= CharaterReady_OnReadyChanged;
+
+    }
 }
