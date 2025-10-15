@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,12 +9,14 @@ public class PlayerVisualForLobby : MonoBehaviour
     [SerializeField] private GameObject ReadyText;
     [SerializeField] private PlayerVisual playerVisual;
     [SerializeField] private Button kickButton;
+    [SerializeField] private TextMeshPro playerNameText;
 
     private void Awake()
     {
         kickButton.onClick.AddListener(() =>
         {
             PlayerData playerData = GameMultiplayerConnectionAppoval.Instance.GetPlayerDataFromPlayerIndex(playerIndex);
+            GameLobby.instance.KickPlayer(playerData.playerId.ToString());
             GameMultiplayerConnectionAppoval.Instance.KickPlayer(playerData.clientId);
         });
     }
@@ -48,6 +51,8 @@ public class PlayerVisualForLobby : MonoBehaviour
             PlayerData playerData = GameMultiplayerConnectionAppoval.Instance.GetPlayerDataFromPlayerIndex(playerIndex);
 
             ReadyText.SetActive(CharaterReady.instance.IsPlayerReady(playerData.clientId));
+
+            playerNameText.text = playerData.playerName.ToString();
 
             playerVisual.SetPlayerColor(GameMultiplayerConnectionAppoval.Instance.GetPlayerColor(playerData.colorId));
         }
