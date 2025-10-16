@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using Unity.Services.Lobbies.Models;
 using UnityEngine;
@@ -12,6 +13,8 @@ public class LobbyUi : MonoBehaviour
     [SerializeField] private TMP_InputField joinCodeInputField;
     [SerializeField] private TMP_InputField playerNameInputField;
     [SerializeField] private LobbyCreateUi LobbyCreateUi;
+    [SerializeField] private Transform lobbyContainer;
+    [SerializeField] private Transform lobbyTemplate;
 
     private void Awake()
     {
@@ -32,6 +35,8 @@ public class LobbyUi : MonoBehaviour
         {
             GameLobby.instance.JoinWithCode(joinCodeInputField.text);
         });
+
+        lobbyTemplate.gameObject.SetActive(false);
     }
 
     private void Start()
@@ -41,5 +46,34 @@ public class LobbyUi : MonoBehaviour
         {
             GameMultiplayerConnectionAppoval.Instance.SetPlayerName(newText);
         });
+
+        GameLobby.instance.OnLobbyListChanged += GameLobby_OnLobbyListChanged;
+        UpdateLobbyList(new List<Lobby>());
+    }
+
+    private void GameLobby_OnLobbyListChanged(object sender, GameLobby.OnLobbyListChangedEventArgs e)
+    {
+        UpdateLobbyList(e.lobbyList);
+    }
+
+    private void UpdateLobbyList(List<Lobby> lobbyList)
+    {
+        foreach(Transform child in lobbyContainer)
+        {
+            if(child == lobbyTemplate) continue;
+            Destroy(child.gameObject);
+        }
+
+        foreach(Lobby lobby in lobbyList)
+        {
+            Transform lobbyTransform = Instantiate(lobbyTemplate, lobbyContainer);
+            lobbyTransform.gameObject.SetActive(true);
+            lobbyTransform.GetComponent<LobbyListSingleUi>().SetLobby(lobby);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        GameLobby.instance.OnLobbyListChanged -= GameLobby_OnLobbyListChanged;
     }
 }

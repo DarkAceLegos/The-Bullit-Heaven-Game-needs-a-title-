@@ -15,6 +15,7 @@ public class LobbyPlaySceneUi : MonoBehaviour
     {
         mainMenuButton.onClick.AddListener(() =>
         {
+            GameLobby.instance.LeaveLobby();
             NetworkManager.Singleton.Shutdown();
             Loader.Load(Loader.Scene.MainMenuScene);
         });
