@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
@@ -9,9 +11,22 @@ public class GameLobby : MonoBehaviour
 {
     public static GameLobby instance { get; private set; }
 
+    public event EventHandler OnCreateLobbyStarted;
+    public event EventHandler OnCreateLobbyFailed;
+    public event EventHandler OnJoinStarted;
+    public event EventHandler OnQuickJoinFailed;
+    public event EventHandler OnCodeJoinFailed;
+
+    public event EventHandler<OnLobbyListChangedEventArgs> OnLobbyListChanged;
+    public class OnLobbyListChangedEventArgs : EventArgs
+    {
+        public List<Lobby> lobbyList;
+    }
+
     private Lobby joinedLobby;
 
     private float heartbeatTimer;
+    private float listLobbiesTimer;
 
     private void Awake()
     {
@@ -27,7 +42,7 @@ public class GameLobby : MonoBehaviour
         if (UnityServices.State != ServicesInitializationState.Initialized)
         {
             InitializationOptions InitializationOptions = new InitializationOptions();
-            InitializationOptions.SetProfile(Random.Range(0, 10000).ToString());
+            InitializationOptions.SetProfile(UnityEngine.Random.Range(0, 10000).ToString());
 
             await UnityServices.InitializeAsync(InitializationOptions);
 
@@ -38,6 +53,23 @@ public class GameLobby : MonoBehaviour
     private void Update()
     {
         HandleHeartbeat();
+        HandlePeriodicListLobbies();
+    }
+
+    private void HandlePeriodicListLobbies()
+    {
+        if (joinedLobby == null)
+        {
+            listLobbiesTimer -= Time.deltaTime;
+            if (listLobbiesTimer <= 0f)
+            {
+                float listLobbiesTimerMax = 15f;
+                heartbeatTimer = listLobbiesTimerMax;
+
+                ListLobbies();
+            }
+        }
+
     }
 
     private void HandleHeartbeat()
@@ -60,8 +92,32 @@ public class GameLobby : MonoBehaviour
         return joinedLobby != null && joinedLobby.HostId == AuthenticationService.Instance.PlayerId;
     }
 
+    private async void ListLobbies()
+    {
+        try
+        {
+            QueryLobbiesOptions queryLobbiesOptions = new QueryLobbiesOptions
+            {
+                Filters = new List<QueryFilter>
+            {
+                new QueryFilter(QueryFilter.FieldOptions.AvailableSlots, "0", QueryFilter.OpOptions.GT)
+            }
+            };
+            QueryResponse queryResponse = await LobbyService.Instance.QueryLobbiesAsync(queryLobbiesOptions);
+
+            OnLobbyListChanged?.Invoke(this, new OnLobbyListChangedEventArgs
+            {
+                lobbyList = queryResponse.Results
+            });
+        }
+        catch (LobbyServiceException e) { 
+            Debug.Log(e);
+        }
+    }
+
     public async void CreateLobby(string lobbyName, bool isPrivate) // void might need to be a task
     {
+        OnCreateLobbyStarted?.Invoke(this, EventArgs.Empty);
         try
         {
             joinedLobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, GameMultiplayerConnectionAppoval.Instance.maxPlayerAmount, new CreateLobbyOptions
@@ -75,11 +131,13 @@ public class GameLobby : MonoBehaviour
         catch (LobbyServiceException e)
         {
             Debug.Log(e);
+            OnCreateLobbyFailed?.Invoke(this, EventArgs.Empty);
         }
     }
 
     public async void QuickJoin() // void might need to be a task
     {
+        OnJoinStarted?.Invoke(this, EventArgs.Empty);
         try
         {
             joinedLobby = await LobbyService.Instance.QuickJoinLobbyAsync();
@@ -89,11 +147,13 @@ public class GameLobby : MonoBehaviour
         catch (LobbyServiceException e)
         {
             Debug.Log(e);
+            OnQuickJoinFailed?.Invoke(this, EventArgs.Empty);
         }
     }
 
     public async void JoinWithCode(string lobbyCode)
     {
+        OnJoinStarted?.Invoke(this, EventArgs.Empty);
         try
         {
             joinedLobby = await LobbyService.Instance.JoinLobbyByCodeAsync(lobbyCode);
@@ -102,6 +162,7 @@ public class GameLobby : MonoBehaviour
         }
         catch (LobbyServiceException e) { 
             Debug.Log(e);
+            OnCodeJoinFailed?.Invoke(this, EventArgs.Empty);
         }
     }
 
