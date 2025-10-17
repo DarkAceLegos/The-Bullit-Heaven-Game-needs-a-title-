@@ -95,14 +95,14 @@ public class AttackHandler : NetworkBehaviour
                 //Debug.Log(attackList[i]);
 
                 newAttack = attackList[i];
+
+                var attack = Instantiate(newAttack.prefab, attackHandlerServerClient.transform);
+
+                attack.initialize(newAttack, 0);
+
+                attackHandlerServerClient.activeAttacks[attackList[i].attackId] = attack;
             }
         }
-
-        var attack = Instantiate(newAttack.prefab, attackHandlerServerClient.transform);
-
-        attack.initialize(newAttack, 0);
-
-        attackHandlerServerClient.activeAttacks[attackList[1].attackId] = attack;
     }
 
     public int getLevel(string id)

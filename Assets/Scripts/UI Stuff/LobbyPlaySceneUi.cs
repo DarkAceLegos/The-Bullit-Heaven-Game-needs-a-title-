@@ -28,7 +28,15 @@ public class LobbyPlaySceneUi : MonoBehaviour
     {
         Lobby lobby = GameLobby.instance.GetLobby();
 
-        lobbyNameText.text = "Lobby Name: " + lobby.Name;
-        lobbyCodeText.text = "Lobby Code: " + lobby.LobbyCode;
+        if (!GameMultiplayerConnectionAppoval.playMultiplyer)
+        {
+            lobbyNameText.text = "Single Player";
+            lobbyCodeText.text = "";
+        }
+        else
+        {
+            lobbyNameText.text = "Lobby Name: " + lobby.Name;
+            lobbyCodeText.text = "Lobby Code: " + lobby.LobbyCode;
+        }
     }
 }

@@ -12,7 +12,7 @@ public class AOEAttackData : AttackData
         public int damage;
         public float cooldown;
         public float speed;
-        public float Area;
+        public float area;
     }
 
     [SerializeField] private List<LevelData> levels = new();

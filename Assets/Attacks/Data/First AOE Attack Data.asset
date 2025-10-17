@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 719dcd8766816bc42a831d5fde51664a, type: 3}
+  m_Name: First AOE Attack Data
+  m_EditorClassIdentifier: 
+  attackId: 3
+  attackName: FirstAOEDrop
+  levelDiscriptions:
+  - AOE attack
+  - More damage
+  - Faster Cast
+  - Bigger
+  - Faster Cast
+  icon: {fileID: 7482667652216324306, guid: 531a585b3dd5f4f46bd8e7c174c1025f, type: 3}
+  prefab: {fileID: 1990684605709847375, guid: dd5928a37eecdcc4b8356378addae546, type: 3}
+  levels:
+  - projCount: 1
+    damage: 5
+    cooldown: 2
+    speed: 0
+    area: 2
+  - projCount: 1
+    damage: 10
+    cooldown: 2
+    speed: 0
+    area: 2
+  - projCount: 1
+    damage: 10
+    cooldown: 1
+    speed: 0
+    area: 2
+  - projCount: 1
+    damage: 10
+    cooldown: 1
+    speed: 0
+    area: 3
+  - projCount: 1
+    damage: 10
+    cooldown: 0.5
+    speed: 0
+    area: 3

@@ -40,6 +40,7 @@ public class GameMultiplayerConnectionAppoval : NetworkBehaviour
             // Singleplayer
             StartHost();
             Loader.Load(Loader.Scene.LobbyPlayScene);
+            //Loader.Load(Loader.Scene.LevelScene);
         }
     }
 
