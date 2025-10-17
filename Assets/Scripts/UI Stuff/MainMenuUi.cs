@@ -14,10 +14,12 @@ public class MainMenuUi : MonoBehaviour
     {
         playButton.onClick.AddListener(() =>
         {
-            Loader.Load(Loader.Scene.LevelScene);
+            GameMultiplayerConnectionAppoval.playMultiplyer = false;
+            Loader.Load(Loader.Scene.LobbyScene);
         });
         playButtonMulti.onClick.AddListener(() =>
         {
+            GameMultiplayerConnectionAppoval.playMultiplyer = true;
             Loader.Load(Loader.Scene.LobbyScene);
         });
         quitButton.onClick.AddListener(() =>

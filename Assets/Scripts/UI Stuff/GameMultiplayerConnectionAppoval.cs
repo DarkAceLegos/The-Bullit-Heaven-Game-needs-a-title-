@@ -12,6 +12,8 @@ public class GameMultiplayerConnectionAppoval : NetworkBehaviour
 
     public static GameMultiplayerConnectionAppoval Instance { get; private set; }
 
+    public static bool playMultiplyer;
+
     public event EventHandler OnTryingToJoinGame;
     public event EventHandler OnFailedToJoinGame;
     public event EventHandler OnPlayerDataNetworkChanged;
@@ -30,6 +32,15 @@ public class GameMultiplayerConnectionAppoval : NetworkBehaviour
 
         playerDataNetworkList = new NetworkList<PlayerData>();
         playerDataNetworkList.OnListChanged += PlayerDataNetworkList_OnListChanged;
+    }
+
+    private void Start()
+    {
+        if (!playMultiplyer) {
+            // Singleplayer
+            StartHost();
+            Loader.Load(Loader.Scene.LobbyPlayScene);
+        }
     }
 
     public string GetPlayerName()

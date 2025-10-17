@@ -50,7 +50,7 @@ public class GameLobby : MonoBehaviour
         if (UnityServices.State != ServicesInitializationState.Initialized)
         {
             InitializationOptions InitializationOptions = new InitializationOptions();
-            InitializationOptions.SetProfile(UnityEngine.Random.Range(0, 10000).ToString());
+            InitializationOptions.SetProfile(UnityEngine.Random.Range(0, 10000).ToString()); // not needed when publis
 
             await UnityServices.InitializeAsync(InitializationOptions);
 
