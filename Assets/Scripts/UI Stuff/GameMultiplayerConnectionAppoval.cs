@@ -39,7 +39,7 @@ public class GameMultiplayerConnectionAppoval : NetworkBehaviour
         if (!playMultiplyer) {
             // Singleplayer
             StartHost();
-            Loader.Load(Loader.Scene.LobbyPlayScene);
+            Loader.LoadNetwork(Loader.Scene.LobbyPlayScene);
             //Loader.Load(Loader.Scene.LevelScene);
         }
     }

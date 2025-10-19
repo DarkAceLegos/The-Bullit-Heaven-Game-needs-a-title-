@@ -19,7 +19,7 @@ public class CharaterReady : NetworkBehaviour
 
     public void SetPlayerReady()
     {
-        //Debug.Log(NetworkManager.LocalClientId);
+        Debug.Log(NetworkManager.LocalClientId);
 
         SetPlayerReadyServerRpc(NetworkManager.LocalClientId);
     }
