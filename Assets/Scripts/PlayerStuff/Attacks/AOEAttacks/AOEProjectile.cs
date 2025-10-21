@@ -29,7 +29,7 @@ public class AOEProjectile : NetworkBehaviour
     {
         //Debug.Log("I initialized");
 
-        PlayerMetaProgression playerMetaProgression = Player.LoaclInstance.GetComponent<PlayerMetaProgression>();
+        PlayerMetaProgression playerMetaProgression = Player.LoaclInstance.playerMetas;
 
         damage = (float)((damage1 + playerMetaProgression.additiveDamageModifier) * playerMetaProgression.percentageDamageModifier);
         speed = speed1 ;

@@ -42,7 +42,10 @@ public class Player : NetworkBehaviour
 
         PlayerData playerData = GameMultiplayerConnectionAppoval.Instance.GetPlayerDataFromClientId(OwnerClientId);
         playerVisual.SetPlayerColor(GameMultiplayerConnectionAppoval.Instance.GetPlayerColor(playerData.colorId));
-        //playerMetas.SetPlayerMetaProgressionPercentDamageModifier(playerData.playerMetaProgression.percentageDamageModifier);
+        
+        PlayerMetaProgression playerMetaProgression = GetComponent<PlayerMetaProgression>();
+        //allAttacksPlayerUnlocked = playerMetaProgression.allAttacksPlayerUnlocked;
+
         //Debug.Log(moveAction.GetBindingDisplayString(1));
         //Debug.Log(GetBindingText(Binding.Up));
     }

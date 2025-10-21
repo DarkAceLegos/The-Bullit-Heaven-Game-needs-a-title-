@@ -9,7 +9,7 @@ public class DataPersistenceManager : MonoBehaviour
     [SerializeField] private string fileName;
     [SerializeField] private bool useEncryption;
 
-    GameData data;
+    GameData gameData;
     private List<IDataPersistence> dataPersistencesObjects;
     private FileDataHandeler dataHandeler;
 
@@ -17,11 +17,12 @@ public class DataPersistenceManager : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance == null)
+        if(Instance != null)
         {
             Debug.LogError("Found more than one Data Persistence Manager in the sceen.");
         }
         Instance = this;
+        //DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -33,20 +34,20 @@ public class DataPersistenceManager : MonoBehaviour
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()
     {
-        IEnumerable<IDataPersistence> dataPersistenceObjects = (IEnumerable<IDataPersistence>)FindObjectsByType(typeof(IDataPersistence), FindObjectsSortMode.None);
+        IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistence>(); //FindObjectsByType<IDataPersistence>(FindObjectsSortMode.None);
         return new List<IDataPersistence>(dataPersistenceObjects);
     }
 
     public void NewGame()
     {
-        this.data = new GameData();
+        this.gameData = new GameData();
     }
 
     public void LoadGame()
     {
-        this.data = dataHandeler.Load();
+        this.gameData = dataHandeler.Load();
 
-        if (this.data != null)
+        if (this.gameData == null)
         {
             Debug.Log("No data was found. Initializing data to default.");
             NewGame();
@@ -54,7 +55,7 @@ public class DataPersistenceManager : MonoBehaviour
 
         foreach(IDataPersistence dataPersistence in dataPersistencesObjects)
         {
-            dataPersistence.LoadData(data);
+            dataPersistence.LoadData(gameData);
         }
     }
 
@@ -62,10 +63,10 @@ public class DataPersistenceManager : MonoBehaviour
     {
         foreach (IDataPersistence dataPersistence in dataPersistencesObjects)
         {
-            dataPersistence.SaveData(ref data);
+            dataPersistence.SaveData(ref gameData);
         }
 
-        dataHandeler.Save(data);
+        dataHandeler.Save(gameData);
     }
 
     public void OnApplicationQuit()
