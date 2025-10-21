@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5167327483291990637
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4531900855074400001}
+  - component: {fileID: 8681224539632145097}
+  m_Layer: 0
+  m_Name: PlayerMetaProgression
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4531900855074400001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5167327483291990637}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8681224539632145097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5167327483291990637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdc00cdfe1141da46b9f6ba9c856c2a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allAttacksPlayerUnlocked:
+  - {fileID: 11400000, guid: cdb35b85e414ec444a26bbcde2a7eac5, type: 2}
+  - {fileID: 11400000, guid: bc69d618b4e58524181ed23b8a964c1e, type: 2}
+  - {fileID: 11400000, guid: 3cf6efa18165fb942b827426a769bed4, type: 2}
+  additiveMaxHealthModifier: 0
+  percentageMaxHealthModifier: 0
+  additiveDamageModifier: 0
+  percentageDamageModifier: 0
+  percentageCooldownModifier: 0
+  additiveProjectileModifier: 0
+  additiveAreaModifier: 0
+  percentageAreaModifier: 0
+  enemySpawnModifier: 0
+  enemyDamageModifier: 0
+  playerHealthRegen: 0
+  percentagePlayerHealthRegen: 1
+  percentageTreasureFind: 0
+  percentageTreasurGain: 0
+  additivePlayerMoveSpeed: 0
+  percentagePlayerMoveSpeed: 1
+  additiveProjectileSpeed: 0
+  percentageProjectileSpeed: 1
+  additiveDuration: 0
+  percentageDuration: 1
+  additiveExperience: 0
+  percentageExperience: 1
+  coins: 0
+  gems: 0

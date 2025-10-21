@@ -8,7 +8,7 @@ public class EnemyHealth : NetworkBehaviour
     [SerializeField] private int maxHealth = 10;
     [SerializeField] private int experience = 1;
 
-    [SerializeField] private int currentHeath;
+    [SerializeField] private float currentHeath;
 
     public static Action<EnemyHealth> onEnemyKilled;
 
@@ -17,13 +17,13 @@ public class EnemyHealth : NetworkBehaviour
         currentHeath = maxHealth;
     }
 
-    public void DamageEnemy(int damage)
+    public void DamageEnemy(float damage)
     {
         DealDamageRpc(damage);
     }
 
     [Rpc(SendTo.Server)]
-    private void DealDamageRpc(int damage)
+    private void DealDamageRpc(float damage)
     {
         currentHeath -= damage;
 

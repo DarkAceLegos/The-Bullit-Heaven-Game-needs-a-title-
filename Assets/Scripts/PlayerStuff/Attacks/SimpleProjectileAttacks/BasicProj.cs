@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class BasicProj : NetworkBehaviour
 {
-    [SerializeField] private int damage;
+    [SerializeField] private float damage;
     [SerializeField] private float speed;
     [SerializeField] private float duration;
     [SerializeField] private Rigidbody2D rb;
@@ -26,7 +26,13 @@ public class BasicProj : NetworkBehaviour
     {
         //Debug.Log("I initialized");
 
-        damage = damage1;
+        //Debug.Log(Player.LoaclInstance);
+
+        PlayerMetaProgression playerMetaProgression = Player.LoaclInstance.playerMetas;
+
+        //Debug.Log(playerMetaProgression);
+
+        damage = (float)((damage1 + playerMetaProgression.additiveDamageModifier) * playerMetaProgression.percentageDamageModifier);
         speed = speed1;
         duration = duration1;
         rb.linearVelocity = Random.insideUnitCircle * speed;

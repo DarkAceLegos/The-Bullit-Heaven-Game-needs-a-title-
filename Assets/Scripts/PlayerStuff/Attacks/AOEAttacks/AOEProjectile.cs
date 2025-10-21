@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(Rigidbody2D))]
 public class AOEProjectile : NetworkBehaviour
 {
-    [SerializeField] private int damage;
+    [SerializeField] private float damage;
     [SerializeField] private float speed;
     [SerializeField] private float duration;
     [SerializeField] private Rigidbody2D rb;
@@ -29,13 +29,15 @@ public class AOEProjectile : NetworkBehaviour
     {
         //Debug.Log("I initialized");
 
-        damage = damage1;
-        speed = speed1;
+        PlayerMetaProgression playerMetaProgression = Player.LoaclInstance.GetComponent<PlayerMetaProgression>();
+
+        damage = (float)((damage1 + playerMetaProgression.additiveDamageModifier) * playerMetaProgression.percentageDamageModifier);
+        speed = speed1 ;
         duration = duration1;
-        //rb.linearVelocity = Random.insideUnitCircle * speed;
-        area = area1;
+        area = area1 + playerMetaProgression.additiveAreaModifier;
         transform.localScale = transform.localScale * area;
-        Debug.Log(transform.localScale);
+        rb.linearVelocity = Random.insideUnitCircle * speed;
+        //Debug.Log(transform.localScale);
     }
 
     private void Update()
