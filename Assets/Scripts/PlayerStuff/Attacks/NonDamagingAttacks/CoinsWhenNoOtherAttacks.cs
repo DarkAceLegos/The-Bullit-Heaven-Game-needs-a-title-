@@ -1,7 +1,7 @@
 using Unity.Netcode;
 using UnityEngine;
 
-public class HealWhenNoOtherAttacks : Attack
+public class CoinsWhenNoOtherAttacks : Attack
 {
     private NonDamagingAttackData.LevelData levelData;
 
@@ -15,7 +15,7 @@ public class HealWhenNoOtherAttacks : Attack
         var basicAttackData = (NonDamagingAttackData)data;
         levelData = basicAttackData.GetLevelData(level);
 
-        Player.LoaclInstance.GetComponent<PlayerHealth>().changeHealth(levelData.value);
+        
 
         level--;
     }

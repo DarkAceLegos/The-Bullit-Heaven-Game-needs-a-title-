@@ -8,7 +8,7 @@ public class LevelingUp : GameBaseState
 {
     [SerializeField] private List<AttackData> allAttacks = new();
 
-    [SerializeField] private List<AttackData> noOtherAttacks = new();
+    [SerializeField] private List<AttackData> allNoOtherAttacks = new();
 
     private GameStateManager _gameStateManager;
 
@@ -21,7 +21,7 @@ public class LevelingUp : GameBaseState
     {
         allAttacks = Player.LoaclInstance.GetAllPlayerUnlockedAttacks();
 
-        noOtherAttacks = Player.LoaclInstance.GetPlayerNoOtherAttacks();
+        allNoOtherAttacks = Player.LoaclInstance.GetPlayerNoOtherAttacks();
 
         //Debug.Log("entered Leveling Up");
         _gameStateManager = gameState;
@@ -59,10 +59,12 @@ public class LevelingUp : GameBaseState
         Debug.Log("Upgrade Holder is clear");
 
         List<AttackData> availableAttacks = GetAvailableAttacks();
+        List<AttackData> noOtherAttacks = GetNoOtherAttacks();
+
         if (availableAttacks == null || availableAttacks.Count <= 0)
         {
             Debug.Log("no available attacks for level up");
-            return;            
+            //return;            
         }
 
         var randomAttack = new List<AttackData>();
@@ -79,7 +81,7 @@ public class LevelingUp : GameBaseState
             {
                 int randomIndex = UnityEngine.Random.Range(0, noOtherAttacks.Count);
                 randomAttack.Add(noOtherAttacks[randomIndex]);
-                //noOtherAttacks.RemoveAt(randomIndex);
+                noOtherAttacks.RemoveAt(randomIndex);
             }
         }
 
@@ -102,6 +104,20 @@ public class LevelingUp : GameBaseState
         }
 
         return availableAttacks;
+    }
+
+    private List<AttackData> GetNoOtherAttacks()
+    {
+        if (AttackHandler.LoaclInstance == null) { Debug.Log("the Attack Handler is null"); return null; }
+
+        List<AttackData> noOtherAttacks = new List<AttackData>();
+        foreach (var attack in allNoOtherAttacks)
+        {
+            if (AttackHandler.LoaclInstance.getLevel(attack.attackId) < attack.maxLevel)
+                noOtherAttacks.Add(attack);
+        }
+
+        return noOtherAttacks;
     }
 
     internal void SetReady()

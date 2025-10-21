@@ -4,7 +4,7 @@ using UnityEngine;
 public abstract class Attack : NetworkBehaviour
 {
     public AttackData data { get; private set; }
-    public int level { get; private set; }
+    public int level { get; set; }
 
     public void initialize(AttackData data, int level)
     {

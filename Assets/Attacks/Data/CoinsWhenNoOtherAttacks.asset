@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c242a4e793e63a14f87d5bb031cc89b2, type: 3}
-  m_Name: HealWhenNoAttacksLeft
+  m_Name: CoinsWhenNoOtherAttacks
   m_EditorClassIdentifier: 
-  attackId: 99
-  attackName: Heal
+  attackId: 98
+  attackName: Coins
   levelDiscriptions:
-  - Heals you for 50 Hp.
-  - Heals you for 50 Hp.
+  - Gain 10 coins.
+  - Gain 10 coins.
   icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  prefab: {fileID: -477287753565412272, guid: db43f87be0ebc004d9737b6e460d9ee0, type: 3}
+  prefab: {fileID: 5017562780985731447, guid: 5b6d0702808aaaf45b1f74fc91c2f52e, type: 3}
   levels:
-  - value: 50
-  - value: 50
+  - value: 10
+  - value: 10
