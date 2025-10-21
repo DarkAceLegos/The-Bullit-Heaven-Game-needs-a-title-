@@ -9,7 +9,7 @@ public class DataPersistenceManager : MonoBehaviour
     [SerializeField] private string fileName;
     [SerializeField] private bool useEncryption;
 
-    PlayerMetaProgression playerMetaProgression;
+    GameData data;
     private List<IDataPersistence> dataPersistencesObjects;
     private FileDataHandeler dataHandeler;
 
@@ -39,14 +39,14 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void NewGame()
     {
-        this.playerMetaProgression = new PlayerMetaProgression();
+        this.data = new GameData();
     }
 
     public void LoadGame()
     {
-        this.playerMetaProgression = dataHandeler.Load();
+        this.data = dataHandeler.Load();
 
-        if (this.playerMetaProgression != null)
+        if (this.data != null)
         {
             Debug.Log("No data was found. Initializing data to default.");
             NewGame();
@@ -54,7 +54,7 @@ public class DataPersistenceManager : MonoBehaviour
 
         foreach(IDataPersistence dataPersistence in dataPersistencesObjects)
         {
-            dataPersistence.LoadData(playerMetaProgression);
+            dataPersistence.LoadData(data);
         }
     }
 
@@ -62,10 +62,10 @@ public class DataPersistenceManager : MonoBehaviour
     {
         foreach (IDataPersistence dataPersistence in dataPersistencesObjects)
         {
-            dataPersistence.SaveData(ref playerMetaProgression);
+            dataPersistence.SaveData(ref data);
         }
 
-        dataHandeler.Save(playerMetaProgression);
+        dataHandeler.Save(data);
     }
 
     public void OnApplicationQuit()

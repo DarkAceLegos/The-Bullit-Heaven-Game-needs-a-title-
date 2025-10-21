@@ -2,6 +2,6 @@ using UnityEngine;
 
 public interface IDataPersistence
 {
-    void LoadData(PlayerMetaProgression progression);
-    void SaveData(ref PlayerMetaProgression progression );
+    void LoadData(GameData progression);
+    void SaveData(ref GameData progression );
 }

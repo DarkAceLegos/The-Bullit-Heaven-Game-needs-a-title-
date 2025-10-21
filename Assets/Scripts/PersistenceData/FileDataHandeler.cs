@@ -16,10 +16,10 @@ public class FileDataHandeler
         this.useEncryption = useEncryption;
     }
 
-    public PlayerMetaProgression Load()
+    public GameData Load()
     {
         string fullPath = Path.Combine(dataDirPath, dataFileName);
-        PlayerMetaProgression progression = null;
+        GameData progression = null;
         if(File.Exists(fullPath))
         {
             try
@@ -38,7 +38,7 @@ public class FileDataHandeler
                     dataToLoad = EncryptDecrypt(dataToLoad);
                 }
 
-                progression = JsonUtility.FromJson<PlayerMetaProgression>(dataToLoad);
+                progression = JsonUtility.FromJson<GameData>(dataToLoad);
             }
             catch (Exception e)
             {
@@ -48,14 +48,14 @@ public class FileDataHandeler
         return progression;
     }
 
-    public void Save(PlayerMetaProgression playerMetaProgression)
+    public void Save(GameData data)
     {
         string fullPath = Path.Combine(dataDirPath, dataFileName);
         try
         {
             Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
 
-            string dataToStore = JsonUtility.ToJson(playerMetaProgression, true);
+            string dataToStore = JsonUtility.ToJson(data, true);
 
             if (useEncryption)
             {

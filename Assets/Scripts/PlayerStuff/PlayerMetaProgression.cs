@@ -31,14 +31,62 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
     [SerializeField] public int coins;
     [SerializeField] public int gems;
 
-    public void LoadData(PlayerMetaProgression progression)
+    public void LoadData(GameData data)
     {
-        this.additiveAreaModifier = progression.additiveAreaModifier;
+        this.allAttacksPlayerUnlocked = data.allAttacksPlayerUnlocked;
+        this.additiveMaxHealthModifier = data.additiveMaxHealthModifier;
+        this.percentageMaxHealthModifier = data.percentageMaxHealthModifier;
+        this.additiveDamageModifier = data.additiveDamageModifier;
+        this.percentageDamageModifier = data.percentageDamageModifier;
+        this.percentageCooldownModifier = data.percentageCooldownModifier;
+        this.additiveProjectileModifier = data.additiveProjectileModifier;
+        this.additiveAreaModifier = data.additiveAreaModifier;
+        this.percentageAreaModifier = data.percentageAreaModifier;
+        this.enemySpawnModifier = data.enemySpawnModifier;
+        this.enemyDamageModifier = data.enemyDamageModifier;
+        this.playerHealthRegen = data.playerHealthRegen;
+        this.percentagePlayerHealthRegen = data.percentagePlayerHealthRegen;
+        this.percentageTreasureFind = data.percentageTreasureFind;
+        this.percentageTreasurGain = data.percentageTreasurGain;
+        this.additivePlayerMoveSpeed = data.additivePlayerMoveSpeed;
+        this.percentagePlayerMoveSpeed = data.percentagePlayerMoveSpeed;
+        this.additiveProjectileSpeed = data.additiveProjectileSpeed;
+        this.percentageProjectileSpeed = data.percentageProjectileSpeed;
+        this.additiveDuration = data.additiveDuration;
+        this.percentageDuration = data.percentageDuration;
+        this.additiveExperience = data.additiveExperience;
+        this.percentageExperience = data.percentageExperience;
+        this.coins = data.coins;
+        this.gems = data.gems;
     }
 
-    public void SaveData(ref PlayerMetaProgression progression)
+    public void SaveData(ref GameData data)
     {
-        progression.additiveAreaModifier = this.additiveAreaModifier;
+        data.allAttacksPlayerUnlocked = this.allAttacksPlayerUnlocked;
+        data.additiveMaxHealthModifier = this.additiveMaxHealthModifier;
+        data.percentageMaxHealthModifier = this.percentageMaxHealthModifier;
+        data.additiveDamageModifier = this.additiveDamageModifier;
+        data.percentageDamageModifier = this.percentageDamageModifier;
+        data.percentageCooldownModifier = this.percentageCooldownModifier;
+        data.additiveProjectileModifier = this.additiveProjectileModifier;
+        data.additiveAreaModifier = this.additiveAreaModifier;
+        data.percentageAreaModifier = this.percentageAreaModifier;
+        data.enemySpawnModifier = this.enemySpawnModifier;
+        data.enemyDamageModifier = this.enemyDamageModifier;
+        data.playerHealthRegen = this.playerHealthRegen;
+        data.percentagePlayerHealthRegen = this.percentagePlayerHealthRegen;
+        data.percentageTreasureFind = this.percentageTreasureFind;
+        data.percentageTreasurGain = this.percentageTreasurGain;
+        data.additivePlayerMoveSpeed = this.additivePlayerMoveSpeed;
+        data.percentagePlayerMoveSpeed = this.percentagePlayerMoveSpeed;
+        data.additiveProjectileSpeed = this.additiveProjectileSpeed;
+        data.percentageProjectileSpeed = this.percentageProjectileSpeed;
+        data.additiveDuration = this.additiveDuration;
+        data.percentageDuration = this.percentageDuration;
+        data.additiveExperience = this.additiveExperience;
+        data.percentageExperience = this.percentageExperience;
+        data.coins = this.coins;
+        data.gems = this.gems;
     }
 
     public void SetPlayerMetaProgressionPercentDamageModifier(float percentageDamageModifier1)
