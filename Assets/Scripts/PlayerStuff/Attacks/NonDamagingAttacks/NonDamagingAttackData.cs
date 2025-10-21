@@ -8,10 +8,7 @@ public class NonDamagingAttackData : AttackData
     [System.Serializable]
     public struct LevelData
     {
-        public int projCount;
-        public int damage;
-        public float cooldown;
-        public float speed;
+        public int value;
     }
 
     [SerializeField] private List<LevelData> levels = new();

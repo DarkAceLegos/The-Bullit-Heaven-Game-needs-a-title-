@@ -89,8 +89,5 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         data.gems = this.gems;
     }
 
-    public void SetPlayerMetaProgressionPercentDamageModifier(float percentageDamageModifier1)
-    {
-        percentageDamageModifier = percentageDamageModifier1;
-    }
+
 }

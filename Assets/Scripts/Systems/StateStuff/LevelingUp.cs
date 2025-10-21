@@ -8,6 +8,8 @@ public class LevelingUp : GameBaseState
 {
     [SerializeField] private List<AttackData> allAttacks = new();
 
+    [SerializeField] private List<AttackData> noOtherAttacks = new();
+
     private GameStateManager _gameStateManager;
 
     private GameObject levelScreen;
@@ -18,6 +20,8 @@ public class LevelingUp : GameBaseState
     public override void EnterState(GameStateManager gameState)
     {
         allAttacks = Player.LoaclInstance.GetAllPlayerUnlockedAttacks();
+
+        noOtherAttacks = Player.LoaclInstance.GetPlayerNoOtherAttacks();
 
         //Debug.Log("entered Leveling Up");
         _gameStateManager = gameState;
@@ -58,7 +62,7 @@ public class LevelingUp : GameBaseState
         if (availableAttacks == null || availableAttacks.Count <= 0)
         {
             Debug.Log("no available attacks for level up");
-            return;
+            return;            
         }
 
         var randomAttack = new List<AttackData>();
@@ -67,6 +71,16 @@ public class LevelingUp : GameBaseState
             int randomIndex = UnityEngine.Random.Range(0, availableAttacks.Count);
             randomAttack.Add(availableAttacks[randomIndex]);
             availableAttacks.RemoveAt(randomIndex);
+        }
+
+        if (randomAttack.Count < 3 && noOtherAttacks.Count > 0) 
+        {
+            while (noOtherAttacks.Count < 3 && noOtherAttacks.Count > 0)
+            {
+                int randomIndex = UnityEngine.Random.Range(0, noOtherAttacks.Count);
+                randomAttack.Add(noOtherAttacks[randomIndex]);
+                //noOtherAttacks.RemoveAt(randomIndex);
+            }
         }
 
         foreach (var attack in randomAttack)
@@ -83,7 +97,7 @@ public class LevelingUp : GameBaseState
         List<AttackData> availableAttacks = new List<AttackData>();
         foreach(var attack in allAttacks)
         {
-            if(AttackHandler.LoaclInstance.getLevel(attack.attackId)<attack.maxLevel)
+            if (AttackHandler.LoaclInstance.getLevel(attack.attackId) < attack.maxLevel)
                 availableAttacks.Add(attack);
         }
 

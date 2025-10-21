@@ -34,7 +34,10 @@ public class Player : NetworkBehaviour
 
     [SerializeField] private List<AttackData> allAttacksPlayerUnlocked = new();
 
+    [SerializeField] private List<AttackData> noOtherAttacks = new();
+
     public List<AttackData> GetAllPlayerUnlockedAttacks() { return allAttacksPlayerUnlocked; }
+    public List<AttackData> GetPlayerNoOtherAttacks() { return noOtherAttacks; }
 
     void Start()
     {
@@ -42,9 +45,8 @@ public class Player : NetworkBehaviour
 
         PlayerData playerData = GameMultiplayerConnectionAppoval.Instance.GetPlayerDataFromClientId(OwnerClientId);
         playerVisual.SetPlayerColor(GameMultiplayerConnectionAppoval.Instance.GetPlayerColor(playerData.colorId));
-        
-        PlayerMetaProgression playerMetaProgression = GetComponent<PlayerMetaProgression>();
-        //allAttacksPlayerUnlocked = playerMetaProgression.allAttacksPlayerUnlocked;
+
+        allAttacksPlayerUnlocked = playerMetas.allAttacksPlayerUnlocked;
 
         //Debug.Log(moveAction.GetBindingDisplayString(1));
         //Debug.Log(GetBindingText(Binding.Up));
