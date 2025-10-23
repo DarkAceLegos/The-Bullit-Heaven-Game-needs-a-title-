@@ -65,7 +65,16 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
 
     public void AddAttack(AttackData attackData)
     {
+        if(allAttacksPlayerUnlocked.Contains(attackData))
+            return;
         allAttacksPlayerUnlocked.Add(attackData);
+    }
+
+    public void RemoveAttack(AttackData attackData)
+    {
+        if(!allAttacksPlayerUnlocked.Contains(attackData))
+            return ;
+        allAttacksPlayerUnlocked.Remove(attackData);
     }
 
     public void ChangeStat(int statId, float Amount)
