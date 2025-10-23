@@ -4,6 +4,10 @@ public class GameLost : GameBaseState
 {
     public override void EnterState(GameStateManager gameState)
     {
+        GameOverUi.Instance.Show();
+
+        Time.timeScale = 0;
+        
         Debug.Log("Game lost");
     }
 

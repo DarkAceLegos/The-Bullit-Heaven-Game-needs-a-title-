@@ -3,7 +3,12 @@ using UnityEngine;
 
 public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
 {
-    [SerializeField] public List<AttackData> allAttacksPlayerUnlocked = new(); //
+    public static PlayerMetaProgression Instance;
+
+    [SerializeField] public List<AttackData> allAttacksPlayerUnlocked = new();
+
+    private Dictionary<int,string> statList = new Dictionary<int, string>();
+
     [SerializeField] public int additiveMaxHealthModifier;
     [SerializeField] public float percentageMaxHealthModifier = 1f;
     [SerializeField] public int additiveDamageModifier;
@@ -30,6 +35,70 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
 
     [SerializeField] public int coins;
     [SerializeField] public int gems;
+
+    private void Awake()
+    {
+        Instance = this;
+        statList.Add(0, "additiveMaxHealthModifier");
+        statList.Add(1, "percentageMaxHealthModifier");
+        statList.Add(2, "additiveDamageModifier");
+        statList.Add(3, "percentageDamageModifier");
+        statList.Add(4, "percentageCooldownModifier");
+        statList.Add(5, "additiveProjectileModifier");
+        statList.Add(6, "additiveAreaModifier");
+        statList.Add(7, "percentageAreaModifier");
+        statList.Add(8, "enemySpawnModifier");
+        statList.Add(9, "enemyDamageModifier");
+        statList.Add(10, "playerHealthRegen");
+        statList.Add(11, "percentagePlayerHealthRegen");
+        statList.Add(12, "percentageTreasureFind");
+        statList.Add(13, "percentageTreasurGain");
+        statList.Add(14, "additivePlayerMoveSpeed");
+        statList.Add(15, "percentagePlayerMoveSpeed");
+        statList.Add(16, "additiveProjectileSpeed");
+        statList.Add(17, "percentageProjectileSpeed");
+        statList.Add(18, "additiveDuration");
+        statList.Add(19, "percentageDuration");
+        statList.Add(20, "additiveExperience");
+        statList.Add(21, "percentageExperience");
+    }
+
+    public void AddAttack(AttackData attackData)
+    {
+        allAttacksPlayerUnlocked.Add(attackData);
+    }
+
+    public void ChangeStat(int statId, float Amount)
+    {
+        if (statId == 0) additiveMaxHealthModifier += (int)Amount;
+        else if (statId == 1) percentageMaxHealthModifier += Amount;
+        else if (statId == 2) additiveDamageModifier += (int)Amount;
+        else if (statId == 3) percentageDamageModifier += Amount;
+        else if (statId == 4) percentageCooldownModifier += Amount;
+        else if (statId == 5) additiveProjectileModifier += (int)Amount;
+        else if (statId == 6) additiveAreaModifier += (int)Amount;
+        else if (statId == 7) percentageAreaModifier += Amount;
+        else if (statId == 8) enemySpawnModifier += Amount;
+        else if (statId == 9) enemyDamageModifier += Amount;
+        else if (statId == 10) playerHealthRegen += (int)Amount;
+        else if (statId == 11) percentagePlayerHealthRegen += Amount;
+        else if (statId == 12) percentageTreasureFind += Amount;
+        else if (statId == 13) percentageTreasurGain += Amount;
+        else if (statId == 14) additivePlayerMoveSpeed += (int)Amount;
+        else if (statId == 15) percentagePlayerMoveSpeed += Amount;
+        else if (statId == 16) additiveProjectileSpeed += (int)Amount;
+        else if (statId == 17) percentageProjectileSpeed += Amount;
+        else if (statId == 18) additiveDuration += (int)Amount;
+        else if (statId == 19) percentageDuration += Amount;
+        else if (statId == 20) additiveExperience += (int)Amount;
+        else if (statId == 21) percentageExperience += Amount;
+    }
+
+    public string GetNameOfStat(int statId)
+    {
+        return statList[statId];
+    }
+
 
     public void LoadData(GameData data)
     {

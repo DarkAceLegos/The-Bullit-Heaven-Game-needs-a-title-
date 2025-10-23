@@ -5,11 +5,14 @@ using UnityEngine.UI;
 
 public class GameOverUi : MonoBehaviour
 {
+    public static GameOverUi Instance { get; private set; }
+
     [SerializeField] TextMeshProUGUI stuffText;
     [SerializeField] Button playAgainButton;
 
     private void Awake()
     {
+        Instance = this;
         playAgainButton.onClick.AddListener(() =>
         {
             NetworkManager.Singleton.Shutdown();
@@ -22,7 +25,7 @@ public class GameOverUi : MonoBehaviour
         Hide();
     }
 
-    private void Show()
+    public void Show()
     {
         gameObject.SetActive(true);
     }
