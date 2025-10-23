@@ -19,6 +19,8 @@ public class GameManager : NetworkBehaviour
 
     [SerializeField] private Transform playerPrefab;
 
+    public Dictionary<string, Attack> allAttacks = new();
+
     private float acuualSpawnInterval => spawnInterval / NetworkManager.Singleton.ConnectedClients.Count; //move to game manager
     [SerializeField] private List<EnemyHealth> spawnedEnemies = new(); //move to game manager
     private float lastSpawnTime; //move to game manager

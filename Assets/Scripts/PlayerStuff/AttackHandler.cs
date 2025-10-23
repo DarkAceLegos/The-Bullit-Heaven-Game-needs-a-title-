@@ -51,6 +51,7 @@ public class AttackHandler : NetworkBehaviour
             attack1.initialize(data, newLevel);
 
             if (!IsServer) { SyncPlayersActiveAttacksWhenLevelingUpAnAttackRpc(Player.LoaclInstance.OwnerClientId, data.attackId, newLevel); }
+            Debug.Log("Sent SyncPlayersActiveAttacksWhenLevelingUpAnAttackRpc");
 
             //Debug.Log($"attack {data.name} leveled up now it has {attack1.data}");
 
@@ -62,6 +63,7 @@ public class AttackHandler : NetworkBehaviour
 
         if (!IsServer) 
         {
+            Debug.Log("Sent SyncPlayersActiveAttacksWhenGettingNewAttackRpc");
             SyncPlayersActiveAttacksWhenGettingNewAttackRpc(Player.LoaclInstance.OwnerClientId, data.attackId);
         }
 
@@ -74,11 +76,13 @@ public class AttackHandler : NetworkBehaviour
     {
         //initialize the attack data and level on server side so it can spawn proporly
 
+        Debug.Log($"{playerId}.{attackId}");
+
         PlayerHealth._allPlayers[playerId].TryGetComponent<AttackHandler>(out var attackHandlerServerClient);
 
         attackHandlerServerClient.activeAttacks.TryGetValue(attackId, out var attack);
 
-        //Debug.Log(attack);
+        Debug.Log(attack);
 
         attack.initialize(attack.data, Level);
     }
@@ -86,13 +90,15 @@ public class AttackHandler : NetworkBehaviour
     [Rpc(SendTo.Server)]
     private void SyncPlayersActiveAttacksWhenGettingNewAttackRpc(ulong playerId, string attackId)
     {
+        Debug.Log($"{playerId}.{attackId}");
+
         PlayerHealth._allPlayers[playerId].TryGetComponent<AttackHandler>(out var attackHandlerServerClient);
 
         for (int i = 0; i < attackList.Count; i++)
         { 
             if(attackId == attackList[i].attackId) 
             { 
-                //Debug.Log(attackList[i]);
+                Debug.Log(attackList[i]);
 
                 newAttack = attackList[i];
 
@@ -149,11 +155,13 @@ public class AttackHandler : NetworkBehaviour
 
         playerReference.TryGet(out NetworkObject player);
 
-        //Debug.Log("the player " + player);
+        //Debug.Log("the player " + playerReference.NetworkObjectId);
 
         //Debug.Log(key);
 
         player.GetComponent<AttackHandler>().activeAttacks.TryGetValue(key, out Attack attack);
+
+        //GameManager.Instance.allAttacks.TryGetValue(key, out var attack);
 
         //Debug.Log("this is the attack " + attack);
 

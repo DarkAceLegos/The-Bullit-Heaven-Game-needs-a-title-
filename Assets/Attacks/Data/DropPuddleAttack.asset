@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 719dcd8766816bc42a831d5fde51664a, type: 3}
-  m_Name: First AOE Attack Data
+  m_Name: DropPuddleAttack
   m_EditorClassIdentifier: 
   attackId: 3
-  attackName: FirstAOEDrop
+  attackName: Drop Puddles
   levelDiscriptions:
   - AOE attack
   - More damage
