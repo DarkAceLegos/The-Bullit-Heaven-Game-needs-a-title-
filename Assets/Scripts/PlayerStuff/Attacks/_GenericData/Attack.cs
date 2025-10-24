@@ -17,6 +17,8 @@ public abstract class Attack : NetworkBehaviour
         //Debug.Log(level);
 
         OnInitialize();
+
+        GameManager.Instance.AddAttackToAllAttackList(data.attackId, data);
     }
 
     protected abstract void OnInitialize();

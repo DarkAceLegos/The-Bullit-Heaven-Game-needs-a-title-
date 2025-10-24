@@ -111,7 +111,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        //this.allAttacksPlayerUnlocked = data.allAttacksPlayerUnlocked;
+        this.allAttacksPlayerUnlocked = data.allAttacksPlayerUnlocked;
         this.additiveMaxHealthModifier = data.additiveMaxHealthModifier;
         this.percentageMaxHealthModifier = data.percentageMaxHealthModifier;
         this.additiveDamageModifier = data.additiveDamageModifier;
@@ -140,7 +140,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
 
     public void SaveData(ref GameData data)
     {
-        //data.allAttacksPlayerUnlocked = this.allAttacksPlayerUnlocked;
+        data.allAttacksPlayerUnlocked = this.allAttacksPlayerUnlocked;
         data.additiveMaxHealthModifier = this.additiveMaxHealthModifier;
         data.percentageMaxHealthModifier = this.percentageMaxHealthModifier;
         data.additiveDamageModifier = this.additiveDamageModifier;

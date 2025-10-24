@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class BaseMetaAttackAddButton : MonoBehaviour
+public class BaseMetaAttackAddButton : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] public AttackData attackData;
     [SerializeField] public TextMeshProUGUI attackText;
@@ -18,6 +18,7 @@ public class BaseMetaAttackAddButton : MonoBehaviour
         {
             //Debug.Log("Changing stat " +  statId + " by the amount " + changeAmount);
             PlayerMetaProgression.Instance.AddAttack(attackData);
+            DataPersistenceManager.Instance.SaveGame();
         }
         else if (eventData.button == PointerEventData.InputButton.Middle)
             Debug.Log("Middle click");
@@ -25,6 +26,7 @@ public class BaseMetaAttackAddButton : MonoBehaviour
         {
             //Debug.Log("Changing stat " + statId + " by the amount " + -changeAmount);
             PlayerMetaProgression.Instance.RemoveAttack(attackData);
+            DataPersistenceManager.Instance.SaveGame();
         }
     }
 }

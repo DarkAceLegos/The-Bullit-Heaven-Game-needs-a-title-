@@ -16,12 +16,21 @@ public class AttackHandler : NetworkBehaviour
 
     private AttackData newAttack;
 
-    private List<AttackData> attackList /*= Player.LoaclInstance.GetAllPlayerUnlockedAttacks()*/;
+    [SerializeField] private List<AttackData> attackList /*= Player.LoaclInstance.GetAllPlayerUnlockedAttacks()*/;
 
     // Need to keep watch of this to see if it is corect
     public override void OnNetworkSpawn()
     {
         attackList = Player.LoaclInstance.GetAllPlayerUnlockedAttacks(); //caution will need to change to fix if some players have different unlocked attacks
+
+        if(!IsServer) 
+        {
+            foreach (var attack in Player.LoaclInstance.GetAllPlayerUnlockedAttacks())
+            {
+                SyncPlayersAttackListRpc(Player.LoaclInstance.OwnerClientId, attack.attackId);
+            }
+                
+        }
 
         enabled = IsOwner;
 
@@ -38,6 +47,16 @@ public class AttackHandler : NetworkBehaviour
         }
     }
 
+    [Rpc(SendTo.Server)]
+    private void SyncPlayersAttackListRpc(ulong playerId, string attackId)
+    {
+        PlayerHealth._allPlayers[playerId].TryGetComponent<AttackHandler>(out var attackHandlerServerClient);
+
+        GameManager.Instance.allAttacks.TryGetValue(attackId, out var attackData);
+
+        attackHandlerServerClient.attackList.Add(attackData);
+    }
+
     public void addAttack(AttackData data)
     {
         if(activeAttacks.TryGetValue(data.attackId, out var attack1))
@@ -51,7 +70,7 @@ public class AttackHandler : NetworkBehaviour
             attack1.initialize(data, newLevel);
 
             if (!IsServer) { SyncPlayersActiveAttacksWhenLevelingUpAnAttackRpc(Player.LoaclInstance.OwnerClientId, data.attackId, newLevel); }
-            Debug.Log("Sent SyncPlayersActiveAttacksWhenLevelingUpAnAttackRpc");
+                Debug.Log("Sent SyncPlayersActiveAttacksWhenLevelingUpAnAttackRpc");//*/
 
             //Debug.Log($"attack {data.name} leveled up now it has {attack1.data}");
 
@@ -65,7 +84,7 @@ public class AttackHandler : NetworkBehaviour
         {
             Debug.Log("Sent SyncPlayersActiveAttacksWhenGettingNewAttackRpc");
             SyncPlayersActiveAttacksWhenGettingNewAttackRpc(Player.LoaclInstance.OwnerClientId, data.attackId);
-        }
+        }//*/
 
         //Debug.Log($" we got {data.name} attack");
         //Debug.Log("added the attack " + data.prefab + " " + transform);
@@ -118,7 +137,7 @@ public class AttackHandler : NetworkBehaviour
 
     private void Update()
     {
-        if(!IsOwner) return;
+        if (!IsOwner) return;
 
         if(!enabled) return;
 

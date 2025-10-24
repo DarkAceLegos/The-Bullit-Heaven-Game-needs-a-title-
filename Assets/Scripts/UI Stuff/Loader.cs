@@ -24,13 +24,16 @@ public static class Loader
 
         InputSystem.actions.Enable();
 
-        SceneManager.LoadScene(Scene.LoadingScene.ToString());
+        DataPersistenceManager.Instance.SaveGame();
 
+        SceneManager.LoadScene(Scene.LoadingScene.ToString());
     }
 
     public static void LoadNetwork(Scene targetScene)
     {
         InputSystem.actions.Enable();
+
+        DataPersistenceManager.Instance.SaveGame();
 
         NetworkManager.Singleton.SceneManager.LoadScene(targetScene.ToString(), LoadSceneMode.Single);
     }

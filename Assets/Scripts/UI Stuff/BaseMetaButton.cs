@@ -20,6 +20,7 @@ public class BaseMetaButton : MonoBehaviour, IPointerClickHandler
         {
             //Debug.Log("Changing stat " +  statId + " by the amount " + changeAmount);
             PlayerMetaProgression.Instance.ChangeStat(statId, changeAmount);
+            DataPersistenceManager.Instance.SaveGame();
         }
         else if (eventData.button == PointerEventData.InputButton.Middle)
             Debug.Log("Middle click");
@@ -27,6 +28,7 @@ public class BaseMetaButton : MonoBehaviour, IPointerClickHandler
         {
             //Debug.Log("Changing stat " + statId + " by the amount " + -changeAmount);
             PlayerMetaProgression.Instance.ChangeStat(statId, -changeAmount);
+            DataPersistenceManager.Instance.SaveGame();
         }
     }
 }

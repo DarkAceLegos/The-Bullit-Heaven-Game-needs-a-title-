@@ -65,5 +65,13 @@ public class AOEProjectile : NetworkBehaviour
         //hit enemy -> deal Damage 
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (!IsOwner) return;
 
+        if (!collision.transform.TryGetComponent(out EnemyHealth enemyHealth)) //|| !enemyHealth.IsOwner)
+        { return; }
+
+
+    }
 }

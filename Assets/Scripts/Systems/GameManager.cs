@@ -19,7 +19,7 @@ public class GameManager : NetworkBehaviour
 
     [SerializeField] private Transform playerPrefab;
 
-    public Dictionary<string, Attack> allAttacks = new();
+    public Dictionary<string, AttackData> allAttacks = new();
 
     private float acuualSpawnInterval => spawnInterval / NetworkManager.Singleton.ConnectedClients.Count; //move to game manager
     [SerializeField] private List<EnemyHealth> spawnedEnemies = new(); //move to game manager
@@ -157,4 +157,8 @@ public class GameManager : NetworkBehaviour
         
     }
 
+    public void AddAttackToAllAttackList(string attackId, AttackData attackData)
+    {
+        allAttacks[attackId] = attackData;
+    }
 }
