@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d930099b8c9d534478302a6cbe4ee458, type: 3}
   m_Name: SatillitAttack
   m_EditorClassIdentifier: 
-  attackId: 
-  attackName: 
+  attackId: 8
+  attackName: 'Satilits '
   levelDiscriptions: []
   icon: {fileID: 0}
   prefab: {fileID: 0}

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719dcd8766816bc42a831d5fde51664a, type: 3}
   m_Name: AuraAttack
   m_EditorClassIdentifier: 
-  attackId: 
-  attackName: 
+  attackId: 4
+  attackName: Aura
   levelDiscriptions: []
   icon: {fileID: 0}
   prefab: {fileID: 0}
