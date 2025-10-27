@@ -24,7 +24,7 @@ public static class Loader
 
         InputSystem.actions.Enable();
 
-        DataPersistenceManager.Instance.SaveGame();
+        //DataPersistenceManager.Instance.SaveGame();
 
         SceneManager.LoadScene(Scene.LoadingScene.ToString());
     }
@@ -33,7 +33,7 @@ public static class Loader
     {
         InputSystem.actions.Enable();
 
-        DataPersistenceManager.Instance.SaveGame();
+        //DataPersistenceManager.Instance.SaveGame();
 
         NetworkManager.Singleton.SceneManager.LoadScene(targetScene.ToString(), LoadSceneMode.Single);
     }
