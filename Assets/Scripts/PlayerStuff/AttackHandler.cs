@@ -30,6 +30,7 @@ public class AttackHandler : NetworkBehaviour
             foreach (var attack in attackList)
             {
                 Debug.Log("In the foreach loop");
+                Debug.Log(Player.LoaclInstance.OwnerClientId);
 
                 SyncPlayersAttackListRpc(Player.LoaclInstance.OwnerClientId, attack.attackId);
             }
@@ -44,6 +45,8 @@ public class AttackHandler : NetworkBehaviour
 
         foreach (var attack in initialAttacks)
         {
+            if(attack == null) continue;
+
             addAttack(attack);
             //Debug.Log("we got an attack " +  attack.attackId);
         }
@@ -52,11 +55,15 @@ public class AttackHandler : NetworkBehaviour
     [Rpc(SendTo.Server)]
     private void SyncPlayersAttackListRpc(ulong playerId, string attackId)
     {
+        Debug.Log(attackId + " " + playerId);
+
         PlayerHealth._allPlayers[playerId].TryGetComponent<AttackHandler>(out var attackHandlerServerClient);
 
         GameManager.Instance.allAttacks.TryGetValue(attackId, out var attackData);
 
         Debug.Log(attackData);
+
+        if (attackData == null || attackHandlerServerClient.attackList.Contains(attackData)) { Debug.Log("Error"); return; }
 
         attackHandlerServerClient.attackList.Add(attackData);
     }
@@ -82,6 +89,7 @@ public class AttackHandler : NetworkBehaviour
         }
         var attack = Instantiate(data.prefab, transform);
         attack.initialize(data, 0);
+        if (attack == null/* || activeAttacks.Contains<attack>()*/) return;
         activeAttacks[data.attackId] = attack;
 
         if (!IsServer) 

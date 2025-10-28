@@ -99,6 +99,7 @@ public class LevelingUp : GameBaseState
         List<AttackData> availableAttacks = new List<AttackData>();
         foreach(var attack in allAttacks)
         {
+            if(attack == null) continue;
             if (AttackHandler.LoaclInstance.getLevel(attack.attackId) < attack.maxLevel)
                 availableAttacks.Add(attack);
         }

@@ -14,7 +14,8 @@ public static class Loader
         LobbyScene,
         LevelScene,
         LoadingScene,
-        LobbyPlayScene
+        LobbyPlayScene,
+        SaveSystemScene
     }
 
 

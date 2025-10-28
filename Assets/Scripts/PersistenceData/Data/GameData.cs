@@ -4,6 +4,8 @@ using UnityEngine;
 [System.Serializable]
 public class GameData
 {
+    public long lastUpdated;
+
     public List<AttackData> allAttacksPlayerUnlocked;
     public int additiveMaxHealthModifier;
     public float percentageMaxHealthModifier = 1f;

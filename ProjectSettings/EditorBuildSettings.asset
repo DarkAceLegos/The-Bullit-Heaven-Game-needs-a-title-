@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LobbyPlayScene.unity
     guid: d4084a270f610494d8f47705aa755b40
+  - enabled: 1
+    path: Assets/Scenes/SaveSystemScene.unity
+    guid: b5316e0a52ccf3541b49c9b4a56b013c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

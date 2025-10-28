@@ -11,10 +11,10 @@ public class MainMenuCleanUp : MonoBehaviour
             Destroy(GameMultiplayerConnectionAppoval.Instance.gameObject);
         if(GameLobby.instance != null)
             Destroy(GameLobby.instance.gameObject);
-        /*if (DataPersistenceManager.Instance != null)
+        if (DataPersistenceManager.Instance != null)
         {
             DataPersistenceManager.Instance.SaveGame();
             Destroy(DataPersistenceManager.Instance.gameObject);
-        }*/
+        }
     }
 }

@@ -44,10 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc00cdfe1141da46b9f6ba9c856c2a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allAttacksPlayerUnlocked:
-  - {fileID: 11400000, guid: cdb35b85e414ec444a26bbcde2a7eac5, type: 2}
-  - {fileID: 11400000, guid: 3cf6efa18165fb942b827426a769bed4, type: 2}
-  - {fileID: 11400000, guid: fdcbe60c278ac864daeb17d35557fb89, type: 2}
+  allAttacksPlayerUnlocked: []
   additiveMaxHealthModifier: 0
   percentageMaxHealthModifier: 1
   additiveDamageModifier: 0

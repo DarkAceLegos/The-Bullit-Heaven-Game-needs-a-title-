@@ -14,8 +14,6 @@ public class Player : NetworkBehaviour
 {
     [SerializeField] public PlayerMetaProgression playerMetas;
 
-    private FollowTransform followTransform;
-
     public static event EventHandler<OnAnyPlayerSpawnedEventArgs> OnAnyPlayerSpawned;
     public class OnAnyPlayerSpawnedEventArgs : EventArgs
     {
@@ -66,7 +64,7 @@ public class Player : NetworkBehaviour
 
     private void Awake()
     {
-        //followTransform = GetComponent<FollowTransform>();
+        
     }
 
     void Start()

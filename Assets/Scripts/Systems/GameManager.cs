@@ -19,6 +19,7 @@ public class GameManager : NetworkBehaviour
 
     [SerializeField] private Transform playerPrefab;
 
+    [SerializeField] List<AttackData> allAttackData = new();
     public Dictionary<string, AttackData> allAttacks = new();
 
     private float acuualSpawnInterval => spawnInterval / NetworkManager.Singleton.ConnectedClients.Count; //move to game manager
@@ -49,6 +50,11 @@ public class GameManager : NetworkBehaviour
         EnemyHealth.onEnemyKilled += OnEnemyKilled; //move to game manager
         Player.OnAnyPlayerSpawned += Player_OnAnyPlayerSpawned;
         GameInputs.Instance.OnPauseAction += GameInputs_OnPauseAction;
+
+        foreach (AttackData attackData in allAttackData)
+        {
+            allAttacks[attackData.attackId] = attackData;
+        }
     }
 
     public override void OnNetworkSpawn()
