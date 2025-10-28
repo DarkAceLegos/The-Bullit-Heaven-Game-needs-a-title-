@@ -21,18 +21,20 @@ public class AttackHandler : NetworkBehaviour
     // Need to keep watch of this to see if it is corect
     public override void OnNetworkSpawn()
     {
-        attackList = Player.LoaclInstance.GetAllPlayerUnlockedAttacks(); //caution will need to change to fix if some players have different unlocked attacks
-
-        if(!IsServer) 
-        {
-            foreach (var attack in Player.LoaclInstance.GetAllPlayerUnlockedAttacks())
-            {
-                SyncPlayersAttackListRpc(Player.LoaclInstance.OwnerClientId, attack.attackId);
-            }
-                
-        }
+        attackList = Player.LoaclInstance.playerMetas.allAttacksPlayerUnlocked; //caution will need to change to fix if some players have different unlocked attacks
 
         enabled = IsOwner;
+
+        if (!IsServer)
+        {
+            foreach (var attack in attackList)
+            {
+                Debug.Log("In the foreach loop");
+
+                SyncPlayersAttackListRpc(Player.LoaclInstance.OwnerClientId, attack.attackId);
+            }
+
+        }
 
         if (IsOwner) { LoaclInstance = this; }
 
@@ -53,6 +55,8 @@ public class AttackHandler : NetworkBehaviour
         PlayerHealth._allPlayers[playerId].TryGetComponent<AttackHandler>(out var attackHandlerServerClient);
 
         GameManager.Instance.allAttacks.TryGetValue(attackId, out var attackData);
+
+        Debug.Log(attackData);
 
         attackHandlerServerClient.attackList.Add(attackData);
     }

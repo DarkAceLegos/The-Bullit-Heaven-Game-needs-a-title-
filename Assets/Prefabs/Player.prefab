@@ -449,14 +449,33 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   playerMetas: {fileID: 2807084143443563048}
   moveSpeed: 10
+  additiveMaxHealthModifier: 0
+  percentageMaxHealthModifier: 1
+  additiveDamageModifier: 0
+  percentageDamageModifier: 1
+  percentageCooldownModifier: 1
+  additiveProjectileModifier: 0
+  additiveAreaModifier: 0
+  percentageAreaModifier: 1
+  enemySpawnModifier: 0
+  enemyDamageModifier: 0
+  playerHealthRegen: 0
+  percentagePlayerHealthRegen: 1
+  percentageTreasureFind: 1
+  percentageTreasurGain: 1
+  additivePlayerMoveSpeed: 0
+  percentagePlayerMoveSpeed: 1
+  additiveProjectileSpeed: 0
+  percentageProjectileSpeed: 1
+  additiveDuration: 0
+  percentageDuration: 1
+  additiveExperience: 0
+  percentageExperience: 1
   rb: {fileID: 5004031360651103395}
   vc: {fileID: 7165954268988903130}
   listener: {fileID: 3491062094786061297}
   playerVisual: {fileID: 304334114553193645}
-  allAttacksPlayerUnlocked:
-  - {fileID: 11400000, guid: 3cf6efa18165fb942b827426a769bed4, type: 2}
-  - {fileID: 11400000, guid: cdb35b85e414ec444a26bbcde2a7eac5, type: 2}
-  - {fileID: 11400000, guid: bc69d618b4e58524181ed23b8a964c1e, type: 2}
+  allAttacksPlayerUnlocked: []
   noOtherAttacks:
   - {fileID: 11400000, guid: 2b4153ff88b123e43a1845468d61e1e9, type: 2}
 --- !u!114 &3400757655122143848

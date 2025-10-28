@@ -2205,7 +2205,7 @@ PrefabInstance:
     - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
       propertyPath: attackData
       value: 
-      objectReference: {fileID: 11400000, guid: cdb35b85e414ec444a26bbcde2a7eac5, type: 2}
+      objectReference: {fileID: 11400000, guid: fdcbe60c278ac864daeb17d35557fb89, type: 2}
     - target: {fileID: 836150945367389498, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
       propertyPath: m_Name
       value: BaseMetaAttackButton (2)

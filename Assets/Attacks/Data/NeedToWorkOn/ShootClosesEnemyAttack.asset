@@ -15,6 +15,6 @@ MonoBehaviour:
   attackId: 9
   attackName: Shoot Closes Enemy
   levelDiscriptions: []
-  icon: {fileID: 0}
+  icon: {fileID: 7482667652216324306, guid: 531a585b3dd5f4f46bd8e7c174c1025f, type: 3}
   prefab: {fileID: 0}
   levels: []

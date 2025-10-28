@@ -57,7 +57,7 @@ public class GameData
         this.percentageDuration = 1f;
         this.additiveExperience = 0;
         this.percentageExperience = 1f;
-        this.coins = 0;
+        this.coins = 10;
         this.gems = 0;
     }
 }

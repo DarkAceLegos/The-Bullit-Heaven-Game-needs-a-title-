@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class AOEProjectile1 : NetworkBehaviour
+public class AuraAttackProj : NetworkBehaviour
 {
     [SerializeField] private float damage;
     [SerializeField] private float speed;
@@ -25,7 +25,7 @@ public class AOEProjectile1 : NetworkBehaviour
         enabled = IsOwner;
     }
 
-    public void Initialize(int damage1, float speed1, float area1, float duration1 = 4f)
+    public void Initialize(NetworkObject player, int damage1, float speed1, float area1, float duration1 = 4f)
     {
         //Debug.Log("I initialized");
 
@@ -38,6 +38,8 @@ public class AOEProjectile1 : NetworkBehaviour
         transform.localScale = transform.localScale * area;
         rb.linearVelocity = Random.insideUnitCircle * speed;
         //Debug.Log(transform.localScale);
+
+        this.GetComponent<FollowTransform>().SetTargetTransform(player.transform);
     }
 
     private void Update()
@@ -72,6 +74,6 @@ public class AOEProjectile1 : NetworkBehaviour
         if (!collision.transform.TryGetComponent(out EnemyHealth enemyHealth)) //|| !enemyHealth.IsOwner)
         { return; }
 
-
+        enemyHealth.DamageEnemy(damage);
     }
 }
