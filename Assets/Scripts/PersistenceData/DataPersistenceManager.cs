@@ -96,8 +96,17 @@ public class DataPersistenceManager : MonoBehaviour
 
     private void Player_OnAnyPlayerSpawned(object sender, Player.OnAnyPlayerSpawnedEventArgs e)
     {
-        this.dataPersistencesObjects = FindAllDataPersistenceObjects();
-        LoadGame();
+        Debug.Log("Loading Data for client" + e.clientId);
+
+        bool hasRun = false;
+
+        if (!hasRun)
+        {
+            this.dataPersistencesObjects = FindAllDataPersistenceObjects();
+            LoadGame();
+        }
+
+        hasRun = true;
     }
 
     private void OnDisable()
