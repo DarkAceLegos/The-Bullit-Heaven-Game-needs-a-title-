@@ -493,7 +493,8 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   initialAttacks:
   - {fileID: 11400000, guid: cdb35b85e414ec444a26bbcde2a7eac5, type: 2}
-  attackList: []
+  attackList:
+  - {fileID: 11400000, guid: 2b4153ff88b123e43a1845468d61e1e9, type: 2}
 --- !u!114 &7764768885865692774
 MonoBehaviour:
   m_ObjectHideFlags: 0

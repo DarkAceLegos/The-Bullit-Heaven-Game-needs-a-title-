@@ -182,6 +182,8 @@ public class AttackHandler : NetworkBehaviour
     [Rpc(SendTo.Server)]
     private void SpawnProjectileRpc(NetworkObjectReference playerReference, string key)
     {
+        if (key == "99") return;
+
         //Debug.Log("trying the Rpc");
 
         playerReference.TryGet(out NetworkObject player);

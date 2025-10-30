@@ -3,8 +3,10 @@ using System.Linq;
 using System.Collections.Generic;
 using System;
 using UnityEngine.SceneManagement;
+using Unity.Netcode;
+using UnityEditor.Networking.PlayerConnection;
 
-public class DataPersistenceManager : MonoBehaviour
+public class DataPersistenceManager : NetworkBehaviour
 {
     [Header("Debugging")]
     [SerializeField] private bool initializeDataIfNull = false;
@@ -96,17 +98,19 @@ public class DataPersistenceManager : MonoBehaviour
 
     private void Player_OnAnyPlayerSpawned(object sender, Player.OnAnyPlayerSpawnedEventArgs e)
     {
-        Debug.Log("Loading Data for client" + e.clientId);
+        Debug.Log("Loading Data for client " + e.clientId + " " + Player.LoaclInstance.GetPlayerId());
 
-        bool hasRun = false;
+        //e.player.GetComponent<PlayerMetaProgression>().LoadData(dataHandeler.Load(selectedProfileId));
 
-        if (!hasRun)
+        //bool hasRun = false;
+
+        /*if (e.clientId == Player.LoaclInstance.GetPlayerId())
         {
             this.dataPersistencesObjects = FindAllDataPersistenceObjects();
             LoadGame();
         }
 
-        hasRun = true;
+        //hasRun = true;//*/
     }
 
     private void OnDisable()

@@ -248,7 +248,7 @@ public class Player : NetworkBehaviour
 
     public ulong GetPlayerId()
     {
-        return NetworkObjectId;
+        return OwnerClientId;
     }
 
     public override void OnDestroy()
