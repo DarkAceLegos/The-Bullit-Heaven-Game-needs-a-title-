@@ -1,12 +1,11 @@
-using UnityEngine;
-using System.Linq;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.Profiling;
 using UnityEngine.SceneManagement;
-using Unity.Netcode;
-using UnityEditor.Networking.PlayerConnection;
 
-public class DataPersistenceManager : NetworkBehaviour
+public class DataPersistenceManager : MonoBehaviour
 {
     [Header("Debugging")]
     [SerializeField] private bool initializeDataIfNull = false;
@@ -102,19 +101,19 @@ public class DataPersistenceManager : NetworkBehaviour
 
         this.gameData = dataHandeler.Load(selectedProfileId);
 
-        e.player.GetComponent<Player>().GetComponent<PlayerMetaProgression>().LoadData(gameData);
+        e.player.GetComponent<Player>().GetComponentInChildren<PlayerMetaProgression>().LoadData(gameData);
 
         //e.player.GetComponent<PlayerMetaProgression>().LoadData(gameData);
 
-        //bool hasRun = false;
+        /*bool hasRun = false;
 
-        /*if (e.clientId == Player.LoaclInstance.GetPlayerId())
+        if (!hasRun)
         {
             this.dataPersistencesObjects = FindAllDataPersistenceObjects();
             LoadGame();
         }
 
-        //hasRun = true;//*/
+        hasRun = true;//*/
     }
 
     private void OnDisable()
