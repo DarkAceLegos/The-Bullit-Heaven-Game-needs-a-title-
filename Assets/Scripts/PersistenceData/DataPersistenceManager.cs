@@ -100,7 +100,11 @@ public class DataPersistenceManager : NetworkBehaviour
     {
         Debug.Log("Loading Data for client " + e.clientId + " " + Player.LoaclInstance.GetPlayerId());
 
-        //e.player.GetComponent<PlayerMetaProgression>().LoadData(dataHandeler.Load(selectedProfileId));
+        this.gameData = dataHandeler.Load(selectedProfileId);
+
+        e.player.GetComponent<Player>().GetComponent<PlayerMetaProgression>().LoadData(gameData);
+
+        //e.player.GetComponent<PlayerMetaProgression>().LoadData(gameData);
 
         //bool hasRun = false;
 
