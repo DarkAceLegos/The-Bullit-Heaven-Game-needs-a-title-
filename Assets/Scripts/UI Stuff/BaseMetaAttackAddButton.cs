@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -22,7 +23,7 @@ public class BaseMetaAttackAddButton : MonoBehaviour, IPointerClickHandler
         {
             if (PlayerMetaProgression.Instance.coins < cost) { return; }
             //Debug.Log("Changing stat " +  statId + " by the amount " + changeAmount);
-            if (!PlayerMetaProgression.Instance.AddAttack(attackData)) { return; }
+            if (!PlayerMetaProgression.Instance.AddAttack(attackData.attackId)) { return; }
             DataPersistenceManager.Instance.SaveGame();
             Debug.Log("Not returned");
             PlayerMetaProgression.Instance.ChangeCoinAmount(-cost);
@@ -32,7 +33,7 @@ public class BaseMetaAttackAddButton : MonoBehaviour, IPointerClickHandler
         else if (eventData.button == PointerEventData.InputButton.Right)
         {
             //Debug.Log("Changing stat " + statId + " by the amount " + -changeAmount);
-            if (!PlayerMetaProgression.Instance.RemoveAttack(attackData)) { return; }
+            if (!PlayerMetaProgression.Instance.RemoveAttack(attackData.attackId)) { return; }
             DataPersistenceManager.Instance.SaveGame();
             Debug.Log("not returned");
             PlayerMetaProgression.Instance.ChangeCoinAmount(cost);

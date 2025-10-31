@@ -88,7 +88,11 @@ public class Player : NetworkBehaviour
         PlayerData playerData = GameMultiplayerConnectionAppoval.Instance.GetPlayerDataFromClientId(OwnerClientId);
         playerVisual.SetPlayerColor(GameMultiplayerConnectionAppoval.Instance.GetPlayerColor(playerData.colorId));
 
-        allAttacksPlayerUnlocked = playerMetas.allAttacksPlayerUnlocked;
+        foreach (string attackId in playerMetas.allAttacksPlayerUnlocked)
+        {
+            GameManager.Instance.allAttacks.TryGetValue(attackId, out AttackData attack);
+            allAttacksPlayerUnlocked.Add(attack);
+        }
 
         //Debug.Log(moveAction.GetBindingDisplayString(1));
         //Debug.Log(GetBindingText(Binding.Up));

@@ -21,7 +21,13 @@ public class AttackHandler : NetworkBehaviour
     // Need to keep watch of this to see if it is corect
     public override void OnNetworkSpawn()
     {
-        attackList = Player.LoaclInstance.playerMetas.allAttacksPlayerUnlocked; //caution will need to change to fix if some players have different unlocked attacks
+        //attackList = Player.LoaclInstance.playerMetas.allAttacksPlayerUnlocked; //caution will need to change to fix if some players have different unlocked attacks
+
+        foreach (string attackId in Player.LoaclInstance.playerMetas.allAttacksPlayerUnlocked)
+        {
+            GameManager.Instance.allAttacks.TryGetValue(attackId, out AttackData attack);
+            attackList.Add(attack);
+        }
 
         enabled = IsOwner;
 

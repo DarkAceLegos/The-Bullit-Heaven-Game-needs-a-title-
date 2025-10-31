@@ -5,7 +5,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
 {
     public static PlayerMetaProgression Instance;
 
-    [SerializeField] public List<AttackData> allAttacksPlayerUnlocked = new();
+    [SerializeField] public List<string> allAttacksPlayerUnlocked = new();
 
     private Dictionary<int,string> statNameList = new Dictionary<int, string>();
 
@@ -62,19 +62,19 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         statNameList.Add(21, "percentageExperience");
     }
 
-    public bool AddAttack(AttackData attackData)
+    public bool AddAttack(string attackDataId)
     {
-        if(allAttacksPlayerUnlocked.Contains(attackData))
+        if(allAttacksPlayerUnlocked.Contains(attackDataId))
             return false;
-        allAttacksPlayerUnlocked.Add(attackData);
+        allAttacksPlayerUnlocked.Add(attackDataId);
         return true;
     }
 
-    public bool RemoveAttack(AttackData attackData)
+    public bool RemoveAttack(string attackDataId)
     {
-        if(!allAttacksPlayerUnlocked.Contains(attackData))
+        if(!allAttacksPlayerUnlocked.Contains(attackDataId))
             return false;
-        allAttacksPlayerUnlocked.Remove(attackData);
+        allAttacksPlayerUnlocked.Remove(attackDataId);
         return true ;
     }
 

@@ -6,7 +6,7 @@ public class GameData
 {
     public long lastUpdated;
 
-    public List<AttackData> allAttacksPlayerUnlocked;
+    public List<string> allAttacksPlayerUnlocked;
     public int additiveMaxHealthModifier;
     public float percentageMaxHealthModifier = 1f;
     public int additiveDamageModifier;
@@ -36,7 +36,7 @@ public class GameData
 
     public GameData()
     {
-        this.allAttacksPlayerUnlocked = new List<AttackData>();
+        this.allAttacksPlayerUnlocked = new List<string>();
         this.additiveMaxHealthModifier = 0;
         this.percentageMaxHealthModifier = 1f;
         this.additiveDamageModifier = 0;
