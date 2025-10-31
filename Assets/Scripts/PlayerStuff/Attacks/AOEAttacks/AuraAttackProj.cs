@@ -29,7 +29,7 @@ public class AuraAttackProj : NetworkBehaviour
     {
         //Debug.Log("I initialized");
 
-        PlayerMetaProgression playerMetaProgression = Player.LoaclInstance.playerMetas;
+        PlayerMetaProgression playerMetaProgression = player.GetComponentInChildren<PlayerMetaProgression>();
 
         damage = (float)((damage1 + playerMetaProgression.additiveDamageModifier) * playerMetaProgression.percentageDamageModifier);
         speed = speed1 ;

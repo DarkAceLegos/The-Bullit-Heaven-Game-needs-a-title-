@@ -35,8 +35,8 @@ public class AttackHandler : NetworkBehaviour
         {
             foreach (var attack in attackList)
             {
-                Debug.Log("In the foreach loop");
-                Debug.Log(Player.LoaclInstance.OwnerClientId);
+                //Debug.Log("In the foreach loop");
+                //Debug.Log(Player.LoaclInstance.OwnerClientId);
 
                 SyncPlayersAttackListRpc(Player.LoaclInstance.OwnerClientId, attack.attackId);
             }
@@ -87,7 +87,7 @@ public class AttackHandler : NetworkBehaviour
             attack1.initialize(data, newLevel);
 
             if (!IsServer) { SyncPlayersActiveAttacksWhenLevelingUpAnAttackRpc(Player.LoaclInstance.OwnerClientId, data.attackId, newLevel); }
-                Debug.Log("Sent SyncPlayersActiveAttacksWhenLevelingUpAnAttackRpc");//*/
+               // Debug.Log("Sent SyncPlayersActiveAttacksWhenLevelingUpAnAttackRpc");//*/
 
             //Debug.Log($"attack {data.name} leveled up now it has {attack1.data}");
 
@@ -188,7 +188,7 @@ public class AttackHandler : NetworkBehaviour
     [Rpc(SendTo.Server)]
     private void SpawnProjectileRpc(NetworkObjectReference playerReference, string key)
     {
-        if (key == "99") return;
+        if (key == "99") return; //need to fix
 
         //Debug.Log("trying the Rpc");
 

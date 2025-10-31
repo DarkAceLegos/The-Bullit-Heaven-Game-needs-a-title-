@@ -21,20 +21,6 @@ public class Player : NetworkBehaviour
         public ulong clientId;
     }
 
-    public static event EventHandler<OnAnyClientPlayerSpawnedEventArgs> OnAnyClientPlayerSpawned;
-    public class OnAnyClientPlayerSpawnedEventArgs : EventArgs
-    {
-        public NetworkObject player;
-        public ulong clientId;
-    }
-
-    public static event EventHandler<OnAnyHostPlayerSpawnedEventArgs> OnAnyHostPlayerSpawned;
-    public class OnAnyHostPlayerSpawnedEventArgs : EventArgs
-    {
-        public NetworkObject player;
-        public ulong clientId;
-    }
-
     public static Player LoaclInstance { get; private set; }
 
     public float moveSpeed;
@@ -121,6 +107,36 @@ public class Player : NetworkBehaviour
         additiveExperience = playerMetas.additiveExperience;
         percentageExperience = playerMetas.percentageExperience;
 
+        if (!IsServer)
+        {
+            this.TryGetComponent<NetworkObject>(out var playerObject);
+            SyncPlayerStatsRPC(
+                playerObject,
+                LoaclInstance.additiveMaxHealthModifier,
+                LoaclInstance.percentageMaxHealthModifier,
+                LoaclInstance.additiveDamageModifier,
+                LoaclInstance.percentageDamageModifier,
+                LoaclInstance.percentageCooldownModifier,
+                LoaclInstance.additiveProjectileModifier,
+                LoaclInstance.additiveAreaModifier,
+                LoaclInstance.percentageAreaModifier,
+                LoaclInstance.enemySpawnModifier,
+                LoaclInstance.enemyDamageModifier,
+                LoaclInstance.playerHealthRegen,
+                LoaclInstance.percentagePlayerHealthRegen,
+                LoaclInstance.percentageTreasureFind,
+                LoaclInstance.percentageTreasurGain,
+                LoaclInstance.additivePlayerMoveSpeed,
+                LoaclInstance.percentagePlayerMoveSpeed,
+                LoaclInstance.additiveProjectileSpeed,
+                LoaclInstance.percentageProjectileSpeed,
+                LoaclInstance.additiveDuration,
+                LoaclInstance.percentageDuration,
+                LoaclInstance.additiveExperience,
+                LoaclInstance.percentageExperience
+                );
+        }
+
         moveSpeed = (moveSpeed + additivePlayerMoveSpeed) * percentagePlayerMoveSpeed;
     }
 
@@ -144,54 +160,10 @@ public class Player : NetworkBehaviour
                 player = Player.LoaclInstance.NetworkObject,
                 clientId = Player.LoaclInstance.OwnerClientId,
             });
-            if(!IsServer)
-            {
-                OnAnyClientPlayerSpawned?.Invoke(this, new OnAnyClientPlayerSpawnedEventArgs
-                {
-                    player = Player.LoaclInstance.NetworkObject,
-                    clientId = Player.LoaclInstance.OwnerClientId,
-                });
-
-                this.TryGetComponent<NetworkObject>(out var playerObject);
-                SyncPlayerStatsRPC(
-                    playerObject,
-                    additiveMaxHealthModifier,
-                    percentageMaxHealthModifier,
-                    additiveDamageModifier,
-                    percentageDamageModifier,
-                    percentageCooldownModifier,
-                    additiveProjectileModifier,
-                    additiveAreaModifier,
-                    percentageAreaModifier,
-                    enemySpawnModifier,
-                    enemyDamageModifier,
-                    playerHealthRegen,
-                    percentagePlayerHealthRegen,
-                    percentageTreasureFind,
-                    percentageTreasurGain,
-                    additivePlayerMoveSpeed,
-                    percentagePlayerMoveSpeed,
-                    additiveProjectileSpeed,
-                    percentageProjectileSpeed,
-                    additiveDuration,
-                    percentageDuration,
-                    additiveExperience,
-                    percentageExperience
-                    );
-            }
         }
         else
         {
             vc.Priority = 0;
-        }
-
-        if (IsServer) 
-        {
-            OnAnyHostPlayerSpawned?.Invoke(this, new OnAnyHostPlayerSpawnedEventArgs
-            {
-                player = Player.LoaclInstance.NetworkObject,
-                clientId = Player.LoaclInstance.OwnerClientId,
-            });
         }
 
         if(IsServer) 
@@ -245,9 +217,15 @@ public class Player : NetworkBehaviour
         float percentageExperience
         )
     {
+        Debug.Log("Trying to sync");
+
         playerReference.TryGet(out NetworkObject player);
+        Debug.Log(player);
         player.TryGetComponent( out Player playerStats);
+        Debug.Log(playerStats);
+        Debug.Log("Change this " + playerStats.additiveMaxHealthModifier +" by adding this " + additiveMaxHealthModifier);
         playerStats.additiveMaxHealthModifier = additiveMaxHealthModifier;
+        Debug.Log("to this " + playerStats.additiveMaxHealthModifier);
         playerStats.percentageMaxHealthModifier = percentageMaxHealthModifier;
         playerStats.additiveDamageModifier = additiveDamageModifier;
         playerStats.percentageDamageModifier = percentageDamageModifier;
