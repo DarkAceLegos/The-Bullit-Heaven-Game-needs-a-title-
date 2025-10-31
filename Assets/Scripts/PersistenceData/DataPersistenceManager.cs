@@ -92,10 +92,10 @@ public class DataPersistenceManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.sceneUnloaded += OnSceneUnloaded;
-        Player.OnAnyPlayerSpawned += Player_OnAnyPlayerSpawned;
+        Player.OnAnyHostPlayerSpawned += Player_OnAnyPlayerSpawned;
     }
 
-    private void Player_OnAnyPlayerSpawned(object sender, Player.OnAnyPlayerSpawnedEventArgs e)
+    private void Player_OnAnyPlayerSpawned(object sender, Player.OnAnyHostPlayerSpawnedEventArgs e)
     {
         Debug.Log("Loading Data for client " + e.clientId + " " + Player.LoaclInstance.GetPlayerId());
 
@@ -120,7 +120,7 @@ public class DataPersistenceManager : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
         SceneManager.sceneUnloaded -= OnSceneUnloaded;
-        Player.OnAnyPlayerSpawned -= Player_OnAnyPlayerSpawned;
+        Player.OnAnyHostPlayerSpawned -= Player_OnAnyPlayerSpawned;
     }
 
     public void OnApplicationQuit()

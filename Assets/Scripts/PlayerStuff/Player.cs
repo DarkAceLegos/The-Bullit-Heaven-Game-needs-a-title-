@@ -21,6 +21,20 @@ public class Player : NetworkBehaviour
         public ulong clientId;
     }
 
+    public static event EventHandler<OnAnyClientPlayerSpawnedEventArgs> OnAnyClientPlayerSpawned;
+    public class OnAnyClientPlayerSpawnedEventArgs : EventArgs
+    {
+        public NetworkObject player;
+        public ulong clientId;
+    }
+
+    public static event EventHandler<OnAnyHostPlayerSpawnedEventArgs> OnAnyHostPlayerSpawned;
+    public class OnAnyHostPlayerSpawnedEventArgs : EventArgs
+    {
+        public NetworkObject player;
+        public ulong clientId;
+    }
+
     public static Player LoaclInstance { get; private set; }
 
     public float moveSpeed;
@@ -128,6 +142,12 @@ public class Player : NetworkBehaviour
             });
             if(!IsServer)
             {
+                OnAnyClientPlayerSpawned?.Invoke(this, new OnAnyClientPlayerSpawnedEventArgs
+                {
+                    player = Player.LoaclInstance.NetworkObject,
+                    clientId = Player.LoaclInstance.OwnerClientId,
+                });
+
                 this.TryGetComponent<NetworkObject>(out var playerObject);
                 SyncPlayerStatsRPC(
                     playerObject,
@@ -155,11 +175,19 @@ public class Player : NetworkBehaviour
                     percentageExperience
                     );
             }
-
         }
         else
         {
             vc.Priority = 0;
+        }
+
+        if (IsServer) 
+        {
+            OnAnyHostPlayerSpawned?.Invoke(this, new OnAnyHostPlayerSpawnedEventArgs
+            {
+                player = Player.LoaclInstance.NetworkObject,
+                clientId = Player.LoaclInstance.OwnerClientId,
+            });
         }
 
         if(IsServer) 
