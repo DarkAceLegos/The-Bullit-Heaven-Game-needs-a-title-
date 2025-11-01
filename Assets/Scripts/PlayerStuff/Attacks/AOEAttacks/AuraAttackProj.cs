@@ -25,16 +25,16 @@ public class AuraAttackProj : NetworkBehaviour
         enabled = IsOwner;
     }
 
-    public void Initialize(NetworkObject player, int damage1, float speed1, float area1, float duration1 = 4f)
+    public void Initialize(ulong playerId, int damage1, float speed1, float area1, float duration1 = 4f)
     {
         //Debug.Log("I initialized");
 
-        PlayerMetaProgression playerMetaProgression = player.GetComponentInChildren<PlayerMetaProgression>();
+        PlayerHealth._allPlayers[playerId].TryGetComponent<Player>(out var player);
 
-        damage = (float)((damage1 + playerMetaProgression.additiveDamageModifier) * playerMetaProgression.percentageDamageModifier);
+        damage = (float)((damage1 + player.additiveDamageModifier) * player.percentageDamageModifier);
         speed = speed1 ;
         duration = duration1;
-        area = area1 + playerMetaProgression.additiveAreaModifier;
+        area = area1 + player.additiveAreaModifier;
         transform.localScale = transform.localScale * area;
         rb.linearVelocity = Random.insideUnitCircle * speed;
         //Debug.Log(transform.localScale);

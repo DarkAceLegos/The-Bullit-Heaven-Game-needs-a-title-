@@ -111,7 +111,7 @@ public class Player : NetworkBehaviour
         {
             this.TryGetComponent<NetworkObject>(out var playerObject);
             SyncPlayerStatsRPC(
-                playerObject,
+                LoaclInstance.OwnerClientId,
                 LoaclInstance.additiveMaxHealthModifier,
                 LoaclInstance.percentageMaxHealthModifier,
                 LoaclInstance.additiveDamageModifier,
@@ -192,7 +192,7 @@ public class Player : NetworkBehaviour
 
     [Rpc(SendTo.Server)]
     private void SyncPlayerStatsRPC(
-        NetworkObjectReference playerReference,
+        ulong playerId,
         int additiveMaxHealthModifier,
         float percentageMaxHealthModifier,
         int additiveDamageModifier,
@@ -219,33 +219,30 @@ public class Player : NetworkBehaviour
     {
         Debug.Log("Trying to sync");
 
-        playerReference.TryGet(out NetworkObject player);
-        Debug.Log(player);
-        player.TryGetComponent( out Player playerStats);
-        Debug.Log(playerStats);
-        Debug.Log("Change this " + playerStats.additiveMaxHealthModifier +" by adding this " + additiveMaxHealthModifier);
-        playerStats.additiveMaxHealthModifier = additiveMaxHealthModifier;
-        Debug.Log("to this " + playerStats.additiveMaxHealthModifier);
-        playerStats.percentageMaxHealthModifier = percentageMaxHealthModifier;
-        playerStats.additiveDamageModifier = additiveDamageModifier;
-        playerStats.percentageDamageModifier = percentageDamageModifier;
-        playerStats.percentageCooldownModifier = percentageCooldownModifier;
-        playerStats.additiveProjectileModifier = additiveProjectileModifier;
-        playerStats.additiveAreaModifier = additiveAreaModifier;
-        playerStats.percentageAreaModifier = percentageAreaModifier;
-        playerStats.enemySpawnModifier = enemySpawnModifier;
-        playerStats.enemyDamageModifier = enemyDamageModifier;
-        playerStats.playerHealthRegen = playerHealthRegen;
-        playerStats.percentageTreasureFind = percentageTreasureFind;
-        playerStats.percentageTreasurGain = percentageTreasurGain;
-        playerStats.additivePlayerMoveSpeed = additivePlayerMoveSpeed;
-        playerStats.percentagePlayerMoveSpeed = percentagePlayerMoveSpeed;
-        playerStats.additiveProjectileSpeed = additiveProjectileSpeed;
-        playerStats.percentageProjectileSpeed = percentageProjectileSpeed;
-        playerStats.additiveDuration = additiveDuration;
-        playerStats.percentageDuration = percentageDuration;
-        playerStats.additiveExperience = additiveExperience;
-        playerStats.percentageExperience = percentageExperience;
+        PlayerHealth._allPlayers[playerId].TryGetComponent<Player>(out var player);
+        Debug.Log("Change this " + player.additiveMaxHealthModifier +" by adding this " + additiveMaxHealthModifier);
+        player.additiveMaxHealthModifier = additiveMaxHealthModifier;
+        Debug.Log("to this " + player.additiveMaxHealthModifier);
+        player.percentageMaxHealthModifier = percentageMaxHealthModifier;
+        player.additiveDamageModifier = additiveDamageModifier;
+        player.percentageDamageModifier = percentageDamageModifier;
+        player.percentageCooldownModifier = percentageCooldownModifier;
+        player.additiveProjectileModifier = additiveProjectileModifier;
+        player.additiveAreaModifier = additiveAreaModifier;
+        player.percentageAreaModifier = percentageAreaModifier;
+        player.enemySpawnModifier = enemySpawnModifier;
+        player.enemyDamageModifier = enemyDamageModifier;
+        player.playerHealthRegen = playerHealthRegen;
+        player.percentageTreasureFind = percentageTreasureFind;
+        player.percentageTreasurGain = percentageTreasurGain;
+        player.additivePlayerMoveSpeed = additivePlayerMoveSpeed;
+        player.percentagePlayerMoveSpeed = percentagePlayerMoveSpeed;
+        player.additiveProjectileSpeed = additiveProjectileSpeed;
+        player.percentageProjectileSpeed = percentageProjectileSpeed;
+        player.additiveDuration = additiveDuration;
+        player.percentageDuration = percentageDuration;
+        player.additiveExperience = additiveExperience;
+        player.percentageExperience = percentageExperience;
 
     }
 

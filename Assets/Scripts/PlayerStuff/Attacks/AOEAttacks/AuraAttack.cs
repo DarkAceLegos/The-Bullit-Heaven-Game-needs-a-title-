@@ -21,6 +21,8 @@ public class AuraAttack : Attack
     {
         //Debug.Log("in the tick");
 
+        ulong playerId = player.OwnerClientId;
+
         if (lastCast + levelData.cooldown > Time.time) { return; }
         lastCast = Time.time;
 
@@ -30,7 +32,7 @@ public class AuraAttack : Attack
             direction.Normalize();
             var proj1 = Instantiate(proj, player.transform.position, Quaternion.identity);
             proj1.GetComponent<NetworkObject>().Spawn(true);
-            proj1.Initialize(player, levelData.damage, levelData.speed, levelData.area);//*/
+            proj1.Initialize(playerId, levelData.damage, levelData.speed, levelData.area);//*/
         }
     }
 }
