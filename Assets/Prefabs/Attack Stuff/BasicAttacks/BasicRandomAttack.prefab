@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6548042406340026468}
   - component: {fileID: 7519820021864702792}
   m_Layer: 0
-  m_Name: Basic Proj Attack 4
+  m_Name: BasicRandomAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

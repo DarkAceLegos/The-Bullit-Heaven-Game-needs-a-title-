@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3588211426074424749}
   - component: {fileID: 6548042406340026468}
-  - component: {fileID: 7519820021864702792}
+  - component: {fileID: -7228702399109900487}
   m_Layer: 0
-  m_Name: Basic Proj Attack 5
+  m_Name: MelleAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 521189002
+  GlobalObjectIdHash: 2916764413
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -58,7 +58,7 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
---- !u!114 &7519820021864702792
+--- !u!114 &-7228702399109900487
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -67,8 +67,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 370984705958048366}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bbe3c38138db6043889f1b6e08e857d, type: 3}
+  m_Script: {fileID: 11500000, guid: 3eeafc6ba538f0c458f90ace099262eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  proj: {fileID: 4235645765053515930, guid: 0eaae7259e9cd6841821036d3ad941de, type: 3}
+  proj: {fileID: -3558647691141161821, guid: a744ffd659cc00d43ab0e1558d530900, type: 3}

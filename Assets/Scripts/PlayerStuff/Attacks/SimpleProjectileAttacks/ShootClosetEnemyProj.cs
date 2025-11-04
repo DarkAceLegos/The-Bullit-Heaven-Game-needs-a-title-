@@ -2,7 +2,7 @@ using Unity.Netcode;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class BasicProj1 : NetworkBehaviour
+public class ShootClosetEnemyProj : NetworkBehaviour
 {
     [SerializeField] private float damage;
     [SerializeField] private float speed;

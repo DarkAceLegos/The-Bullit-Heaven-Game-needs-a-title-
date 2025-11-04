@@ -2,7 +2,7 @@ using Unity.Netcode;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class BasicProj7 : NetworkBehaviour
+public class ChainLightingProj : NetworkBehaviour
 {
     [SerializeField] private float damage;
     [SerializeField] private float speed;

@@ -2,7 +2,7 @@ using Unity.Netcode;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class BasicProj2 : NetworkBehaviour
+public class BounceingProj : NetworkBehaviour
 {
     [SerializeField] private float damage;
     [SerializeField] private float speed;

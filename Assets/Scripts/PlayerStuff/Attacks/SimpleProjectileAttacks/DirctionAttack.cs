@@ -1,9 +1,9 @@
 using Unity.Netcode;
 using UnityEngine;
 
-public class BasicAttack : Attack
+public class DirctionAttack : Attack
 {
-    [SerializeField] private BasicProj proj;
+    [SerializeField] private DirectionProj proj;
 
     private BasicAttackData.LevelData levelData;
     private float lastCast;
