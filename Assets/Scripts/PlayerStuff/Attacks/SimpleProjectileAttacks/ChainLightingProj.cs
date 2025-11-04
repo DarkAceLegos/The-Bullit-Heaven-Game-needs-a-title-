@@ -22,17 +22,17 @@ public class ChainLightingProj : NetworkBehaviour
         enabled = IsOwner;
     }
 
-    public void Initialize(int damage1, float speed1, float duration1 = 4f)
+    public void Initialize(ulong playerId, int damage1, float speed1, float duration1 = 4f)
     {
         //Debug.Log("I initialized");
 
         //Debug.Log(Player.LoaclInstance);
 
-        PlayerMetaProgression playerMetaProgression = Player.LoaclInstance.playerMetas;
+        PlayerHealth._allPlayers[playerId].TryGetComponent<Player>(out var player);
 
         //Debug.Log(playerMetaProgression);
 
-        damage = (float)((damage1 + playerMetaProgression.additiveDamageModifier) * playerMetaProgression.percentageDamageModifier);
+        damage = (float)((damage1 + player.additiveDamageModifier) * player.percentageDamageModifier);
         speed = speed1;
         duration = duration1;
         rb.linearVelocity = Random.insideUnitCircle * speed;

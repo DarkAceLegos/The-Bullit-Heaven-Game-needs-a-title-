@@ -25,16 +25,16 @@ public class AOEProjectile : NetworkBehaviour
         enabled = IsOwner;
     }
 
-    public void Initialize(int damage1, float speed1, float area1, float duration1 = 4f)
+    public void Initialize(ulong playerId,int damage1, float speed1, float area1, float duration1 = 4f)
     {
         //Debug.Log("I initialized");
 
-        PlayerMetaProgression playerMetaProgression = Player.LoaclInstance.playerMetas;
+        PlayerHealth._allPlayers[playerId].TryGetComponent<Player>(out var player);
 
-        damage = (float)((damage1 + playerMetaProgression.additiveDamageModifier) * playerMetaProgression.percentageDamageModifier);
-        speed = speed1 ;
-        duration = duration1;
-        area = area1 + playerMetaProgression.additiveAreaModifier;
+        damage = (float)((damage1 + player.additiveDamageModifier) * player.percentageDamageModifier);
+        speed = (speed1 + (speed1 * player.additiveProjectileSpeed)) * player.percentageProjectileSpeed;
+        duration = (duration1 + (duration1 * player.additiveDuration)) * player.percentageDuration;
+        area = (area1 + (area1 * player.additiveAreaModifier)) * player.percentageAreaModifier;
         transform.localScale = transform.localScale * area;
         rb.linearVelocity = Random.insideUnitCircle * speed;
         //Debug.Log(transform.localScale);

@@ -22,20 +22,17 @@ public class BasicRandomProj : NetworkBehaviour
         enabled = IsOwner;
     }
 
-    public void Initialize(int damage1, float speed1, float duration1 = 4f)
+    public void Initialize(ulong playerId, int damage1, float speed1, float duration1 = 1f)
     {
         //Debug.Log("I initialized");
 
-        //Debug.Log(Player.LoaclInstance);
+        PlayerHealth._allPlayers[playerId].TryGetComponent<Player>(out var player);
 
-        PlayerMetaProgression playerMetaProgression = Player.LoaclInstance.playerMetas;
+        damage = (float)((damage1 + player.additiveDamageModifier) * player.percentageDamageModifier);
+        speed = (speed1 + (speed1 * player.additiveProjectileSpeed)) * player.percentageProjectileSpeed;
+        duration = (duration1 + (duration1 * player.additiveDuration)) * player.percentageDuration;
 
-        //Debug.Log(playerMetaProgression);
-
-        damage = (float)((damage1 + playerMetaProgression.additiveDamageModifier) * playerMetaProgression.percentageDamageModifier);
-        speed = speed1;
-        duration = duration1;
-        rb.linearVelocity = Random.insideUnitCircle * speed;
+        rb.linearVelocity = speed * Random.insideUnitCircle.normalized;
     }
 
     private void Update()

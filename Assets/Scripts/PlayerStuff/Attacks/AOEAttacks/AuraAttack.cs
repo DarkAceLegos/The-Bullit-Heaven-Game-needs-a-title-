@@ -28,8 +28,8 @@ public class AuraAttack : Attack
 
         for (int i = 0; i < levelData.projCount; i++)
         {
-            var direction = Random.insideUnitCircle;
-            direction.Normalize();
+            /*var direction = Random.insideUnitCircle;
+            direction.Normalize();*/
             var proj1 = Instantiate(proj, player.transform.position, Quaternion.identity);
             proj1.GetComponent<NetworkObject>().Spawn(true);
             proj1.Initialize(playerId, levelData.damage, levelData.speed, levelData.area);//*/

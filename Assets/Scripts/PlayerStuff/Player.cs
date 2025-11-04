@@ -49,6 +49,8 @@ public class Player : NetworkBehaviour
 
     [SerializeField] private Rigidbody2D rb;
 
+    public Vector2 direction;
+
     InputAction moveAction;
 
     [SerializeField] private CinemachineCamera vc;
@@ -61,11 +63,6 @@ public class Player : NetworkBehaviour
 
     public List<AttackData> GetAllPlayerUnlockedAttacks() { return allAttacksPlayerUnlocked; }
     public List<AttackData> GetPlayerNoOtherAttacks() { return noOtherAttacks; }
-
-    private void Awake()
-    {
-        
-    }
 
     void Start()
     {
@@ -138,6 +135,8 @@ public class Player : NetworkBehaviour
         }
 
         moveSpeed = (moveSpeed + additivePlayerMoveSpeed) * percentagePlayerMoveSpeed;
+
+        direction = Vector2.right;
     }
 
     public enum Binding
@@ -166,13 +165,13 @@ public class Player : NetworkBehaviour
             vc.Priority = 0;
         }
 
-        if(IsServer) 
+        if (IsServer)
             NetworkManager.Singleton.OnClientDisconnectCallback += NetworkManager_OnClientDisconnectCallback;
     }
 
     private void NetworkManager_OnClientDisconnectCallback(ulong clientId)
     {
-        if (clientId == OwnerClientId) 
+        if (clientId == OwnerClientId)
         {
             //Debug.Log(PlayerHealth._allPlayers[clientId].ToString());
             PlayerHealth._allPlayers.Remove(clientId);
@@ -182,7 +181,7 @@ public class Player : NetworkBehaviour
 
     void Update()
     {
-        if(!IsOwner) return;
+        if (!IsOwner) return;
     }
 
     private void FixedUpdate()
@@ -220,7 +219,7 @@ public class Player : NetworkBehaviour
         Debug.Log("Trying to sync");
 
         PlayerHealth._allPlayers[playerId].TryGetComponent<Player>(out var player);
-        Debug.Log("Change this " + player.additiveMaxHealthModifier +" by adding this " + additiveMaxHealthModifier);
+        Debug.Log("Change this " + player.additiveMaxHealthModifier + " by adding this " + additiveMaxHealthModifier);
         player.additiveMaxHealthModifier = additiveMaxHealthModifier;
         Debug.Log("to this " + player.additiveMaxHealthModifier);
         player.percentageMaxHealthModifier = percentageMaxHealthModifier;
@@ -250,7 +249,18 @@ public class Player : NetworkBehaviour
     {
         Vector2 playerVelocity = moveAction.ReadValue<Vector2>();
 
-        rb.linearVelocity = new Vector2(playerVelocity.x * moveSpeed, playerVelocity.y * moveSpeed);
+        if (playerVelocity == Vector2.up)
+        {direction = playerVelocity;}
+        else if (playerVelocity == Vector2.down)
+        {direction = playerVelocity;} 
+        else if (playerVelocity == Vector2.left)
+        { direction = playerVelocity; }
+        else if (playerVelocity == Vector2.right)
+        { direction = playerVelocity;}
+    
+
+
+            rb.linearVelocity = new Vector2(playerVelocity.x * moveSpeed, playerVelocity.y * moveSpeed);
     }
 
     public ulong GetPlayerId()
