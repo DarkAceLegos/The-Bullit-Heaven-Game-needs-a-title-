@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BasicRandomAttack : Attack
 {
@@ -41,9 +42,9 @@ public class BasicRandomAttack : Attack
         for(int i = 0; i < levelData.projCount; i++)
         {
             var direction = GetClosetEnemy();//.normalized; //Vector2.Distance(enemyHealths[0].transform.position ,transform.position); //Random.insideUnitCircle;
-            Debug.Log(direction);
-            direction.Normalize();//*/
-            var proj1 = Instantiate(proj, player.transform.position , Quaternion.Euler(0,0,0));
+            //Debug.Log(direction);
+            //direction.Normalize();//*/
+            var proj1 = Instantiate(proj, player.transform.position, Quaternion.Euler(direction));
             proj1.GetComponent<NetworkObject>().Spawn(true);
             proj1.Initialize(playerId, levelData.damage, levelData.speed);//*/
         }
@@ -54,9 +55,20 @@ public class BasicRandomAttack : Attack
         if (!collision.transform.TryGetComponent(out EnemyHealth enemyHealth)) //|| !enemyHealth.IsOwner)
         { return; }
 
+        if(enemyHealths.Contains(enemyHealth)) { return; }
+
         Debug.Log("adding a enemy to the list");
 
         enemyHealths.Add(enemyHealth);
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        Debug.Log("collision exit");
+        if (!collision.transform.TryGetComponent(out EnemyHealth enemyHealth)) //|| !enemyHealth.IsOwner)
+        { Debug.Log("returned"); return; }
+        //collision.transform.TryGetComponent(out EnemyHealth enemyHealth);
+        enemyHealths.Remove(enemyHealth);
     }
 
     private Vector3 GetClosetEnemy()
@@ -77,7 +89,8 @@ public class BasicRandomAttack : Attack
             }
         }
 
-        Debug.Log((closestEnemyHealth.transform.position - transform.position).normalized);
-        return (closestEnemyHealth.transform.position - transform.position);
+        //Debug.Log((Vector3.Angle(transform.position - closestEnemyHealth.transform.position, Vector2.up)));
+        Vector3 returnVector = new Vector3(0, 0, (Vector2.Angle(closestEnemyHealth.transform.position - transform.position, Vector2.up)));
+        return returnVector;
     }
 }

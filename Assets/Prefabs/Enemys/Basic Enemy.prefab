@@ -215,7 +215,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dcdf1de8f5ebc5409a105edfe49eaa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  ShowTopMostFoldoutHeaderGroup: 1
+  maxHealth: 100
   experience: 1
   currentHeath: 0
 --- !u!114 &-4857588489931592126
