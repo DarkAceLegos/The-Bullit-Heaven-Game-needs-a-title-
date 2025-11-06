@@ -32,7 +32,7 @@ public class BasicRandomProj : NetworkBehaviour
         speed = (speed1 + (speed1 * player.additiveProjectileSpeed)) * player.percentageProjectileSpeed;
         duration = (duration1 + (duration1 * player.additiveDuration)) * player.percentageDuration;
 
-        rb.linearVelocity = speed * Random.insideUnitCircle;
+        rb.linearVelocity = speed * transform.up;
     }
 
     private void Update()
