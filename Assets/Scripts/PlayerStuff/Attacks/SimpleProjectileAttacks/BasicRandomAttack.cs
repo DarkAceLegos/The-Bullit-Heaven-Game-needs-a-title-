@@ -9,7 +9,7 @@ public class BasicRandomAttack : Attack
     [SerializeField] private BasicRandomProj proj;
     //[SerializeField] private Collider2D range;
 
-    [SerializeField] private List<EnemyHealth> enemyHealths;
+    //[SerializeField] private List<EnemyHealth> enemyHealths;
 
     private BasicAttackData.LevelData levelData;
     private float lastCast;
@@ -31,26 +31,28 @@ public class BasicRandomAttack : Attack
 
         ulong playerId = player.OwnerClientId;
 
-        if (enemyHealths.Count == 0)
+        /*if (enemyHealths.Count == 0)
         {
             return;
-        }
+        }*/
 
         if (lastCast + levelData.cooldown > Time.time) { return; }
         lastCast = Time.time;
 
         for(int i = 0; i < levelData.projCount; i++)
         {
-            var direction = GetClosetEnemy();//.normalized; //Vector2.Distance(enemyHealths[0].transform.position ,transform.position); //Random.insideUnitCircle;
+            var direction = Random.rotation;
+            direction.x = 0;
+            direction.y = 0;
             //Debug.Log(direction);
-            //direction.Normalize();//*/
-            var proj1 = Instantiate(proj, player.transform.position, Quaternion.Euler(direction));
+            direction.Normalize();//*/
+            var proj1 = Instantiate(proj, player.transform.position, direction);
             proj1.GetComponent<NetworkObject>().Spawn(true);
             proj1.Initialize(playerId, levelData.damage, levelData.speed);//*/
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.transform.TryGetComponent(out EnemyHealth enemyHealth)) //|| !enemyHealth.IsOwner)
         { return; }
@@ -62,7 +64,7 @@ public class BasicRandomAttack : Attack
         enemyHealths.Add(enemyHealth);
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         Debug.Log("collision exit");
         if (!collision.transform.TryGetComponent(out EnemyHealth enemyHealth)) //|| !enemyHealth.IsOwner)
@@ -90,7 +92,7 @@ public class BasicRandomAttack : Attack
         }
 
         //Debug.Log((Vector3.Angle(transform.position - closestEnemyHealth.transform.position, Vector2.up)));
-        Vector3 returnVector = new Vector3(0, 0, (Vector2.Angle(closestEnemyHealth.transform.position - transform.position, Vector2.up)));
+        Vector3 returnVector = new Vector3(0, 0, -(Vector2.SignedAngle(closestEnemyHealth.transform.position - transform.position, Vector2.up)));
         return returnVector;
-    }
+    }*/
 }

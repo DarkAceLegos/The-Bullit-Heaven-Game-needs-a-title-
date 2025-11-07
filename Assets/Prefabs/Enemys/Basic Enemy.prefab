@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  maxHealth: 100
+  maxHealth: 10
   experience: 1
   currentHeath: 0
 --- !u!114 &-4857588489931592126
