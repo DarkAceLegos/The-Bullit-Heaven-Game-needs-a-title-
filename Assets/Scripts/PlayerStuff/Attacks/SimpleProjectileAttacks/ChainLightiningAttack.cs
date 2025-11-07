@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ChainLightiningAttack : Attack
 {
@@ -18,6 +19,8 @@ public class ChainLightiningAttack : Attack
         //Debug.Log(basicAttackData);
 
         levelData = basicAttackData.GetLevelData(level);
+
+        this.GetComponent<Collider2D>().transform.localScale = Vector3.one * levelData.cooldown; // range/area not cooldown
     }
 
     public override void Tick(NetworkObject player)
