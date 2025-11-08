@@ -55,6 +55,8 @@ public class GameManager : NetworkBehaviour
         {
             allAttacks[attackData.attackId] = attackData;
         }
+
+        maxEnemies = 20 * NetworkManager.Singleton.ConnectedClients.Count;
     }
 
     public override void OnNetworkSpawn()
@@ -64,6 +66,7 @@ public class GameManager : NetworkBehaviour
             NetworkManager.Singleton.SceneManager.OnLoadEventCompleted += SceneManager_OnLoadEventCompleted;
         }
     }
+
     private void SceneManager_OnLoadEventCompleted(string sceneName, UnityEngine.SceneManagement.LoadSceneMode loadSceneMode, List<ulong> clientsCompleted, List<ulong> clientsTimedOut)
     {
         foreach (ulong clientId in NetworkManager.Singleton.ConnectedClientsIds)
@@ -91,7 +94,7 @@ public class GameManager : NetworkBehaviour
 
         //Debug.Log("Past first check");
 
-        if (lastSpawnTime + acuualSpawnInterval > Time.time) //move to game manager
+        if ((lastSpawnTime + acuualSpawnInterval) * Player.LoaclInstance.enemySpawnModifier > Time.time) //move to game manager
             return;
 
         //Debug.Log("past time needed");

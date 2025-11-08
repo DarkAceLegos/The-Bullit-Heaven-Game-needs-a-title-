@@ -31,6 +31,9 @@ public class PlayerHealth : NetworkBehaviour
 
     private PlayerStateManager playerStateManager;
 
+    [SerializeField] private float healthRegenCooldown = 10f;
+    private float lastHealTime;
+
     public int GetMaxHeath() {  return maxHeath; }
     public int GetCurrentHeath() { return currentHeath; }
     public bool isDowned => currentHeath <= 0;
@@ -50,6 +53,18 @@ public class PlayerHealth : NetworkBehaviour
         Debug.Log(playerState);
 
         playerStateManager = playerState;
+    }
+
+    private void FixedUpdate()
+    {
+        if (!IsOwner) { return; }
+
+        if(Time.time > healthRegenCooldown + lastHealTime)
+        {
+            changeHealth((int)(Player.LoaclInstance.playerHealthRegen * Player.LoaclInstance.percentagePlayerHealthRegen));
+
+            lastHealTime = Time.time;
+        }
     }
 
     private void Player_OnAnyPlayerSpawned(object sender, Player.OnAnyPlayerSpawnedEventArgs e)
@@ -88,6 +103,8 @@ public class PlayerHealth : NetworkBehaviour
     public void changeHealth(int heathChange)
     {
         if(!IsOwner) return;
+        if(maxHeath != (int)((100 + Player.LoaclInstance.additiveMaxHealthModifier) * Player.LoaclInstance.percentageMaxHealthModifier)) // find a better spot
+            maxHeath = (int)((maxHeath + Player.LoaclInstance.additiveMaxHealthModifier) * Player.LoaclInstance.percentageMaxHealthModifier);
 
         currentHeath = Mathf.Clamp(currentHeath + heathChange, 0, maxHeath);
 

@@ -13,8 +13,13 @@ MonoBehaviour:
   m_Name: MelleAttack
   m_EditorClassIdentifier: 
   attackId: 7
-  attackName: Melle Attack
-  levelDiscriptions: []
+  attackName: Melee Attack
+  levelDiscriptions:
+  - Melee Attack
   icon: {fileID: 7482667652216324306, guid: 531a585b3dd5f4f46bd8e7c174c1025f, type: 3}
-  prefab: {fileID: 0}
-  levels: []
+  prefab: {fileID: -7228702399109900487, guid: 7ed881f1b25377c40bbff542237025c9, type: 3}
+  levels:
+  - projCount: 0
+    damage: 0
+    cooldown: 0
+    speed: 0

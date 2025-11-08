@@ -28,7 +28,7 @@ public class BaseMetaButton : MonoBehaviour, IPointerClickHandler
             PlayerMetaProgression.Instance.ChangeStat(statId, changeAmount);
             DataPersistenceManager.Instance.SaveGame();
             PlayerMetaProgression.Instance.ChangeCoinAmount(-cost);
-            cost = cost + cost;
+            //cost = cost + cost;
             UpdateVisual();
         }
         else if (eventData.button == PointerEventData.InputButton.Middle)
@@ -39,7 +39,7 @@ public class BaseMetaButton : MonoBehaviour, IPointerClickHandler
             PlayerMetaProgression.Instance.ChangeStat(statId, -changeAmount);
             DataPersistenceManager.Instance.SaveGame();
             PlayerMetaProgression.Instance.ChangeCoinAmount(cost);
-            cost = cost - (cost/2);
+            //cost = cost - (cost/2);
             if(cost == 0) { cost = 1;}
             UpdateVisual();
         }

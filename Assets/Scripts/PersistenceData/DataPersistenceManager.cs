@@ -72,15 +72,22 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void SaveGame()
     {
+        this.dataPersistencesObjects = FindAllDataPersistenceObjects();
+
+        Debug.Log("Trying to save.");
+
         if (this.gameData == null)
         {
             Debug.LogWarning("No data was found. A New Game Needs to be started before data can be saved.");
             return;
         }
 
+        Debug.Log(dataPersistencesObjects.Count);
+
         foreach (IDataPersistence dataPersistence in dataPersistencesObjects)
         {
             dataPersistence.SaveData(ref gameData);
+            Debug.Log(dataPersistence);
         }
 
         gameData.lastUpdated = System.DateTime.Now.ToBinary();
@@ -155,4 +162,7 @@ public class DataPersistenceManager : MonoBehaviour
         this.selectedProfileId = newProfileId;
         LoadGame();
     }
+
+    public void findTheList()
+    { this.dataPersistencesObjects = FindAllDataPersistenceObjects(); }
 }

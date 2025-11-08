@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackId: 9
   attackName: Shoot Closes Enemy
-  levelDiscriptions: []
+  levelDiscriptions:
+  - Shoot Closest Enemy
   icon: {fileID: 7482667652216324306, guid: 531a585b3dd5f4f46bd8e7c174c1025f, type: 3}
-  prefab: {fileID: 0}
-  levels: []
+  prefab: {fileID: 8117668075675376311, guid: caa517594df8c2644a02eeaa89d74919, type: 3}
+  levels:
+  - projCount: 0
+    damage: 0
+    cooldown: 0
+    speed: 0

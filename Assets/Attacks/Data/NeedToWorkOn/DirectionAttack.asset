@@ -15,9 +15,9 @@ MonoBehaviour:
   attackId: 5
   attackName: Directional Attack
   levelDiscriptions:
-  - 
+  - Directional Attack
   icon: {fileID: 7482667652216324306, guid: 531a585b3dd5f4f46bd8e7c174c1025f, type: 3}
-  prefab: {fileID: 0}
+  prefab: {fileID: 2129312199516039747, guid: ed814db66f0fb01408a67e6f05d49ebd, type: 3}
   levels:
   - projCount: 0
     damage: 0

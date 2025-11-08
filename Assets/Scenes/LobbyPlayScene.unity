@@ -980,6 +980,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 318564722}
     m_Modifications:
+    - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
+      propertyPath: attackData
+      value: 
+      objectReference: {fileID: 11400000, guid: 42f18dd24c5940844a56f2fbaa0e52b8, type: 2}
     - target: {fileID: 836150945367389498, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
       propertyPath: m_Name
       value: BaseMetaAttackButton (5)
@@ -2670,6 +2674,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 318564722}
     m_Modifications:
+    - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
+      propertyPath: attackData
+      value: 
+      objectReference: {fileID: 11400000, guid: 99685ca685bffcd49a2c68d4a9d6e702, type: 2}
     - target: {fileID: 836150945367389498, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
       propertyPath: m_Name
       value: BaseMetaAttackButton (8)
@@ -4111,6 +4119,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 318564722}
     m_Modifications:
+    - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
+      propertyPath: attackData
+      value: 
+      objectReference: {fileID: 11400000, guid: c9becc329c35a764888c1affa513ad58, type: 2}
     - target: {fileID: 836150945367389498, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
       propertyPath: m_Name
       value: BaseMetaAttackButton (7)
@@ -4580,6 +4592,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 318564722}
     m_Modifications:
+    - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
+      propertyPath: attackData
+      value: 
+      objectReference: {fileID: 11400000, guid: 7f56c2398dc436a498218e208cd23f72, type: 2}
     - target: {fileID: 836150945367389498, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
       propertyPath: m_Name
       value: BaseMetaAttackButton (6)
@@ -5844,6 +5860,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 318564722}
     m_Modifications:
+    - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
+      propertyPath: attackData
+      value: 
+      objectReference: {fileID: 11400000, guid: 8b9110ca58c32a846a7e1dbd7487a56d, type: 2}
     - target: {fileID: 836150945367389498, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
       propertyPath: m_Name
       value: BaseMetaAttackButton (4)
@@ -6056,6 +6076,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 318564722}
     m_Modifications:
+    - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
+      propertyPath: attackData
+      value: 
+      objectReference: {fileID: 11400000, guid: b29186ef58b78954d8e62073b180e808, type: 2}
     - target: {fileID: 836150945367389498, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
       propertyPath: m_Name
       value: BaseMetaAttackButton (9)
@@ -7577,7 +7601,7 @@ PrefabInstance:
     - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
       propertyPath: attackData
       value: 
-      objectReference: {fileID: 11400000, guid: cdb35b85e414ec444a26bbcde2a7eac5, type: 2}
+      objectReference: {fileID: 11400000, guid: 2597a265c201953408ef2386a948d6f4, type: 2}
     - target: {fileID: 836150945367389498, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
       propertyPath: m_Name
       value: BaseMetaAttackButton (3)

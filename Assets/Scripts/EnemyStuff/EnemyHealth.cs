@@ -7,6 +7,7 @@ public class EnemyHealth : NetworkBehaviour
 {
     [SerializeField] private int maxHealth = 10;
     [SerializeField] private int experience = 1;
+    [SerializeField] private int coinsOnKill = 1;
 
     [SerializeField] private float currentHeath;
 
@@ -37,7 +38,8 @@ public class EnemyHealth : NetworkBehaviour
     {
         onEnemyKilled?.Invoke(this);
         //Debug.Log($"you got some exp {experience} to the level manager {LevelManager.Instance}");
-        LevelManager.Instance.AddExpRpc(experience); 
+        LevelManager.Instance.AddExpRpc((experience + Player.LoaclInstance.additiveExperience) * Player.LoaclInstance.percentageExperience);
+        PlayerMetaProgression.Instance.ChangeCoinAmount(coinsOnKill);
         Destroy(gameObject);
     }
 }

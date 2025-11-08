@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class BaseMetaAttackAddButton : MonoBehaviour, IPointerClickHandler
 {
@@ -15,6 +16,7 @@ public class BaseMetaAttackAddButton : MonoBehaviour, IPointerClickHandler
     {
         attackNameText.text = attackData.name;
         costText.text = "Cost: " + cost.ToString();
+        updateVisuals();
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -27,6 +29,7 @@ public class BaseMetaAttackAddButton : MonoBehaviour, IPointerClickHandler
             DataPersistenceManager.Instance.SaveGame();
             Debug.Log("Not returned");
             PlayerMetaProgression.Instance.ChangeCoinAmount(-cost);
+            updateVisuals();
         }
         else if (eventData.button == PointerEventData.InputButton.Middle)
             Debug.Log("Middle click");
@@ -37,6 +40,16 @@ public class BaseMetaAttackAddButton : MonoBehaviour, IPointerClickHandler
             DataPersistenceManager.Instance.SaveGame();
             Debug.Log("not returned");
             PlayerMetaProgression.Instance.ChangeCoinAmount(cost);
+            updateVisuals();
         }
+    }
+
+    private void updateVisuals()
+    {
+        if (PlayerMetaProgression.Instance.allAttacksPlayerUnlocked.Contains(attackData.attackId))
+        {
+            GetComponent<Image>().color = Color.red;
+        }
+        else { GetComponent<Image>().color = Color.white; }
     }
 }

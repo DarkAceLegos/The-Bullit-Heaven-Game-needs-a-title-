@@ -10,13 +10,13 @@ public class LevelManager : NetworkBehaviour
 
     [SerializeField] private int visualExpToNextLevel;
 
-    [SerializeField] private int experiance = 0;
+    [SerializeField] private float experiance = 0;
     [SerializeField] private int level = 0;
 
     public event EventHandler<OnExpChangeEventArgs> OnExpChange;
     public class OnExpChangeEventArgs : EventArgs
     {
-        public int newExp;
+        public float newExp;
     }
 
     public event EventHandler<OnLevelChangeEventArgs> OnLevelChange;
@@ -33,7 +33,7 @@ public class LevelManager : NetworkBehaviour
     }
 
     [Rpc(SendTo.Server)]
-    public void AddExpRpc(int amount)
+    public void AddExpRpc(float amount)
     {
         experiance += amount;
         SyncExpRpc(experiance);
@@ -54,7 +54,7 @@ public class LevelManager : NetworkBehaviour
     }
 
     [Rpc(SendTo.Everyone)]
-    private void SyncExpRpc(int newExp)
+    private void SyncExpRpc(float newExp)
     { 
         experiance = newExp;
         OnExpChange?.Invoke(this, new OnExpChangeEventArgs
