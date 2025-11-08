@@ -15,12 +15,14 @@ public class GameManager : NetworkBehaviour
     [SerializeField] private List<EnemyHealth> enemies = new();
     [SerializeField] private List<Transform> spawnPoints = new();
     [SerializeField] private float spawnInterval = 2f; //move to game manager
-    [SerializeField] private int maxEnemies = 20; //move to game manager
+    [SerializeField] private int maxEnemies = 50; //move to game manager
 
     [SerializeField] private Transform playerPrefab;
 
     [SerializeField] List<AttackData> allAttackData = new();
     public Dictionary<string, AttackData> allAttacks = new();
+
+    public float deathTime = 30f * 60;
 
     private float acuualSpawnInterval => spawnInterval / NetworkManager.Singleton.ConnectedClients.Count; //move to game manager
     [SerializeField] private List<EnemyHealth> spawnedEnemies = new(); //move to game manager
@@ -56,7 +58,9 @@ public class GameManager : NetworkBehaviour
             allAttacks[attackData.attackId] = attackData;
         }
 
-        maxEnemies = 20 * NetworkManager.Singleton.ConnectedClients.Count;
+        maxEnemies = maxEnemies * NetworkManager.Singleton.ConnectedClients.Count;
+
+        deathTime = 30f * 60;
     }
 
     public override void OnNetworkSpawn()
@@ -140,6 +144,7 @@ public class GameManager : NetworkBehaviour
 
         spawnedEnemies.Remove(enemyHealth);
     }
+
     public override void OnDestroy()
     {
         EnemyHealth.onEnemyKilled -= OnEnemyKilled; //move to game manager

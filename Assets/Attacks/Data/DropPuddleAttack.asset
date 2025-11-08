@@ -15,7 +15,7 @@ MonoBehaviour:
   attackId: 3
   attackName: Drop Puddles
   levelDiscriptions:
-  - AOE attack
+  - Drop Puddles
   - More damage
   - Faster Cast
   - Bigger
