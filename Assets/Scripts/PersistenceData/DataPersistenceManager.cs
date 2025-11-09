@@ -72,7 +72,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void SaveGame()
     {
-        this.dataPersistencesObjects = FindAllDataPersistenceObjects();
+        //this.dataPersistencesObjects = FindAllDataPersistenceObjects();
 
         Debug.Log("Trying to save.");
 
@@ -110,17 +110,7 @@ public class DataPersistenceManager : MonoBehaviour
 
         e.player.GetComponent<Player>().GetComponentInChildren<PlayerMetaProgression>().LoadData(gameData);
 
-        //e.player.GetComponent<PlayerMetaProgression>().LoadData(gameData);
-
-        /*bool hasRun = false;
-
-        if (!hasRun)
-        {
-            this.dataPersistencesObjects = FindAllDataPersistenceObjects();
-            LoadGame();
-        }
-
-        hasRun = true;//*/
+        dataPersistencesObjects.Add(e.player.GetComponent<Player>().GetComponentInChildren<PlayerMetaProgression>());
     }
 
     private void OnDisable()

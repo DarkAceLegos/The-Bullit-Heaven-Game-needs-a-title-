@@ -60,6 +60,8 @@ public class GameManager : NetworkBehaviour
 
         maxEnemies = maxEnemies * NetworkManager.Singleton.ConnectedClients.Count;
 
+        Time.timeScale = 0;
+
         deathTime = 30f * 60;
     }
 
@@ -141,6 +143,8 @@ public class GameManager : NetworkBehaviour
         enemy.TryGet(out NetworkObject enemyObject);
 
         EnemyHealth enemyHealth = enemyObject.GetComponent<EnemyHealth>();
+
+        Player.LoaclInstance.GetComponentInChildren<PlayerMetaProgression>().ChangeCoinAmount(enemyHealth.coinsOnKill);
 
         spawnedEnemies.Remove(enemyHealth);
     }

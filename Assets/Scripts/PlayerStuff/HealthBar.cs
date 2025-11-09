@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     [SerializeField] private Slider healthBar;
+    [SerializeField] private Player Player;
 
     public static HealthBar Instance { get; private set; }
 
@@ -14,8 +15,8 @@ public class HealthBar : MonoBehaviour
 
     private void Start()
     {
-        healthBar.maxValue = Player.LoaclInstance.GetComponent<PlayerHealth>().GetMaxHeath();
-        healthBar.value = Player.LoaclInstance.GetComponent<PlayerHealth>().GetCurrentHeath();
+        healthBar.maxValue = Player.GetComponent<PlayerHealth>().GetMaxHeath();
+        healthBar.value = Player.GetComponent<PlayerHealth>().GetCurrentHeath();
     }
 
     public void HealthChange(int health)

@@ -106,9 +106,9 @@ public class PlayerHealth : NetworkBehaviour
         if(maxHeath != (int)((100 + Player.LoaclInstance.additiveMaxHealthModifier) * Player.LoaclInstance.percentageMaxHealthModifier)) // find a better spot
             maxHeath = (int)((maxHeath + Player.LoaclInstance.additiveMaxHealthModifier) * Player.LoaclInstance.percentageMaxHealthModifier);
 
-        HealthBar.Instance.HealthChange(heathChange);
-
         currentHeath = Mathf.Clamp(currentHeath + heathChange, 0, maxHeath);
+
+        HealthBar.Instance.HealthChange(currentHeath);
 
         OnHeathChange?.Invoke(this, new OnHeathChangeEventArgs
         {
