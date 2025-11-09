@@ -19,7 +19,7 @@ MonoBehaviour:
   icon: {fileID: 7482667652216324306, guid: 531a585b3dd5f4f46bd8e7c174c1025f, type: 3}
   prefab: {fileID: 2129312199516039747, guid: ed814db66f0fb01408a67e6f05d49ebd, type: 3}
   levels:
-  - projCount: 0
-    damage: 0
-    cooldown: 0
-    speed: 0
+  - projCount: 1
+    damage: 5
+    cooldown: 1
+    speed: 1

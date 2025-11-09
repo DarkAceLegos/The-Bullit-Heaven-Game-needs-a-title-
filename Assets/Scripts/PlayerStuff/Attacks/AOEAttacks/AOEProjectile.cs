@@ -32,7 +32,7 @@ public class AOEProjectile : NetworkBehaviour
         PlayerHealth._allPlayers[playerId].TryGetComponent<Player>(out var player);
 
         damage = (float)((damage1 + player.additiveDamageModifier) * player.percentageDamageModifier);
-        speed = (speed1 + (speed1 * player.additiveProjectileSpeed)) * player.percentageProjectileSpeed;
+        //speed = (speed1 + (speed1 * player.additiveProjectileSpeed)) * player.percentageProjectileSpeed;
         duration = (duration1 + (duration1 * player.additiveDuration)) * player.percentageDuration;
         area = (area1 + (area1 * player.additiveAreaModifier)) * player.percentageAreaModifier;
         transform.localScale = transform.localScale * area;
