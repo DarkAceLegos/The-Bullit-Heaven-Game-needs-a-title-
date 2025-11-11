@@ -15,6 +15,7 @@ public class EnemyHealth : NetworkBehaviour
 
     private void Awake()
     {
+        maxHealth = 10 * LevelManager.Instance.level;
         currentHeath = maxHealth;
     }
 

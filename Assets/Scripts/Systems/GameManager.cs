@@ -60,8 +60,6 @@ public class GameManager : NetworkBehaviour
 
         maxEnemies = maxEnemies * NetworkManager.Singleton.ConnectedClients.Count;
 
-        Time.timeScale = 0;
-
         deathTime = 30f * 60;
     }
 

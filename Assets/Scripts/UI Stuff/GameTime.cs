@@ -13,7 +13,7 @@ public class GameTime : MonoBehaviour
 
     private void UpdateVisuals()
     {
-        var ts = TimeSpan.FromSeconds(Time.timeAsDouble);
+        var ts = TimeSpan.FromSeconds(double.Parse(Time.timeSinceLevelLoad.ToString()));
         timeText.text = string.Format("{0:00}:{1:00}", ts.Minutes, ts.Seconds);
     }
 }

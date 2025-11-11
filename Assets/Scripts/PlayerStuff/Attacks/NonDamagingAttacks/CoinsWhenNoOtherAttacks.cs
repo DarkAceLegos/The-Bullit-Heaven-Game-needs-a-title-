@@ -15,8 +15,6 @@ public class CoinsWhenNoOtherAttacks : Attack
         var basicAttackData = (NonDamagingAttackData)data;
         levelData = basicAttackData.GetLevelData(level);
 
-        
-
         level--;
     }
 }

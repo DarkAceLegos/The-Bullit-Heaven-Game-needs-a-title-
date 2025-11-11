@@ -16,10 +16,55 @@ MonoBehaviour:
   attackName: Lightning Bolts
   levelDiscriptions:
   - Random Lightning Bolts
+  - Proj Count
+  - Cooldown
+  - Damage
+  - Proj Count
+  - Damage
+  - Proj Count
+  - Cooldown
+  - Proj Count
+  - Damage
   icon: {fileID: 7482667652216324306, guid: 531a585b3dd5f4f46bd8e7c174c1025f, type: 3}
   prefab: {fileID: -2227146130151235991, guid: 897a2fd7b064ea74cb44e0b6373605f3, type: 3}
   levels:
   - projCount: 1
     damage: 10
     cooldown: 1
+    speed: 0
+  - projCount: 2
+    damage: 10
+    cooldown: 1
+    speed: 0
+  - projCount: 2
+    damage: 10
+    cooldown: 0.75
+    speed: 0
+  - projCount: 2
+    damage: 15
+    cooldown: 0.75
+    speed: 0
+  - projCount: 3
+    damage: 15
+    cooldown: 0.75
+    speed: 0
+  - projCount: 3
+    damage: 20
+    cooldown: 0.75
+    speed: 0
+  - projCount: 4
+    damage: 15
+    cooldown: 0.75
+    speed: 0
+  - projCount: 4
+    damage: 15
+    cooldown: 0.5
+    speed: 0
+  - projCount: 5
+    damage: 15
+    cooldown: 0.5
+    speed: 0
+  - projCount: 5
+    damage: 30
+    cooldown: 0.5
     speed: 0

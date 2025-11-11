@@ -103,8 +103,12 @@ public class PlayerHealth : NetworkBehaviour
     public void changeHealth(int heathChange)
     {
         if(!IsOwner) return;
-        if(maxHeath != (int)((100 + Player.LoaclInstance.additiveMaxHealthModifier) * Player.LoaclInstance.percentageMaxHealthModifier)) // find a better spot
+        if (maxHeath != (int)((100 + Player.LoaclInstance.additiveMaxHealthModifier) * Player.LoaclInstance.percentageMaxHealthModifier)) // find a better spot
+        {
             maxHeath = (int)((maxHeath + Player.LoaclInstance.additiveMaxHealthModifier) * Player.LoaclInstance.percentageMaxHealthModifier);
+            currentHeath = maxHeath;
+        }
+
 
         currentHeath = Mathf.Clamp(currentHeath + heathChange, 0, maxHeath);
 

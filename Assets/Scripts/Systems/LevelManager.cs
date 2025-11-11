@@ -11,7 +11,7 @@ public class LevelManager : NetworkBehaviour
     [SerializeField] private int visualExpToNextLevel;
 
     [SerializeField] private float experiance = 0;
-    [SerializeField] private int level = 0;
+    [SerializeField] public int level = 0;
 
     public event EventHandler<OnExpChangeEventArgs> OnExpChange;
     public class OnExpChangeEventArgs : EventArgs

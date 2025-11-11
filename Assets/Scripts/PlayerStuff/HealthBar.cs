@@ -20,5 +20,8 @@ public class HealthBar : MonoBehaviour
     }
 
     public void HealthChange(int health)
-    { healthBar.value = health;}
+    {
+        healthBar.maxValue = Player.GetComponent<PlayerHealth>().GetMaxHeath(); // need to find better spot
+        healthBar.value = health;
+    }
 }

@@ -15,11 +15,16 @@ MonoBehaviour:
   attackId: 4
   attackName: Aura
   levelDiscriptions:
-  - aura
-  - aura
-  - aura
-  - aura
-  - aura
+  - Aura
+  - Area
+  - Cooldown
+  - Damage
+  - Area
+  - Damage
+  - Area
+  - CoolDown
+  - Damage
+  - Area
   icon: {fileID: -2413806693520163455, guid: 6c547d3ef21a4de41b0de74121faae13, type: 3}
   prefab: {fileID: -5113802887871975, guid: ca75f560d3ea279459ac9a22540d60a9, type: 3}
   levels:
@@ -43,3 +48,33 @@ MonoBehaviour:
     cooldown: 0.5
     speed: 0
     area: 1
+  - projCount: 1
+    damage: 10
+    cooldown: 0.5
+    speed: 0
+    area: 1.5
+  - projCount: 1
+    damage: 15
+    cooldown: 0.5
+    speed: 0
+    area: 1
+  - projCount: 1
+    damage: 15
+    cooldown: 0.5
+    speed: 0
+    area: 1.5
+  - projCount: 1
+    damage: 15
+    cooldown: 0.25
+    speed: 0
+    area: 1.5
+  - projCount: 1
+    damage: 20
+    cooldown: 0.25
+    speed: 0
+    area: 1.5
+  - projCount: 1
+    damage: 15
+    cooldown: 0.25
+    speed: 0
+    area: 2

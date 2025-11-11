@@ -16,35 +16,65 @@ MonoBehaviour:
   attackName: Drop Puddles
   levelDiscriptions:
   - Drop Puddles
-  - More damage
-  - Faster Cast
-  - Bigger
-  - Faster Cast
+  - Damage
+  - Cooldown
+  - Area
+  - Cooldown
+  - Damage
+  - Area
+  - Cooldown
+  - Damage
+  - OmneBoost
   icon: {fileID: 7482667652216324306, guid: 531a585b3dd5f4f46bd8e7c174c1025f, type: 3}
   prefab: {fileID: 1990684605709847375, guid: dd5928a37eecdcc4b8356378addae546, type: 3}
   levels:
   - projCount: 1
     damage: 5
-    cooldown: 2
+    cooldown: 5
     speed: 0
     area: 1
   - projCount: 1
     damage: 10
-    cooldown: 2
+    cooldown: 5
     speed: 0
     area: 1
   - projCount: 1
     damage: 10
-    cooldown: 1
+    cooldown: 2.5
     speed: 0
     area: 1
+  - projCount: 1
+    damage: 10
+    cooldown: 2.5
+    speed: 0
+    area: 2
   - projCount: 1
     damage: 10
     cooldown: 1
     speed: 0
     area: 2
   - projCount: 1
-    damage: 10
+    damage: 20
+    cooldown: 1
+    speed: 0
+    area: 2
+  - projCount: 1
+    damage: 20
+    cooldown: 1
+    speed: 0
+    area: 2.5
+  - projCount: 1
+    damage: 20
     cooldown: 0.5
     speed: 0
-    area: 2
+    area: 2.5
+  - projCount: 1
+    damage: 30
+    cooldown: 0.5
+    speed: 0
+    area: 2.5
+  - projCount: 1
+    damage: 40
+    cooldown: 0.25
+    speed: 0
+    area: 3
