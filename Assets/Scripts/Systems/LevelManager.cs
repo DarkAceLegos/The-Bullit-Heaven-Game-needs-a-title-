@@ -42,6 +42,11 @@ public class LevelManager : NetworkBehaviour
         //Debug.Log($"amount of exp is {experiance} and our level is {level}");
     }
 
+    private void LateUpdate()
+    {
+        //if (experiance >= expToNextLevel) { AddExpRpc(0); Debug.Log("Adding 0 exp"); }
+    }
+
     private void CheckForLeveling()
     {
         if (experiance < expToNextLevel) { return; }

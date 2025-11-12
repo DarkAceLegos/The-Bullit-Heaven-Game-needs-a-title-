@@ -26,16 +26,13 @@ public class ShootClosetEnemyProj : NetworkBehaviour
     {
         //Debug.Log("I initialized");
 
-        //Debug.Log(Player.LoaclInstance);
-
         PlayerHealth._allPlayers[playerId].TryGetComponent<Player>(out var player);
 
-        //Debug.Log(playerMetaProgression);
-
         damage = (float)((damage1 + player.additiveDamageModifier) * player.percentageDamageModifier);
-        speed = speed1;
-        duration = duration1;
-        rb.linearVelocity = Random.insideUnitCircle * speed;
+        speed = (speed1 + (speed1 * player.additiveProjectileSpeed)) * player.percentageProjectileSpeed;
+        duration = (duration1 + (duration1 * player.additiveDuration)) * player.percentageDuration;
+
+        rb.linearVelocity = speed * transform.up;
     }
 
     private void Update()
@@ -59,6 +56,8 @@ public class ShootClosetEnemyProj : NetworkBehaviour
         { return; }
 
         enemyHealth.DamageEnemy(damage);
+
+        Destroy(gameObject);
 
         //hit enemy -> deal Damage 
     }

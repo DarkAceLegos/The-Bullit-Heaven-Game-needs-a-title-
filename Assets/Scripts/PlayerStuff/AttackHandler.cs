@@ -23,11 +23,13 @@ public class AttackHandler : NetworkBehaviour
     {
         //attackList = Player.LoaclInstance.playerMetas.allAttacksPlayerUnlocked; //caution will need to change to fix if some players have different unlocked attacks
 
-        foreach (string attackId in Player.LoaclInstance.playerMetas.allAttacksPlayerUnlocked)
+        attackList = Player.LoaclInstance.GetAllPlayerUnlockedAttacks();
+
+        /*foreach (string attackId in Player.LoaclInstance.GetAllPlayerUnlockedAttacks())
         {
             GameManager.Instance.allAttacks.TryGetValue(attackId, out AttackData attack);
             attackList.Add(attack);
-        }
+        }*/
 
         enabled = IsOwner;
 

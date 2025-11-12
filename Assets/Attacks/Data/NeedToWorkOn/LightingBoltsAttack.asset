@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a20c31a73d41d8448953ece551d2fff3, type: 3}
   m_Name: LightingBoltsAttack
   m_EditorClassIdentifier: 
-  attackId: 6
+  attackId: 8
   attackName: Lightning Bolts
   levelDiscriptions:
   - Random Lightning Bolts

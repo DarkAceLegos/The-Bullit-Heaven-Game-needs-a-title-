@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a20c31a73d41d8448953ece551d2fff3, type: 3}
   m_Name: DirectionAttack
   m_EditorClassIdentifier: 
-  attackId: 5
+  attackId: 7
   attackName: Directional Attack
   levelDiscriptions:
   - Directional Attack

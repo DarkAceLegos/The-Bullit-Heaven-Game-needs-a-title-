@@ -3507,6 +3507,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3cf6efa18165fb942b827426a769bed4, type: 2}
   - {fileID: 11400000, guid: cdb35b85e414ec444a26bbcde2a7eac5, type: 2}
   - {fileID: 11400000, guid: fdcbe60c278ac864daeb17d35557fb89, type: 2}
+  - {fileID: 11400000, guid: 2597a265c201953408ef2386a948d6f4, type: 2}
+  - {fileID: 11400000, guid: 8b9110ca58c32a846a7e1dbd7487a56d, type: 2}
+  - {fileID: 11400000, guid: 42f18dd24c5940844a56f2fbaa0e52b8, type: 2}
+  - {fileID: 11400000, guid: 3c5411551169ed04baca807487b5b0d7, type: 2}
+  - {fileID: 11400000, guid: 7f56c2398dc436a498218e208cd23f72, type: 2}
+  - {fileID: 11400000, guid: c9becc329c35a764888c1affa513ad58, type: 2}
+  - {fileID: 11400000, guid: 99685ca685bffcd49a2c68d4a9d6e702, type: 2}
+  - {fileID: 11400000, guid: b29186ef58b78954d8e62073b180e808, type: 2}
   deathTime: 1800
   spawnedEnemies: []
 --- !u!4 &797258132

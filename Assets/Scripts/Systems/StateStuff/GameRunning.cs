@@ -17,6 +17,9 @@ public class GameRunning : GameBaseState
 
         PlayerHealth.onPlayerDied += OnPlayerDeid;
         LevelManager.Instance.OnLevelChange += LevelManager_OnLevelChange;
+
+        LevelManager.Instance.AddExpRpc(0);
+        Debug.Log("Adding 0 exp");
     }
 
     private void OnPlayerDeid(ulong playerId)

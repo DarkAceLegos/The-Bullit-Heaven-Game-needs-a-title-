@@ -23,14 +23,20 @@ public class MelleAttack : Attack
 
         ulong playerId = player.OwnerClientId;
 
+        player.TryGetComponent<Player>(out Player player1);
+
         if (lastCast + levelData.cooldown > Time.time) { return; }
         lastCast = Time.time;
 
-        for(int i = 0; i < levelData.projCount; i++)
-        {
-            //var direction = Random.insideUnitCircle;
+        Vector3 Offset = player1.direction;
+
+        for (int i = 0; i < levelData.projCount; i++)
+        { 
+            var rotation = Random.rotation;
+            //if(player1.direction == Vector2(transform.up) || player1.direction == transform.down)
+
             //direction.Normalize();
-            var proj1 = Instantiate(proj, player.transform.position , Quaternion.identity);
+            var proj1 = Instantiate(proj, player.transform.position + Offset, Quaternion.identity);
             proj1.GetComponent<NetworkObject>().Spawn(true);
             proj1.Initialize(playerId, levelData.damage, levelData.speed);//*/
         }

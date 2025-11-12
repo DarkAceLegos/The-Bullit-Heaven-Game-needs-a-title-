@@ -12,10 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a20c31a73d41d8448953ece551d2fff3, type: 3}
   m_Name: ShootClosesEnemyAttack
   m_EditorClassIdentifier: 
-  attackId: 9
+  attackId: 11
   attackName: Shoot Closes Enemy
   levelDiscriptions:
   - Shoot Closest Enemy
+  - Damage
+  - Speed
+  - Proj Count
+  - Cooldown
+  - Damage
+  - Proj Count
+  - Speed
+  - Cooldown
+  - Proj Count
   icon: {fileID: 7482667652216324306, guid: 531a585b3dd5f4f46bd8e7c174c1025f, type: 3}
   prefab: {fileID: 8117668075675376311, guid: caa517594df8c2644a02eeaa89d74919, type: 3}
   levels:
@@ -23,3 +32,39 @@ MonoBehaviour:
     damage: 5
     cooldown: 1
     speed: 1
+  - projCount: 1
+    damage: 10
+    cooldown: 1
+    speed: 1
+  - projCount: 1
+    damage: 10
+    cooldown: 1
+    speed: 1.25
+  - projCount: 2
+    damage: 10
+    cooldown: 1
+    speed: 1.25
+  - projCount: 2
+    damage: 10
+    cooldown: 0.7
+    speed: 1.25
+  - projCount: 2
+    damage: 15
+    cooldown: 0.7
+    speed: 1.25
+  - projCount: 3
+    damage: 15
+    cooldown: 0.7
+    speed: 1.25
+  - projCount: 3
+    damage: 15
+    cooldown: 0.7
+    speed: 1.5
+  - projCount: 3
+    damage: 15
+    cooldown: 0.5
+    speed: 1.5
+  - projCount: 4
+    damage: 15
+    cooldown: 0.5
+    speed: 1.5

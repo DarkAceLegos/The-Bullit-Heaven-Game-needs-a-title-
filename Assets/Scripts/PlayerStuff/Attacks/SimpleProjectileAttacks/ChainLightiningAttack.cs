@@ -55,14 +55,14 @@ public class ChainLightiningAttack : Attack
 
         if (enemyHealths.Contains(enemyHealth)) { return; }
 
-        Debug.Log("adding a enemy to the list");
+        //Debug.Log("adding a enemy to the list");
 
         enemyHealths.Add(enemyHealth);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("collision exit");
+        //Debug.Log("collision exit");
         if (!collision.transform.TryGetComponent(out EnemyHealth enemyHealth)) //|| !enemyHealth.IsOwner)
         { Debug.Log("returned"); return; }
         //collision.transform.TryGetComponent(out EnemyHealth enemyHealth);

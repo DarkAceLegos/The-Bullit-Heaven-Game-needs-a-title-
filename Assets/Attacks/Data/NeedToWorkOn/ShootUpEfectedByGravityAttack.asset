@@ -12,14 +12,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a20c31a73d41d8448953ece551d2fff3, type: 3}
   m_Name: ShootUpEfectedByGravityAttack
   m_EditorClassIdentifier: 
-  attackId: 10
+  attackId: 12
   attackName: Up Attack Effected by Gravity
   levelDiscriptions:
   - Up Attack Effected by Gravity
+  - Proj Count
+  - Proj Count
+  - Cooldown
+  - Speed
+  - Damage
+  - Proj Count
+  - Cooldown
+  - Speed
+  - Proj Count
   icon: {fileID: 7482667652216324306, guid: 531a585b3dd5f4f46bd8e7c174c1025f, type: 3}
   prefab: {fileID: -639180067331131114, guid: bad06278b80f8774987830fbf4e20517, type: 3}
   levels:
   - projCount: 1
     damage: 10
     cooldown: 1
-    speed: 2
+    speed: 5
+  - projCount: 2
+    damage: 10
+    cooldown: 1
+    speed: 5
+  - projCount: 3
+    damage: 10
+    cooldown: 1
+    speed: 5
+  - projCount: 3
+    damage: 10
+    cooldown: 0.75
+    speed: 5
+  - projCount: 3
+    damage: 10
+    cooldown: 0.75
+    speed: 6
+  - projCount: 3
+    damage: 20
+    cooldown: 0.75
+    speed: 6
+  - projCount: 4
+    damage: 20
+    cooldown: 0.75
+    speed: 6
+  - projCount: 4
+    damage: 20
+    cooldown: 0.5
+    speed: 6
+  - projCount: 4
+    damage: 20
+    cooldown: 0.5
+    speed: 7
+  - projCount: 5
+    damage: 20
+    cooldown: 0.5
+    speed: 7

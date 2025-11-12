@@ -28,9 +28,12 @@ public class BouncingProjAttack : Attack
 
         for(int i = 0; i < levelData.projCount; i++)
         {
-            var direction = Random.insideUnitCircle;
-            direction.Normalize();
-            var proj1 = Instantiate(proj, player.transform.position , Quaternion.identity);
+            var direction = Random.rotation;
+            direction.x = 0;
+            direction.y = 0;
+            //Debug.Log(direction);
+            direction.Normalize();//*/
+            var proj1 = Instantiate(proj, player.transform.position, direction);
             proj1.GetComponent<NetworkObject>().Spawn(true);
             proj1.Initialize(playerId, levelData.damage, levelData.speed);//*/
         }

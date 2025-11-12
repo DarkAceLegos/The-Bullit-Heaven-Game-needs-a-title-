@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -10,6 +12,10 @@ public class ChainLightingProj : NetworkBehaviour
     [SerializeField] private Rigidbody2D rb;
 
     [SerializeField] private float lifeTime;
+
+    [SerializeField] private AttackRange attackRange;
+
+    [SerializeField] private List<EnemyHealth> enemyHealths;
 
     private void Awake()
     {
@@ -26,16 +32,13 @@ public class ChainLightingProj : NetworkBehaviour
     {
         //Debug.Log("I initialized");
 
-        //Debug.Log(Player.LoaclInstance);
-
         PlayerHealth._allPlayers[playerId].TryGetComponent<Player>(out var player);
 
-        //Debug.Log(playerMetaProgression);
-
         damage = (float)((damage1 + player.additiveDamageModifier) * player.percentageDamageModifier);
-        speed = speed1;
-        duration = duration1;
-        rb.linearVelocity = Random.insideUnitCircle * speed;
+        speed = (speed1 + (speed1 * player.additiveProjectileSpeed)) * player.percentageProjectileSpeed;
+        duration = (duration1 + (duration1 * player.additiveDuration)) * player.percentageDuration;
+
+        rb.linearVelocity = speed * transform.up;
     }
 
     private void Update()
@@ -58,7 +61,25 @@ public class ChainLightingProj : NetworkBehaviour
         if (!collision.transform.TryGetComponent(out EnemyHealth enemyHealth)) //|| !enemyHealth.IsOwner)
         { return; }
 
+        this.GetComponent<CircleCollider2D>().radius = .5f;
+
+        //attackRange.ExpandRadius();
+
+        if (enemyHealths.Contains(enemyHealth)) {  return; }
+
+        enemyHealths.Add(enemyHealth);
+
+        transform.position = collision.transform.position;
+
+        //attackRange.GetComponent<CircleCollider2D>().radius = 0.0001f;
+
+        //if(collision. == attackRange.gameObject) { Debug.Log("Returned due to attack range collition"); return; }
+
         enemyHealth.DamageEnemy(damage);
+
+        this.GetComponent<CircleCollider2D>().radius = 1.5f;
+
+        //transform.position = attackRange.GetClosetEnemy();
 
         //hit enemy -> deal Damage 
     }
