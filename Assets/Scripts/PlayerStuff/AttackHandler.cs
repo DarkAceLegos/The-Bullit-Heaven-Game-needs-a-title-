@@ -25,11 +25,26 @@ public class AttackHandler : NetworkBehaviour
 
         attackList = Player.LoaclInstance.GetAllPlayerUnlockedAttacks();
 
-        /*foreach (string attackId in Player.LoaclInstance.GetAllPlayerUnlockedAttacks())
+        List<AttackData> firstAttack = new List<AttackData>();
+        firstAttack.Add(Player.LoaclInstance.GetAllPlayerUnlockedAttacks()[0]);
+
+        initialAttacks = firstAttack;
+
+        //attackList.Add(Player.LoaclInstance.GetPlayerNoOtherAttacks()[0]);
+        /*bool firstRun = true;
+        foreach (AttackData attackId in Player.LoaclInstance.GetAllPlayerUnlockedAttacks())
         {
-            GameManager.Instance.allAttacks.TryGetValue(attackId, out AttackData attack);
+            GameManager.Instance.allAttacks.TryGetValue(attackId.GetInstanceID().ToString(), out AttackData attack);
+
+            if (firstRun)
+            { 
+                initialAttacks.Clear();
+                initialAttacks.Add(attackId); 
+                firstRun = false;
+            }
+
             attackList.Add(attack);
-        }*/
+        }//*/
 
         enabled = IsOwner;
 

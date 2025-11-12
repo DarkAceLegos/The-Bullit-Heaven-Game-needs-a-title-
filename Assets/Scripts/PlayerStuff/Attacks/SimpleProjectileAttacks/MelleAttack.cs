@@ -32,11 +32,16 @@ public class MelleAttack : Attack
 
         for (int i = 0; i < levelData.projCount; i++)
         { 
-            var rotation = Random.rotation;
-            //if(player1.direction == Vector2(transform.up) || player1.direction == transform.down)
+            var rotation = Quaternion.identity;
+            rotation.x = 0;
+            rotation.y = 0;
+            if(player1.direction == Vector2.up || player1.direction == Vector2.down)
+            { rotation.z = 0; }
+            else if(player1.direction == Vector2.left || player1.direction == Vector2.right) 
+            { rotation.z = 1; }
 
             //direction.Normalize();
-            var proj1 = Instantiate(proj, player.transform.position + Offset, Quaternion.identity);
+            var proj1 = Instantiate(proj, player.transform.position + Offset, rotation);
             proj1.GetComponent<NetworkObject>().Spawn(true);
             proj1.Initialize(playerId, levelData.damage, levelData.speed);//*/
         }
