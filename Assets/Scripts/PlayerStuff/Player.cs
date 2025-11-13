@@ -1,13 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using Unity.Cinemachine;
 using Unity.Netcode;
-using Unity.Services.Lobbies.Models;
-using Unity.Services.Matchmaker.Models;
-using UnityEditor.Rendering;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class Player : NetworkBehaviour
