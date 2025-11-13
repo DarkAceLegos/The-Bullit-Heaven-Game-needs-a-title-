@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Netcode;
-using Unity.Services.Authentication;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class PlayerHealth : NetworkBehaviour
