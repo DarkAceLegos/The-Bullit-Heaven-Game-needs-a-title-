@@ -49,5 +49,6 @@ public class BaseMetaButton : MonoBehaviour, IPointerClickHandler
     {
         statText.text = PlayerMetaProgression.Instance.GetAmontOfStat(statId).ToString();
         costText.text = "Cost: " + cost.ToString();
+        CoinsTextUi.Instance.UpdateVisual();
     }
 }

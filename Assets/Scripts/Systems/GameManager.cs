@@ -49,6 +49,8 @@ public class GameManager : NetworkBehaviour
 
     private void Start()
     {
+        Debug.Log("Game Maniger Start.");
+
         EnemyHealth.onEnemyKilled += OnEnemyKilled; //move to game manager
         Player.OnAnyPlayerSpawned += Player_OnAnyPlayerSpawned;
         GameInputs.Instance.OnPauseAction += GameInputs_OnPauseAction;

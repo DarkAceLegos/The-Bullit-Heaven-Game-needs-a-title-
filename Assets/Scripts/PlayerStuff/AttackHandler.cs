@@ -21,25 +21,32 @@ public class AttackHandler : NetworkBehaviour
     // Need to keep watch of this to see if it is corect
     public override void OnNetworkSpawn()
     {
+        Debug.Log("Attack Handler On Network Spawn.");
+
         //attackList = Player.LoaclInstance.playerMetas.allAttacksPlayerUnlocked; //caution will need to change to fix if some players have different unlocked attacks
 
-        attackList = Player.LoaclInstance.GetAllPlayerUnlockedAttacks();
+        //attackList = Player.LoaclInstance.GetAllPlayerUnlockedAttacks();
 
-        List<AttackData> firstAttack = new List<AttackData>();
-        firstAttack.Add(Player.LoaclInstance.GetAllPlayerUnlockedAttacks()[0]);
+        //List<AttackData> firstAttack = new List<AttackData>();
+        //firstAttack.Add(Player.LoaclInstance.GetAllPlayerUnlockedAttacks()[0]);
 
-        initialAttacks = firstAttack;
+        //initialAttacks = firstAttack;
 
         //attackList.Add(Player.LoaclInstance.GetPlayerNoOtherAttacks()[0]);
-        /*bool firstRun = true;
-        foreach (AttackData attackId in Player.LoaclInstance.GetAllPlayerUnlockedAttacks())
+        bool firstRun = true;
+        foreach ( var attackId in Player.LoaclInstance.playerMetas.allAttacksPlayerUnlocked)
         {
-            GameManager.Instance.allAttacks.TryGetValue(attackId.GetInstanceID().ToString(), out AttackData attack);
+            //Debug.Log(attackId);
+
+            GameManager.Instance.allAttacks.TryGetValue(attackId, out AttackData attack);
+
+            //Debug.Log(GameManager.Instance.allAttacks["4"]);
+            //Debug.Log(attack);
 
             if (firstRun)
             { 
                 initialAttacks.Clear();
-                initialAttacks.Add(attackId); 
+                initialAttacks.Add(attack); 
                 firstRun = false;
             }
 

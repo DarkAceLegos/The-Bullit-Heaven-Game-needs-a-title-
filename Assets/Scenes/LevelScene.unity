@@ -3500,7 +3500,7 @@ MonoBehaviour:
   - {fileID: 2098208890}
   - {fileID: 17341135}
   - {fileID: 1435160574}
-  spawnInterval: 5
+  spawnInterval: 1
   maxEnemies: 50
   playerPrefab: {fileID: 5004031360651103394, guid: 7e21efb47cb46324a8346bc068eaa3e3, type: 3}
   allAttackData:

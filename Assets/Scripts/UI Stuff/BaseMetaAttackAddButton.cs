@@ -46,6 +46,8 @@ public class BaseMetaAttackAddButton : MonoBehaviour, IPointerClickHandler
 
     private void updateVisuals()
     {
+        CoinsTextUi.Instance.UpdateVisual();
+
         if (PlayerMetaProgression.Instance.allAttacksPlayerUnlocked.Contains(attackData.attackId))
         {
             GetComponent<Image>().color = Color.red;
