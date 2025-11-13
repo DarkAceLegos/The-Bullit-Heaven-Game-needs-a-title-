@@ -23,10 +23,12 @@ public class BouncingProjAttack : Attack
 
         ulong playerId = player.OwnerClientId;
 
+        PlayerHealth._allPlayers[playerId].TryGetComponent<Player>(out var player1);
+
         if (lastCast + levelData.cooldown > Time.time) { return; }
         lastCast = Time.time;
 
-        for(int i = 0; i < levelData.projCount; i++)
+        for(int i = 0; i < ((levelData.projCount + player1.additiveProjectileModifier) * player1.percentageProjectileSpeed); i++)
         {
             var direction = Random.rotation;
             direction.x = 0;

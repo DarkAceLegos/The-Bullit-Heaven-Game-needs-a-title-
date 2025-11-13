@@ -15,7 +15,7 @@ public class EnemyHealth : NetworkBehaviour
 
     private void Awake()
     {
-        maxHealth = 10 * LevelManager.Instance.level;
+        maxHealth = maxHealth * LevelManager.Instance.level * NetworkManager.ConnectedClients.Count;
         currentHeath = maxHealth;
     }
 
@@ -39,13 +39,8 @@ public class EnemyHealth : NetworkBehaviour
     {
         onEnemyKilled?.Invoke(this);
         //Debug.Log($"you got some exp {experience} to the level manager {LevelManager.Instance}");
-       
+        LevelManager.Instance.AddExpRpc((experience + Player.LoaclInstance.additiveExperience) * Player.LoaclInstance.percentageExperience);
         //PlayerMetaProgression.Instance.ChangeCoinAmount(coinsOnKill);
         Destroy(gameObject);
-    }
-
-    private void OnDestroy()
-    {
-        LevelManager.Instance.AddExpRpc((experience + Player.LoaclInstance.additiveExperience) * Player.LoaclInstance.percentageExperience);
     }
 }

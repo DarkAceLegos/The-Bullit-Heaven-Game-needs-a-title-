@@ -77,6 +77,13 @@ public class GameManager : NetworkBehaviour
     {
         Debug.Log("Spawning players");
 
+        Invoke("SpawnPlayes", 0.1f);
+
+        
+    }
+
+    private void SpawnPlayes()
+    {
         foreach (ulong clientId in NetworkManager.Singleton.ConnectedClientsIds)
         {
             Transform playerTransform = Instantiate(playerPrefab);

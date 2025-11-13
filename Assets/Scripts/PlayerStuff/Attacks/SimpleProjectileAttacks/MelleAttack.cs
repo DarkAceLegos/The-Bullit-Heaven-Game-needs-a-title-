@@ -30,18 +30,23 @@ public class MelleAttack : Attack
 
         Vector3 Offset = player1.direction;
 
-        for (int i = 0; i < levelData.projCount; i++)
+        for (int i = 0; i < ((levelData.projCount + player1.additiveProjectileModifier) * player1.percentageProjectileSpeed); i++)
         { 
             var rotation = Quaternion.identity;
+            Vector3 direction = Vector3.zero;
             rotation.x = 0;
             rotation.y = 0;
-            if(player1.direction == Vector2.up || player1.direction == Vector2.down)
-            { rotation.z = 0; }
-            else if(player1.direction == Vector2.left || player1.direction == Vector2.right) 
-            { rotation.z = 1; }
-
+            if(player1.direction == Vector2.up )
+            { rotation.z = 0; direction = Vector3.up; }
+            else if (player1.direction == Vector2.down)
+            { rotation.z = 0; direction = Vector3.down; }
+            else if(player1.direction == Vector2.left ) 
+            { rotation.z = 1; direction = Vector3.left; }
+            else if (player1.direction == Vector2.right)
+            { rotation.z = 1; direction = Vector3.right; }
+        
             //direction.Normalize();
-            var proj1 = Instantiate(proj, player.transform.position + Offset, rotation);
+            var proj1 = Instantiate(proj, (player.transform.position + Offset) + (i * (direction)), rotation);
             proj1.GetComponent<NetworkObject>().Spawn(true);
             proj1.Initialize(playerId, levelData.damage, levelData.speed);//*/
         }

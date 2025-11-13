@@ -21,6 +21,6 @@ public class EnemyAttack_Melee : NetworkBehaviour
         //Debug.Log("attacking");
 
         lastAttackTime = Time.time;
-        playerHealth.changeHealth(-damage);
+        playerHealth.changeHealth((int)((-damage * Time.time) * playerHealth.GetComponent<Player>().enemyDamageModifier)); // need to check
     }
 }

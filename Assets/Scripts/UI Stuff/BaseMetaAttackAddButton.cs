@@ -50,7 +50,7 @@ public class BaseMetaAttackAddButton : MonoBehaviour, IPointerClickHandler
 
         if (PlayerMetaProgression.Instance.allAttacksPlayerUnlocked.Contains(attackData.attackId))
         {
-            GetComponent<Image>().color = Color.red;
+            GetComponent<Image>().color = Color.green;
         }
         else { GetComponent<Image>().color = Color.white; }
     }

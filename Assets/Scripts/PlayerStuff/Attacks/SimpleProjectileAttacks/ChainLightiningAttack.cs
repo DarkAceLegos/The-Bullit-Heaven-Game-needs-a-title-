@@ -29,6 +29,8 @@ public class ChainLightiningAttack : Attack
 
         ulong playerId = player.OwnerClientId;
 
+        PlayerHealth._allPlayers[playerId].TryGetComponent<Player>(out var player1);
+
         if (enemyHealths.Count == 0)
         {
             return;
@@ -37,7 +39,7 @@ public class ChainLightiningAttack : Attack
         if (lastCast + levelData.cooldown > Time.time) { return; }
         lastCast = Time.time;
 
-        for (int i = 0; i < levelData.projCount; i++)
+        for (int i = 0; i < ((levelData.projCount + player1.additiveProjectileModifier) * player1.percentageProjectileSpeed); i++)
         {
             var direction = GetClosetEnemy();//.normalized; //Vector2.Distance(enemyHealths[0].transform.position ,transform.position); //Random.insideUnitCircle;
             //Debug.Log(direction);

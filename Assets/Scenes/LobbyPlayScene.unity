@@ -238,6 +238,10 @@ PrefabInstance:
       value: BaseMetaButton (14)
       objectReference: {fileID: 0}
     - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
+      propertyPath: cost
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: statId
       value: 14
       objectReference: {fileID: 0}
@@ -346,6 +350,10 @@ PrefabInstance:
     - target: {fileID: 836150945367389498, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: m_Name
       value: BaseMetaButton (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
+      propertyPath: cost
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: statId
@@ -458,6 +466,10 @@ PrefabInstance:
       value: BaseMetaButton (13)
       objectReference: {fileID: 0}
     - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
+      propertyPath: cost
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: statId
       value: 13
       objectReference: {fileID: 0}
@@ -566,6 +578,10 @@ PrefabInstance:
     - target: {fileID: 836150945367389498, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: m_Name
       value: BaseMetaButton (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
+      propertyPath: cost
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: statId
@@ -982,6 +998,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 318564722}
     m_Modifications:
     - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
+      propertyPath: cost
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
       propertyPath: attackData
       value: 
       objectReference: {fileID: 11400000, guid: 42f18dd24c5940844a56f2fbaa0e52b8, type: 2}
@@ -1313,6 +1333,10 @@ PrefabInstance:
     - target: {fileID: 836150945367389498, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: m_Name
       value: BaseMetaButton (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
+      propertyPath: cost
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: statId
@@ -1719,6 +1743,10 @@ PrefabInstance:
       value: BaseMetaButton (20)
       objectReference: {fileID: 0}
     - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
+      propertyPath: cost
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: statId
       value: 20
       objectReference: {fileID: 0}
@@ -1902,6 +1930,10 @@ PrefabInstance:
     - target: {fileID: 836150945367389498, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: m_Name
       value: BaseMetaButton (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
+      propertyPath: cost
+      value: 6000
       objectReference: {fileID: 0}
     - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: statId
@@ -2311,6 +2343,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 318564722}
     m_Modifications:
+    - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
+      propertyPath: cost
+      value: 5000
+      objectReference: {fileID: 0}
     - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
       propertyPath: attackData
       value: 
@@ -2826,6 +2862,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 318564722}
     m_Modifications:
     - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
+      propertyPath: cost
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
       propertyPath: attackData
       value: 
       objectReference: {fileID: 11400000, guid: c9becc329c35a764888c1affa513ad58, type: 2}
@@ -2934,6 +2974,10 @@ PrefabInstance:
     - target: {fileID: 836150945367389498, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: m_Name
       value: BaseMetaButton (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
+      propertyPath: cost
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: statId
@@ -3379,6 +3423,10 @@ PrefabInstance:
       value: BaseMetaButton (6)
       objectReference: {fileID: 0}
     - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
+      propertyPath: cost
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: statId
       value: 6
       objectReference: {fileID: 0}
@@ -3776,6 +3824,10 @@ PrefabInstance:
       value: BaseMetaButton (15)
       objectReference: {fileID: 0}
     - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
+      propertyPath: cost
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: statId
       value: 15
       objectReference: {fileID: 0}
@@ -3990,6 +4042,10 @@ PrefabInstance:
     - target: {fileID: 836150945367389498, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: m_Name
       value: BaseMetaButton (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
+      propertyPath: cost
+      value: 50000
       objectReference: {fileID: 0}
     - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: statId
@@ -4271,6 +4327,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 318564722}
     m_Modifications:
     - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
+      propertyPath: cost
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
       propertyPath: attackData
       value: 
       objectReference: {fileID: 11400000, guid: 7f56c2398dc436a498218e208cd23f72, type: 2}
@@ -4379,6 +4439,10 @@ PrefabInstance:
     - target: {fileID: 836150945367389498, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: m_Name
       value: BaseMetaButton (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
+      propertyPath: cost
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: statId
@@ -4744,6 +4808,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 318564722}
     m_Modifications:
     - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
+      propertyPath: cost
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
       propertyPath: attackData
       value: 
       objectReference: {fileID: 11400000, guid: 3c5411551169ed04baca807487b5b0d7, type: 2}
@@ -4854,12 +4922,16 @@ PrefabInstance:
       value: BaseMetaButton (9)
       objectReference: {fileID: 0}
     - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
+      propertyPath: cost
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: statId
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: changeAmount
-      value: 0.1
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 9056143315580413907, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: m_Pivot.x
@@ -5041,6 +5113,10 @@ PrefabInstance:
     - target: {fileID: 836150945367389498, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: m_Name
       value: BaseMetaButton (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
+      propertyPath: cost
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: statId
@@ -5259,6 +5335,10 @@ PrefabInstance:
       value: BaseMetaButton (2)
       objectReference: {fileID: 0}
     - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
+      propertyPath: cost
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: statId
       value: 2
       objectReference: {fileID: 0}
@@ -5444,6 +5524,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 318564722}
     m_Modifications:
     - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
+      propertyPath: cost
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
       propertyPath: attackData
       value: 
       objectReference: {fileID: 11400000, guid: b29186ef58b78954d8e62073b180e808, type: 2}
@@ -5552,6 +5636,10 @@ PrefabInstance:
     - target: {fileID: 836150945367389498, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: m_Name
       value: BaseMetaButton (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
+      propertyPath: cost
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: statId
@@ -5800,6 +5888,10 @@ PrefabInstance:
       value: BaseMetaButton (12)
       objectReference: {fileID: 0}
     - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
+      propertyPath: cost
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: statId
       value: 12
       objectReference: {fileID: 0}
@@ -5910,6 +6002,10 @@ PrefabInstance:
       value: BaseMetaButton (19)
       objectReference: {fileID: 0}
     - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
+      propertyPath: cost
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: statId
       value: 19
       objectReference: {fileID: 0}
@@ -6015,6 +6111,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 318564722}
     m_Modifications:
+    - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
+      propertyPath: cost
+      value: 5000
+      objectReference: {fileID: 0}
     - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
       propertyPath: attackData
       value: 
@@ -6126,6 +6226,10 @@ PrefabInstance:
       value: BaseMetaButton (1)
       objectReference: {fileID: 0}
     - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
+      propertyPath: cost
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: statId
       value: 1
       objectReference: {fileID: 0}
@@ -6231,6 +6335,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 318564722}
     m_Modifications:
+    - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
+      propertyPath: cost
+      value: 5000
+      objectReference: {fileID: 0}
     - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
       propertyPath: attackData
       value: 
@@ -6446,6 +6554,10 @@ PrefabInstance:
     - target: {fileID: 836150945367389498, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: m_Name
       value: BaseMetaButton (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
+      propertyPath: cost
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: statId
@@ -6971,6 +7083,10 @@ PrefabInstance:
       value: BaseMetaButton (17)
       objectReference: {fileID: 0}
     - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
+      propertyPath: cost
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366030892434956551, guid: 4efcfd53bf4af1f45b041e2498d51b0c, type: 3}
       propertyPath: statId
       value: 17
       objectReference: {fileID: 0}
@@ -7376,6 +7492,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 318564722}
     m_Modifications:
     - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
+      propertyPath: cost
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
       propertyPath: attackData
       value: 
       objectReference: {fileID: 11400000, guid: cdb35b85e414ec444a26bbcde2a7eac5, type: 2}
@@ -7754,6 +7874,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 318564722}
     m_Modifications:
     - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
+      propertyPath: cost
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
       propertyPath: attackData
       value: 
       objectReference: {fileID: 11400000, guid: 2597a265c201953408ef2386a948d6f4, type: 2}
@@ -7909,6 +8033,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 318564722}
     m_Modifications:
+    - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
+      propertyPath: cost
+      value: 5000
+      objectReference: {fileID: 0}
     - target: {fileID: -2847161606795140524, guid: 24051da8e9b475e4d83d3f62c7725e3e, type: 3}
       propertyPath: attackData
       value: 

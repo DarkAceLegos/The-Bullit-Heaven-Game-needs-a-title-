@@ -72,6 +72,6 @@ public class AOEProjectile : NetworkBehaviour
         if (!collision.transform.TryGetComponent(out EnemyHealth enemyHealth)) //|| !enemyHealth.IsOwner)
         { return; }
 
-
+        enemyHealth.DamageEnemy(damage);
     }
 }
