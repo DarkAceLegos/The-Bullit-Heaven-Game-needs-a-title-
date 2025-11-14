@@ -26,7 +26,7 @@ public class MainMenuUi : MonoBehaviour
         });
         optionButton.onClick.AddListener(() =>
         {
-
+            OptionsUI.Instance.Show();
         });
 
         Time.timeScale = 1.0f;

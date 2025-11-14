@@ -1,6 +1,8 @@
 using System;
 using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class OptionsUI : MonoBehaviour
@@ -60,7 +62,8 @@ public class OptionsUI : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.OnGameUnpaused += GameManager_OnGameUnpaused;
+        if (SceneManager.GetActiveScene().name == Loader.Scene.LevelScene.ToString())
+        { GameManager.Instance.OnGameUnpaused += GameManager_OnGameUnpaused; }
 
         //UpdateVisual();
 
