@@ -507,8 +507,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playButton: {fileID: 708991831}
   playButtonMulti: {fileID: 2089271398}
-  quitButton: {fileID: 1203883576}
-  optionButton: {fileID: 1988849669}
+  quitButton: {fileID: 1988849669}
+  optionButton: {fileID: 1203883576}
 --- !u!1 &547863255
 GameObject:
   m_ObjectHideFlags: 0
