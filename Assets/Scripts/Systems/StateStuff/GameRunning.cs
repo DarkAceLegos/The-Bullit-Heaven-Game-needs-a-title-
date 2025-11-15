@@ -54,7 +54,7 @@ public class GameRunning : GameBaseState
 
     public override void UpdateState(GameStateManager gameState)
     {
-        if (Time.time == GameManager.Instance.deathTime)
+        if (Time.timeSinceLevelLoad >= GameManager.Instance.deathTime)
         {
             _gameStateManager?.SwitchState(_gameStateManager.GameLost);
         }
