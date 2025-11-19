@@ -163,5 +163,9 @@ public class PlayerHealth : NetworkBehaviour
     public override void OnDestroy()
     {
         Player.OnAnyPlayerSpawned -= Player_OnAnyPlayerSpawned;
+        if (IsOwner)
+        {
+            Clear();
+        }
     }
 }

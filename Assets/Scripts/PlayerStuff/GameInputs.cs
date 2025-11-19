@@ -10,16 +10,23 @@ public class GameInputs : MonoBehaviour
 
     private InputAction pauseAction;
     private InputAction interactAction;
+    private InputAction moveAction;
 
     public enum Binding
     {
         Interact,
-        Pause
+        Pause,
+        Up,
+        Down,
+        Left,
+        Right
     }
 
     private void Awake()
     {
         Instance = this;
+
+        moveAction = InputSystem.actions.FindAction("Move");//
 
         pauseAction = InputSystem.actions.FindAction("Pause");
 
@@ -28,6 +35,11 @@ public class GameInputs : MonoBehaviour
         pauseAction.performed += pauseAction_Performed;
 
         //Debug.Log(GetBindingText(Binding.Pause));
+    }
+
+    public Vector2 GetMovmentVectorNormilzed()
+    {
+        return moveAction.ReadValue<Vector2>().normalized;
     }
 
     private void pauseAction_Performed(InputAction.CallbackContext context)
@@ -40,6 +52,8 @@ public class GameInputs : MonoBehaviour
         pauseAction.performed -= pauseAction_Performed;
 
         pauseAction.Dispose();
+        interactAction.Dispose(); 
+        moveAction.Dispose();
     }
 
     public string GetBindingText(Binding binding)
@@ -51,6 +65,14 @@ public class GameInputs : MonoBehaviour
                return pauseAction.GetBindingDisplayString();
             case Binding.Interact:
                 return interactAction.GetBindingDisplayString();
+            case Binding.Up:
+                return moveAction.GetBindingDisplayString(2);
+            case Binding.Down:
+                return moveAction.GetBindingDisplayString(4);
+            case Binding.Left:
+                return moveAction.GetBindingDisplayString(6);
+            case Binding.Right:
+                return moveAction.GetBindingDisplayString(8);
 
         }
     }
@@ -72,6 +94,22 @@ public class GameInputs : MonoBehaviour
             case Binding.Interact:
                 inputAction = interactAction;
                 bindingIndex = 0;
+                break;
+            case Binding.Up:
+                inputAction = moveAction;
+                bindingIndex = 2;
+                break;
+            case Binding.Down:
+                inputAction = moveAction;
+                bindingIndex = 4;
+                break;
+            case Binding.Left:
+                inputAction = moveAction;
+                bindingIndex = 6;
+                break;
+            case Binding.Right:
+                inputAction = moveAction;
+                bindingIndex = 8;
                 break;
         }
 

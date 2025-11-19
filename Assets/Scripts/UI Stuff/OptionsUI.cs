@@ -53,10 +53,10 @@ public class OptionsUI : MonoBehaviour
             RebindBinding(GameInputs.Binding.Pause);
         });
         interactButtom.onClick.AddListener(() => { RebindBinding(GameInputs.Binding.Interact); });
-        moveUpButtom.onClick.AddListener(() => { PlayerMoveRebindBinding(Player.Binding.Up); });
-        moveDownButtom.onClick.AddListener(() => { PlayerMoveRebindBinding(Player.Binding.Down); });
-        moveRightButtom.onClick.AddListener(() => { PlayerMoveRebindBinding(Player.Binding.Right); });
-        moveLeftButtom.onClick.AddListener(() => { PlayerMoveRebindBinding(Player.Binding.Left); });
+        moveUpButtom.onClick.AddListener(() => { RebindBinding(GameInputs.Binding.Up); });
+        moveDownButtom.onClick.AddListener(() => { RebindBinding(GameInputs.Binding.Down); });
+        moveRightButtom.onClick.AddListener(() => { RebindBinding(GameInputs.Binding.Right); });
+        moveLeftButtom.onClick.AddListener(() => { RebindBinding(GameInputs.Binding.Left); });
     }
 
     private void Start()
@@ -81,10 +81,10 @@ public class OptionsUI : MonoBehaviour
         //soundEffectsText.text = "Sound Effects: " + Mathf.Round(SoundManager.Instance.GetVolume() * 10f);
         //musicText.text = "Muisc: " + Mathf.Round(MuiscManager.Instance.GetVolume() * 10f);
 
-        moveUpText.text = Player.LoaclInstance.GetBindingText (Player.Binding.Up);
-        moveDownText.text = Player.LoaclInstance.GetBindingText (Player.Binding.Down);
-        moveRightText.text = Player.LoaclInstance.GetBindingText (Player.Binding.Right);
-        moveLeftText.text = Player.LoaclInstance.GetBindingText (Player.Binding.Left);
+        moveUpText.text = GameInputs.Instance.GetBindingText (GameInputs.Binding.Up);
+        moveDownText.text = GameInputs.Instance.GetBindingText (GameInputs.Binding.Down);
+        moveRightText.text = GameInputs.Instance.GetBindingText (GameInputs.Binding.Right);
+        moveLeftText.text = GameInputs.Instance.GetBindingText (GameInputs.Binding.Left);
         interactText.text = GameInputs.Instance.GetBindingText(GameInputs.Binding.Interact);
         pauseText.text = GameInputs.Instance.GetBindingText (GameInputs.Binding.Pause);
     }
@@ -118,7 +118,7 @@ public class OptionsUI : MonoBehaviour
         });
     }
 
-    private void PlayerMoveRebindBinding(Player.Binding binding)
+    /*private void PlayerMoveRebindBinding(Player.Binding binding)
     {
         ShowPressToRebindKey();
         Player.LoaclInstance.RebindBinding(binding, () =>
@@ -126,5 +126,5 @@ public class OptionsUI : MonoBehaviour
             HidePressToRebindKey();
             UpdateVisual();
         });
-    }
+    }*/
 }

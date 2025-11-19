@@ -46,7 +46,7 @@ public class Player : NetworkBehaviour
 
     public Vector2 direction;
 
-    InputAction moveAction;
+    //InputAction moveAction;
 
     [SerializeField] private CinemachineCamera vc;
     [SerializeField] private AudioListener listener;
@@ -61,7 +61,7 @@ public class Player : NetworkBehaviour
 
     void Start()
     {
-        moveAction = InputSystem.actions.FindAction("Move");
+        //moveAction = InputSystem.actions.FindAction("Move");//
 
         PlayerData playerData = GameMultiplayerConnectionAppoval.Instance.GetPlayerDataFromClientId(OwnerClientId);
         playerVisual.SetPlayerColor(GameMultiplayerConnectionAppoval.Instance.GetPlayerColor(playerData.colorId));
@@ -134,7 +134,7 @@ public class Player : NetworkBehaviour
         direction = Vector2.right;
     }
 
-    public enum Binding
+    public enum Binding//
     {
         Up,
         Down,
@@ -181,7 +181,7 @@ public class Player : NetworkBehaviour
 
     private void FixedUpdate()
     {
-        move();
+        move();//
     }
 
     [Rpc(SendTo.Server)]
@@ -242,7 +242,7 @@ public class Player : NetworkBehaviour
 
     private void move()
     {
-        Vector2 playerVelocity = moveAction.ReadValue<Vector2>();
+        Vector2 playerVelocity = GameInputs.Instance.GetMovmentVectorNormilzed(); //moveAction.ReadValue<Vector2>();//
 
         if (playerVelocity == Vector2.up)
         {direction = playerVelocity;}
@@ -253,9 +253,7 @@ public class Player : NetworkBehaviour
         else if (playerVelocity == Vector2.right)
         { direction = playerVelocity;}
     
-
-
-            rb.linearVelocity = new Vector2(playerVelocity.x * moveSpeed, playerVelocity.y * moveSpeed);
+        rb.linearVelocity = new Vector2(playerVelocity.x * moveSpeed, playerVelocity.y * moveSpeed);//
     }
 
     public ulong GetPlayerId()
@@ -266,10 +264,10 @@ public class Player : NetworkBehaviour
     public override void OnDestroy()
     {
         if(!IsOwner) { return; }
-        moveAction.Dispose();
+        //moveAction.Dispose();
     }
 
-    public string GetBindingText(Binding binding)
+    /*public string GetBindingText(Binding binding)
     {
         switch (binding)
         {
@@ -319,5 +317,5 @@ public class Player : NetworkBehaviour
                 onActionRebound();
 
             }).Start();
-    }
+    }*/
 }
