@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -4857588489931592126}
   - component: {fileID: 1833079431497051627}
   m_Layer: 0
-  m_Name: Basic Enemy
+  m_Name: Basic Enemy 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2960071937
+  GlobalObjectIdHash: 787675205
   InScenePlacedSourceGlobalObjectIdHash: 4190408640
   DeferredDespawnTick: 0
   Ownership: 1
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   targetPlayer: {fileID: 0}
-  moveSpeed: 2
+  moveSpeed: 1
 --- !u!114 &195525825261565176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  maxHealth: 10
+  maxHealth: 100
   experience: 1
   coinsOnKill: 1
   currentHeath: 0
@@ -328,7 +328,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

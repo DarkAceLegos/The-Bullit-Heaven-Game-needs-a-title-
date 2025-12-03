@@ -7723,6 +7723,8 @@ MonoBehaviour:
   - {fileID: 1100330648326027314, guid: d0a4e301bb2e54e4d81ace68f1dcbcc3, type: 3}
   enemies:
   - {fileID: -4533074107512873778, guid: d0a4e301bb2e54e4d81ace68f1dcbcc3, type: 3}
+  - {fileID: -4533074107512873778, guid: 732a4cac3bbe2964bb2e353a4c4320ce, type: 3}
+  - {fileID: -4533074107512873778, guid: df878aeef7a53d5489e75e71c992dc3a, type: 3}
   spawnPoints:
   - {fileID: 152104798}
   - {fileID: 2098208890}

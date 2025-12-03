@@ -15,7 +15,11 @@ public class EnemyHealth : NetworkBehaviour
 
     private void Awake()
     {
-        maxHealth = maxHealth * LevelManager.Instance.level * NetworkManager.ConnectedClients.Count;
+        if (LevelManager.Instance.level != 0)
+        {
+            maxHealth = maxHealth * LevelManager.Instance.level * NetworkManager.ConnectedClients.Count;
+        }
+        //maxHealth = maxHealth * LevelManager.Instance.level * NetworkManager.ConnectedClients.Count;
         currentHeath = maxHealth;
     }
 

@@ -24,7 +24,6 @@ public class LevelEntry : MonoBehaviour
 
     public void PickUpgrade()
     {
-
         Debug.Log(AttackHandler.LoaclInstance);
         if (AttackHandler.LoaclInstance == null) return;
 
