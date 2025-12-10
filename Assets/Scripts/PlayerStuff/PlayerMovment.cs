@@ -1,10 +1,19 @@
+using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerMovment : MonoBehaviour
+public class PlayerMovment : NetworkBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
 
+    [SerializeField] PlayerVisual playerVisual;
+
     public float moveSpeed;
+
+    private void Start()
+    {
+        PlayerData playerData = GameMultiplayerConnectionAppoval.Instance.GetPlayerDataFromClientId(OwnerClientId);
+        playerVisual.SetPlayerColor(GameMultiplayerConnectionAppoval.Instance.GetPlayerColor(playerData.colorId));
+    }
 
     private void FixedUpdate()
     {
