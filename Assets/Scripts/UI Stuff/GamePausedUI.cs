@@ -30,8 +30,14 @@ public class GamePausedUI : MonoBehaviour
     {
         GameManager.Instance.OnGamePaused += GameManager_OnGamePaused;
         GameManager.Instance.OnGameUnpaused += GameManager_OnGameUnpaused;
+        GameInputs.Instance.OnPauseAction += Instance_OnPauseAction;
 
         Hide();
+    }
+
+    private void Instance_OnPauseAction(object sender, System.EventArgs e)
+    {
+        Show();
     }
 
     private void GameManager_OnGameUnpaused(object sender, System.EventArgs e)

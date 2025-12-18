@@ -5,22 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class LobbyPlaySceneManager : NetworkBehaviour
 {
-    [SerializeField] Transform PlayerPrefabForLobbyPlayScene;
+    [SerializeField] private Transform PlayerPrefabForLobbyPlayScene;
 
     public override void OnNetworkSpawn()
     {
         Debug.Log("Spawned");
-        NetworkManager.Singleton.SceneManager.OnLoadEventCompleted += SceneManager_OnLoadEventCompleted;
-        NetworkManager.OnConnectionEvent += NetworkManager_OnConnectionEvent;
+        if (IsServer)
+        {
+            NetworkManager.Singleton.SceneManager.OnLoadEventCompleted += SceneManager_OnLoadEventCompleted;
+        }
+        else
+        {
+            NetworkManager.OnConnectionEvent += NetworkManager_OnConnectionEvent;
+        }
     }
 
     private void NetworkManager_OnConnectionEvent(NetworkManager arg1, ConnectionEventData arg2)
     {
-        if (!IsServer)
-        {
-            Debug.Log("trying to spawn player");
-            SpawnPlayerInLobbyRPC(NetworkManager.Singleton.LocalClientId);
-        }
+        Debug.Log("trying to spawn player");
+        SpawnPlayerInLobbyRPC(NetworkManager.Singleton.LocalClientId);
+        NetworkManager.OnConnectionEvent -= NetworkManager_OnConnectionEvent;
     }
 
     private void SceneManager_OnLoadEventCompleted(string sceneName, LoadSceneMode loadSceneMode, List<ulong> clientsCompleted, List<ulong> clientsTimedOut)
@@ -34,5 +38,11 @@ public class LobbyPlaySceneManager : NetworkBehaviour
     {
         Transform playerTransform = Instantiate(PlayerPrefabForLobbyPlayScene);
         playerTransform.GetComponent<NetworkObject>().SpawnAsPlayerObject(playerId, true);
+    }
+
+    public override void OnDestroy()
+    {
+        NetworkManager.Singleton.SceneManager.OnLoadEventCompleted -= SceneManager_OnLoadEventCompleted;
+        NetworkManager.OnConnectionEvent -= NetworkManager_OnConnectionEvent;
     }
 }

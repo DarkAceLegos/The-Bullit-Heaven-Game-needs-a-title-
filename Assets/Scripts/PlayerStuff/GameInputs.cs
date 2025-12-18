@@ -7,6 +7,7 @@ public class GameInputs : MonoBehaviour
     public static GameInputs Instance { get; private set; }
 
     public event EventHandler OnPauseAction;
+    public event EventHandler OnInteractAction;
 
     private InputAction pauseAction;
     private InputAction interactAction;
@@ -24,6 +25,8 @@ public class GameInputs : MonoBehaviour
 
     private void Awake()
     {
+        InputSystem.actions.Enable();
+
         Instance = this;
 
         moveAction = InputSystem.actions.FindAction("Move");//
@@ -34,7 +37,16 @@ public class GameInputs : MonoBehaviour
 
         pauseAction.performed += pauseAction_Performed;
 
+        interactAction.performed += InteractAction_performed;
+
         //Debug.Log(GetBindingText(Binding.Pause));
+
+        Debug.Log("GameInputs Started");
+    }
+
+    private void InteractAction_performed(InputAction.CallbackContext obj)
+    {
+        OnInteractAction?.Invoke(this, EventArgs.Empty);
     }
 
     public Vector2 GetMovmentVectorNormilzed()
@@ -50,10 +62,13 @@ public class GameInputs : MonoBehaviour
     private void OnDestroy()
     {
         pauseAction.performed -= pauseAction_Performed;
+        interactAction.performed -= InteractAction_performed;
 
         pauseAction.Dispose();
         interactAction.Dispose(); 
         moveAction.Dispose();
+
+        Debug.Log("GameInputs Destroyed");
     }
 
     public string GetBindingText(Binding binding)
