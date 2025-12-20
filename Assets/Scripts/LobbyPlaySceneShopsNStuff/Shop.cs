@@ -4,15 +4,6 @@ using UnityEngine.UI;
 public class Shop : MonoBehaviour
 {
     [SerializeField] private MetaProgressionUi shopUi;
-    [SerializeField] private Button shopButton;
-
-    private void Awake()
-    {
-        shopButton.onClick.AddListener(() =>
-        {
-            shopUi.Show();
-        });
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
