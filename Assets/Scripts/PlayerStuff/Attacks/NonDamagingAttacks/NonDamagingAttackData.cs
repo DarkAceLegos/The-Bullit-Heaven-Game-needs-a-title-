@@ -13,4 +13,7 @@ public class NonDamagingAttackData : AttackData
 
     [SerializeField] private List<LevelData> levels = new();
     public LevelData GetLevelData(int level) => levels[Mathf.Clamp(level, 0, levels.Count - 1)];
+
+    public void AddALevelData(LevelData levelData)
+    { levels.Add(levelData); }
 }
