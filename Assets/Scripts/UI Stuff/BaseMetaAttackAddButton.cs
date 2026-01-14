@@ -10,6 +10,7 @@ public class BaseMetaAttackAddButton : MonoBehaviour, IPointerClickHandler
     [SerializeField] public TextMeshProUGUI attackNameText;
     [SerializeField] public int cost = 10;
     [SerializeField] public TextMeshProUGUI costText;
+    [SerializeField] CoinsTextUi coinsText;
 
 
     private void Start()
@@ -46,7 +47,7 @@ public class BaseMetaAttackAddButton : MonoBehaviour, IPointerClickHandler
 
     private void updateVisuals()
     {
-        CoinsTextUi.Instance.UpdateVisual();
+        coinsText.UpdateVisual();
 
         if (PlayerMetaProgression.Instance.allAttacksPlayerUnlocked.Contains(attackData.attackId))
         {

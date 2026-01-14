@@ -11,6 +11,7 @@ public class BaseMetaButton : MonoBehaviour, IPointerClickHandler
     [SerializeField] public TextMeshProUGUI statNameText;
     [SerializeField] public TextMeshProUGUI statText;
     [SerializeField] public TextMeshProUGUI costText;
+    [SerializeField] CoinsTextUi coinsText;
 
     private void Start()
     {
@@ -49,6 +50,6 @@ public class BaseMetaButton : MonoBehaviour, IPointerClickHandler
     {
         statText.text = PlayerMetaProgression.Instance.GetAmontOfStat(statId).ToString();
         costText.text = "Cost: " + cost.ToString();
-        CoinsTextUi.Instance.UpdateVisual();
+        coinsText.UpdateVisual();
     }
 }

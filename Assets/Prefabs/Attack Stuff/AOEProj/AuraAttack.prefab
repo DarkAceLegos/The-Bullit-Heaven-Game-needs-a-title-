@@ -72,3 +72,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   proj: {fileID: 1790972023470488183, guid: dde90c403eba4be46a3a4eefa0e4de9a, type: 3}
+  AddingAttack: {fileID: 11400000, guid: 2b06ac9e73342a84fbda5b207319bc5c, type: 2}

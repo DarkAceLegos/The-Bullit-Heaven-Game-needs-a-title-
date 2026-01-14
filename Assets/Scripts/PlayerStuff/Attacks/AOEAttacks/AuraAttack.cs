@@ -4,6 +4,7 @@ using UnityEngine;
 public class AuraAttack : Attack
 {
     [SerializeField] private AuraAttackProj proj;
+    [SerializeField] private AOEAttackData AddingAttack;
 
     private AOEAttackData.LevelData levelData;
     private float lastCast;
@@ -15,6 +16,9 @@ public class AuraAttack : Attack
         //Debug.Log(basicAttackData);
 
         levelData = basicAttackData.GetLevelData(level);
+
+        if(level == basicAttackData.maxLevel)
+        { Player.LoaclInstance.allAttacksPlayerUnlocked.Add(AddingAttack); }
     }
 
     public override void Tick(NetworkObject player)

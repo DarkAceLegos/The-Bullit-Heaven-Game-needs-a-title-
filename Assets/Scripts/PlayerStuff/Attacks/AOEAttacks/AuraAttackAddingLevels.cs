@@ -17,7 +17,9 @@ public class AuraAttackAddingLevels : Attack
         var basicAttackData = (AOEAttackData)data;
         levelData = basicAttackData.GetLevelData(level);
 
-        var levelDataToChange = attackDataToBeChanged.GetLevelData(level);
+        Debug.Log(attackDataToBeChanged.maxLevel);
+
+        var levelDataToChange = attackDataToBeChanged.GetLevelData(attackDataToBeChanged.maxLevel); 
 
         levelData.projCount += levelDataToChange.projCount;
         levelData.damage += levelDataToChange.damage;

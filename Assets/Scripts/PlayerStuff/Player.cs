@@ -52,7 +52,7 @@ public class Player : NetworkBehaviour
     [SerializeField] private AudioListener listener;
     [SerializeField] PlayerVisual playerVisual;
 
-    [SerializeField] private List<AttackData> allAttacksPlayerUnlocked = new();
+    [SerializeField] public List<AttackData> allAttacksPlayerUnlocked = new();
 
     [SerializeField] private List<AttackData> noOtherAttacks = new();
 

@@ -35,6 +35,8 @@ public class GameVisualManager : NetworkBehaviour
             return;
         }
 
+        //SpawnEnemy(player,)
+
         var spawnPosition = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Count)].position;
         var enemy = Instantiate(enemies[UnityEngine.Random.Range(0, enemies.Count)], spawnPosition + player.transform.position, Quaternion.identity);
         enemy.GetComponent<NetworkObject>().Spawn(true);
@@ -55,5 +57,29 @@ public class GameVisualManager : NetworkBehaviour
     public override void OnDestroy()
     {
         GameManager.Instance.AfterXTime -= Instance_AfterXTime;
+    }
+
+    private void SpawnEnemy(NetworkObject player, int numPlaces, int numAmount, int enemyType)
+    {
+        Vector3 spawnPosition;
+        EnemyHealth enemy;
+
+        for (int i = 0; i < numPlaces; i++)
+        {
+            spawnPosition = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Count)].position;
+
+            for (int j = 0; j < numAmount; i++)
+            {
+                enemy = Instantiate(enemies[enemyType], spawnPosition + player.transform.position, Quaternion.identity);
+                enemy.GetComponent<NetworkObject>().Spawn(true);
+                NetworkObject enemyNetworkObject = enemy.GetComponent<NetworkObject>();
+                AddEnemyToListRpc(enemyNetworkObject);
+            }
+        }
+        //var spawnPosition = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Count)].position;
+        //var enemy = Instantiate(enemies[UnityEngine.Random.Range(0, enemies.Count)], spawnPosition + player.transform.position, Quaternion.identity);
+        //enemy.GetComponent<NetworkObject>().Spawn(true);
+        //NetworkObject enemyNetworkObject = enemy.GetComponent<NetworkObject>();
+        //AddEnemyToListRpc(enemyNetworkObject);
     }
 }

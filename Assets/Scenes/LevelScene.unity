@@ -3516,6 +3516,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 99685ca685bffcd49a2c68d4a9d6e702, type: 2}
   - {fileID: 11400000, guid: b29186ef58b78954d8e62073b180e808, type: 2}
   - {fileID: 11400000, guid: b314113d025c6c848877672e2f6519a7, type: 2}
+  - {fileID: 11400000, guid: 2b06ac9e73342a84fbda5b207319bc5c, type: 2}
   deathTime: 1800
   spawnedEnemies: []
 --- !u!4 &797258132
