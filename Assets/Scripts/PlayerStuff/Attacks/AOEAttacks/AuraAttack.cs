@@ -18,7 +18,9 @@ public class AuraAttack : Attack
         levelData = basicAttackData.GetLevelData(level);
 
         if(level == basicAttackData.maxLevel)
-        { Player.LoaclInstance.allAttacksPlayerUnlocked.Add(AddingAttack); }
+        { Player.LoaclInstance.allAttacksPlayerUnlocked.Add(AddingAttack);
+            basicAttackData.AddingAttacksOnceMaxedLeveled();
+        }
     }
 
     public override void Tick(NetworkObject player)

@@ -5,7 +5,8 @@ public abstract class AttackData : ScriptableObject
 {
     public string attackId;
     public string attackName;
-    [SerializeField] private List<string> levelDiscriptions = new();
+    [SerializeField] private List<AttackData> attacksOnceMaxedLeveled;
+    [SerializeField] public List<string> levelDiscriptions = new();
     public Sprite icon;
     public Attack prefab;
     //public struct LevelData { }
@@ -13,4 +14,10 @@ public abstract class AttackData : ScriptableObject
     public string GetLevelDescription(int level) => levelDiscriptions[Mathf.Clamp(level, 0, levelDiscriptions.Count - 1)];
     public int maxLevel => levelDiscriptions.Count - 1;
     //public abstract void AddALevelData();
+    public void AddingAttacksOnceMaxedLeveled()
+    {
+        foreach (AttackData attack in attacksOnceMaxedLeveled) {
+            Player.LoaclInstance.allAttacksPlayerUnlocked.Add(attack);
+        }
+    }
 }
