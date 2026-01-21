@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackId: 104
   attackName: Aura
+  attacksOnceMaxedLeveled:
+  - {fileID: 11400000, guid: 2b06ac9e73342a84fbda5b207319bc5c, type: 2}
   levelDiscriptions:
   - Aura
   icon: {fileID: -2413806693520163455, guid: 6c547d3ef21a4de41b0de74121faae13, type: 3}

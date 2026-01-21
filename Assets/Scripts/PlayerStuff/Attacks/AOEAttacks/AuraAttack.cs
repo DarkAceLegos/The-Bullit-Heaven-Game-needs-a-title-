@@ -8,6 +8,7 @@ public class AuraAttack : Attack
 
     private AOEAttackData.LevelData levelData;
     private float lastCast;
+    private bool max = false;
 
     protected override void OnInitialize()
     {
@@ -18,8 +19,14 @@ public class AuraAttack : Attack
         levelData = basicAttackData.GetLevelData(level);
 
         if(level == basicAttackData.maxLevel)
-        { Player.LoaclInstance.allAttacksPlayerUnlocked.Add(AddingAttack);
+        { 
+            if(max) { return; }
+            //if(!IsOwner) {return;}
+            //if(!Player.LoaclInstance.allAttacksPlayerUnlocked.Contains(basicAttackData)) { return; }
+
             basicAttackData.AddingAttacksOnceMaxedLeveled();
+
+            max = true;
         }
     }
 

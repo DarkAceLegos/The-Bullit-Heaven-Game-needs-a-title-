@@ -18,7 +18,7 @@ public class AOEAttackData : AttackData
     [SerializeField] private List<LevelData> levels = new();
     public LevelData GetLevelData(int level) => levels[Mathf.Clamp(level, 0, levels.Count - 1)];
 
-    private void AddALevelData(LevelData levelData)
+    public void AddALevelData(LevelData levelData)
     { 
         levels.Add(levelData);
         levelDiscriptions.Add(" ");
