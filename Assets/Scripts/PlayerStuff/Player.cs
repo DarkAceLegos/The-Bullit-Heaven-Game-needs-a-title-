@@ -51,6 +51,7 @@ public class Player : NetworkBehaviour
     [SerializeField] private CinemachineCamera vc;
     [SerializeField] private AudioListener listener;
     [SerializeField] PlayerVisual playerVisual;
+    [SerializeField] private List<Vector2> spawnPositions;
 
     [SerializeField] public List<AttackData> allAttacksPlayerUnlocked = new();
 
@@ -149,6 +150,7 @@ public class Player : NetworkBehaviour
             listener.enabled = true;
             vc.Priority = 1;
             LoaclInstance = this;
+            transform.position = spawnPositions[(int)OwnerClientId];
             OnAnyPlayerSpawned?.Invoke(this, new OnAnyPlayerSpawnedEventArgs
             {
                 player = Player.LoaclInstance.NetworkObject,

@@ -625,6 +625,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   rb: {fileID: 5004031360651103395}
+  vc: {fileID: 7165954268988903130}
+  listener: {fileID: 3491062094786061297}
   playerVisual: {fileID: 304334114553193645}
   moveSpeed: 10
 --- !u!1 &6406485346394258346

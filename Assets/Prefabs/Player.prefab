@@ -673,6 +673,16 @@ MonoBehaviour:
   vc: {fileID: 7165954268988903130}
   listener: {fileID: 3491062094786061297}
   playerVisual: {fileID: 304334114553193645}
+  spawnPositions:
+  - {x: -2, y: 2}
+  - {x: 0, y: 2}
+  - {x: 2, y: 2}
+  - {x: -2, y: 0}
+  - {x: 0, y: 0}
+  - {x: 2, y: 0}
+  - {x: -2, y: -2}
+  - {x: 0, y: -2}
+  - {x: 2, y: -2}
   allAttacksPlayerUnlocked: []
   noOtherAttacks:
   - {fileID: 11400000, guid: 2b4153ff88b123e43a1845468d61e1e9, type: 2}

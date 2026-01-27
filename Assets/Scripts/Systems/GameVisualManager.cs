@@ -35,7 +35,9 @@ public class GameVisualManager : NetworkBehaviour
             return;
         }
 
-        //SpawnEnemy(player,)
+        var playersDeck = Player.LoaclInstance.GetComponent<PlayersDeck>();
+
+        //SpawnEnemy(player, playersDeck.deckOfEnemyCards[1].packs, playersDeck.deckOfEnemyCards[1].amount, playersDeck.deckOfEnemyCards[1].type);
 
         var spawnPosition = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Count)].position;
         var enemy = Instantiate(enemies[UnityEngine.Random.Range(0, enemies.Count)], spawnPosition + player.transform.position, Quaternion.identity);
