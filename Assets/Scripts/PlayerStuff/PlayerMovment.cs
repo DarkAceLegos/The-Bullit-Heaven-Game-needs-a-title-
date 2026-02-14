@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.Cinemachine;
 using Unity.Netcode;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class PlayerMovment : NetworkBehaviour
     [SerializeField] private CinemachineCamera vc;
     [SerializeField] private AudioListener listener;
     [SerializeField] PlayerVisual playerVisual;
+    [SerializeField] private List<Vector2> spawnPositions;
 
     public float moveSpeed;
 
@@ -23,6 +25,7 @@ public class PlayerMovment : NetworkBehaviour
         if (IsOwner)
         {
             listener.enabled = true;
+            transform.position = spawnPositions[(int)OwnerClientId];
             vc.Priority = 1;
         }
         else

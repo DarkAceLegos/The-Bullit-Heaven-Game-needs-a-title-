@@ -628,6 +628,16 @@ MonoBehaviour:
   vc: {fileID: 7165954268988903130}
   listener: {fileID: 3491062094786061297}
   playerVisual: {fileID: 304334114553193645}
+  spawnPositions:
+  - {x: -2, y: 2}
+  - {x: 0, y: 2}
+  - {x: 2, y: 2}
+  - {x: -2, y: 0}
+  - {x: 0, y: 0}
+  - {x: 2, y: 0}
+  - {x: -2, y: -2}
+  - {x: 0, y: -2}
+  - {x: 2, y: -2}
   moveSpeed: 10
 --- !u!1 &6406485346394258346
 GameObject:
