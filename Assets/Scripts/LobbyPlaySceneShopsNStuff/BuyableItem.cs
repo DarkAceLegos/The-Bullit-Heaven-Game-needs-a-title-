@@ -7,7 +7,7 @@ public class BuyableItem : MonoBehaviour
     [SerializeField] Button buyButton;
     [SerializeField] Image image;
     [SerializeField] TextMeshProUGUI priceText;
-    [SerializeField] GameObject product;
+    [SerializeField] PackOfCards product;
     [SerializeField] int price;
     [SerializeField] bool singleBuy;
     [SerializeField] bool sellable;
@@ -31,6 +31,6 @@ public class BuyableItem : MonoBehaviour
 
     private void gainBuyableItem()
     {
-
+        product.OpenPack();
     }
 }

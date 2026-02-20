@@ -19,7 +19,7 @@ public class EntryCardPrefab : MonoBehaviour
         art.sprite = card.cardForeground;
         foilEffect.sprite = card.foilEffect;
         isFoiled = card.isFoil;
-        nameText.text = card.cardText;
+        nameText.text = card.cardName;
         descriptionText.text = card.cardText;
     }
 

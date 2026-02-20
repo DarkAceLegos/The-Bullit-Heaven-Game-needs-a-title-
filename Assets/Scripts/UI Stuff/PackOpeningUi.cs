@@ -17,6 +17,8 @@ public class PackOpeningUi : MonoBehaviour
     public void Show(List<Cards> setCards, int maxCardsInPack)
     {
         set = setCards;
+        Debug.Log(setCards.Count);
+        Debug.Log(set.Count);
 
         cardsInPack = maxCardsInPack;
 
@@ -33,15 +35,15 @@ public class PackOpeningUi : MonoBehaviour
     private void ShowCardsInPack()
     {
         foreach (Transform child in upgradeHolder)
-            UnityEngine.Object.Destroy(child.gameObject);
+            Destroy(child.gameObject);
 
-        Debug.Log("Upgrade Holder is clear");
+        Debug.Log("Opened Pack is clear");
 
         List<Cards> availableCards = set;
 
         if (availableCards == null || availableCards.Count <= 0)
         {
-            Debug.Log("no available attacks for level up");
+            Debug.Log("no available Cards to obtain");
             //return;            
         }
 
