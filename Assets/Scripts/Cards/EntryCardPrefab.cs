@@ -8,8 +8,8 @@ public class EntryCardPrefab : MonoBehaviour
     [SerializeField] private Image art;
     [SerializeField] private Image foilEffect;
     [SerializeField] private GameObject foilGameobject;
-    [SerializeField] private TMP_Text nameText;
-    [SerializeField] private TMP_Text descriptionText;
+    [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private TextMeshProUGUI descriptionText;
 
     private bool isFoiled;
 

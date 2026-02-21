@@ -68,9 +68,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -7069720901952774207, guid: ef06a41f27c3fec4d8a756651cd718c7, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -94,6 +94,7 @@ MonoBehaviour:
   attackNameText: {fileID: 4104801177871284489}
   cost: 10
   costText: {fileID: 4565735547817879056}
+  coinsText: {fileID: 0}
 --- !u!1 &1412198827473148701
 GameObject:
   m_ObjectHideFlags: 0
