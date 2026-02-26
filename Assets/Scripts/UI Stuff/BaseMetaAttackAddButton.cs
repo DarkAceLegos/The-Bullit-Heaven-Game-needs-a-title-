@@ -11,6 +11,7 @@ public class BaseMetaAttackAddButton : MonoBehaviour, IPointerClickHandler
     [SerializeField] public int cost = 10;
     [SerializeField] public TextMeshProUGUI costText;
     [SerializeField] CoinsTextUi coinsText;
+    [SerializeField] Image image;
 
 
     private void Start()
@@ -51,8 +52,10 @@ public class BaseMetaAttackAddButton : MonoBehaviour, IPointerClickHandler
 
         if (PlayerMetaProgression.Instance.allAttacksPlayerUnlocked.Contains(attackData.attackId))
         {
-            GetComponent<Image>().color = Color.green;
+            image.color = Color.green;
         }
-        else { GetComponent<Image>().color = Color.white; }
+        else { image.color = Color.white; }//*/
+
+        AttackDeckUi.Instance.ShowDeck();
     }
 }

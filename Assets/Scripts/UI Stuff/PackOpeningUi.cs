@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PackOpeningUi : MonoBehaviour
 {
-    [SerializeField] private Transform upgradeHolder;
+    [SerializeField] private Transform cardHolder;
     [SerializeField] private EntryCardPrefab entryPrefabCard;
 
     private List<Cards> set;
@@ -34,7 +34,7 @@ public class PackOpeningUi : MonoBehaviour
 
     private void ShowCardsInPack()
     {
-        foreach (Transform child in upgradeHolder)
+        foreach (Transform child in cardHolder)
             Destroy(child.gameObject);
 
         Debug.Log("Opened Pack is clear");
@@ -58,7 +58,7 @@ public class PackOpeningUi : MonoBehaviour
 
         foreach (var card in randomCards)
         {
-            var entry = Instantiate(entryPrefabCard, upgradeHolder);
+            var entry = Instantiate(entryPrefabCard, cardHolder);
             entry.Init(card);//*/
         }
     }
