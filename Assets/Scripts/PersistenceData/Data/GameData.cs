@@ -30,9 +30,10 @@ public class GameData
     public int additiveExperience;
     public float percentageExperience = 1f;
 
+    public SerializableDictionary<string, bool> cardInventory;
 
-     public int coins;
-     public int gems;
+    public int coins;
+    public int gems;
 
     public GameData()
     {
@@ -59,6 +60,9 @@ public class GameData
         this.percentageDuration = 1f;
         this.additiveExperience = 0;
         this.percentageExperience = 1f;
+
+        cardInventory = new SerializableDictionary<string, bool>();
+
         this.coins = 10;
         this.gems = 0;
     }

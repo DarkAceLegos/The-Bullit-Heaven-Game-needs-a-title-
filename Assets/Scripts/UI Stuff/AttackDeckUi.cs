@@ -23,28 +23,36 @@ public class AttackDeckUi : MonoBehaviour
 
     public void ShowDeck()
     {
-        Debug.Log(attackDatas[0]);
+        //Debug.Log(attackDatas[0]);
 
         foreach (Transform child in cardHolder)
             Destroy(child.gameObject);
 
         var randomCards = new List<Cards>();
 
-        foreach (var card in attackDatas)
+        foreach (var id in PlayerMetaProgression.Instance.allAttacksPlayerUnlocked)
         {
-            if (PlayerMetaProgression.Instance.allAttacksPlayerUnlocked.Contains(card.attackId))
+            foreach (var attackData in attackDatas)
             {
-                attackCard.cardText = card.GetLevelDescription(0);
-                attackCard.cardName = card.name;
+                if (id == attackData.attackId)
+                {
+                    attackCard = new Cards();
 
-                randomCards.Add(attackCard);
+                    attackCard.cardText = attackData.GetLevelDescription(0);
+                    //Debug.Log(attackCard.cardText);
+                    attackCard.cardName = attackData.name;
+                    //Debug.Log(attackCard.cardName);
+
+                    randomCards.Add(attackCard);
+                }
             }
         }
 
         foreach (var card in randomCards)
         {
-                var entry = Instantiate(entryPrefabCard, cardHolder);
-                entry.Init(card);
+            //Debug.Log(card.cardName);
+            var entry = Instantiate(entryPrefabCard, cardHolder);
+            entry.Init(card);
         }//*/
     }
 }

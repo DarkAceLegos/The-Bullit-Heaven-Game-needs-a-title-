@@ -44,7 +44,7 @@ public class PackOpeningUi : MonoBehaviour
         if (availableCards == null || availableCards.Count <= 0)
         {
             Debug.Log("no available Cards to obtain");
-            //return;            
+            return;            
         }
 
         var randomCards = new List<Cards>();
