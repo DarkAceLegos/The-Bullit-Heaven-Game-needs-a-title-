@@ -35,6 +35,9 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
     [SerializeField] public int coins;
     [SerializeField] public int gems;
 
+    //public SerializableDictionary<string, EnemyCard> cardInventory;
+    [SerializeField] public List<Cards> cardsTesting;
+
     private void Awake()
     {
         Instance = this;
@@ -169,6 +172,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         this.percentageExperience = data.percentageExperience;
         this.coins = data.coins;
         this.gems = data.gems;
+        this.cardsTesting = data.cardsTesting;
     }
 
     public void SaveData(ref GameData data)
@@ -198,6 +202,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         data.percentageExperience = this.percentageExperience;
         data.coins = this.coins;
         data.gems = this.gems;
+        data.cardsTesting = this.cardsTesting;
     }
 
 

@@ -1,5 +1,7 @@
 using UnityEngine;
 
+
+[System.Serializable]
 public class Cards : ScriptableObject
 {
     [SerializeField] public string cardName;

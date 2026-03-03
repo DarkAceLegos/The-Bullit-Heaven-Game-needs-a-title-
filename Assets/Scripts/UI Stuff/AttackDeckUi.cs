@@ -36,7 +36,7 @@ public class AttackDeckUi : MonoBehaviour
             {
                 if (id == attackData.attackId)
                 {
-                    attackCard = new Cards();
+                    attackCard = ScriptableObject.CreateInstance<Cards>();
 
                     attackCard.cardText = attackData.GetLevelDescription(0);
                     //Debug.Log(attackCard.cardText);
