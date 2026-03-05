@@ -36,7 +36,9 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
     [SerializeField] public int gems;
 
     //public SerializableDictionary<string, EnemyCard> cardInventory;
-    [SerializeField] public List<Cards> cardsTesting;
+    [SerializeField] public List<SeializableEnemyCard> cardsTesting;
+
+    [SerializeField] public SeializableEnemyCard testingCard;
 
     private void Awake()
     {
@@ -173,7 +175,8 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         this.coins = data.coins;
         this.gems = data.gems;
         this.cardsTesting = data.cardsTesting;
-    }
+        this.testingCard = data.testCard;
+        }
 
     public void SaveData(ref GameData data)
     {
@@ -203,7 +206,60 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         data.coins = this.coins;
         data.gems = this.gems;
         data.cardsTesting = this.cardsTesting;
+        data.testCard = this.testingCard;
     }
 
+    public void AddEnemyCard(EnemyCard card)
+    {
+        SeializableEnemyCard seializableEnemyCard = new SeializableEnemyCard();
 
+        seializableEnemyCard.cardName = card.cardName;
+        seializableEnemyCard.cardText = card.cardText;
+        seializableEnemyCard.cardId = card.cardId;
+        seializableEnemyCard.cardBackground = card.cardBackground;
+        seializableEnemyCard.cardForeground = card.cardForeground;
+        seializableEnemyCard.foilEffect = card.foilEffect;
+        seializableEnemyCard.isFoil = card.isFoil;
+        seializableEnemyCard.amountOfPacks = card.amountOfPacks;
+        seializableEnemyCard.packsSize = card.packsSize;
+        seializableEnemyCard.typeOfEnemy = card.typeOfEnemy;
+
+        cardsTesting.Add(seializableEnemyCard);
+    }
+
+    public void RemoveEnemyCard(EnemyCard card)
+    {
+        SeializableEnemyCard seializableEnemyCard = new SeializableEnemyCard();
+
+        seializableEnemyCard.cardName = card.cardName;
+        seializableEnemyCard.cardText = card.cardText;
+        seializableEnemyCard.cardId = card.cardId;
+        seializableEnemyCard.cardBackground = card.cardBackground;
+        seializableEnemyCard.cardForeground = card.cardForeground;
+        seializableEnemyCard.foilEffect = card.foilEffect;
+        seializableEnemyCard.isFoil = card.isFoil;
+        seializableEnemyCard.amountOfPacks = card.amountOfPacks;
+        seializableEnemyCard.packsSize = card.packsSize;
+        seializableEnemyCard.typeOfEnemy = card.typeOfEnemy;
+
+        cardsTesting.Remove(seializableEnemyCard);
+    }
+
+    public EnemyCard GetEnemyCard(int i)
+    {
+        EnemyCard enemyCard = ScriptableObject.CreateInstance<EnemyCard>();
+
+        enemyCard.cardName = cardsTesting[i].cardName;
+        enemyCard.cardText = cardsTesting[i].cardText;
+        enemyCard.cardId = cardsTesting[i].cardId;
+        enemyCard.cardBackground = cardsTesting[i].cardBackground;
+        enemyCard.cardForeground = cardsTesting[i].cardForeground;
+        enemyCard.foilEffect = cardsTesting[i].foilEffect;
+        enemyCard.isFoil = cardsTesting[i].isFoil;
+        enemyCard.amountOfPacks = cardsTesting[i].amountOfPacks;
+        enemyCard.packsSize = cardsTesting[i].packsSize;
+        enemyCard.typeOfEnemy = cardsTesting[i].typeOfEnemy;
+
+        return enemyCard;
+    }
 }

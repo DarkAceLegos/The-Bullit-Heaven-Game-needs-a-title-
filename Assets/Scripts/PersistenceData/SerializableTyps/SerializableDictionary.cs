@@ -9,20 +9,9 @@ public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, IS
 
     public void OnAfterDeserialize()
     {
-        keys.Clear();
-        values.Clear();
-        foreach(KeyValuePair<TKey, TValue> pair in this)
-        {
-            keys.Add(pair.Key);
-            values.Add(pair.Value);
-        }
-    }
-
-    public void OnBeforeSerialize()
-    {
         this.Clear();
 
-        if(keys.Count != values.Count)
+        if (keys.Count != values.Count)
         {
             Debug.LogError("The count of keys.count" + keys.Count + " dose not match value.count" + values.Count);
         }
@@ -30,6 +19,17 @@ public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, IS
         for (int i = 0; i < keys.Count; i++)
         {
             this.Add(keys[i], values[i]);
+        }
+    }
+
+    public void OnBeforeSerialize()
+    {
+        keys.Clear();
+        values.Clear();
+        foreach (KeyValuePair<TKey, TValue> pair in this)
+        {
+            keys.Add(pair.Key);
+            values.Add(pair.Value);
         }
     }
 }

@@ -31,7 +31,9 @@ public class GameData
     public float percentageExperience = 1f;
 
     public SerializableDictionary<string, EnemyCard> cardInventory;
-    public List<Cards> cardsTesting;
+    public List<SeializableEnemyCard> cardsTesting;
+
+    public SeializableEnemyCard testCard;
 
     public int coins;
     public int gems;
@@ -63,7 +65,9 @@ public class GameData
         this.percentageExperience = 1f;
 
         cardInventory = new SerializableDictionary<string, EnemyCard>();
-        cardsTesting = new List<Cards>();
+        cardsTesting = new List<SeializableEnemyCard>();
+
+        testCard = new SeializableEnemyCard();
 
         this.coins = 10;
         this.gems = 0;
