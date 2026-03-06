@@ -10,5 +10,6 @@ public class SerializableAttackCard
     [SerializeField] public Sprite cardForeground;
     [SerializeField] public Sprite foilEffect;
     [SerializeField] public bool isFoil;
+    [SerializeField] public string attackId;
     
 }

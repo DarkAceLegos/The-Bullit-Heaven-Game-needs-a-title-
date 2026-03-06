@@ -35,8 +35,10 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
     [SerializeField] public int coins;
     [SerializeField] public int gems;
 
-    //public SerializableDictionary<string, EnemyCard> cardInventory;
-    [SerializeField] public List<SeializableEnemyCard> cardsTesting;
+    [SerializeField] public SerializableDictionary<string, bool> skillTree;
+    [SerializeField] public List<SeializableEnemyCard> enemyCardInventory;
+    [SerializeField] public List<SerializableAttackCard> attackCardInventory;
+    [SerializeField] public List<SerializableStatCard> statCardInventory;
 
     [SerializeField] public SeializableEnemyCard testingCard;
 
@@ -174,7 +176,8 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         this.percentageExperience = data.percentageExperience;
         this.coins = data.coins;
         this.gems = data.gems;
-        this.cardsTesting = data.cardsTesting;
+        this.skillTree = data.skillTree;
+        this.enemyCardInventory = data.cardsTesting;
         this.testingCard = data.testCard;
         }
 
@@ -205,7 +208,8 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         data.percentageExperience = this.percentageExperience;
         data.coins = this.coins;
         data.gems = this.gems;
-        data.cardsTesting = this.cardsTesting;
+        data.skillTree = this.skillTree;
+        data.cardsTesting = this.enemyCardInventory;
         data.testCard = this.testingCard;
     }
 
@@ -224,7 +228,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         seializableEnemyCard.packsSize = card.packsSize;
         seializableEnemyCard.typeOfEnemy = card.typeOfEnemy;
 
-        cardsTesting.Add(seializableEnemyCard);
+        enemyCardInventory.Add(seializableEnemyCard);
     }
 
     public void RemoveEnemyCard(EnemyCard card)
@@ -242,24 +246,133 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         seializableEnemyCard.packsSize = card.packsSize;
         seializableEnemyCard.typeOfEnemy = card.typeOfEnemy;
 
-        cardsTesting.Remove(seializableEnemyCard);
+        enemyCardInventory.Remove(seializableEnemyCard);
     }
 
     public EnemyCard GetEnemyCard(int i)
     {
         EnemyCard enemyCard = ScriptableObject.CreateInstance<EnemyCard>();
 
-        enemyCard.cardName = cardsTesting[i].cardName;
-        enemyCard.cardText = cardsTesting[i].cardText;
-        enemyCard.cardId = cardsTesting[i].cardId;
-        enemyCard.cardBackground = cardsTesting[i].cardBackground;
-        enemyCard.cardForeground = cardsTesting[i].cardForeground;
-        enemyCard.foilEffect = cardsTesting[i].foilEffect;
-        enemyCard.isFoil = cardsTesting[i].isFoil;
-        enemyCard.amountOfPacks = cardsTesting[i].amountOfPacks;
-        enemyCard.packsSize = cardsTesting[i].packsSize;
-        enemyCard.typeOfEnemy = cardsTesting[i].typeOfEnemy;
+        enemyCard.cardName = enemyCardInventory[i].cardName;
+        enemyCard.cardText = enemyCardInventory[i].cardText;
+        enemyCard.cardId = enemyCardInventory[i].cardId;
+        enemyCard.cardBackground = enemyCardInventory[i].cardBackground;
+        enemyCard.cardForeground = enemyCardInventory[i].cardForeground;
+        enemyCard.foilEffect = enemyCardInventory[i].foilEffect;
+        enemyCard.isFoil = enemyCardInventory[i].isFoil;
+        enemyCard.amountOfPacks = enemyCardInventory[i].amountOfPacks;
+        enemyCard.packsSize = enemyCardInventory[i].packsSize;
+        enemyCard.typeOfEnemy = enemyCardInventory[i].typeOfEnemy;
 
         return enemyCard;
+    }
+
+    public void AddStatCard(StatCard card)
+    {
+        SerializableStatCard serializableStatCard = new SerializableStatCard();
+
+        serializableStatCard.cardName = card.cardName;
+        serializableStatCard.cardText = card.cardText;
+        serializableStatCard.cardId = card.cardId;
+        serializableStatCard.cardBackground = card.cardBackground;
+        serializableStatCard.cardForeground = card.cardForeground;
+        serializableStatCard.foilEffect = card.foilEffect;
+        serializableStatCard.isFoil = card.isFoil;
+        serializableStatCard.statId = card.statId;
+        serializableStatCard.statChangeAmount = card.statChangeAmount;
+
+
+        statCardInventory.Add(serializableStatCard);
+    }
+
+    public void RemoveStatCard(StatCard card)
+    {
+        SerializableStatCard serializableStatCard = new SerializableStatCard();
+
+        serializableStatCard.cardName = card.cardName;
+        serializableStatCard.cardText = card.cardText;
+        serializableStatCard.cardId = card.cardId;
+        serializableStatCard.cardBackground = card.cardBackground;
+        serializableStatCard.cardForeground = card.cardForeground;
+        serializableStatCard.foilEffect = card.foilEffect;
+        serializableStatCard.isFoil = card.isFoil;
+        serializableStatCard.statId = card.statId;
+        serializableStatCard.statChangeAmount = card.statChangeAmount;
+
+
+        statCardInventory.Remove(serializableStatCard);
+    }
+
+    public StatCard GetStatCard(int i)
+    {
+        StatCard statCard = ScriptableObject.CreateInstance<StatCard>();
+
+        statCard.cardName = statCardInventory[i].cardName;
+        statCard.cardText = statCardInventory[i].cardText;
+        statCard.cardId = statCardInventory[i].cardId;
+        statCard.cardBackground = statCardInventory[i].cardBackground;
+        statCard.cardForeground = statCardInventory[i].cardForeground;
+        statCard.foilEffect = statCardInventory[i].foilEffect;
+        statCard.isFoil = statCardInventory[i].isFoil;
+        statCard.statId = statCardInventory[i].statId;
+        statCard.statChangeAmount = statCardInventory[i].statChangeAmount;
+        
+
+        return statCard;
+    }
+
+    public void AddAttackCard(AttackCard card)
+    {
+        SerializableAttackCard serializableAttackCard = new SerializableAttackCard();
+
+        serializableAttackCard.cardName = card.cardName;
+        serializableAttackCard.cardText = card.cardText;
+        serializableAttackCard.cardId = card.cardId;
+        serializableAttackCard.cardBackground = card.cardBackground;
+        serializableAttackCard.cardForeground = card.cardForeground;
+        serializableAttackCard.foilEffect = card.foilEffect;
+        serializableAttackCard.isFoil = card.isFoil;
+        serializableAttackCard.attackId = card.attackData.attackId;
+
+        attackCardInventory.Add(serializableAttackCard);
+    }
+
+    public void RemoveAttackCard(AttackCard card)
+    {
+        SerializableAttackCard serializableAttackCard = new SerializableAttackCard();
+
+        serializableAttackCard.cardName = card.cardName;
+        serializableAttackCard.cardText = card.cardText;
+        serializableAttackCard.cardId = card.cardId;
+        serializableAttackCard.cardBackground = card.cardBackground;
+        serializableAttackCard.cardForeground = card.cardForeground;
+        serializableAttackCard.foilEffect = card.foilEffect;
+        serializableAttackCard.isFoil = card.isFoil;
+        serializableAttackCard.attackId = card.attackData.attackId;
+
+        attackCardInventory.Remove(serializableAttackCard);
+    }
+
+    public AttackCard GetAttackCard(int i)
+    {
+        AttackCard attackCard = ScriptableObject.CreateInstance<AttackCard>();
+
+        attackCard.cardName = attackCardInventory[i].cardName;
+        attackCard.cardText = attackCardInventory[i].cardText;
+        attackCard.cardId = attackCardInventory[i].cardId;
+        attackCard.cardBackground = attackCardInventory[i].cardBackground;
+        attackCard.cardForeground = attackCardInventory[i].cardForeground;
+        attackCard.foilEffect = attackCardInventory[i].foilEffect;
+        attackCard.isFoil = attackCardInventory[i].isFoil;
+
+        foreach (var card in FindObjectsByType<AttackData>(FindObjectsSortMode.None))
+        { 
+            if (card.attackId == attackCardInventory[i].attackId)
+            {
+                attackCard.attackData = card;
+            }
+        }
+
+        return attackCard;
     }
 }

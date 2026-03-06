@@ -20,7 +20,7 @@ public class enemyCardScrolibleList : MonoBehaviour
         foreach (Transform child in cardHolder)
             Destroy(child.gameObject);
 
-        for (int i = 0; i < PlayerMetaProgression.Instance.cardsTesting.Count; i++)
+        for (int i = 0; i < PlayerMetaProgression.Instance.enemyCardInventory.Count; i++)
         {
             var entry = Instantiate(entryPrefabCard, cardHolder);
             entry.Init(PlayerMetaProgression.Instance.GetEnemyCard(i));
