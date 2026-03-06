@@ -1,12 +1,10 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class enemyCardScrolibleList : MonoBehaviour
+public class StatCardScrolibleList : MonoBehaviour
 {
     [SerializeField] private EntryCardPrefab entryPrefabCard;
     [SerializeField] private Transform cardHolder;
-    [SerializeField] private List<Button> cardButtonList;
+
 
     private void Start()
     {
@@ -26,10 +24,10 @@ public class enemyCardScrolibleList : MonoBehaviour
         foreach (Transform child in cardHolder)
             Destroy(child.gameObject);
 
-        for (int i = 0; i < PlayerMetaProgression.Instance.enemyCardInventory.Count; i++)
+        for (int i = 0; i < PlayerMetaProgression.Instance.statCardInventory.Count; i++)
         {
             var entry = Instantiate(entryPrefabCard, cardHolder);
-            entry.Init(PlayerMetaProgression.Instance.GetEnemyCard(i));
+            entry.Init(PlayerMetaProgression.Instance.GetStatCard(i));
         }
     }
 }
