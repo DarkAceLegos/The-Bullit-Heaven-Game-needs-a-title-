@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.Services.Lobbies.Models;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,14 @@ public class EntryCardPrefab : MonoBehaviour
     [SerializeField] private TextMeshProUGUI descriptionText;
 
     private bool isFoiled;
+
+    private void Awake()
+    {
+        GetComponent<Button>().onClick.AddListener(() =>
+        {
+            GetComponentInParent<CardOnClickHandler>().ActivatCard();
+        });
+    }
 
     public void Init(Cards card)
     {
