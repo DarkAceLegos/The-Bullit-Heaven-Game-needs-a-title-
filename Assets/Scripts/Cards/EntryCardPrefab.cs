@@ -12,13 +12,14 @@ public class EntryCardPrefab : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI descriptionText;
 
+    [SerializeField] private Cards card;
     private bool isFoiled;
 
     private void Awake()
     {
         GetComponent<Button>().onClick.AddListener(() =>
         {
-            GetComponentInParent<CardOnClickHandler>().ActivatCard();
+            GetComponentInParent<CardOnClickHandler>().ActivatCard(card);
         });
     }
 
@@ -30,6 +31,8 @@ public class EntryCardPrefab : MonoBehaviour
         isFoiled = card.isFoil;
         nameText.text = card.cardName;
         descriptionText.text = card.cardText;
+
+        this.card = card;
     }
 
     private void Start()

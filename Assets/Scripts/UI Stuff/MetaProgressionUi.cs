@@ -9,7 +9,7 @@ public class MetaProgressionUi : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        //Instance = this;
 
         closeButton.onClick.AddListener(() => { Hide(); });
     }

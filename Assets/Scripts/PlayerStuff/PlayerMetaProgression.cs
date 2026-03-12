@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -177,7 +178,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         this.coins = data.coins;
         this.gems = data.gems;
         this.skillTree = data.skillTree;
-        this.enemyCardInventory = data.cardsTesting;
+        this.enemyCardInventory = data.enemyCardInventory;
         this.testingCard = data.testCard;
         }
 
@@ -209,7 +210,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         data.coins = this.coins;
         data.gems = this.gems;
         data.skillTree = this.skillTree;
-        data.cardsTesting = this.enemyCardInventory;
+        data.enemyCardInventory = this.enemyCardInventory;
         data.testCard = this.testingCard;
     }
 
@@ -374,5 +375,32 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         }
 
         return attackCard;
+    }
+
+    public void AddCard(AttackCard attackCard = null, EnemyCard enemyCard = null, StatCard statCard = null)
+    {
+        if (attackCard != null)
+        {
+            SerializableAttackCard serializableAttackCard = new SerializableAttackCard();
+
+            serializableAttackCard.cardName = attackCard.cardName;
+            serializableAttackCard.cardText = attackCard.cardText;
+            serializableAttackCard.cardId = attackCard.cardId;
+            serializableAttackCard.cardBackground = attackCard.cardBackground;
+            serializableAttackCard.cardForeground = attackCard.cardForeground;
+            serializableAttackCard.foilEffect = attackCard.foilEffect;
+            serializableAttackCard.isFoil = attackCard.isFoil;
+            serializableAttackCard.attackId = attackCard.attackData.attackId;
+
+            attackCardInventory.Add(serializableAttackCard);
+        }
+    }
+
+    public void GetCard(Cards card)
+    {
+        if(card.GetType() == typeof(SerializableAttackCard))
+        {
+
+        }
     }
 }

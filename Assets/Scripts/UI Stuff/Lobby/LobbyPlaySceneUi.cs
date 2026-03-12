@@ -9,6 +9,7 @@ public class LobbyPlaySceneUi : MonoBehaviour
     [SerializeField] private Button mainMenuButton;
     [SerializeField] private Button readyButton;
     [SerializeField] private Button metaProgressionButton;
+    [SerializeField] private MetaProgressionUi metaProgressionUi;
     [SerializeField] private TextMeshProUGUI lobbyNameText;
     [SerializeField] private TextMeshProUGUI lobbyCodeText;
 
@@ -23,7 +24,7 @@ public class LobbyPlaySceneUi : MonoBehaviour
         readyButton.onClick.AddListener(() => {
             CharaterReady.instance.SetPlayerReady();
         });
-        metaProgressionButton.onClick.AddListener(() => { MetaProgressionUi.Instance.Show(); });
+        metaProgressionButton.onClick.AddListener(() => { metaProgressionUi.Show(); });
     }
 
     private void Start()
