@@ -3,5 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Card/AttackCard")]
 public class AttackCard : Cards
 {
-    [SerializeField] public AttackData attackData; //{ get; set; }
+    [SerializeField] public string attackId;
+
+    //[SerializeField] public AttackData attackData; 
 }

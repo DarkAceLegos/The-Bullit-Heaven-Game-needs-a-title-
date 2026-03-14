@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb10d61ad1015d4dabe00ce5e914349, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
-  cardName: 
-  cardText: 
-  cardId: 
+  cardName: testing
+  cardText: Testing Adding card
+  cardId: 100
   cardBackground: {fileID: 0}
   cardForeground: {fileID: 0}
   foilEffect: {fileID: 0}

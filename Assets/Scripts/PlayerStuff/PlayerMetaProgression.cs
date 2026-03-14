@@ -179,6 +179,8 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         this.gems = data.gems;
         this.skillTree = data.skillTree;
         this.enemyCardInventory = data.enemyCardInventory;
+        this.attackCardInventory = data.attackCardInventory;
+        this.statCardInventory = data.statCardInventory;
         this.testingCard = data.testCard;
         }
 
@@ -211,6 +213,8 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         data.gems = this.gems;
         data.skillTree = this.skillTree;
         data.enemyCardInventory = this.enemyCardInventory;
+        data.attackCardInventory = this.attackCardInventory;
+        data.statCardInventory = this.statCardInventory;
         data.testCard = this.testingCard;
     }
 
@@ -333,7 +337,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         serializableAttackCard.cardForeground = card.cardForeground;
         serializableAttackCard.foilEffect = card.foilEffect;
         serializableAttackCard.isFoil = card.isFoil;
-        serializableAttackCard.attackId = card.attackData.attackId;
+        serializableAttackCard.attackId = card.attackId;
 
         attackCardInventory.Add(serializableAttackCard);
     }
@@ -349,7 +353,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         serializableAttackCard.cardForeground = card.cardForeground;
         serializableAttackCard.foilEffect = card.foilEffect;
         serializableAttackCard.isFoil = card.isFoil;
-        serializableAttackCard.attackId = card.attackData.attackId;
+        serializableAttackCard.attackId = card.attackId;
 
         attackCardInventory.Remove(serializableAttackCard);
     }
@@ -366,18 +370,20 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         attackCard.foilEffect = attackCardInventory[i].foilEffect;
         attackCard.isFoil = attackCardInventory[i].isFoil;
 
-        foreach (var card in FindObjectsByType<AttackData>(FindObjectsSortMode.None))
+        attackCard.attackId = attackCardInventory[i].attackId;
+
+        /*foreach (var card in FindObjectsByType<AttackData>(FindObjectsSortMode.None))
         { 
             if (card.attackId == attackCardInventory[i].attackId)
             {
-                attackCard.attackData = card;
+                attackCard.attackId = card;
             }
-        }
+        }*/
 
         return attackCard;
     }
 
-    public void AddCard(AttackCard attackCard = null, EnemyCard enemyCard = null, StatCard statCard = null)
+    /*public void AddCard(AttackCard attackCard = null, EnemyCard enemyCard = null, StatCard statCard = null)
     {
         if (attackCard != null)
         {
@@ -390,7 +396,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
             serializableAttackCard.cardForeground = attackCard.cardForeground;
             serializableAttackCard.foilEffect = attackCard.foilEffect;
             serializableAttackCard.isFoil = attackCard.isFoil;
-            serializableAttackCard.attackId = attackCard.attackData.attackId;
+            serializableAttackCard.attackId = attackCard.attackId;
 
             attackCardInventory.Add(serializableAttackCard);
         }
@@ -402,5 +408,5 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         {
 
         }
-    }
+    }*/
 }
