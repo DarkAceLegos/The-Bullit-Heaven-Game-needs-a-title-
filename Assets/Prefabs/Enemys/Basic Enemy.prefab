@@ -111,9 +111,13 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 0.5773587}
-      - {x: -0.5, y: -0.28866667}
-      - {x: 0.5, y: -0.28866667}
+    - - {x: 0.8049974, y: 0.30841398}
+      - {x: 0.40034848, y: 0.71152353}
+      - {x: -0.39162356, y: 0.71372765}
+      - {x: -0.7983615, y: 0.29336357}
+      - {x: -0.800711, y: -0.19775407}
+      - {x: -0.49266344, y: -0.5024057}
+      - {x: 0.82169086, y: -0.49846506}
   m_UseDelaunayMesh: 0
 --- !u!50 &5538732215240874870
 Rigidbody2D:
@@ -260,7 +264,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6580290874801734387}
-  - component: {fileID: 678875733167134695}
+  - component: {fileID: 4296337377483082426}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Untagged
@@ -278,12 +282,12 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1100330648326027314}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &678875733167134695
+--- !u!212 &4296337377483082426
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -306,7 +310,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -327,8 +331,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: aac579785b1df7c40b7b381f99429e72, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

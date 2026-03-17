@@ -82,12 +82,12 @@ public class DataPersistenceManager : MonoBehaviour
             return;
         }
 
-        Debug.Log(dataPersistencesObjects.Count);
+        //Debug.Log(dataPersistencesObjects.Count);
 
         foreach (IDataPersistence dataPersistence in dataPersistencesObjects)
         {
             dataPersistence.SaveData(ref gameData);
-            Debug.Log(dataPersistence);
+            //Debug.Log(dataPersistence);
         }
 
         gameData.lastUpdated = System.DateTime.Now.ToBinary();

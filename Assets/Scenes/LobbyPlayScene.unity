@@ -11775,10 +11775,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bf37aa941ef2ff45a731cf943428010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  set:
-  - {fileID: 11400000, guid: ec7cb9df11fdfb54c833d78e6628d218, type: 2}
+  set: []
   packOpeningUi: {fileID: 109768942}
-  maxCardsInPack: 1
+  maxCardsInPack: 4
+  containsAttackCards: 0
+  containsEnemyCards: 1
+  containsStatCards: 0
 --- !u!4 &415556252
 Transform:
   m_ObjectHideFlags: 0
@@ -17580,6 +17582,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCards: []
+  typesOfEnemys:
+  - {fileID: -4533074107512873778, guid: d0a4e301bb2e54e4d81ace68f1dcbcc3, type: 3}
+  - {fileID: -4533074107512873778, guid: 732a4cac3bbe2964bb2e353a4c4320ce, type: 3}
+  - {fileID: -4533074107512873778, guid: df878aeef7a53d5489e75e71c992dc3a, type: 3}
+  - {fileID: -4533074107512873778, guid: 051a2472f2c9dd940a00f9e22cdac678, type: 3}
+  - {fileID: -4533074107512873778, guid: 77763a8f1cce2ab40a1556c0ace5c187, type: 3}
+  cardFrames:
+  - {fileID: -7069720901952774207, guid: ad0af6a07a8c4ca488a650093232a37f, type: 3}
+  cardFoilEffects:
+  - {fileID: -7069720901952774207, guid: ad0af6a07a8c4ca488a650093232a37f, type: 3}
 --- !u!4 &938917845
 Transform:
   m_ObjectHideFlags: 0

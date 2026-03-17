@@ -13,7 +13,7 @@ public class enemyCardScrolibleList : MonoBehaviour
         ShowDeck();
         //Debug.Log(attackDatas);
     }
-
+    
     private void OnEnable()
     {
         ShowDeck();

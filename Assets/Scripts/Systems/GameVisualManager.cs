@@ -29,6 +29,9 @@ public class GameVisualManager : NetworkBehaviour
     {
         playerReference.TryGet(out NetworkObject player);
 
+        //int timeelemet = ((int)Time.timeSinceLevelLoad);
+        //Debug.Log(timeelemet);
+
         if(enemies.Count <= 0 || spawnPoints.Count <= 0)
         {
             Debug.Log("No enemies or spawn points");
@@ -37,13 +40,17 @@ public class GameVisualManager : NetworkBehaviour
 
         var playersDeck = Player.LoaclInstance.GetComponent<PlayersDeck>();
 
-        //SpawnEnemy(player, playersDeck.deckOfEnemyCards[1].packs, playersDeck.deckOfEnemyCards[1].amount, playersDeck.deckOfEnemyCards[1].type);
+        int i = UnityEngine.Random.Range(0, playersDeck.deckOfEnemyCards.Count);
 
-        var spawnPosition = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Count)].position;
+        //Debug.Log(playersDeck.deckOfEnemyCards[i].amountOfPacks);
+
+        SpawnEnemy(player, playersDeck.deckOfEnemyCards[i].amountOfPacks, playersDeck.deckOfEnemyCards[i].packsSize, playersDeck.deckOfEnemyCards[i].typeOfEnemy);
+
+        /*var spawnPosition = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Count)].position;
         var enemy = Instantiate(enemies[UnityEngine.Random.Range(0, enemies.Count)], spawnPosition + player.transform.position, Quaternion.identity);
         enemy.GetComponent<NetworkObject>().Spawn(true);
         NetworkObject enemyNetworkObject =  enemy.GetComponent<NetworkObject>();
-        AddEnemyToListRpc(enemyNetworkObject);
+        AddEnemyToListRpc(enemyNetworkObject);*/
     }
 
     [Rpc(SendTo.Everyone)]
@@ -70,13 +77,13 @@ public class GameVisualManager : NetworkBehaviour
         {
             spawnPosition = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Count)].position;
 
-            for (int j = 0; j < numAmount; i++)
+            for (int j = 0; j < numAmount; j++)
             {
                 enemy = Instantiate(enemies[enemyType], spawnPosition + player.transform.position, Quaternion.identity);
                 enemy.GetComponent<NetworkObject>().Spawn(true);
                 NetworkObject enemyNetworkObject = enemy.GetComponent<NetworkObject>();
                 AddEnemyToListRpc(enemyNetworkObject);
-            }
+            }//*/
         }
         //var spawnPosition = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Count)].position;
         //var enemy = Instantiate(enemies[UnityEngine.Random.Range(0, enemies.Count)], spawnPosition + player.transform.position, Quaternion.identity);

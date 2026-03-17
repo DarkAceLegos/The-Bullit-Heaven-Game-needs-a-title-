@@ -38,8 +38,10 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
 
     [SerializeField] public SerializableDictionary<string, bool> skillTree;
     [SerializeField] public List<SeializableEnemyCard> enemyCardInventory;
+    [SerializeField] public List<SeializableEnemyCard> enemyCardDeck;
     [SerializeField] public List<SerializableAttackCard> attackCardInventory;
     [SerializeField] public List<SerializableStatCard> statCardInventory;
+    [SerializeField] public List<SerializableStatCard> statCardDeck;
 
     [SerializeField] public SeializableEnemyCard testingCard;
 
@@ -179,8 +181,10 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         this.gems = data.gems;
         this.skillTree = data.skillTree;
         this.enemyCardInventory = data.enemyCardInventory;
+        this.enemyCardDeck = data.enemyCardDeck;
         this.attackCardInventory = data.attackCardInventory;
         this.statCardInventory = data.statCardInventory;
+        this.statCardDeck = data.statCardDeck;
         this.testingCard = data.testCard;
         }
 
@@ -213,111 +217,175 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         data.gems = this.gems;
         data.skillTree = this.skillTree;
         data.enemyCardInventory = this.enemyCardInventory;
+        data.enemyCardDeck = this.enemyCardDeck;
         data.attackCardInventory = this.attackCardInventory;
         data.statCardInventory = this.statCardInventory;
+        data.statCardDeck = this.statCardDeck;
         data.testCard = this.testingCard;
     }
 
-    public void AddEnemyCard(EnemyCard card)
+    public void AddEnemyCard(EnemyCard card, int whichPlace = 0)
     {
         SeializableEnemyCard seializableEnemyCard = new SeializableEnemyCard();
 
         seializableEnemyCard.cardName = card.cardName;
         seializableEnemyCard.cardText = card.cardText;
         seializableEnemyCard.cardId = card.cardId;
-        seializableEnemyCard.cardBackground = card.cardBackground;
-        seializableEnemyCard.cardForeground = card.cardForeground;
-        seializableEnemyCard.foilEffect = card.foilEffect;
+        seializableEnemyCard.cardBackgroundName = card.cardBackground.name;
+        seializableEnemyCard.cardForegroundName = card.cardForeground.name;
+        seializableEnemyCard.foilEffectName = card.foilEffect.name;
         seializableEnemyCard.isFoil = card.isFoil;
         seializableEnemyCard.amountOfPacks = card.amountOfPacks;
         seializableEnemyCard.packsSize = card.packsSize;
         seializableEnemyCard.typeOfEnemy = card.typeOfEnemy;
 
-        enemyCardInventory.Add(seializableEnemyCard);
+        if (whichPlace == 0)
+        {
+            enemyCardInventory.Add(seializableEnemyCard);
+        }
+        else if (whichPlace == 1)
+        {
+            enemyCardDeck.Add(seializableEnemyCard);
+        }
+        else
+        {
+            Debug.Log("No Inventory of the place");
+        }
     }
 
-    public void RemoveEnemyCard(EnemyCard card)
+    public void RemoveEnemyCard(EnemyCard card, int whichPlace = 0)
     {
         SeializableEnemyCard seializableEnemyCard = new SeializableEnemyCard();
 
         seializableEnemyCard.cardName = card.cardName;
         seializableEnemyCard.cardText = card.cardText;
         seializableEnemyCard.cardId = card.cardId;
-        seializableEnemyCard.cardBackground = card.cardBackground;
-        seializableEnemyCard.cardForeground = card.cardForeground;
-        seializableEnemyCard.foilEffect = card.foilEffect;
+        seializableEnemyCard.cardBackgroundName = card.cardBackground.name;
+        seializableEnemyCard.cardBackgroundName = card.cardForeground.name;
+        seializableEnemyCard.cardBackgroundName = card.foilEffect.name;
         seializableEnemyCard.isFoil = card.isFoil;
         seializableEnemyCard.amountOfPacks = card.amountOfPacks;
         seializableEnemyCard.packsSize = card.packsSize;
         seializableEnemyCard.typeOfEnemy = card.typeOfEnemy;
 
-        enemyCardInventory.Remove(seializableEnemyCard);
+        if (whichPlace == 0)
+        {
+            enemyCardInventory.Remove(seializableEnemyCard);
+        }
+        else if (whichPlace == 1)
+        {
+            enemyCardDeck.Remove(seializableEnemyCard);
+        }
+        else
+        {
+            Debug.Log("No Inventory of the place");
+        }
     }
 
-    public EnemyCard GetEnemyCard(int i)
+    public EnemyCard GetEnemyCard(int i, int whichPlace = 0)
     {
         EnemyCard enemyCard = ScriptableObject.CreateInstance<EnemyCard>();
 
-        enemyCard.cardName = enemyCardInventory[i].cardName;
-        enemyCard.cardText = enemyCardInventory[i].cardText;
-        enemyCard.cardId = enemyCardInventory[i].cardId;
-        enemyCard.cardBackground = enemyCardInventory[i].cardBackground;
-        enemyCard.cardForeground = enemyCardInventory[i].cardForeground;
-        enemyCard.foilEffect = enemyCardInventory[i].foilEffect;
-        enemyCard.isFoil = enemyCardInventory[i].isFoil;
-        enemyCard.amountOfPacks = enemyCardInventory[i].amountOfPacks;
-        enemyCard.packsSize = enemyCardInventory[i].packsSize;
-        enemyCard.typeOfEnemy = enemyCardInventory[i].typeOfEnemy;
+        if (whichPlace == 0)
+        {
+            enemyCard.cardName = enemyCardInventory[i].cardName;
+            enemyCard.cardText = enemyCardInventory[i].cardText;
+            enemyCard.cardId = enemyCardInventory[i].cardId;
+            enemyCard.cardBackground = Resources.Load<Sprite>("Sprites/" + enemyCardInventory[i].cardBackgroundName);
+            enemyCard.cardForeground = Resources.Load<Sprite>("Sprites/" + enemyCardInventory[i].cardForegroundName);
+            enemyCard.foilEffect = Resources.Load<Sprite>("Sprites/" + enemyCardInventory[i].foilEffectName);
+            enemyCard.isFoil = enemyCardInventory[i].isFoil;
+            enemyCard.amountOfPacks = enemyCardInventory[i].amountOfPacks;
+            enemyCard.packsSize = enemyCardInventory[i].packsSize;
+            enemyCard.typeOfEnemy = enemyCardInventory[i].typeOfEnemy;
+        }
+        else if (whichPlace == 1)
+        {
+            enemyCard.cardName = enemyCardDeck[i].cardName;
+            enemyCard.cardText = enemyCardDeck[i].cardText;
+            enemyCard.cardId = enemyCardDeck[i].cardId;
+            enemyCard.cardBackground = Resources.Load<Sprite>("Sprites/" + enemyCardDeck[i].cardBackgroundName);
+            enemyCard.cardForeground = Resources.Load<Sprite>("Sprites/" + enemyCardDeck[i].cardForegroundName);
+            enemyCard.foilEffect = Resources.Load<Sprite>("Sprites/" + enemyCardDeck[i].foilEffectName);
+            enemyCard.isFoil = enemyCardDeck[i].isFoil;
+            enemyCard.amountOfPacks = enemyCardDeck[i].amountOfPacks;
+            enemyCard.packsSize = enemyCardDeck[i].packsSize;
+            enemyCard.typeOfEnemy = enemyCardDeck[i].typeOfEnemy;
+        }
+        else
+        {
+            Debug.Log("No Inventory of the place");
+        }
 
         return enemyCard;
     }
 
-    public void AddStatCard(StatCard card)
+    public void AddStatCard(StatCard card, int whichPlace = 0)
     {
         SerializableStatCard serializableStatCard = new SerializableStatCard();
 
         serializableStatCard.cardName = card.cardName;
         serializableStatCard.cardText = card.cardText;
         serializableStatCard.cardId = card.cardId;
-        serializableStatCard.cardBackground = card.cardBackground;
-        serializableStatCard.cardForeground = card.cardForeground;
-        serializableStatCard.foilEffect = card.foilEffect;
+        serializableStatCard.cardBackgroundName = card.cardBackground.name;
+        serializableStatCard.cardForegroundName = card.cardForeground.name;
+        serializableStatCard.foilEffectName = card.foilEffect.name;
         serializableStatCard.isFoil = card.isFoil;
         serializableStatCard.statId = card.statId;
         serializableStatCard.statChangeAmount = card.statChangeAmount;
 
-
-        statCardInventory.Add(serializableStatCard);
+        if (whichPlace == 0)
+        {
+            statCardInventory.Add(serializableStatCard);
+        }
+        else if (whichPlace == 1)
+        {
+            statCardDeck.Add(serializableStatCard);
+        }
+        else
+        {
+            Debug.Log("No Inventory of the place");
+        }
     }
 
-    public void RemoveStatCard(StatCard card)
+    public void RemoveStatCard(StatCard card, int whichPlace = 0)
     {
         SerializableStatCard serializableStatCard = new SerializableStatCard();
 
         serializableStatCard.cardName = card.cardName;
         serializableStatCard.cardText = card.cardText;
         serializableStatCard.cardId = card.cardId;
-        serializableStatCard.cardBackground = card.cardBackground;
-        serializableStatCard.cardForeground = card.cardForeground;
-        serializableStatCard.foilEffect = card.foilEffect;
+        serializableStatCard.cardBackgroundName = card.cardBackground.name;
+        serializableStatCard.cardForegroundName = card.cardForeground.name;
+        serializableStatCard.foilEffectName = card.foilEffect.name;
         serializableStatCard.isFoil = card.isFoil;
         serializableStatCard.statId = card.statId;
         serializableStatCard.statChangeAmount = card.statChangeAmount;
 
-
-        statCardInventory.Remove(serializableStatCard);
+        if (whichPlace == 0)
+        {
+            statCardInventory.Remove(serializableStatCard);
+        }
+        else if (whichPlace == 1)
+        {
+            statCardDeck.Remove(serializableStatCard);
+        }
+        else
+        {
+            Debug.Log("No Inventory of the place");
+        }
     }
 
-    public StatCard GetStatCard(int i)
+    public StatCard GetStatCard(int i, int whichPlace = 0)
     {
         StatCard statCard = ScriptableObject.CreateInstance<StatCard>();
 
         statCard.cardName = statCardInventory[i].cardName;
         statCard.cardText = statCardInventory[i].cardText;
         statCard.cardId = statCardInventory[i].cardId;
-        statCard.cardBackground = statCardInventory[i].cardBackground;
-        statCard.cardForeground = statCardInventory[i].cardForeground;
-        statCard.foilEffect = statCardInventory[i].foilEffect;
+        statCard.cardBackground = Resources.Load<Sprite>("Sprites/" + enemyCardInventory[i].cardBackgroundName);
+        statCard.cardForeground = Resources.Load<Sprite>("Sprites/" + enemyCardInventory[i].cardForegroundName); ;
+        statCard.foilEffect = Resources.Load<Sprite>("Sprites/"+ enemyCardInventory[i].foilEffectName);
         statCard.isFoil = statCardInventory[i].isFoil;
         statCard.statId = statCardInventory[i].statId;
         statCard.statChangeAmount = statCardInventory[i].statChangeAmount;
@@ -326,87 +394,74 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         return statCard;
     }
 
-    public void AddAttackCard(AttackCard card)
+    public void AddAttackCard(AttackCard card, int whichPlace = 0)
     {
         SerializableAttackCard serializableAttackCard = new SerializableAttackCard();
 
         serializableAttackCard.cardName = card.cardName;
         serializableAttackCard.cardText = card.cardText;
         serializableAttackCard.cardId = card.cardId;
-        serializableAttackCard.cardBackground = card.cardBackground;
-        serializableAttackCard.cardForeground = card.cardForeground;
-        serializableAttackCard.foilEffect = card.foilEffect;
+        serializableAttackCard.cardBackgroundName = card.cardBackground.name;
+        serializableAttackCard.cardForegroundName = card.cardForeground.name;
+        serializableAttackCard.foilEffectName = card.foilEffect.name;
         serializableAttackCard.isFoil = card.isFoil;
         serializableAttackCard.attackId = card.attackId;
-
-        attackCardInventory.Add(serializableAttackCard);
+        
+        if (whichPlace == 0)
+        {
+            attackCardInventory.Add(serializableAttackCard);
+        }
+        else if (whichPlace == 1)
+        {
+            allAttacksPlayerUnlocked.Add(card.attackId);
+        }
+        else
+        {
+            Debug.Log("No Inventory of the place");
+        }
     }
 
-    public void RemoveAttackCard(AttackCard card)
+    public void RemoveAttackCard(AttackCard card, int whichPlace = 0)
     {
         SerializableAttackCard serializableAttackCard = new SerializableAttackCard();
 
         serializableAttackCard.cardName = card.cardName;
         serializableAttackCard.cardText = card.cardText;
         serializableAttackCard.cardId = card.cardId;
-        serializableAttackCard.cardBackground = card.cardBackground;
-        serializableAttackCard.cardForeground = card.cardForeground;
-        serializableAttackCard.foilEffect = card.foilEffect;
+        serializableAttackCard.cardBackgroundName = card.cardBackground.name;
+        serializableAttackCard.cardForegroundName = card.cardForeground.name;
+        serializableAttackCard.foilEffectName = card.foilEffect.name;
         serializableAttackCard.isFoil = card.isFoil;
         serializableAttackCard.attackId = card.attackId;
 
-        attackCardInventory.Remove(serializableAttackCard);
+        if (whichPlace == 0)
+        {
+            attackCardInventory.Remove(serializableAttackCard);
+        }
+        else if (whichPlace == 1)
+        {
+            allAttacksPlayerUnlocked.Remove(card.attackId);
+        }
+        else
+        {
+            Debug.Log("No Inventory of the place");
+        }
     }
 
-    public AttackCard GetAttackCard(int i)
+    public AttackCard GetAttackCard(int i, int whichPlace = 0)
     {
         AttackCard attackCard = ScriptableObject.CreateInstance<AttackCard>();
 
         attackCard.cardName = attackCardInventory[i].cardName;
         attackCard.cardText = attackCardInventory[i].cardText;
         attackCard.cardId = attackCardInventory[i].cardId;
-        attackCard.cardBackground = attackCardInventory[i].cardBackground;
-        attackCard.cardForeground = attackCardInventory[i].cardForeground;
-        attackCard.foilEffect = attackCardInventory[i].foilEffect;
+        attackCard.cardBackground = Resources.Load<Sprite>("Sprites/" + enemyCardInventory[i].cardBackgroundName);
+        attackCard.cardForeground = Resources.Load<Sprite>("Sprites/" + enemyCardInventory[i].cardForegroundName); ;
+        attackCard.foilEffect = Resources.Load<Sprite>("Sprites/" + enemyCardInventory[i].foilEffectName);
         attackCard.isFoil = attackCardInventory[i].isFoil;
 
         attackCard.attackId = attackCardInventory[i].attackId;
 
-        /*foreach (var card in FindObjectsByType<AttackData>(FindObjectsSortMode.None))
-        { 
-            if (card.attackId == attackCardInventory[i].attackId)
-            {
-                attackCard.attackId = card;
-            }
-        }*/
-
         return attackCard;
     }
-
-    /*public void AddCard(AttackCard attackCard = null, EnemyCard enemyCard = null, StatCard statCard = null)
-    {
-        if (attackCard != null)
-        {
-            SerializableAttackCard serializableAttackCard = new SerializableAttackCard();
-
-            serializableAttackCard.cardName = attackCard.cardName;
-            serializableAttackCard.cardText = attackCard.cardText;
-            serializableAttackCard.cardId = attackCard.cardId;
-            serializableAttackCard.cardBackground = attackCard.cardBackground;
-            serializableAttackCard.cardForeground = attackCard.cardForeground;
-            serializableAttackCard.foilEffect = attackCard.foilEffect;
-            serializableAttackCard.isFoil = attackCard.isFoil;
-            serializableAttackCard.attackId = attackCard.attackId;
-
-            attackCardInventory.Add(serializableAttackCard);
-        }
-    }
-
-    public void GetCard(Cards card)
-    {
-        if(card.GetType() == typeof(SerializableAttackCard))
-        {
-
-        }
-    }*/
 }

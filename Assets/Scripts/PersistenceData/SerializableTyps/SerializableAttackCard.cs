@@ -1,15 +1,14 @@
 using UnityEngine;
 
 [System.Serializable]
-public class SerializableAttackCard
+public class SerializableAttackCard 
 {
     [SerializeField] public string cardName;
     [SerializeField] public string cardText;
     [SerializeField] public string cardId;
-    [SerializeField] public Sprite cardBackground;
-    [SerializeField] public Sprite cardForeground;
-    [SerializeField] public Sprite foilEffect;
+    [SerializeField] public string cardBackgroundName;
+    [SerializeField] public string cardForegroundName;
+    [SerializeField] public string foilEffectName;
     [SerializeField] public bool isFoil;
     [SerializeField] public string attackId;
-    
 }

@@ -11,15 +11,25 @@ public class PackOfCards : MonoBehaviour
     [SerializeField] private bool containsStatCards;
 
 
-    public List<Cards> GetSet() 
+    public List<Cards> GetSet()
     {
-        List<Cards> cards = new List<Cards>(set);
-
-        if (cards.Count > maxCardsInPack)
+        
+        List<Cards> cards = new List<Cards>();
+        
+        if (set != null )
         {
+            cards = new List<Cards>(set);
+        }
+
+        //Debug.Log(maxCardsInPack > cards.Count);
+
+
+        if (cards.Count < maxCardsInPack)
+        {
+            Debug.Log("Getting more cards");
             if (containsAttackCards & containsEnemyCards & containsStatCards) 
             { cards.Add(CardCrafter.instance.GetARandomCard());  }
-            
+
             else
             {
                 if (containsAttackCards)
@@ -32,6 +42,8 @@ public class PackOfCards : MonoBehaviour
                 { cards.Add(CardCrafter.instance.GetARandomStatCard()); }
             }
         }
+
+        //Debug.Log(cards.Count);
         
         return cards; 
     }

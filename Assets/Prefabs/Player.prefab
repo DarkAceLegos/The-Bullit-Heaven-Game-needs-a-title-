@@ -428,6 +428,7 @@ GameObject:
   - component: {fileID: 6306993710463856879}
   - component: {fileID: 3400757655122143848}
   - component: {fileID: 7764768885865692774}
+  - component: {fileID: 2364707875456169921}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -715,6 +716,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fce090121d5a3ae4eb94a0824174af36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2364707875456169921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5004031360651103400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e1b93c4f25c01c4598277913c5200fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deckOfCardsAttacks: []
+  deckOfEnemyCards: []
+  playerMetas: {fileID: 2807084143443563048}
 --- !u!1 &6406485346394258346
 GameObject:
   m_ObjectHideFlags: 0
