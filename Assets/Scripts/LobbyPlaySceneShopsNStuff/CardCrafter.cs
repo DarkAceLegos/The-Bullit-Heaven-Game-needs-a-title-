@@ -80,7 +80,45 @@ public class CardCrafter : MonoBehaviour
     {
         StatCard card = ScriptableObject.CreateInstance<StatCard>();
 
+        card.cardId = Guid.NewGuid().ToString();
+        card.cardBackground = cardFrames[UnityEngine.Random.Range(0, cardFrames.Count - 1)];
+        card.foilEffect = cardFoilEffects[UnityEngine.Random.Range(0, cardFoilEffects.Count - 1)];
+        card.isFoil = false;
 
+        int randomChanceForType = UnityEngine.Random.Range(0, 100);
+
+        if (randomChanceForType >= 25)
+        {
+            List<int> additiveStat = new List<int> { 0, 2, 5, 6, 10, 14, 16, 18, 20 }; // this is teriable
+
+            card.statId.Add(additiveStat[UnityEngine.Random.Range(0, additiveStat.Count - 1)]);
+            if (card.statId[0] == 5)
+            {
+                card.statChangeAmount.Add(UnityEngine.Random.Range(1, 2));
+            }
+            else
+            {
+                card.statChangeAmount.Add(UnityEngine.Random.Range(1, 10));
+            }
+        }
+        else
+        {
+            List<int> percentiageStat = new List<int> { 1, 3, 4, 7, 8, 9, 11, 12, 13, 15, 17, 19, 21 }; // this is teriable
+
+            card.statId.Add(percentiageStat[UnityEngine.Random.Range(0, percentiageStat.Count - 1)]);
+
+            card.statChangeAmount.Add((UnityEngine.Random.Range(1, 10) 
+                + UnityEngine.Random.Range(1, 10) 
+                + UnityEngine.Random.Range(1, 10) 
+                + UnityEngine.Random.Range(1, 10) 
+                + UnityEngine.Random.Range(1, 10)) / 100);
+        }
+
+        card.cardName = PlayerMetaProgression.Instance.GetNameOfStat(card.statId[0]);
+
+        card.cardText = $"Increase {card.cardName} by {card.statChangeAmount}";
+
+        //card.cardForeground = //need to figue out
 
         return card;
     }

@@ -24,11 +24,12 @@ public class PackOfCards : MonoBehaviour
         //Debug.Log(maxCardsInPack > cards.Count);
 
 
-        if (cards.Count < maxCardsInPack)
+
+        do
         {
             Debug.Log("Getting more cards");
-            if (containsAttackCards & containsEnemyCards & containsStatCards) 
-            { cards.Add(CardCrafter.instance.GetARandomCard());  }
+            if (containsAttackCards & containsEnemyCards & containsStatCards)
+            { cards.Add(CardCrafter.instance.GetARandomCard()); }
 
             else
             {
@@ -41,10 +42,10 @@ public class PackOfCards : MonoBehaviour
                 if (containsStatCards)
                 { cards.Add(CardCrafter.instance.GetARandomStatCard()); }
             }
-        }
+        } while (cards.Count < maxCardsInPack);
 
         //Debug.Log(cards.Count);
-        
+
         return cards; 
     }
 

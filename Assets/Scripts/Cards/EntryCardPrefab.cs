@@ -20,6 +20,15 @@ public class EntryCardPrefab : MonoBehaviour
         GetComponent<Button>().onClick.AddListener(() =>
         {
             GetComponentInParent<CardOnClickHandler>().ActivatCard(card);
+            //Debug.Log(transform.parent.gameObject.transform.parent.gameObject.TryGetComponent<PackOpeningUi>());
+            if (transform.parent.gameObject.transform.parent.gameObject.TryGetComponent<PackOpeningUi>(out PackOpeningUi packOpeningUi)) 
+            { 
+                //Debug.Log(this);
+                Destroy(this.gameObject);
+                //Debug.Log(packOpeningUi.GetComponentInChildren<PackOnClick>().transform.childCount);
+                if(packOpeningUi.GetComponentInChildren<PackOnClick>().transform.childCount == 1)
+                { packOpeningUi.Hide(); }
+            } 
         });
     }
 

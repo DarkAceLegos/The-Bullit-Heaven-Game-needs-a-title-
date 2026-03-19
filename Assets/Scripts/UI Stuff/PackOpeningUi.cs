@@ -27,7 +27,7 @@ public class PackOpeningUi : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    private void Hide()
+    public void Hide()
     {
         gameObject.SetActive(false);
     }
