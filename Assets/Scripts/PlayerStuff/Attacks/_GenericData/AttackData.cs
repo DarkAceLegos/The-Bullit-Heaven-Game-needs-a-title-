@@ -7,7 +7,7 @@ public abstract class AttackData : ScriptableObject
     public string attackName;
     [SerializeField] private List<AttackData> attacksOnceMaxedLeveled;
     [SerializeField] public List<string> levelDiscriptions = new();
-    public Sprite icon;
+    [SerializeField] public Sprite icon;
     public Attack prefab;
     //public struct LevelData { }
 

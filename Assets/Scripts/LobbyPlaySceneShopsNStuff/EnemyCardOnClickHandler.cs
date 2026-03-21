@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class EnemyCardOnClickHandler : CardOnClickHandler
 {
+    [SerializeField] private EnemyDeckUi ui;
+
     public override void ActivatCard(Cards card)
     {
         if (card is EnemyCard)
@@ -13,5 +15,7 @@ public class EnemyCardOnClickHandler : CardOnClickHandler
         {
             Debug.Log("Not an Enemy Card");
         }
+
+        ui.ShowDeck();
     }
 }

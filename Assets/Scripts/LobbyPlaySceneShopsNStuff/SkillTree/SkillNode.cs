@@ -8,16 +8,43 @@ public class SkillNode : MonoBehaviour, IPointerClickHandler, IDataPersistence
 {
     [System.Serializable]
     public struct LevelUps
-    { public int statId; public int value; }
+    { public stats stats; public int value; }
 
     [SerializeField] private string id = Guid.NewGuid().ToString();
     [SerializeField] public bool unlocked;
     [SerializeField] public int cost;
     [SerializeField] private bool startingNode;
     [SerializeField] public bool clickable;
+    [SerializeField] public int order { get; private set; }
     [SerializeField] private List<LevelUps> levelUps;
-        
+
     [SerializeField] private List<SkillNode> conections;
+
+    public enum stats
+    {
+        additiveMaxHealthModifier = 0,
+        percentageMaxHealthModifier = 1,
+        additiveDamageModifier = 2,
+        percentageDamageModifier = 3,
+        percentageCooldownModifier = 4,
+        additiveProjectileModifier = 5,
+        additiveAreaModifier = 6,
+        percentageAreaModifier = 7,
+        enemySpawnModifier = 8,
+        enemyDamageModifier = 9,
+        playerHealthRegen = 10,
+        percentagePlayerHealthRegen = 11,
+        percentageTreasureFind = 12,
+        percentageTreasurGain = 13,
+        additivePlayerMoveSpeed = 14,
+        percentagePlayerMoveSpeed = 15,
+        additiveProjectileSpeed = 16,
+        percentageProjectileSpeed = 17,
+        additiveDuration = 18,
+        percentageDuration = 19,
+        additiveExperience = 20,
+        percentageExperience = 21,
+    }
 
     public void LoadData(GameData progression)
     {
@@ -44,10 +71,10 @@ public class SkillNode : MonoBehaviour, IPointerClickHandler, IDataPersistence
             ShowConections();
             unlocked = true;
             PlayerMetaProgression.Instance.ChangeCoinAmount(-cost);
-            foreach (var level in levelUps)
+            /*foreach (var level in levelUps)
             {
-                PlayerMetaProgression.Instance.ChangeStat(level.statId, level.value);
-            }
+                PlayerMetaProgression.Instance.ChangeStat(((int)level.stats), level.value);
+            }*/
         }
         else if (eventData.button == PointerEventData.InputButton.Middle)
             Debug.Log("Middle click");
@@ -86,6 +113,14 @@ public class SkillNode : MonoBehaviour, IPointerClickHandler, IDataPersistence
         {
             conections.Show();
             conections.clickable = true;
+        }
+    }
+
+    public void StatSkillNodeComp()
+    {
+        foreach (var level in levelUps)
+        {
+            PlayerMetaProgression.Instance.ChangeStat(((int)level.stats), level.value);
         }
     }
 }

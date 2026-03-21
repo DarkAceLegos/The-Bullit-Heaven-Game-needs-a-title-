@@ -8,7 +8,8 @@ public class AttackDeckUi : MonoBehaviour
     [SerializeField] private EntryCardPrefab entryPrefabCard;
     [SerializeField] private Transform cardHolder;
     [SerializeField] private List<AttackData> attackDatas = new List<AttackData>();
-    [SerializeField] private Cards attackCard;
+    private AttackCard attackCard;
+    [SerializeField] private Sprite cardBackground;
 
     private void Awake()
     {
@@ -28,7 +29,7 @@ public class AttackDeckUi : MonoBehaviour
         foreach (Transform child in cardHolder)
             Destroy(child.gameObject);
 
-        var randomCards = new List<Cards>();
+        var randomCards = new List<AttackCard>();
 
         foreach (var id in PlayerMetaProgression.Instance.allAttacksPlayerUnlocked)
         {
@@ -36,12 +37,15 @@ public class AttackDeckUi : MonoBehaviour
             {
                 if (id == attackData.attackId)
                 {
-                    attackCard = ScriptableObject.CreateInstance<Cards>();
+                    attackCard = ScriptableObject.CreateInstance<AttackCard>();
 
                     attackCard.cardText = attackData.GetLevelDescription(0);
                     //Debug.Log(attackCard.cardText);
                     attackCard.cardName = attackData.name;
                     //Debug.Log(attackCard.cardName);
+                    attackCard.cardBackground = cardBackground;
+                    attackCard.attackId = id;
+                    attackCard.cardForeground = attackData.icon;
 
                     randomCards.Add(attackCard);
                 }

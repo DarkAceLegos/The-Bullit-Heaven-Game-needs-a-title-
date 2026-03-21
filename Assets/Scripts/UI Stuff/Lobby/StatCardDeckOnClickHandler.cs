@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class StatCardOnClickHandler : CardOnClickHandler
+public class StatCardDeckOnClickHandler : CardOnClickHandler
 {
     [SerializeField] private StatDeckUi ui;
 
@@ -9,7 +9,7 @@ public class StatCardOnClickHandler : CardOnClickHandler
         if (card is StatCard)
         {
             //Debug.Log("Enemy Card");
-            PlayerMetaProgression.Instance.AddStatCard((StatCard)card, 1);
+            PlayerMetaProgression.Instance.RemoveStatCard((StatCard)card, 1);
         }
         else
         {

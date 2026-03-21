@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AttackCardOnClickHandeler : CardOnClickHandler
+public class AttackCardDeckOnClickHandler : CardOnClickHandler
 {
     public override void ActivatCard(Cards card)
     {
@@ -9,7 +9,7 @@ public class AttackCardOnClickHandeler : CardOnClickHandler
 
         Debug.Log(attackCard.attackId);
 
-        PlayerMetaProgression.Instance.AddAttack(attackCard.attackId);
+        PlayerMetaProgression.Instance.RemoveAttack(attackCard.attackId);
         AttackDeckUi.Instance.ShowDeck();
     }
 }
