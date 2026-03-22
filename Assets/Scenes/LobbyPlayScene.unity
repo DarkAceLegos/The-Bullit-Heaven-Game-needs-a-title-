@@ -18857,7 +18857,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca71e5f68a264147a74df5e220432c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCards: []
+  attackCards:
+  - {fileID: 11400000, guid: fe03bf0bdf663954dbd28dcb818aaeb2, type: 2}
+  - {fileID: 11400000, guid: fd93915151fbd4e4997ce08e20fc4561, type: 2}
+  - {fileID: 11400000, guid: 1a48e54ffd425d445a5fba62583b0b1e, type: 2}
+  - {fileID: 11400000, guid: c48ab89498a570c40a80db0ec6555816, type: 2}
+  - {fileID: 11400000, guid: a4c5e6984be02da4a86c275145c22a71, type: 2}
+  - {fileID: 11400000, guid: 63671ad8fb6b21249916bf6282a78db0, type: 2}
+  - {fileID: 11400000, guid: 2b508d08510e7574ca736ec223301338, type: 2}
+  - {fileID: 11400000, guid: 48f86dc15367ac04f8c3f4f217f2847b, type: 2}
+  - {fileID: 11400000, guid: fc511599d32a2b849ab9428f74676f51, type: 2}
+  - {fileID: 11400000, guid: 266e6be0e4f5f8d43be189d3d8076579, type: 2}
+  - {fileID: 11400000, guid: 28d3a6e3bcd97a94da61fe24a6b11741, type: 2}
   typesOfEnemys:
   - {fileID: -4533074107512873778, guid: d0a4e301bb2e54e4d81ace68f1dcbcc3, type: 3}
   - {fileID: -4533074107512873778, guid: 732a4cac3bbe2964bb2e353a4c4320ce, type: 3}
