@@ -45,7 +45,7 @@ public class GameData
 
     public GameData()
     {
-        this.allAttacksPlayerUnlocked = new List<string> { "1","4","7","9","10","11"};
+        this.allAttacksPlayerUnlocked = new List<string> {};
         this.additiveMaxHealthModifier = 0;
         this.percentageMaxHealthModifier = 1f;
         this.additiveDamageModifier = 0;
