@@ -8,14 +8,14 @@ public class SkillNode : MonoBehaviour, IPointerClickHandler, IDataPersistence
 {
     [System.Serializable]
     public struct LevelUps
-    { public stats stats; public int value; }
+    { public stats stats; public float value; }
 
     [SerializeField] private string id = Guid.NewGuid().ToString();
     [SerializeField] public bool unlocked;
     [SerializeField] public int cost;
     [SerializeField] private bool startingNode;
     [SerializeField] public bool clickable;
-    [SerializeField] public int order { get; private set; }
+    [SerializeField] public int order = 0;
     [SerializeField] private List<LevelUps> levelUps;
 
     [SerializeField] private List<SkillNode> conections;
@@ -54,6 +54,7 @@ public class SkillNode : MonoBehaviour, IPointerClickHandler, IDataPersistence
         {
             Show();
             GetComponent<Image>().color = Color.green;
+            clickable = true;
 
             //ShowConections();
         }
@@ -71,6 +72,7 @@ public class SkillNode : MonoBehaviour, IPointerClickHandler, IDataPersistence
             ShowConections();
             unlocked = true;
             PlayerMetaProgression.Instance.ChangeCoinAmount(-cost);
+            PlayerStatScreen.Instance.UpdateViuals();
             /*foreach (var level in levelUps)
             {
                 PlayerMetaProgression.Instance.ChangeStat(((int)level.stats), level.value);
@@ -118,9 +120,16 @@ public class SkillNode : MonoBehaviour, IPointerClickHandler, IDataPersistence
 
     public void StatSkillNodeComp()
     {
-        foreach (var level in levelUps)
+        if (levelUps == null)
         {
-            PlayerMetaProgression.Instance.ChangeStat(((int)level.stats), level.value);
+            //Do alternet thing
+        }
+        else
+        {
+            foreach (var level in levelUps)
+            {
+                PlayerMetaProgression.Instance.ChangeStat(((int)level.stats), level.value);
+            }
         }
     }
 }

@@ -24,7 +24,7 @@ public class GameManager : NetworkBehaviour
 
     public float deathTime = 30f * 60;
 
-    private float acuualSpawnInterval => spawnInterval / NetworkManager.Singleton.ConnectedClients.Count; //move to game manager
+    private float acuualSpawnInterval => spawnInterval * NetworkManager.Singleton.ConnectedClients.Count; //move to game manager
     [SerializeField] private List<EnemyHealth> spawnedEnemies = new(); //move to game manager
     private float lastSpawnTime; //move to game manager
     private bool isGamePaused = false;

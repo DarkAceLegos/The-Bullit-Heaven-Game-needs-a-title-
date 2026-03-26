@@ -11,7 +11,7 @@ public class GameVisualManager : NetworkBehaviour
     [SerializeField] private List<Transform> visualObjectsPrefabs = new();
 
     [SerializeField] private List<EnemyHealth> enemies = new();
-    [SerializeField] private List<Transform> spawnPoints = new();
+    [SerializeField] private List<Collider2D> spawnPoints = new();
 
     private void Start()
     {
@@ -40,11 +40,20 @@ public class GameVisualManager : NetworkBehaviour
 
         var playersDeck = Player.LoaclInstance.GetComponent<PlayersDeck>();
 
-        int i = UnityEngine.Random.Range(0, playersDeck.deckOfEnemyCards.Count);
+        if (playersDeck.deckOfEnemyCards.Count != 0)
+        {
+            int i = UnityEngine.Random.Range(0, playersDeck.deckOfEnemyCards.Count);
 
-        //Debug.Log(playersDeck.deckOfEnemyCards[i].amountOfPacks);
+            //Debug.Log(playersDeck.deckOfEnemyCards[i].amountOfPacks);
 
-        SpawnEnemy(player, playersDeck.deckOfEnemyCards[i].amountOfPacks, playersDeck.deckOfEnemyCards[i].packsSize, playersDeck.deckOfEnemyCards[i].typeOfEnemy);
+            SpawnEnemy(player, playersDeck.deckOfEnemyCards[i].amountOfPacks, playersDeck.deckOfEnemyCards[i].packsSize, playersDeck.deckOfEnemyCards[i].typeOfEnemy);
+        }
+        else 
+        {
+            SpawnEnemy(player, UnityEngine.Random.Range(1, 4), UnityEngine.Random.Range(5, 10), UnityEngine.Random.Range(0, 3));
+        }
+
+        
 
         /*var spawnPosition = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Count)].position;
         var enemy = Instantiate(enemies[UnityEngine.Random.Range(0, enemies.Count)], spawnPosition + player.transform.position, Quaternion.identity);
@@ -70,16 +79,16 @@ public class GameVisualManager : NetworkBehaviour
 
     private void SpawnEnemy(NetworkObject player, int numPlaces, int numAmount, int enemyType)
     {
-        Vector3 spawnPosition;
+        Collider2D spawnPosition;
         EnemyHealth enemy;
 
         for (int i = 0; i < numPlaces; i++)
         {
-            spawnPosition = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Count)].position;
+            spawnPosition = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Count)];
 
             for (int j = 0; j < numAmount; j++)
             {
-                enemy = Instantiate(enemies[enemyType], spawnPosition + player.transform.position, Quaternion.identity);
+                enemy = Instantiate(enemies[enemyType], (Vector3)RandomPointInSpawnArea(spawnPosition) + player.transform.position, Quaternion.identity);
                 enemy.GetComponent<NetworkObject>().Spawn(true);
                 NetworkObject enemyNetworkObject = enemy.GetComponent<NetworkObject>();
                 AddEnemyToListRpc(enemyNetworkObject);
@@ -90,5 +99,18 @@ public class GameVisualManager : NetworkBehaviour
         //enemy.GetComponent<NetworkObject>().Spawn(true);
         //NetworkObject enemyNetworkObject = enemy.GetComponent<NetworkObject>();
         //AddEnemyToListRpc(enemyNetworkObject);
+    }
+
+    private Vector2 RandomPointInSpawnArea(Collider2D collider)
+    {
+        Bounds bounds = collider.bounds;
+
+        Vector2 minBounds = new Vector2(bounds.min.x, bounds.min.y);
+        Vector2 maxBounds = new Vector2(bounds.max.x, bounds.max.y);
+
+        float randomX = UnityEngine.Random.Range(minBounds.x, maxBounds.x);
+        float randomY = UnityEngine.Random.Range(minBounds.y, maxBounds.y);
+
+        return new Vector2(randomX, randomY);
     }
 }

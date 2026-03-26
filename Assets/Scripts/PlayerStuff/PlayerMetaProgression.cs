@@ -8,7 +8,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
 
     [SerializeField] public List<string> allAttacksPlayerUnlocked = new();
 
-    private Dictionary<int,string> statNameList = new Dictionary<int, string>();
+    public Dictionary<int,string> statNameList = new Dictionary<int, string>();
 
     [SerializeField] public int additiveMaxHealthModifier;
     [SerializeField] public float percentageMaxHealthModifier = 1f;

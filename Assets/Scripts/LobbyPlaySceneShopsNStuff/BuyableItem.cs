@@ -4,13 +4,15 @@ using UnityEngine.UI;
 
 public class BuyableItem : MonoBehaviour
 {
-    [SerializeField] Button buyButton;
-    [SerializeField] Image image;
-    [SerializeField] TextMeshProUGUI priceText;
-    [SerializeField] PackOfCards product;
-    [SerializeField] int price;
-    [SerializeField] bool singleBuy;
-    [SerializeField] bool sellable;
+    [SerializeField] private Button buyButton;
+    [SerializeField] private Image image;
+    [SerializeField] private TextMeshProUGUI priceText;
+    [SerializeField] private PackOfCards product;
+    [SerializeField] private int price;
+    [SerializeField] private bool singleBuy;
+    [SerializeField] private bool sellable;
+    [SerializeField] private TextMeshProUGUI typeOfProduct;
+    [SerializeField] private string textOfTheTypeOfProduct;
 
     private void Awake()
     {
@@ -27,6 +29,7 @@ public class BuyableItem : MonoBehaviour
     private void Start()
     {
         priceText.text = "Cost: " + price.ToString();
+        typeOfProduct.text = textOfTheTypeOfProduct;
     }
 
     private void gainBuyableItem()

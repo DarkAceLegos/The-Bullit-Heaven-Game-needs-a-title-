@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class StatOrderComp : MonoBehaviour
 {
-    [SerializeField] public PlayerBaseStats player; 
+    public static StatOrderComp Instance;
+
+    [SerializeField] public PlayerBaseStats player;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     public void StatComp()
     {
@@ -29,6 +36,7 @@ public class StatOrderComp : MonoBehaviour
                 if (skill.order == 0)
                 {
                     listOrder0.Add(skill);
+                    Debug.Log("add skill to list 0");
                 }
                 else if (skill.order == 1)
                 {

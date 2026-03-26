@@ -646,7 +646,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   playerMetas: {fileID: 2807084143443563048}
-  moveSpeed: 10
+  moveSpeed: 4
   additiveMaxHealthModifier: 0
   percentageMaxHealthModifier: 1
   additiveDamageModifier: 0

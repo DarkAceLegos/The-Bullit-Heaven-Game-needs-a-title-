@@ -25,7 +25,7 @@ public class LevelManager : NetworkBehaviour
         public int newLevel;
     }
 
-    [SerializeField] private int expToNextLevel => expToLevel * (level + 1);
+    [SerializeField] private int expToNextLevel => (expToLevel) * (level + 1)^2;
 
     private void Awake()
     {

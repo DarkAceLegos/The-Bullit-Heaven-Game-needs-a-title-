@@ -8,6 +8,7 @@ public class EnemyHealth : NetworkBehaviour
     [SerializeField] private int maxHealth = 10;
     [SerializeField] private int experience = 1;
     [SerializeField] public int coinsOnKill = 1;
+    [SerializeField] private GameObject enemySprite;
 
     [SerializeField] private float currentHeath;
 
@@ -19,12 +20,14 @@ public class EnemyHealth : NetworkBehaviour
         {
             maxHealth = maxHealth * LevelManager.Instance.level * NetworkManager.ConnectedClients.Count;
         }
-        //maxHealth = maxHealth * LevelManager.Instance.level * NetworkManager.ConnectedClients.Count;
+        //maxHealth = maxHealth * NetworkManager.ConnectedClients.Count;
         currentHeath = maxHealth;
     }
 
     public void DamageEnemy(float damage)
     {
+        enemySprite.SetActive(true);
+
         DealDamageRpc(damage);
     }
 

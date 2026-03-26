@@ -6,7 +6,10 @@ public class CardCrafter : MonoBehaviour
 {
     public static CardCrafter instance;
 
-    [SerializeField] private List<AttackCard> attackCards;
+    [SerializeField] private List<AttackCard> commonAttackCards;
+    [SerializeField] private List<AttackCard> uncommonAttackCards;
+    [SerializeField] private List<AttackCard> rareAttackCards;
+
     [SerializeField] private List<EnemyHealth> typesOfEnemys;
     [SerializeField] private List<Sprite> cardFrames;
     [SerializeField] private List<Sprite> cardFoilEffects;
@@ -29,16 +32,16 @@ public class CardCrafter : MonoBehaviour
         else 
         { cards = GetARandomStatCard(); }
 
-        return GetARandomAttackCard();
+        return cards;
     }
 
     public AttackCard GetARandomAttackCard()
     {
         //AttackCard card = ScriptableObject.CreateInstance<AttackCard>();
 
-        int i = UnityEngine.Random.Range(0, attackCards.Count - 1);
-
-        return attackCards[i];
+        int i = UnityEngine.Random.Range(0, uncommonAttackCards.Count - 1);
+        uncommonAttackCards[i].isFoil = false; // AtSome point add a random bool
+        return uncommonAttackCards[i];
     }
 
     public EnemyCard GetARandomEnemyCard()
@@ -68,7 +71,7 @@ public class CardCrafter : MonoBehaviour
         card.cardBackground = cardFrames[UnityEngine.Random.Range(0, cardFrames.Count - 1)];
         card.cardForeground = theEnemy.GetComponentInChildren<SpriteRenderer>().sprite;
         card.foilEffect = cardFoilEffects[UnityEngine.Random.Range(0, cardFoilEffects.Count - 1)];
-        card.isFoil = false;
+        card.isFoil = false; // AtSome point add a random bool
         card.amountOfPacks = UnityEngine.Random.Range(1, 10);
         card.packsSize = UnityEngine.Random.Range(1, 10);
         card.cardText = $"Spawn {card.cardName} with a pack size of {card.packsSize}, {card.amountOfPacks} times.";
@@ -83,7 +86,7 @@ public class CardCrafter : MonoBehaviour
         card.cardId = Guid.NewGuid().ToString();
         card.cardBackground = cardFrames[UnityEngine.Random.Range(0, cardFrames.Count - 1)];
         card.foilEffect = cardFoilEffects[UnityEngine.Random.Range(0, cardFoilEffects.Count - 1)];
-        card.isFoil = false;
+        card.isFoil = false; // AtSome point add a random bool
 
         int randomChanceForType = UnityEngine.Random.Range(0, 100);
 
