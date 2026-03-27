@@ -23,8 +23,6 @@ public class PackOfCards : MonoBehaviour
 
         //Debug.Log(maxCardsInPack > cards.Count);
 
-
-
         do
         {
             Debug.Log("Getting more cards");
