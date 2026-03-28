@@ -26,7 +26,7 @@ public class EntryCardPrefab : MonoBehaviour
                 //Debug.Log(this);
                 Destroy(this.gameObject);
                 //Debug.Log(packOpeningUi.GetComponentInChildren<PackOnClick>().transform.childCount);
-                if(packOpeningUi.GetComponentInChildren<PackOnClick>().transform.childCount == 1)
+                if(packOpeningUi.GetComponentInChildren<CardOnClickHandler>().transform.childCount == 1)
                 { packOpeningUi.Hide(); }
             } 
         });

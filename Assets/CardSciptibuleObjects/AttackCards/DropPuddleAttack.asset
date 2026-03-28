@@ -16,7 +16,7 @@ MonoBehaviour:
   cardText: This attack spawns puddles on the floor that damage enimes.
   cardId: 3
   cardBackground: {fileID: -7069720901952774207, guid: ad0af6a07a8c4ca488a650093232a37f, type: 3}
-  cardForeground: {fileID: 0}
+  cardForeground: {fileID: 21300000, guid: 7df5d784a1c96da4598e452b40369937, type: 2}
   foilEffect: {fileID: -7069720901952774207, guid: ad0af6a07a8c4ca488a650093232a37f, type: 3}
   isFoil: 0
   attackId: 3

@@ -38,7 +38,7 @@ public class CardCrafter : MonoBehaviour
     public AttackCard GetARandomAttackCard()
     {
         //AttackCard card = ScriptableObject.CreateInstance<AttackCard>();
-
+        
         int i = UnityEngine.Random.Range(0, uncommonAttackCards.Count - 1);
         uncommonAttackCards[i].isFoil = false; // AtSome point add a random bool
         return uncommonAttackCards[i];

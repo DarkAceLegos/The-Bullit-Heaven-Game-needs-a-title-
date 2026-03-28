@@ -6,6 +6,7 @@ public class MetaProgressionUi : MonoBehaviour
     public static MetaProgressionUi Instance { get; private set; }
 
     [SerializeField] private Button closeButton;
+    [SerializeField] private bool hideOnStartNot;
 
     private void Awake()
     {
@@ -16,7 +17,10 @@ public class MetaProgressionUi : MonoBehaviour
 
     private void Start()
     {
-        Hide();
+        if (!hideOnStartNot)
+        { Hide(); }
+        else
+        { Show(); }
     }
 
     public void Show()

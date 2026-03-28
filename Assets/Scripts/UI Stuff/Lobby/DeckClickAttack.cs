@@ -8,6 +8,9 @@ public class DeckClickAttack : MonoBehaviour
 
     private void Awake()
     {
-        button.onClick.AddListener(() => { ui.Hide(); });
+        button.onClick.AddListener(() => { 
+            ui.Hide(); 
+            ui.GetComponent<DeckChouse>().unlocked = true;
+        });
     }
 }
