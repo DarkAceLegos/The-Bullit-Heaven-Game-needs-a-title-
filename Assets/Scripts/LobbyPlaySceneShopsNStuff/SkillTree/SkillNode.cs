@@ -66,17 +66,23 @@ public class SkillNode : MonoBehaviour, IPointerClickHandler, IDataPersistence
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             if(!clickable) { return; }
-            if (PlayerMetaProgression.Instance.coins < cost) { return; }
             if (unlocked) { return; }
+            if (PlayerMetaProgression.Instance.coins < SkillCost.Instance.cost) 
+            {
+                if (PlayerMetaProgression.Instance.spentSkillPoints <= 0)
+                { return; }
+            }
             GetComponent<Image>().color = Color.green;
             ShowConections();
             unlocked = true;
-            PlayerMetaProgression.Instance.ChangeCoinAmount(-cost);
+            if (PlayerMetaProgression.Instance.coins > SkillCost.Instance.cost && PlayerMetaProgression.Instance.spentSkillPoints <= 0)
+            { 
+                PlayerMetaProgression.Instance.ChangeCoinAmount(-SkillCost.Instance.cost);
+                PlayerMetaProgression.Instance.ChangeStat(100, 1);
+            }
             PlayerStatScreen.Instance.UpdateViuals();
-            /*foreach (var level in levelUps)
-            {
-                PlayerMetaProgression.Instance.ChangeStat(((int)level.stats), level.value);
-            }*/
+            PlayerMetaProgression.Instance.spentSkillPoints -= 1;
+            SkillCost.Instance.IncreaseCost();
         }
         else if (eventData.button == PointerEventData.InputButton.Middle)
             Debug.Log("Middle click");

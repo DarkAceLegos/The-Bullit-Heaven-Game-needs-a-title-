@@ -238,7 +238,7 @@ MonoBehaviour:
   maxHealth: 100
   experience: 1
   coinsOnKill: 1
-  enemySprite: {fileID: 5892492158632505108}
+  enemySprite: {fileID: 7953139573449968408}
   currentHeath: 0
 --- !u!114 &1833079431497051627
 MonoBehaviour:
@@ -441,4 +441,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae8e58771d98d444e8c316bfc2812001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 0.1
+  time: 0.2

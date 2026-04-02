@@ -24,27 +24,27 @@ public class PlayerStatScreen : MonoBehaviour
     {
         StatOrderComp.Instance.StatComp();
 
-        statText.text = $"additiveMaxHealthModifier {playerMetaProgression.additiveMaxHealthModifier} \n\n" +
-            $"percentageMaxHealthModifier {playerMetaProgression.percentageMaxHealthModifier}\n\n" +
-            $"additiveDamageModifier {playerMetaProgression.additiveDamageModifier}\n\n" +
-            $"percentageDamageModifier {playerMetaProgression.percentageDamageModifier}\n\n" +
-            $"percentageCooldownModifier {playerMetaProgression.percentageCooldownModifier}\n\n" +
-            $"additiveProjectileModifier {playerMetaProgression.additiveProjectileModifier}\n\n" +
-            $"additiveAreaModifier {playerMetaProgression.additiveAreaModifier}\n\n" +
-            $"percentageAreaModifier {playerMetaProgression.percentageAreaModifier}\n\n" +
-            $"enemySpawnModifier {playerMetaProgression.enemySpawnModifier}\n\n" +
-            $"enemyDamageModifier {playerMetaProgression.enemyDamageModifier}\n\n" +
-            $"playerHealthRegen {playerMetaProgression.playerHealthRegen}\n\n" +
-            $"percentagePlayerHealthRegen {playerMetaProgression.percentagePlayerHealthRegen}\n\n" +
-            $"percentageTreasureFind {playerMetaProgression.percentageTreasureFind}\n\n" +
-            $"percentageTreasurGain {playerMetaProgression.percentageTreasurGain}\n\n" + 
-            $"additivePlayerMoveSpeed {playerMetaProgression.additivePlayerMoveSpeed}\n\n" +
-            $"percentagePlayerMoveSpeed {playerMetaProgression.percentagePlayerMoveSpeed}\n\n" +
-            $"additiveProjectileSpeed {playerMetaProgression.additiveProjectileSpeed}\n\n" +
-            $"percentageProjectileSpeed {playerMetaProgression.percentageProjectileSpeed}\n\n" +
-            $"additiveDuration {playerMetaProgression.additiveDuration}\n\n" +
-            $"percentageDuration {playerMetaProgression.percentageDuration}\n\n" +
-            $"additiveExperience {playerMetaProgression.additiveExperience}\n\n" +
-            $"percentageExperience {playerMetaProgression.percentageExperience}\n\n";
+        statText.text = $"additiveMaxHealthModifier {playerMetaProgression.additiveMaxHealthModifier} \n" +
+            $"percentageMaxHealthModifier {playerMetaProgression.percentageMaxHealthModifier}\n" +
+            $"additiveDamageModifier {playerMetaProgression.additiveDamageModifier}\n" +
+            $"percentageDamageModifier {playerMetaProgression.percentageDamageModifier}\n" +
+            $"percentageCooldownModifier {playerMetaProgression.percentageCooldownModifier}\n" +
+            $"additiveProjectileModifier {playerMetaProgression.additiveProjectileModifier}\n" +
+            $"additiveAreaModifier {playerMetaProgression.additiveAreaModifier}\n" +
+            $"percentageAreaModifier {playerMetaProgression.percentageAreaModifier}\n" +
+            $"enemySpawnModifier {playerMetaProgression.enemySpawnModifier}\n" +
+            $"enemyDamageModifier {playerMetaProgression.enemyDamageModifier}\n" +
+            $"playerHealthRegen {playerMetaProgression.playerHealthRegen}\n" +
+            $"percentagePlayerHealthRegen {playerMetaProgression.percentagePlayerHealthRegen}\n" +
+            $"percentageTreasureFind {playerMetaProgression.percentageTreasureFind}\n" +
+            $"percentageTreasurGain {playerMetaProgression.percentageTreasurGain}\n" + 
+            $"additivePlayerMoveSpeed {playerMetaProgression.additivePlayerMoveSpeed}\n" +
+            $"percentagePlayerMoveSpeed {playerMetaProgression.percentagePlayerMoveSpeed}\n" +
+            $"additiveProjectileSpeed {playerMetaProgression.additiveProjectileSpeed}\n" +
+            $"percentageProjectileSpeed {playerMetaProgression.percentageProjectileSpeed}\n" +
+            $"additiveDuration {playerMetaProgression.additiveDuration}\n" +
+            $"percentageDuration {playerMetaProgression.percentageDuration}\n" +
+            $"additiveExperience {playerMetaProgression.additiveExperience}\n" +
+            $"percentageExperience {playerMetaProgression.percentageExperience}\n";
     }
 }

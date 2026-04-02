@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class HurtSprite : MonoBehaviour
 {
-    [SerializeField] private float time;
+    [SerializeField] public float time;
 
     private void Start()
     {
@@ -13,6 +13,7 @@ public class HurtSprite : MonoBehaviour
     {
         if(time < 0)
         {
+            //time = 0;
             this.gameObject.SetActive(false);
         }
 

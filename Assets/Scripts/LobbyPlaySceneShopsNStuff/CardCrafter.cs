@@ -114,12 +114,14 @@ public class CardCrafter : MonoBehaviour
                 + UnityEngine.Random.Range(1, 10) 
                 + UnityEngine.Random.Range(1, 10) 
                 + UnityEngine.Random.Range(1, 10) 
-                + UnityEngine.Random.Range(1, 10)) / 100);
+                + UnityEngine.Random.Range(1, 10)) / 100f);
         }
+
+        card.cardForeground = cardFrames[0];
 
         card.cardName = PlayerMetaProgression.Instance.GetNameOfStat(card.statId[0]);
 
-        card.cardText = $"Increase {card.cardName} by {card.statChangeAmount}";
+        card.cardText = $"Increase {card.cardName} by {card.statChangeAmount[0]}";
 
         //card.cardForeground = //need to figue out
 

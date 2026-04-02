@@ -10,8 +10,8 @@ public class PlayerBaseStats : MonoBehaviour
     [SerializeField] public int additiveProjectileModifier;
     [SerializeField] public int additiveAreaModifier;
     [SerializeField] public float percentageAreaModifier = 1f;
-    [SerializeField] public float enemySpawnModifier;
-    [SerializeField] public float enemyDamageModifier;
+    [SerializeField] public float enemySpawnModifier = 1f;
+    [SerializeField] public float enemyDamageModifier = 1f;
     [SerializeField] public int playerHealthRegen;
     [SerializeField] public float percentagePlayerHealthRegen = 1f;
     [SerializeField] public float percentageTreasureFind = 1f;

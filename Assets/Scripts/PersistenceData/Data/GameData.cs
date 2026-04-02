@@ -32,11 +32,19 @@ public class GameData
 
     public SerializableDictionary<string, bool> skillTree;
     public SerializableDictionary<string, bool> unlocks;
+
+    public int maxSkillPoints;
+    public int spentSkillPoints;
+
     public List<SeializableEnemyCard> enemyCardInventory;
     public List<SeializableEnemyCard> enemyCardDeck;
     public List<SerializableAttackCard> attackCardInventory;
     public List<SerializableStatCard> statCardInventory;
     public List<SerializableStatCard> statCardDeck;
+
+    public int maxAttackCards;
+    public int maxEnemyCards;
+    public int maxStatCards;
 
     public SeializableEnemyCard testCard;
 
@@ -70,6 +78,10 @@ public class GameData
         this.percentageExperience = 1f;
 
         skillTree = new SerializableDictionary<string, bool>();
+
+        this.maxSkillPoints = 0;
+        this.spentSkillPoints = 0;
+
         unlocks = new SerializableDictionary<string, bool>();
 
         enemyCardInventory = new List<SeializableEnemyCard>();
@@ -77,6 +89,10 @@ public class GameData
         attackCardInventory = new List<SerializableAttackCard>();
         statCardInventory = new List<SerializableStatCard>();
         statCardDeck = new List<SerializableStatCard>();
+
+        this.maxAttackCards = 5;
+        this.maxStatCards = 1;
+        this.maxEnemyCards = 30;
 
         testCard = new SeializableEnemyCard();
 

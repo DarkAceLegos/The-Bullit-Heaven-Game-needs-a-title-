@@ -8,7 +8,7 @@ public class EnemyHealth : NetworkBehaviour
     [SerializeField] private int maxHealth = 10;
     [SerializeField] private int experience = 1;
     [SerializeField] public int coinsOnKill = 1;
-    [SerializeField] private GameObject enemySprite;
+    [SerializeField] private HurtSprite enemySprite;
 
     [SerializeField] private float currentHeath;
 
@@ -26,7 +26,8 @@ public class EnemyHealth : NetworkBehaviour
 
     public void DamageEnemy(float damage)
     {
-        enemySprite.SetActive(true);
+        enemySprite.time = 0.1f;
+        enemySprite.gameObject.SetActive(true);
 
         DealDamageRpc(damage);
     }

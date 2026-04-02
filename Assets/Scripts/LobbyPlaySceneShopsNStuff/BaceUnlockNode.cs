@@ -10,6 +10,7 @@ public class BaceUnlockNode : MonoBehaviour, IPointerClickHandler, IDataPersiste
     [SerializeField] private string nameOfUnlock;
     [SerializeField] private string desctiption;
     [SerializeField] public int cost = 10;
+    [SerializeField] private int baseCost;
     [SerializeField] private List<Transform> unlockedThings;
     [SerializeField] public int statId;
     [SerializeField] public float changeAmount;
@@ -23,6 +24,8 @@ public class BaceUnlockNode : MonoBehaviour, IPointerClickHandler, IDataPersiste
 
     private void Start()
     {
+        baseCost = cost;
+        UpdatPrice();
         UpdateVisual();
     }
 
@@ -33,8 +36,9 @@ public class BaceUnlockNode : MonoBehaviour, IPointerClickHandler, IDataPersiste
             if (unlocked) { return; }
             if (PlayerMetaProgression.Instance.coins < cost) { return; }
             Unlock();
-            UpdateVisual();
             PlayerMetaProgression.Instance.ChangeCoinAmount(-cost);
+            UpdatPrice();
+            UpdateVisual();
         }
         else if (eventData.button == PointerEventData.InputButton.Middle)
             Debug.Log("Middle click");
@@ -51,6 +55,14 @@ public class BaceUnlockNode : MonoBehaviour, IPointerClickHandler, IDataPersiste
         coinsText.UpdateVisual();
     }
 
+    private void UpdatPrice()
+    {
+        if (changeAmount != 0)
+        {
+            cost = baseCost * (int)PlayerMetaProgression.Instance.GetAmontOfStat(statId);
+        }
+    }
+
     private void Unlock()
     {
         if (unlockedThings.Count > 0)
@@ -64,6 +76,7 @@ public class BaceUnlockNode : MonoBehaviour, IPointerClickHandler, IDataPersiste
         }
         else
         {
+            Debug.Log("changing Stat");
             PlayerMetaProgression.Instance.ChangeStat(statId, changeAmount);
         }
     }

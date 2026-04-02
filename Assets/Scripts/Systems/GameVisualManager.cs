@@ -46,7 +46,7 @@ public class GameVisualManager : NetworkBehaviour
 
             //Debug.Log(playersDeck.deckOfEnemyCards[i].amountOfPacks);
 
-            SpawnEnemy(player, playersDeck.deckOfEnemyCards[i].amountOfPacks, playersDeck.deckOfEnemyCards[i].packsSize, playersDeck.deckOfEnemyCards[i].typeOfEnemy);
+            SpawnEnemy(player, playersDeck.deckOfEnemyCards[i].amountOfPacks, playersDeck.deckOfEnemyCards[i].packsSize, playersDeck.deckOfEnemyCards[i].typeOfEnemy + 1);
         }
         else 
         {

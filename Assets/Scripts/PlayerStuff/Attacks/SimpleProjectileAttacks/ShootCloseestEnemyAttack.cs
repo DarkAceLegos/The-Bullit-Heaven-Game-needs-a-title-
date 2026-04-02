@@ -54,7 +54,7 @@ public class ShootCloseestEnemyAttack : Attack
 
         if (enemyHealths.Contains(enemyHealth)) { return; }
 
-        Debug.Log("adding a enemy to the list");
+        //Debug.Log("adding a enemy to the list");
 
         enemyHealths.Add(enemyHealth);
     }
@@ -63,7 +63,8 @@ public class ShootCloseestEnemyAttack : Attack
     {
         Debug.Log("collision exit");
         if (!collision.transform.TryGetComponent(out EnemyHealth enemyHealth)) //|| !enemyHealth.IsOwner)
-        { Debug.Log("returned"); return; }
+        { //Debug.Log("returned"); return;
+        }
         //collision.transform.TryGetComponent(out EnemyHealth enemyHealth);
         enemyHealths.Remove(enemyHealth);
     }

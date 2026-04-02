@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class AttackDeckUi : MonoBehaviour
@@ -10,6 +11,7 @@ public class AttackDeckUi : MonoBehaviour
     [SerializeField] private List<AttackData> attackDatas = new List<AttackData>();
     private AttackCard attackCard;
     [SerializeField] private Sprite cardBackground;
+    [SerializeField] private TextMeshProUGUI deckAmount;
 
     private void Awake()
     {
@@ -58,5 +60,7 @@ public class AttackDeckUi : MonoBehaviour
             var entry = Instantiate(entryPrefabCard, cardHolder);
             entry.Init(card);
         }//*/
+
+        deckAmount.text = (PlayerMetaProgression.Instance.allAttacksPlayerUnlocked.Count + " / " + PlayerMetaProgression.Instance.maxAttackCards);
     }
 }

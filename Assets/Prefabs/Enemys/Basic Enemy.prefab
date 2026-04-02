@@ -112,13 +112,13 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.5298615, y: 0.27058277}
-      - {x: 0.3487605, y: 0.4535836}
-      - {x: -0.30220437, y: 0.4970581}
-      - {x: -0.60920554, y: 0.21082278}
-      - {x: -0.577163, y: -0.1358485}
-      - {x: -0.46514985, y: -0.2788577}
-      - {x: 0.5843861, y: -0.29555237}
+    - - {x: 0.80957156, y: 0.29754278}
+      - {x: 0.39931053, y: 0.7164436}
+      - {x: -0.4066744, y: 0.6925181}
+      - {x: -0.7911856, y: 0.30518278}
+      - {x: -0.789473, y: -0.1998785}
+      - {x: -0.50558984, y: -0.50464773}
+      - {x: 0.82365626, y: -0.5044924}
   m_UseDelaunayMesh: 0
 --- !u!50 &5538732215240874870
 Rigidbody2D:
@@ -241,7 +241,7 @@ MonoBehaviour:
   maxHealth: 10
   experience: 1
   coinsOnKill: 1
-  enemySprite: {fileID: 2259376615964271752}
+  enemySprite: {fileID: 8961488213004143754}
   currentHeath: 0
 --- !u!114 &1833079431497051627
 MonoBehaviour:
@@ -357,7 +357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae8e58771d98d444e8c316bfc2812001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 0.1
+  time: 0.2
 --- !u!1 &5129646264367055027
 GameObject:
   m_ObjectHideFlags: 0

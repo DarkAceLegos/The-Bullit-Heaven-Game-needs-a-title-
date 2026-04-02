@@ -6,6 +6,8 @@ public class StatCardOnClickHandler : CardOnClickHandler
 
     public override void ActivatCard(Cards card)
     {
+        if(PlayerMetaProgression.Instance.statCardDeck.Count >= PlayerMetaProgression.Instance.maxStatCards) {return; }
+
         if (card is StatCard)
         {
             //Debug.Log("Enemy Card");

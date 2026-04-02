@@ -37,11 +37,19 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
     [SerializeField] public int gems;
 
     [SerializeField] public SerializableDictionary<string, bool> skillTree;
+
+    [SerializeField] public int maxSkillPoints;
+    [SerializeField] public int spentSkillPoints;
+
     [SerializeField] public List<SeializableEnemyCard> enemyCardInventory;
     [SerializeField] public List<SeializableEnemyCard> enemyCardDeck;
     [SerializeField] public List<SerializableAttackCard> attackCardInventory;
     [SerializeField] public List<SerializableStatCard> statCardInventory;
     [SerializeField] public List<SerializableStatCard> statCardDeck;
+
+    [SerializeField] public int maxAttackCards;
+    [SerializeField] public int maxEnemyCards;
+    [SerializeField] public int maxStatCards;
 
     [SerializeField] public SeializableEnemyCard testingCard;
 
@@ -112,6 +120,11 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         else if (statId == 19) percentageDuration += Amount;
         else if (statId == 20) additiveExperience += (int)Amount;
         else if (statId == 21) percentageExperience += Amount;
+        else if (statId == 100) { maxSkillPoints += (int)Amount; spentSkillPoints += (int)Amount; }
+        else if (statId == 101) maxAttackCards += (int)Amount;
+        else if (statId == 102) maxEnemyCards += (int)Amount;
+        else if (statId == 103) maxStatCards += (int)Amount;
+        //else if (statId == 104) maxSkillPoints += (int)Amount;
     }
 
     public string GetNameOfStat(int statId)
@@ -143,6 +156,11 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         else if (statId == 19) return percentageDuration;
         else if (statId == 20) return additiveExperience;
         else if (statId == 21) return percentageExperience;
+        else if (statId == 100) return maxSkillPoints;
+        //else if (statId == 100) spentSkillPoints += (int)Amount;
+        else if (statId == 101) return maxAttackCards;
+        else if (statId == 102) return maxEnemyCards;
+        else if (statId == 103) return maxStatCards;
         else return 0;
     }
 
@@ -186,6 +204,11 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         this.statCardInventory = data.statCardInventory;
         this.statCardDeck = data.statCardDeck;
         this.testingCard = data.testCard;
+        this.maxSkillPoints = data.maxSkillPoints;
+        this.spentSkillPoints = data.spentSkillPoints;
+        this.maxAttackCards = data.maxAttackCards;
+        this.maxEnemyCards = data.maxEnemyCards;
+        this.maxStatCards = data.maxStatCards;
         }
 
     public void SaveData(ref GameData data)
@@ -222,6 +245,11 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         data.statCardInventory = this.statCardInventory;
         data.statCardDeck = this.statCardDeck;
         data.testCard = this.testingCard;
+        data.maxSkillPoints = this.maxSkillPoints;
+        data.spentSkillPoints = this.spentSkillPoints;
+        data.maxAttackCards = this.maxAttackCards;
+        data.maxEnemyCards = this.maxEnemyCards;
+        data.maxStatCards = this.maxStatCards;
     }
 
     public void AddEnemyCard(EnemyCard card, int whichPlace = 0)
@@ -246,6 +274,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         else if (whichPlace == 1)
         {
             enemyCardDeck.Add(seializableEnemyCard);
+            //if(enemyCardDeck.Remove(seializableEnemyCard)) { Debug.Log("Testing Card Removel"); }
         }
         else
         {
@@ -261,8 +290,8 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         seializableEnemyCard.cardText = card.cardText;
         seializableEnemyCard.cardId = card.cardId;
         seializableEnemyCard.cardBackgroundName = card.cardBackground.name;
-        seializableEnemyCard.cardBackgroundName = card.cardForeground.name;
-        seializableEnemyCard.cardBackgroundName = card.foilEffect.name;
+        seializableEnemyCard.cardForegroundName = card.cardForeground.name;
+        seializableEnemyCard.foilEffectName = card.foilEffect.name;
         seializableEnemyCard.isFoil = card.isFoil;
         seializableEnemyCard.amountOfPacks = card.amountOfPacks;
         seializableEnemyCard.packsSize = card.packsSize;
@@ -270,11 +299,14 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
 
         if (whichPlace == 0)
         {
-            enemyCardInventory.Remove(seializableEnemyCard);
+            enemyCardInventory.RemoveAll(seializableEnemyCard => seializableEnemyCard.cardId == card.cardId);
         }
         else if (whichPlace == 1)
         {
-            enemyCardDeck.Remove(seializableEnemyCard);
+            Debug.Log("Removing Enemy Card from deck");
+            //if(enemyCardDeck.Remove(seializableEnemyCard)) { Debug.Log("card Remved"); }
+
+            enemyCardDeck.RemoveAll(seializableEnemyCard => seializableEnemyCard.cardId == card.cardId);
         }
         else
         {
@@ -364,11 +396,12 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
 
         if (whichPlace == 0)
         {
-            statCardInventory.Remove(serializableStatCard);
+            statCardInventory.RemoveAll(serializableStatCard => serializableStatCard.cardId == card.cardId);
         }
         else if (whichPlace == 1)
         {
-            statCardDeck.Remove(serializableStatCard);
+            Debug.Log("removing Stat Card from deck");
+            statCardDeck.RemoveAll(serializableStatCard => serializableStatCard.cardId == card.cardId);
         }
         else
         {
@@ -380,16 +413,35 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
     {
         StatCard statCard = ScriptableObject.CreateInstance<StatCard>();
 
-        statCard.cardName = statCardInventory[i].cardName;
-        statCard.cardText = statCardInventory[i].cardText;
-        statCard.cardId = statCardInventory[i].cardId;
-        statCard.cardBackground = Resources.Load<Sprite>("Sprites/" + enemyCardInventory[i].cardBackgroundName);
-        statCard.cardForeground = Resources.Load<Sprite>("Sprites/" + enemyCardInventory[i].cardForegroundName); ;
-        statCard.foilEffect = Resources.Load<Sprite>("Sprites/"+ enemyCardInventory[i].foilEffectName);
-        statCard.isFoil = statCardInventory[i].isFoil;
-        statCard.statId = statCardInventory[i].statId;
-        statCard.statChangeAmount = statCardInventory[i].statChangeAmount;
-        
+        if (whichPlace == 0)
+        {
+            statCard.cardName = statCardInventory[i].cardName;
+            statCard.cardText = statCardInventory[i].cardText;
+            statCard.cardId = statCardInventory[i].cardId;
+            statCard.cardBackground = Resources.Load<Sprite>("Sprites/" + statCardInventory[i].cardBackgroundName);
+            statCard.cardForeground = Resources.Load<Sprite>("Sprites/" + statCardInventory[i].cardForegroundName); ;
+            statCard.foilEffect = Resources.Load<Sprite>("Sprites/" + statCardInventory[i].foilEffectName);
+            statCard.isFoil = statCardInventory[i].isFoil;
+            statCard.statId = statCardInventory[i].statId;
+            statCard.statChangeAmount = statCardInventory[i].statChangeAmount;
+        }
+        else if (whichPlace == 1)
+        {
+            statCard.cardName = statCardDeck[i].cardName;
+            statCard.cardText = statCardDeck[i].cardText;
+            statCard.cardId = statCardDeck[i].cardId;
+            statCard.cardBackground = Resources.Load<Sprite>("Sprites/" + statCardDeck[i].cardBackgroundName);
+            statCard.cardForeground = Resources.Load<Sprite>("Sprites/" + statCardDeck[i].cardForegroundName); ;
+            statCard.foilEffect = Resources.Load<Sprite>("Sprites/" + statCardDeck[i].foilEffectName);
+            statCard.isFoil = statCardDeck[i].isFoil;
+            statCard.statId = statCardDeck[i].statId;
+            statCard.statChangeAmount = statCardDeck[i].statChangeAmount;
+        }
+        else
+        {
+            Debug.Log("No Inventory of the place");
+        }
+
 
         return statCard;
     }
@@ -455,9 +507,9 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         attackCard.cardName = attackCardInventory[i].cardName;
         attackCard.cardText = attackCardInventory[i].cardText;
         attackCard.cardId = attackCardInventory[i].cardId;
-        attackCard.cardBackground = Resources.Load<Sprite>("Sprites/" + enemyCardInventory[i].cardBackgroundName);
-        attackCard.cardForeground = Resources.Load<Sprite>("Sprites/" + enemyCardInventory[i].cardForegroundName); ;
-        attackCard.foilEffect = Resources.Load<Sprite>("Sprites/" + enemyCardInventory[i].foilEffectName);
+        attackCard.cardBackground = Resources.Load<Sprite>("Sprites/" + attackCardInventory[i].cardBackgroundName);
+        attackCard.cardForeground = Resources.Load<Sprite>("Sprites/" + attackCardInventory[i].cardForegroundName);
+        attackCard.foilEffect = Resources.Load<Sprite>("Sprites/" + attackCardInventory[i].foilEffectName);
         attackCard.isFoil = attackCardInventory[i].isFoil;
 
         attackCard.attackId = attackCardInventory[i].attackId;

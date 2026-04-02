@@ -1,9 +1,11 @@
+using TMPro;
 using UnityEngine;
 
 public class StatDeckUi : MonoBehaviour
 {
     [SerializeField] private EntryCardPrefab entryPrefabCard;
     [SerializeField] private Transform cardHolder;
+    [SerializeField] private TextMeshProUGUI deckAmount;
     
     private void Start()
     {
@@ -28,5 +30,7 @@ public class StatDeckUi : MonoBehaviour
             var entry = Instantiate(entryPrefabCard, cardHolder);
             entry.Init(PlayerMetaProgression.Instance.GetStatCard(i, 1));
         }
+
+        deckAmount.text = (PlayerMetaProgression.Instance.statCardDeck.Count + " / " + PlayerMetaProgression.Instance.maxStatCards);
     }
 }
