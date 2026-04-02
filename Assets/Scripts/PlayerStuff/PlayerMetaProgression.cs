@@ -273,8 +273,8 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         }
         else if (whichPlace == 1)
         {
+            if(enemyCardDeck.Exists(seializableEnemyCard => seializableEnemyCard.cardId == card.cardId)) { return; }
             enemyCardDeck.Add(seializableEnemyCard);
-            //if(enemyCardDeck.Remove(seializableEnemyCard)) { Debug.Log("Testing Card Removel"); }
         }
         else
         {
@@ -372,7 +372,9 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         }
         else if (whichPlace == 1)
         {
+            if (statCardDeck.Exists(seializableStatCard => seializableStatCard.cardId == card.cardId)) { return; }
             statCardDeck.Add(serializableStatCard);
+            StatOrderComp.Instance.StatComp();
         }
         else
         {
@@ -402,6 +404,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         {
             Debug.Log("removing Stat Card from deck");
             statCardDeck.RemoveAll(serializableStatCard => serializableStatCard.cardId == card.cardId);
+            StatOrderComp.Instance.StatComp();
         }
         else
         {

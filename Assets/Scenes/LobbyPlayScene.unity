@@ -6431,6 +6431,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 11508452}
     m_Modifications:
     - target: {fileID: 1521963350791287987, guid: 23d2b3bd6abdc5f4f9babf12361e0af2, type: 3}
+      propertyPath: price
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521963350791287987, guid: 23d2b3bd6abdc5f4f9babf12361e0af2, type: 3}
       propertyPath: product
       value: 
       objectReference: {fileID: 1070166169}
@@ -7320,6 +7324,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 11508452}
     m_Modifications:
+    - target: {fileID: 1521963350791287987, guid: 23d2b3bd6abdc5f4f9babf12361e0af2, type: 3}
+      propertyPath: price
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1521963350791287987, guid: 23d2b3bd6abdc5f4f9babf12361e0af2, type: 3}
       propertyPath: product
       value: 
@@ -26776,7 +26784,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 50
+  m_ScrollSensitivity: -50
   m_Viewport: {fileID: 0}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -32888,6 +32896,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 11508452}
     m_Modifications:
     - target: {fileID: 1521963350791287987, guid: 23d2b3bd6abdc5f4f9babf12361e0af2, type: 3}
+      propertyPath: price
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521963350791287987, guid: 23d2b3bd6abdc5f4f9babf12361e0af2, type: 3}
       propertyPath: product
       value: 
       objectReference: {fileID: 828819020}
@@ -38654,7 +38666,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 50
+  m_ScrollSensitivity: -50
   m_Viewport: {fileID: 0}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -48806,7 +48818,7 @@ RectTransform:
   m_GameObject: {fileID: 1840617071}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9998878, y: 0.9998878, z: 0.9998878}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 547679960}
@@ -48818,8 +48830,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00012207031, y: 0}
-  m_SizeDelta: {x: 0.2319336, y: 0.13061523}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1840617073
 MonoBehaviour:
@@ -50691,6 +50703,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 11508452}
     m_Modifications:
+    - target: {fileID: 1521963350791287987, guid: 23d2b3bd6abdc5f4f9babf12361e0af2, type: 3}
+      propertyPath: price
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1521963350791287987, guid: 23d2b3bd6abdc5f4f9babf12361e0af2, type: 3}
       propertyPath: product
       value: 
@@ -53838,7 +53854,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 50
+  m_ScrollSensitivity: -50
   m_Viewport: {fileID: 0}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}

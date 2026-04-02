@@ -23,7 +23,7 @@ public class StatOrderComp : MonoBehaviour
 
         foreach (var card in PlayerMetaProgression.Instance.statCardDeck)
         {
-            for (int i = 0; i > card.statId.Count; i++)
+            for (int i = 0; i < card.statId.Count; i++)
             {
                 PlayerMetaProgression.Instance.ChangeStat(card.statId[i], card.statChangeAmount[i]);
             } 
@@ -36,7 +36,7 @@ public class StatOrderComp : MonoBehaviour
                 if (skill.order == 0)
                 {
                     listOrder0.Add(skill);
-                    Debug.Log("add skill to list 0");
+                    //Debug.Log("add skill to list 0");
                 }
                 else if (skill.order == 1)
                 {

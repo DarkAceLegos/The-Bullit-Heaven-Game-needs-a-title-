@@ -8,6 +8,7 @@ public class LobbyPauseSceneUi : MonoBehaviour
     [SerializeField] private Button mainMenuButton;
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button optionsButton;
+    private bool on;
 
     private void Awake()
     {
@@ -36,16 +37,21 @@ public class LobbyPauseSceneUi : MonoBehaviour
 
     private void Instance_OnPauseAction(object sender, EventArgs e)
     {
-        Show();
+        if(on) Hide();
+        else Show();
     }
 
     private void Show()
     {
+        Debug.Log("pause");
         gameObject.SetActive(true);
+        on = true;
     }
 
     private void Hide()
     {
+        Debug.Log("Unpause");
         gameObject.SetActive(false);
+        on = false;
     }
 }
