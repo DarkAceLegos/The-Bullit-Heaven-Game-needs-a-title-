@@ -15,6 +15,12 @@ public class CoinsTextUi : MonoBehaviour
     private void Start()
     {
         amountText.text = "Coins " + PlayerMetaProgression.Instance.coins.ToString();
+        PlayerMetaProgression.Instance.OnCoinChange += PlayerMetaProgression_OnCoinChange;
+    }
+
+    private void PlayerMetaProgression_OnCoinChange(object sender, System.EventArgs e)
+    {
+        UpdateVisual();
     }
 
     public void UpdateVisual()

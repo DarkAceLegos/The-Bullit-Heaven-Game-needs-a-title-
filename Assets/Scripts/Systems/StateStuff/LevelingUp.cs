@@ -41,7 +41,7 @@ public class LevelingUp : GameBaseState
     public override void ExitState(GameStateManager gameState)
     {
         levelScreen.SetActive(false);
-        waitingScreen.SetActive(false );
+        waitingScreen.SetActive(false);
         Debug.Log("exit leveling up");
         Time.timeScale = 1;
     }

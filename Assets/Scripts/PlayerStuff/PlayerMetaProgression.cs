@@ -34,6 +34,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
     [SerializeField] public float percentageExperience = 1f;
 
     [SerializeField] public int coins;
+    public event EventHandler OnCoinChange;
     [SerializeField] public int gems;
 
     [SerializeField] public SerializableDictionary<string, bool> skillTree;
@@ -167,6 +168,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
     public void ChangeCoinAmount(int amount)
     {
         coins += amount;
+        OnCoinChange?.Invoke(this, EventArgs.Empty);
         DataPersistenceManager.Instance.SaveGame();
     }
 

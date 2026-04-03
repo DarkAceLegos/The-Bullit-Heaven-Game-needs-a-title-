@@ -24,7 +24,7 @@ public class SkillCost : MonoBehaviour
 
     public void IncreaseCost()
     {
-        cost = startingCost * PlayerMetaProgression.Instance.maxSkillPoints;
+        cost = (startingCost * PlayerMetaProgression.Instance.maxSkillPoints) + startingCost;
         UpdateVisuals();
     }
 

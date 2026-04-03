@@ -59,7 +59,7 @@ public class BaceUnlockNode : MonoBehaviour, IPointerClickHandler, IDataPersiste
     {
         if (changeAmount != 0)
         {
-            cost = baseCost * (int)PlayerMetaProgression.Instance.GetAmontOfStat(statId);
+            cost = (baseCost * (int)PlayerMetaProgression.Instance.GetAmontOfStat(statId)) + baseCost;
         }
     }
 
