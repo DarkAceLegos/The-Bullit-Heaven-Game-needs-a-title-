@@ -138,4 +138,23 @@ public class SkillNode : MonoBehaviour, IPointerClickHandler, IDataPersistence
             }
         }
     }
+
+    public string GetDescription()
+    {
+        string description = "";
+
+        if (levelUps == null)
+        {
+            //Get alt Description
+        }
+        else 
+        {
+            foreach (var level in levelUps)
+            {
+                description += "Add " + level.value + " to " + PlayerMetaProgression.Instance.GetNameOfStat((int)level.stats) + "\n";
+            }
+        }
+
+        return description;
+    }
 }

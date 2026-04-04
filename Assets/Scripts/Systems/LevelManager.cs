@@ -10,7 +10,7 @@ public class LevelManager : NetworkBehaviour
 
     [SerializeField] private int visualExpToNextLevel;
 
-    [SerializeField] private float experiance = 0;
+    [SerializeField] public float experiance { get; private set; }
     [SerializeField] public int level = 0;
 
     public event EventHandler<OnExpChangeEventArgs> OnExpChange;
@@ -25,11 +25,12 @@ public class LevelManager : NetworkBehaviour
         public int newLevel;
     }
 
-    [SerializeField] private int expToNextLevel => (expToLevel) * (level + 1)^2;
+    [SerializeField] public int expToNextLevel { get; private set; }
 
     private void Awake()
     {
         Instance = this;
+        expToNextLevel = NextExpLevel();
     }
 
     [Rpc(SendTo.Server)]
@@ -62,6 +63,7 @@ public class LevelManager : NetworkBehaviour
     private void SyncExpRpc(float newExp)
     { 
         experiance = newExp;
+        LevelExpUi.instance.ExpChange(newExp);
         OnExpChange?.Invoke(this, new OnExpChangeEventArgs
         {
             newExp = newExp,
@@ -72,11 +74,22 @@ public class LevelManager : NetworkBehaviour
     private void SyncLevelRpc(int newLevel)
     {
         level = newLevel;
-        visualExpToNextLevel = expToNextLevel;
+        visualExpToNextLevel = NextExpLevel();
         OnLevelChange?.Invoke(this, new OnLevelChangeEventArgs
         {
             newLevel = newLevel,
         });
         Debug.Log("We leveled up");
+    }
+
+    private int NextExpLevel()
+    {
+        if (level + 1 < 20) { expToNextLevel = (((level + 1) * 10) - 5); }
+        else if(level + 1 == 20) { expToNextLevel = (((level + 1) * 10) - 5 + 600); }
+        else if (level + 1 > 20 && level + 1 < 40) { expToNextLevel = (((level + 1) * 13) - 6); }
+        else if (level + 1 == 40) { expToNextLevel = (((level + 1) * 13) - 6 + 2400); }
+        else if (level + 1 > 40) { expToNextLevel = (((level + 1) * 16) - 8); }
+
+        return expToNextLevel;
     }
 }

@@ -6,6 +6,12 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     [SerializeField] private string content;
     [SerializeField] private string header;
 
+    private void Start()
+    {
+        TryGetComponent<SkillNode>(out var skillNode);
+        content = skillNode.GetDescription();
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         TooltipSystem.Show(content, header);
