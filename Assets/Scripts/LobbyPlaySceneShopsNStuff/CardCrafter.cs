@@ -67,7 +67,7 @@ public class CardCrafter : MonoBehaviour
         }
 
         card.cardName = theEnemy.name;
-        card.cardId = Guid.NewGuid().ToString();
+        card.cardId = Guid.NewGuid().ToString(); // testing merge
         card.cardBackground = cardFrames[UnityEngine.Random.Range(0, cardFrames.Count - 1)];
         card.cardForeground = theEnemy.GetComponentInChildren<SpriteRenderer>().sprite;
         card.foilEffect = cardFoilEffects[UnityEngine.Random.Range(0, cardFoilEffects.Count - 1)];
