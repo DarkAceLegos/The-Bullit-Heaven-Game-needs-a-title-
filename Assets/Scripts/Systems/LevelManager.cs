@@ -6,7 +6,7 @@ public class LevelManager : NetworkBehaviour
 {
     public static LevelManager Instance { get; private set; }
 
-    [SerializeField] private int expToLevel = 5;
+    //[SerializeField] private int expToLevel = 5;
 
     [SerializeField] private int visualExpToNextLevel;
 
