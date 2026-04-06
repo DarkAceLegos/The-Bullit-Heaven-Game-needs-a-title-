@@ -66,7 +66,7 @@ public class CardCrafter : MonoBehaviour
             card.typeOfEnemy = randomTypeOfEnemy;
         }
 
-        card.cardName = theEnemy.name;
+        card.cardName = theEnemy.name;// test out branches
         card.cardId = Guid.NewGuid().ToString();
         card.cardBackground = cardFrames[UnityEngine.Random.Range(0, cardFrames.Count - 1)];
         card.cardForeground = theEnemy.GetComponentInChildren<SpriteRenderer>().sprite;
