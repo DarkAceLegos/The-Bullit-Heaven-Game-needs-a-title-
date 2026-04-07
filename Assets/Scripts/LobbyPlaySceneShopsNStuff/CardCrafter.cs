@@ -59,7 +59,7 @@ public class CardCrafter : MonoBehaviour
         }
         else
         {
-            int randomTypeOfEnemy = UnityEngine.Random.Range(0, typesOfEnemys.Count - 2);
+            int randomTypeOfEnemy = UnityEngine.Random.Range(0, typesOfEnemys.Count - 1);
 
             theEnemy = typesOfEnemys[randomTypeOfEnemy];
 

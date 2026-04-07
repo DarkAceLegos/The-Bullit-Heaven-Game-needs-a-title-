@@ -27738,8 +27738,8 @@ MonoBehaviour:
   typesOfEnemys:
   - {fileID: -4533074107512873778, guid: d0a4e301bb2e54e4d81ace68f1dcbcc3, type: 3}
   - {fileID: -4533074107512873778, guid: 732a4cac3bbe2964bb2e353a4c4320ce, type: 3}
-  - {fileID: -4533074107512873778, guid: df878aeef7a53d5489e75e71c992dc3a, type: 3}
   - {fileID: -4533074107512873778, guid: 051a2472f2c9dd940a00f9e22cdac678, type: 3}
+  - {fileID: -4533074107512873778, guid: df878aeef7a53d5489e75e71c992dc3a, type: 3}
   - {fileID: -4533074107512873778, guid: 77763a8f1cce2ab40a1556c0ace5c187, type: 3}
   cardFrames:
   - {fileID: -7069720901952774207, guid: ad0af6a07a8c4ca488a650093232a37f, type: 3}
@@ -31636,9 +31636,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1245.5, y: 50.5}
+  m_AnchoredPosition: {x: -343.5, y: 292.5}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 1}
+  m_Pivot: {x: 0.13340448, y: 1.0550284}
 --- !u!114 &1115687418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31655,6 +31655,7 @@ MonoBehaviour:
   contentText: {fileID: 1321088401}
   layoutElement: {fileID: 1115687419}
   characterWarpLimit: 80
+  rectTransform: {fileID: 1115687417}
 --- !u!114 &1115687419
 MonoBehaviour:
   m_ObjectHideFlags: 0
