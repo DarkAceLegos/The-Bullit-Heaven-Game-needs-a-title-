@@ -13,6 +13,8 @@ public class GameVisualManager : NetworkBehaviour
     [SerializeField] private List<EnemyHealth> enemies = new();
     [SerializeField] private List<Collider2D> spawnPoints = new();
 
+    [SerializeField] private LevelsEnemyDeck LevelsEnemyDeck;
+
     private void Start()
     {
         GameManager.Instance.AfterXTime += Instance_AfterXTime;
@@ -29,8 +31,10 @@ public class GameVisualManager : NetworkBehaviour
     {
         playerReference.TryGet(out NetworkObject player);
 
-        //int timeelemet = ((int)Time.timeSinceLevelLoad);
-        //Debug.Log(timeelemet);
+        var timeelemet = TimeSpan.FromSeconds(double.Parse(Time.timeSinceLevelLoad.ToString()));
+        //Debug.Log(timeelemet.Minutes + " " + timeelemet.Seconds);
+
+
 
         if(enemies.Count <= 0 || spawnPoints.Count <= 0)
         {
@@ -40,6 +44,8 @@ public class GameVisualManager : NetworkBehaviour
 
         var playersDeck = Player.LoaclInstance.GetComponent<PlayersDeck>();
 
+        var wave = LevelsEnemyDeck.deck[(int)timeelemet.Minutes];
+
         if (playersDeck.deckOfEnemyCards.Count != 0)
         {
             int i = UnityEngine.Random.Range(0, playersDeck.deckOfEnemyCards.Count);
@@ -48,12 +54,14 @@ public class GameVisualManager : NetworkBehaviour
 
             SpawnEnemy(player, playersDeck.deckOfEnemyCards[i].amountOfPacks, playersDeck.deckOfEnemyCards[i].packsSize, playersDeck.deckOfEnemyCards[i].typeOfEnemy);
         }
-        else 
+        else
         {
-            SpawnEnemy(player, UnityEngine.Random.Range(1, 4), UnityEngine.Random.Range(5, 10), UnityEngine.Random.Range(0, 3));
-        }
+            //SpawnEnemy(player, UnityEngine.Random.Range(1, 4), UnityEngine.Random.Range(5, 10), UnityEngine.Random.Range(0, 3));
 
-        
+            int i = UnityEngine.Random.Range(0, wave.enemyCards.Count);
+
+            SpawnEnemy(player, wave.enemyCards[i].amountOfPacks, wave.enemyCards[i].packsSize, wave.enemyCards[i].typeOfEnemy);
+        }        
 
         /*var spawnPosition = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Count)].position;
         var enemy = Instantiate(enemies[UnityEngine.Random.Range(0, enemies.Count)], spawnPosition + player.transform.position, Quaternion.identity);

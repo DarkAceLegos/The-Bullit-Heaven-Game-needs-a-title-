@@ -169,7 +169,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
     {
         coins += amount;
         OnCoinChange?.Invoke(this, EventArgs.Empty);
-        DataPersistenceManager.Instance.SaveGame();
+        //DataPersistenceManager.Instance.SaveGame();
     }
 
     public void LoadData(GameData data)

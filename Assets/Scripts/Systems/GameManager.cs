@@ -24,6 +24,8 @@ public class GameManager : NetworkBehaviour
 
     public float deathTime = 30f * 60;
 
+    [SerializeField] private float miniBossSpawn = 8f * 60;
+
     private float acuualSpawnInterval => spawnInterval * NetworkManager.Singleton.ConnectedClients.Count; //move to game manager
     [SerializeField] private List<EnemyHealth> spawnedEnemies = new(); //move to game manager
     private float lastSpawnTime; //move to game manager
@@ -78,8 +80,6 @@ public class GameManager : NetworkBehaviour
         Debug.Log("Spawning players");
 
         Invoke("SpawnPlayes", 0.1f);
-
-        
     }
 
     private void SpawnPlayes()
@@ -103,6 +103,11 @@ public class GameManager : NetworkBehaviour
 
     private void EnemySpawn()
     {
+        if (miniBossSpawn < Time.timeSinceLevelLoad /*|| Time.timeSinceLevelLoad == 16f || Time.timeSinceLevelLoad == 24f*/) 
+        { 
+            Debug.Log("mini boss");
+            miniBossSpawn += miniBossSpawn;
+        }
 
         if (spawnedEnemies.Count >= maxEnemies) //move to game manager
             return;

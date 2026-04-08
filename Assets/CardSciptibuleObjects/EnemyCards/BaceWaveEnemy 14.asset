@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f97cd5f50c67e648bfb870d47d5f4c0, type: 3}
+  m_Name: BaceWaveEnemy 14
+  m_EditorClassIdentifier: 
+  cardName: Wave 1 Enemy
+  cardText: Wave 1 Enemy
+  cardId: 1
+  cardBackground: {fileID: -7069720901952774207, guid: ad0af6a07a8c4ca488a650093232a37f, type: 3}
+  cardForeground: {fileID: 21300000, guid: aac579785b1df7c40b7b381f99429e72, type: 2}
+  foilEffect: {fileID: -7069720901952774207, guid: ad0af6a07a8c4ca488a650093232a37f, type: 3}
+  isFoil: 0
+  amountOfPacks: 5
+  packsSize: 4
+  typeOfEnemy: 0
