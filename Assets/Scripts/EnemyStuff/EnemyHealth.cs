@@ -11,6 +11,8 @@ public class EnemyHealth : NetworkBehaviour
     [SerializeField] private HurtSprite enemySprite;
 
     [SerializeField] private float currentHeath;
+    [SerializeField] private ExpPickUp ExpPickUp;
+    [SerializeField] private CoinPickUp CoinPickUp;
 
     public static Action<EnemyHealth> onEnemyKilled;
 
@@ -47,8 +49,21 @@ public class EnemyHealth : NetworkBehaviour
     {
         onEnemyKilled?.Invoke(this);
         //Debug.Log($"you got some exp {experience} to the level manager {LevelManager.Instance}");
-        LevelManager.Instance.AddExpRpc((experience + Player.LoaclInstance.additiveExperience) * Player.LoaclInstance.percentageExperience);
+
+        //LevelManager.Instance.AddExpRpc((experience + Player.LoaclInstance.additiveExperience) * Player.LoaclInstance.percentageExperience);
+        //ExpPickUp.SpawnExp(experience, gameObject.transform.position);
+        EnemyDiedRpc();
+
         //PlayerMetaProgression.Instance.ChangeCoinAmount(coinsOnKill);
         Destroy(gameObject);
+    }
+
+    [Rpc(SendTo.Everyone)]
+    private void EnemyDiedRpc()
+    {
+        //add RandomNess
+
+        ExpPickUp.SpawnExp(experience, gameObject.transform.position);
+        CoinPickUp.SpawnCoin(coinsOnKill, gameObject.transform.position);
     }
 }

@@ -33,7 +33,7 @@ public class AOEProjectile : NetworkBehaviour
     {
         //Debug.Log("I initialized");
 
-        PlayerHealth._allPlayers[playerId].TryGetComponent<Player>(out var player);
+        PlayerHealth._allPlayers[playerId].transform.root.TryGetComponent<Player>(out var player);
         playerStored = player;
 
         damage = (float)((damage1 + player.additiveDamageModifier) * player.percentageDamageModifier);

@@ -36,6 +36,12 @@ public class GameManager : NetworkBehaviour
         public NetworkObject player;
     }
 
+    public event EventHandler<BossSpawnEventArgs> BossSpawn;
+    public class BossSpawnEventArgs : EventArgs
+    {
+        public NetworkObject player;
+    }
+
     public event EventHandler OnGamePaused;
     public event EventHandler OnGameUnpaused;
 
@@ -104,8 +110,11 @@ public class GameManager : NetworkBehaviour
     private void EnemySpawn()
     {
         if (miniBossSpawn < Time.timeSinceLevelLoad /*|| Time.timeSinceLevelLoad == 16f || Time.timeSinceLevelLoad == 24f*/) 
-        { 
-            Debug.Log("mini boss");
+        {
+            BossSpawn?.Invoke(this, new BossSpawnEventArgs
+            {
+                player = PlayerHealth._allPlayers[Player.LoaclInstance.OwnerClientId].transform.root.GetComponent<NetworkObject>(),
+            });
             miniBossSpawn += miniBossSpawn;
         }
 
@@ -127,7 +136,7 @@ public class GameManager : NetworkBehaviour
 
         AfterXTime?.Invoke(this, new AfterXTimeEventArgs
         {
-            player = PlayerHealth._allPlayers[Player.LoaclInstance.OwnerClientId].GetComponent<NetworkObject>(),
+            player = PlayerHealth._allPlayers[Player.LoaclInstance.OwnerClientId].transform.root.GetComponent<NetworkObject>(),
         });
     }
 
@@ -158,7 +167,7 @@ public class GameManager : NetworkBehaviour
 
         EnemyHealth enemyHealth = enemyObject.GetComponent<EnemyHealth>();
 
-        Player.LoaclInstance.GetComponentInChildren<PlayerMetaProgression>().ChangeCoinAmount(enemyHealth.coinsOnKill);
+        //Player.LoaclInstance.GetComponentInChildren<PlayerMetaProgression>().ChangeCoinAmount(enemyHealth.coinsOnKill);
 
         spawnedEnemies.Remove(enemyHealth);
     }

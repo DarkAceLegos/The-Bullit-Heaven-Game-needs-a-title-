@@ -26,7 +26,7 @@ public class DirectionProj : NetworkBehaviour
     {
         //Debug.Log("I initialized");
 
-        PlayerHealth._allPlayers[playerId].TryGetComponent<Player>(out var player);
+        PlayerHealth._allPlayers[playerId].transform.root.TryGetComponent<Player>(out var player);
 
         //Debug.Log(playerMetaProgression);
 

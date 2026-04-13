@@ -64,12 +64,12 @@ public class PlayerVisualForLobby : MonoBehaviour
 
     private void Show()
     {
-        gameObject.SetActive(true);
+        gameObject.transform.root.gameObject.SetActive(true);
     }
 
     private void Hide()
     {
-        gameObject.SetActive(false);
+        gameObject.transform.root.gameObject.SetActive(false);
     }
 
     private void OnDestroy()

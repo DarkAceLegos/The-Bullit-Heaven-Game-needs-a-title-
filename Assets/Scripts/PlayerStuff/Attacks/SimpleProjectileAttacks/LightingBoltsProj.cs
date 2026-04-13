@@ -26,7 +26,7 @@ public class LightingBoltsProj : NetworkBehaviour
     {
         //Debug.Log("I initialized");
 
-        PlayerHealth._allPlayers[playerId].TryGetComponent<Player>(out var player);
+        PlayerHealth._allPlayers[playerId].transform.root.TryGetComponent<Player>(out var player);
 
         damage = (float)((damage1 + player.additiveDamageModifier) * player.percentageDamageModifier);
         speed = (speed1 + (speed1 * player.additiveProjectileSpeed)) * player.percentageProjectileSpeed;

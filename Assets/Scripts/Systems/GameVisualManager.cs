@@ -18,6 +18,26 @@ public class GameVisualManager : NetworkBehaviour
     private void Start()
     {
         GameManager.Instance.AfterXTime += Instance_AfterXTime;
+        GameManager.Instance.BossSpawn += Instance_BossSpawn;
+    }
+
+    private void Instance_BossSpawn(object sender, GameManager.BossSpawnEventArgs e)
+    {
+        SpawnBossRpc(e.player);
+    }
+
+    [Rpc(SendTo.Server)]
+    private void SpawnBossRpc(NetworkObjectReference playerReference)
+    {
+        playerReference.TryGet(out NetworkObject player);
+
+        if (enemies.Count <= 0 || spawnPoints.Count <= 0)
+        {
+            Debug.Log("No enemies or spawn points");
+            return;
+        }
+
+        SpawnEnemy(player, 1, 1, 3);
     }
 
     private void Instance_AfterXTime(object sender, GameManager.AfterXTimeEventArgs e)
@@ -96,6 +116,8 @@ public class GameVisualManager : NetworkBehaviour
 
             for (int j = 0; j < numAmount; j++)
             {
+                //Debug.Log(player.transform.position);
+
                 enemy = Instantiate(enemies[enemyType], (Vector3)RandomPointInSpawnArea(spawnPosition) + player.transform.position, Quaternion.identity);
                 enemy.GetComponent<NetworkObject>().Spawn(true);
                 NetworkObject enemyNetworkObject = enemy.GetComponent<NetworkObject>();

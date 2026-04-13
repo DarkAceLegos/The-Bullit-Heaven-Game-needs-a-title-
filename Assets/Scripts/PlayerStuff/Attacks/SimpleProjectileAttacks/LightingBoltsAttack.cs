@@ -26,7 +26,7 @@ public class LightingBoltsAttack : Attack
 
         ulong playerId = player.OwnerClientId;
 
-        PlayerHealth._allPlayers[playerId].TryGetComponent<Player>(out var player1);
+        PlayerHealth._allPlayers[playerId].transform.root.TryGetComponent<Player>(out var player1);
 
         if (enemyHealths.Count == 0)
         {

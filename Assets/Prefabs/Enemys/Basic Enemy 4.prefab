@@ -243,6 +243,8 @@ MonoBehaviour:
   coinsOnKill: 1
   enemySprite: {fileID: 7638267061312755745}
   currentHeath: 0
+  ExpPickUp: {fileID: 7604081082961605770, guid: 53d6558581e89ef44b365eabd0bb1f3a, type: 3}
+  CoinPickUp: {fileID: 2185855805712365510, guid: f4f33dc7690d5ba47a5b45061137c3d1, type: 3}
 --- !u!114 &1833079431497051627
 MonoBehaviour:
   m_ObjectHideFlags: 0

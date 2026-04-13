@@ -28,7 +28,7 @@ public class ShootUpEffectedByGravityProj : NetworkBehaviour
 
         //Debug.Log(Player.LoaclInstance);
 
-        PlayerHealth._allPlayers[playerId].TryGetComponent<Player>(out var player);
+        PlayerHealth._allPlayers[playerId].transform.root.TryGetComponent<Player>(out var player);
 
         //Debug.Log(playerMetaProgression);
 

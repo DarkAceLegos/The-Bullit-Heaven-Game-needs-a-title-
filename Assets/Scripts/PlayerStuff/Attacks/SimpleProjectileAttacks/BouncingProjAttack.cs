@@ -23,7 +23,7 @@ public class BouncingProjAttack : Attack
 
         ulong playerId = player.OwnerClientId;
 
-        PlayerHealth._allPlayers[playerId].TryGetComponent<Player>(out var player1);
+        PlayerHealth._allPlayers[playerId].transform.root.TryGetComponent<Player>(out var player1);
 
         if (lastCast + levelData.cooldown > Time.time) { return; }
         lastCast = Time.time;

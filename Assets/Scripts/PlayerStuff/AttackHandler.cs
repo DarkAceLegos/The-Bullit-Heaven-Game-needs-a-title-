@@ -87,7 +87,7 @@ public class AttackHandler : NetworkBehaviour
     {
         Debug.Log(attackId + " " + playerId);
 
-        PlayerHealth._allPlayers[playerId].TryGetComponent<AttackHandler>(out var attackHandlerServerClient);
+        PlayerHealth._allPlayers[playerId].transform.root.TryGetComponent<AttackHandler>(out var attackHandlerServerClient);
 
         GameManager.Instance.allAttacks.TryGetValue(attackId, out var attackData);
 
@@ -139,7 +139,7 @@ public class AttackHandler : NetworkBehaviour
 
         Debug.Log($"{playerId}.{attackId}");
 
-        PlayerHealth._allPlayers[playerId].TryGetComponent<AttackHandler>(out var attackHandlerServerClient);
+        PlayerHealth._allPlayers[playerId].transform.root.TryGetComponent<AttackHandler>(out var attackHandlerServerClient);
 
         attackHandlerServerClient.activeAttacks.TryGetValue(attackId, out var attack);
 
@@ -153,7 +153,7 @@ public class AttackHandler : NetworkBehaviour
     {
         Debug.Log($"{playerId}.{attackId}");
 
-        PlayerHealth._allPlayers[playerId].TryGetComponent<AttackHandler>(out var attackHandlerServerClient);
+        PlayerHealth._allPlayers[playerId].transform.root.TryGetComponent<AttackHandler>(out var attackHandlerServerClient);
 
         for (int i = 0; i < attackList.Count; i++)
         { 
@@ -191,7 +191,7 @@ public class AttackHandler : NetworkBehaviour
 
         //Debug.Log(player);
 
-        player.TryGetComponent<NetworkObject>(out var playerObject); // need to make it not get every update
+        player.transform.root.TryGetComponent<NetworkObject>(out var playerObject); // need to make it not get every update
 
         foreach (var attack in activeAttacks)
         {

@@ -215,7 +215,7 @@ public class Player : NetworkBehaviour
     {
         Debug.Log("Trying to sync");
 
-        PlayerHealth._allPlayers[playerId].TryGetComponent<Player>(out var player);
+        PlayerHealth._allPlayers[playerId].transform.root.TryGetComponent<Player>(out var player);
         Debug.Log("Change this " + player.additiveMaxHealthModifier + " by adding this " + additiveMaxHealthModifier);
         player.additiveMaxHealthModifier = additiveMaxHealthModifier;
         Debug.Log("to this " + player.additiveMaxHealthModifier);

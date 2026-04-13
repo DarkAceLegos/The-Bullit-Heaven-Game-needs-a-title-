@@ -15,12 +15,12 @@ public class EnemyAttack_Melee : NetworkBehaviour
 
         //Debug.Log("we can attack now");
 
-        if (!collision.transform.TryGetComponent(out PlayerHealth playerHealth) || !playerHealth.IsOwner)
+        if (!collision.transform.GetChild(0).TryGetComponent(out PlayerHealth playerHealth) || !playerHealth.IsOwner)
             { return; }
 
         Debug.Log("attacking");
 
         lastAttackTime = Time.time;
-        playerHealth.changeHealth((int)((-damage) * playerHealth.GetComponent<Player>().enemyDamageModifier)); // need to check
+        playerHealth.changeHealth((int)((-damage) * playerHealth.transform.root.GetComponent<Player>().enemyDamageModifier)); // need to check
     }
 }

@@ -18,7 +18,7 @@ public class SkillCost : MonoBehaviour
 
     private void OnEnable()
     {
-        cost = startingCost * PlayerMetaProgression.Instance.maxSkillPoints;
+        cost = (startingCost * PlayerMetaProgression.Instance.maxSkillPoints) + startingCost;
         UpdateVisuals();
     }
 

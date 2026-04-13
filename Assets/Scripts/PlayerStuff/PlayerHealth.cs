@@ -80,7 +80,7 @@ public class PlayerHealth : NetworkBehaviour
 
         foreach (var player in allPlayers.ToArray()) 
         {
-            player.Value.TryGetComponent<NetworkObject>(out NetworkObject component);
+            player.Value.transform.parent.TryGetComponent<NetworkObject>(out NetworkObject component);
 
             SyncPlayerListRpc(player.Key, component);
         }
@@ -91,7 +91,7 @@ public class PlayerHealth : NetworkBehaviour
     {
         playersHealth.TryGet(out NetworkObject playerHealthObject);
 
-        playerHealthObject.TryGetComponent<PlayerHealth>(out PlayerHealth playerHealth);
+        PlayerHealth playerHealth = playerHealthObject.GetComponentInChildren<PlayerHealth>();
 
         allPlayers[playerId] = playerHealth;
 
