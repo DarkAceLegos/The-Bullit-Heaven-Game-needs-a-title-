@@ -2,15 +2,19 @@ using UnityEngine;
 
 public class PickUpRange : MonoBehaviour
 {
-    private void Start()
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        //GetComponent<Player>();
+        if (collision.gameObject.TryGetComponent<ExpPickUp>(out ExpPickUp expPickUp))
+        {
+            expPickUp.SetTarget(transform.parent.position);
+        }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if(!other.transform.TryGetComponent(out ExpPickUp expPickUp)) { return; }
-
-        //expPickUp.transform.
+        if (collision.gameObject.TryGetComponent<ExpPickUp>(out ExpPickUp expPickUp))
+        {
+            expPickUp.SetTarget(transform.parent.position, 0f);
+        }
     }
 }

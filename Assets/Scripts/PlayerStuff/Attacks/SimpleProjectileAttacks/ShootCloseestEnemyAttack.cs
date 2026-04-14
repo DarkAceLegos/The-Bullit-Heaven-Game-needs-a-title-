@@ -61,7 +61,7 @@ public class ShootCloseestEnemyAttack : Attack
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("collision exit");
+        //Debug.Log("collision exit");
         if (!collision.transform.TryGetComponent(out EnemyHealth enemyHealth)) //|| !enemyHealth.IsOwner)
         { //Debug.Log("returned"); return;
         }

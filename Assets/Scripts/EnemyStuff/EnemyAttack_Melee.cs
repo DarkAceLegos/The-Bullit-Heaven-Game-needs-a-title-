@@ -15,6 +15,8 @@ public class EnemyAttack_Melee : NetworkBehaviour
 
         //Debug.Log("we can attack now");
 
+        //Debug.Log(collision.transform);
+
         if (!collision.transform.GetChild(0).TryGetComponent(out PlayerHealth playerHealth) || !playerHealth.IsOwner)
             { return; }
 

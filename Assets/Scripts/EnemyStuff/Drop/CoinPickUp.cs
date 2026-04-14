@@ -1,8 +1,11 @@
+using System;
 using UnityEngine;
 
-public class CoinPickUp : MonoBehaviour
+public class CoinPickUp : MonoBehaviour, Icollectible
 {
     [SerializeField] private int amountOfCoin;
+
+    public static event Action OnCoinCollected;
 
     public void SpawnCoin(int value, Vector3 pos)
     {
@@ -16,7 +19,7 @@ public class CoinPickUp : MonoBehaviour
         ObjectPooler.ReturnObjectToPool(gameObject);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.transform.TryGetComponent(out PlayerHealth playerHealth) || !playerHealth.IsOwner)
         { return; }
@@ -24,5 +27,19 @@ public class CoinPickUp : MonoBehaviour
         Player.LoaclInstance.GetComponentInChildren<PlayerMetaProgression>().ChangeCoinAmount((int)(amountOfCoin * Player.LoaclInstance.percentageTreasurGain));
 
         Pickup();
+    }*/
+
+    public void Collect()
+    {
+        OnCoinCollected?.Invoke();
+
+        Player.LoaclInstance.GetComponentInChildren<PlayerMetaProgression>().ChangeCoinAmount((int)(amountOfCoin * Player.LoaclInstance.percentageTreasurGain));
+
+        Pickup();
+    }
+
+    public void Attrack(Transform transform)
+    {
+        gameObject.transform.Translate(transform.position);
     }
 }
