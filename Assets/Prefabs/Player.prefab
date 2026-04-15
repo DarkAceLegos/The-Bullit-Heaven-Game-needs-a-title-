@@ -374,7 +374,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2893271921165447150}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -410,7 +410,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2893271921165447150}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5222297a4dbff814e9d659ebd4a2189a, type: 3}
   m_Name: 
@@ -531,7 +531,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4321051178926778976}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6fb1b444318705459bbad163c779fe4, type: 3}
   m_Name: 
@@ -543,7 +543,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4321051178926778976}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -813,6 +813,9 @@ MonoBehaviour:
   allAttacksPlayerUnlocked: []
   noOtherAttacks:
   - {fileID: 11400000, guid: 2b4153ff88b123e43a1845468d61e1e9, type: 2}
+  - {fileID: 11400000, guid: b8107bb3795a9ab46833b4fbafac5fae, type: 2}
+  collector: {fileID: 4077690493105278959}
+  pickUpRange: {fileID: 4811021453028750536}
 --- !u!114 &3595837932151883963
 MonoBehaviour:
   m_ObjectHideFlags: 0

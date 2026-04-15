@@ -66,7 +66,8 @@ public class ChainLightiningAttack : Attack
     {
         //Debug.Log("collision exit");
         if (!collision.transform.TryGetComponent(out EnemyHealth enemyHealth)) //|| !enemyHealth.IsOwner)
-        { Debug.Log("returned"); return; }
+        { //Debug.Log("returned"); 
+            return; }
         //collision.transform.TryGetComponent(out EnemyHealth enemyHealth);
         enemyHealths.Remove(enemyHealth);
     }

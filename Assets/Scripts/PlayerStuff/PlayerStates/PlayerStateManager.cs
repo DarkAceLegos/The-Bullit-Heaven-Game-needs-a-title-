@@ -30,6 +30,7 @@ public class PlayerStateManager : MonoBehaviour
     public void SwitchState(PlayerBaseState state)
     {
         currentState.ExitState(this);
+        Debug.Log("exit current State" + this.currentState);
         currentState = state;
         state.EnterState(this);
     }

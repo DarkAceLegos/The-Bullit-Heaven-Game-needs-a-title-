@@ -15,7 +15,7 @@ public class PlayerAlive : PlayerBaseState
 
         //Debug.Log(player);
         
-        player.TryGetComponent<PlayerHealth>(out playerHealth);
+        player.transform.GetChild(0).TryGetComponent<PlayerHealth>(out playerHealth);
 
         //Debug.Log($"PlayerHealth: {playerHealth}");
 
@@ -28,6 +28,7 @@ public class PlayerAlive : PlayerBaseState
 
     private void PlayerHealth_OnPlayerDied(object sender, PlayerHealth.OnPlayerDied e)
     {
+        Debug.Log("Player died event");
         e.playerStateManager.SwitchState(e.playerStateManager.Dead);
     }
 
@@ -39,6 +40,6 @@ public class PlayerAlive : PlayerBaseState
 
     public override void UpdateState(PlayerStateManager playerState)
     {
-    
+        //Debug.Log("Alive");
     }
 }

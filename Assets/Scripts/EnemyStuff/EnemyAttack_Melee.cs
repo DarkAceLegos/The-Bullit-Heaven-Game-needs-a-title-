@@ -20,7 +20,7 @@ public class EnemyAttack_Melee : NetworkBehaviour
         if (!collision.transform.GetChild(0).TryGetComponent(out PlayerHealth playerHealth) || !playerHealth.IsOwner)
             { return; }
 
-        Debug.Log("attacking");
+        //Debug.Log("attacking");
 
         lastAttackTime = Time.time;
         playerHealth.changeHealth((int)((-damage) * playerHealth.transform.root.GetComponent<Player>().enemyDamageModifier)); // need to check

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class PlayerHealth : NetworkBehaviour
 {
@@ -48,7 +49,7 @@ public class PlayerHealth : NetworkBehaviour
     {
         Player.LoaclInstance.TryGetComponent<PlayerStateManager>(out PlayerStateManager playerState);
 
-        Debug.Log(playerState);
+        Debug.Log(playerState.GetCurrentState());
 
         playerStateManager = playerState;
     }

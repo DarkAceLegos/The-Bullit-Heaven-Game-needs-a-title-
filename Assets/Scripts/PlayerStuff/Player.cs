@@ -57,6 +57,9 @@ public class Player : NetworkBehaviour
 
     [SerializeField] private List<AttackData> noOtherAttacks = new();
 
+    [SerializeField] private Collector collector;
+    [SerializeField] private PickUpRange pickUpRange;
+
     public List<AttackData> GetAllPlayerUnlockedAttacks() { return allAttacksPlayerUnlocked; }
     public List<AttackData> GetPlayerNoOtherAttacks() { return noOtherAttacks; }
 
@@ -150,6 +153,10 @@ public class Player : NetworkBehaviour
             listener.enabled = true;
             vc.Priority = 1;
             LoaclInstance = this;
+            collector.enabled = true;
+            collector.GetComponent<Collider2D>().enabled = true;
+            pickUpRange.enabled = true;
+            pickUpRange.GetComponent<Collider2D>().enabled = true;
             transform.position = spawnPositions[(int)OwnerClientId];
             OnAnyPlayerSpawned?.Invoke(this, new OnAnyPlayerSpawnedEventArgs
             {

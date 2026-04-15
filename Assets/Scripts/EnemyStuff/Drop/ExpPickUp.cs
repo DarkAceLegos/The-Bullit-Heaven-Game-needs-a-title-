@@ -23,7 +23,7 @@ public class ExpPickUp : MonoBehaviour, Icollectible
     {
         amountOfExp = value;
 
-        ObjectPooler.SpawnObject(gameObject, pos, Quaternion.identity);
+        ObjectPooler.SpawnObject(gameObject, pos, Quaternion.identity, ObjectPooler.PoolType.Exp);
     }
 
     private void Pickup()

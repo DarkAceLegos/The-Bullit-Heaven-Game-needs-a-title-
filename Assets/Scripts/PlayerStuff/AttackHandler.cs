@@ -143,9 +143,9 @@ public class AttackHandler : NetworkBehaviour
 
         attackHandlerServerClient.activeAttacks.TryGetValue(attackId, out var attack);
 
-        Debug.Log(attack);
+        Debug.Log(attack); // error null with new attack
 
-        attack.initialize(attack.data, Level);
+        attack.initialize(attack.data, Level); // error with new attack
     }
 
     [Rpc(SendTo.Server)]
@@ -212,7 +212,7 @@ public class AttackHandler : NetworkBehaviour
     [Rpc(SendTo.Server)]
     private void SpawnProjectileRpc(NetworkObjectReference playerReference, string key)
     {
-        if (key == "99") return; //need to fix
+        if (key == "99" || key == "90") return; //need to fix
 
         //Debug.Log("trying the Rpc");
 

@@ -7,11 +7,22 @@ public class CoinPickUp : MonoBehaviour, Icollectible
 
     public static event Action OnCoinCollected;
 
+    private Rigidbody2D rb;
+
+    private bool hasTarget;
+    private Vector3 targetPos;
+    private float collectSpeed = 5f;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     public void SpawnCoin(int value, Vector3 pos)
     {
         amountOfCoin = value;
 
-        ObjectPooler.SpawnObject(gameObject, pos, Quaternion.identity);
+        ObjectPooler.SpawnObject(gameObject, pos, Quaternion.identity, ObjectPooler.PoolType.Coins);
     }
 
     private void Pickup()
@@ -38,8 +49,20 @@ public class CoinPickUp : MonoBehaviour, Icollectible
         Pickup();
     }
 
-    public void Attrack(Transform transform)
+    private void FixedUpdate()
     {
-        gameObject.transform.Translate(transform.position);
+        if (hasTarget)
+        {
+            Vector2 targetDirction = (targetPos - transform.position).normalized;
+
+            rb.linearVelocity = new Vector2(targetDirction.x, targetDirction.y) * collectSpeed;
+        }
+    }
+
+    public void SetTarget(Vector3 target, float Speed = 5f)
+    {
+        hasTarget = true;
+        targetPos = target;
+        collectSpeed = Speed;
     }
 }
