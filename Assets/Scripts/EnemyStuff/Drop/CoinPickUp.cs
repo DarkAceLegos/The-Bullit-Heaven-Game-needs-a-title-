@@ -7,7 +7,7 @@ public class CoinPickUp : MonoBehaviour, Icollectible
 
     public static event Action OnCoinCollected;
 
-    private Rigidbody2D rb;
+    //private Rigidbody2D rb;
 
     private bool hasTarget;
     private Vector3 targetPos;
@@ -15,7 +15,7 @@ public class CoinPickUp : MonoBehaviour, Icollectible
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        //rb = GetComponent<Rigidbody2D>();
     }
 
     public void SpawnCoin(int value, Vector3 pos)
@@ -27,7 +27,7 @@ public class CoinPickUp : MonoBehaviour, Icollectible
 
     private void Pickup()
     {
-        ObjectPooler.ReturnObjectToPool(gameObject);
+        ObjectPooler.ReturnObjectToPool(gameObject, ObjectPooler.PoolType.Coins);
     }
 
     /*private void OnTriggerEnter2D(Collider2D collision)
@@ -55,7 +55,9 @@ public class CoinPickUp : MonoBehaviour, Icollectible
         {
             Vector2 targetDirction = (targetPos - transform.position).normalized;
 
-            rb.linearVelocity = new Vector2(targetDirction.x, targetDirction.y) * collectSpeed;
+            //rb.linearVelocity = new Vector2(targetDirction.x, targetDirction.y) * collectSpeed;
+
+            transform.position = Vector2.MoveTowards(transform.position, targetPos, collectSpeed * Time.deltaTime);
         }
     }
 

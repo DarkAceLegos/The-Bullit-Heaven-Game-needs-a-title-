@@ -6,7 +6,7 @@ public class ExpPickUp : MonoBehaviour, Icollectible
     //[SerializeField] private GameObject thisPrefab;
     [SerializeField] private int amountOfExp;
 
-    private Rigidbody2D rb;
+    //private Rigidbody2D rb;
 
     public static event Action OnExpCollected;
 
@@ -16,7 +16,7 @@ public class ExpPickUp : MonoBehaviour, Icollectible
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        //rb = GetComponent<Rigidbody2D>();
     }
 
     public void SpawnExp(int value, Vector3 pos)
@@ -29,7 +29,7 @@ public class ExpPickUp : MonoBehaviour, Icollectible
     private void Pickup()
     {
         hasTarget = false;
-        ObjectPooler.ReturnObjectToPool(gameObject);
+        ObjectPooler.ReturnObjectToPool(gameObject, ObjectPooler.PoolType.Exp);
     }
 
     /*private void OnTriggerEnter2D(Collider2D collision)
@@ -57,7 +57,9 @@ public class ExpPickUp : MonoBehaviour, Icollectible
         { 
             Vector2 targetDirction = (targetPos - transform.position).normalized;
 
-            rb.linearVelocity = new Vector2(targetDirction.x, targetDirction.y) * collectSpeed;
+            //rb.linearVelocity = new Vector2(targetDirction.x, targetDirction.y) * collectSpeed;
+
+            transform.position = Vector2.MoveTowards(transform.position, targetPos, collectSpeed * Time.deltaTime);
         }
     }
 

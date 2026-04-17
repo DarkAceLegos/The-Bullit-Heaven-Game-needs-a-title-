@@ -813,7 +813,6 @@ MonoBehaviour:
   allAttacksPlayerUnlocked: []
   noOtherAttacks:
   - {fileID: 11400000, guid: 2b4153ff88b123e43a1845468d61e1e9, type: 2}
-  - {fileID: 11400000, guid: b8107bb3795a9ab46833b4fbafac5fae, type: 2}
   collector: {fileID: 4077690493105278959}
   pickUpRange: {fileID: 4811021453028750536}
 --- !u!114 &3595837932151883963
