@@ -47,7 +47,7 @@ public class AuraAttackProj : NetworkBehaviour
 
         
 
-        this.GetComponent<FollowTransform>().SetTargetTransform(player.transform);
+        GetComponent<FollowTransform>().SetTargetTransform(player.transform);
     }
 
     private void Update()

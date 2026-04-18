@@ -42,6 +42,8 @@ public class IncreaseAreaAuraProj : NetworkBehaviour
         transform.localScale = transform.localScale * area;
         rb.linearVelocity = Random.insideUnitCircle * speed;
         //Debug.Log(transform.localScale);
+
+        GetComponent<FollowTransform>().SetTargetTransform(player.transform);
     }
 
     private void Update()

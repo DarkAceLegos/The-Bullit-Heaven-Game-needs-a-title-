@@ -1,0 +1,26 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(menuName = "Attack/AuraBuff")]
+public class AuraBuffAttackData : AttackData
+{ 
+    [System.Serializable]
+    public struct LevelData
+    {
+        public int projCount;
+        public int amount;
+        public float cooldown;
+        public float speed;
+        public float area;
+        public AuraBuffHolder.Stat Stat;
+    }
+
+    [SerializeField] private List<LevelData> levels = new();
+    public LevelData GetLevelData(int level) => levels[Mathf.Clamp(level, 0, levels.Count - 1)];
+
+    public void AddALevelData(LevelData levelData)
+    {
+        levels.Add(levelData);
+        levelDiscriptions.Add(" ");
+    }
+}

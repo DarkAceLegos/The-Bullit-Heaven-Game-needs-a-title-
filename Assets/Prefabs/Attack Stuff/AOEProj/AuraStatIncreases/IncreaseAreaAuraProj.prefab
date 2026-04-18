@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4257185251936713824}
   - component: {fileID: 1923710335672902206}
   - component: {fileID: -7466840755462139836}
+  - component: {fileID: -3532498006034847072}
   m_Layer: 0
   m_Name: IncreaseAreaAuraProj
   m_TagString: Untagged
@@ -189,9 +190,21 @@ MonoBehaviour:
   duration: 0
   rb: {fileID: 0}
   area: 0
-  attackInterval: 1
   lifeTime: 0
   enemyHealths: []
+--- !u!114 &-3532498006034847072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353118902356978076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f52eb9698fa39f84b919aa7e9ff35d14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  followRoatation: 0
 --- !u!1 &2533344867957452789
 GameObject:
   m_ObjectHideFlags: 0
