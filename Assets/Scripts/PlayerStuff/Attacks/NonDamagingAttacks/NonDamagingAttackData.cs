@@ -8,6 +8,7 @@ public class NonDamagingAttackData : AttackData
     [System.Serializable]
     public struct LevelData
     {
+        public AuraBuffHolder.Stat stat;
         public int value;
     }
 

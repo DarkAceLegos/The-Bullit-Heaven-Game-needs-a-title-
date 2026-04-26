@@ -800,7 +800,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0}
   vc: {fileID: 7165954268988903130}
   listener: {fileID: 3491062094786061297}
-  playerVisual: {fileID: 304334114553193645}
+  playerVisual: {fileID: 4050571863552955795}
   spawnPositions:
   - {x: -2, y: 2}
   - {x: 0, y: 2}
@@ -1224,9 +1224,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5811c4474a110a94cac7f20beab96ac2, type: 3}
---- !u!114 &304334114553193645 stripped
+--- !u!114 &4050571863552955795 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 738740549825538328, guid: 5811c4474a110a94cac7f20beab96ac2, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3913411989320947750, guid: 5811c4474a110a94cac7f20beab96ac2, type: 3}
   m_PrefabInstance: {fileID: 1043074651342687669}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

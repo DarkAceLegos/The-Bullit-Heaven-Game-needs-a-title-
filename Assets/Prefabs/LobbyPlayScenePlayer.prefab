@@ -425,6 +425,7 @@ GameObject:
   - component: {fileID: 5004031360651103392}
   - component: {fileID: 1338629941234703651}
   - component: {fileID: 4592616025037423284}
+  - component: {fileID: 7030652638605853940}
   m_Layer: 0
   m_Name: LobbyPlayScenePlayer
   m_TagString: Untagged
@@ -639,6 +640,20 @@ MonoBehaviour:
   - {x: 0, y: -2}
   - {x: 2, y: -2}
   moveSpeed: 10
+--- !u!114 &7030652638605853940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5004031360651103400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03bbaab112cdeb54396d20951d59592f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  playerVisual: {fileID: 4050571863552955795}
 --- !u!1 &6406485346394258346
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,6 +929,17 @@ PrefabInstance:
 --- !u!114 &304334114553193645 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 738740549825538328, guid: 5811c4474a110a94cac7f20beab96ac2, type: 3}
+  m_PrefabInstance: {fileID: 1043074651342687669}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67112ae4a81b90543abe9f318216356b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4050571863552955795 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3913411989320947750, guid: 5811c4474a110a94cac7f20beab96ac2, type: 3}
   m_PrefabInstance: {fileID: 1043074651342687669}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

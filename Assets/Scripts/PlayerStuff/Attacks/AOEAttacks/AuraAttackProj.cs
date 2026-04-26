@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class AuraAttackProj : NetworkBehaviour
+public class AuraAttackProj : NetworkBehaviour//, INetworkPrefabInstanceHandler
 {
     [SerializeField] private float damage;
     [SerializeField] private float speed;

@@ -29,6 +29,7 @@ public class GameData
     public float percentageDuration = 1f;
     public int additiveExperience;
     public float percentageExperience = 1f;
+    public float pickUpRange;
 
     public SerializableDictionary<string, bool> skillTree;
     public SerializableDictionary<string, bool> unlocks;
@@ -50,6 +51,11 @@ public class GameData
 
     public int coins;
     public int gems;
+
+    // auraBuff stats
+    public float auraBuffEffect;
+    public float auraBuffRange;
+    public int maxAuraBuffEquept;
 
     public GameData()
     {

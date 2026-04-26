@@ -554,7 +554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerIndex: 0
   ReadyText: {fileID: 4299669103390627743}
-  playerVisual: {fileID: 8288244134445013808}
+  playerVisual: {fileID: 5695489771765410318}
   kickButton: {fileID: 3790816853560476589}
   playerNameText: {fileID: 709674137258000203}
 --- !u!1 &8603458799547675672
@@ -730,9 +730,9 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 7165400933062927954, guid: 5811c4474a110a94cac7f20beab96ac2, type: 3}
   m_PrefabInstance: {fileID: 8738472828141597224}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8288244134445013808 stripped
+--- !u!114 &5695489771765410318 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 738740549825538328, guid: 5811c4474a110a94cac7f20beab96ac2, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3913411989320947750, guid: 5811c4474a110a94cac7f20beab96ac2, type: 3}
   m_PrefabInstance: {fileID: 8738472828141597224}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

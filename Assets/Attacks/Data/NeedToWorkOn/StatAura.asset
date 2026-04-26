@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719dcd8766816bc42a831d5fde51664a, type: 3}
   m_Name: StatAura
   m_EditorClassIdentifier: 
-  attackId: 50
+  attackId: 501
   attackName: Basic Aura
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
