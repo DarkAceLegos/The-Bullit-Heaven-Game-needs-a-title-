@@ -21,9 +21,13 @@ MonoBehaviour:
   - increase additive area by 5
   - increase additive area by 5
   icon: {fileID: -7069720901952774207, guid: ad0af6a07a8c4ca488a650093232a37f, type: 3}
-  prefab: {fileID: 3828697499024585951, guid: 01d1bf09af05fdd42be129e985594e04, type: 3}
+  prefab: {fileID: -4769976791742939130, guid: ab2160635c2c542479280dc71fbcf696, type: 3}
   levels:
-  - value: 5
-  - value: 5
-  - value: 5
-  - value: 5
+  - stat: 6
+    value: 5
+  - stat: 6
+    value: 5
+  - stat: 6
+    value: 5
+  - stat: 6
+    value: 5
