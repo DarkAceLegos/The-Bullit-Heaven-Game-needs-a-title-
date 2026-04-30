@@ -34,11 +34,11 @@ public class AttackHandler : NetworkBehaviour
 
         //attackList.Add(Player.LoaclInstance.GetPlayerNoOtherAttacks()[0]);
         bool firstRun = true;
-        foreach ( var attackId in Player.LoaclInstance.playerMetas.allAttacksPlayerUnlocked)
+        foreach ( var attackId in /*Player.LoaclInstance.GetComponent<PlayersDeck>().deckOfCardsAttacks)//*/ Player.LoaclInstance.playerMetas.allAttacksPlayerUnlocked)
         {
             //Debug.Log(attackId);
 
-            GameManager.Instance.allAttacks.TryGetValue(attackId, out AttackData attack);
+            GameManager.Instance.allAttacks.TryGetValue(attackId,/*.attackId*/ out AttackData attack);
 
             //Debug.Log(GameManager.Instance.allAttacks["4"]);
             //Debug.Log(attack);

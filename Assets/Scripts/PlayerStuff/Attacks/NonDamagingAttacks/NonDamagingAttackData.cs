@@ -9,7 +9,7 @@ public class NonDamagingAttackData : AttackData
     public struct LevelData
     {
         public AuraBuffHolder.Stat stat;
-        public int value;
+        public float value;
     }
 
     [SerializeField] private List<LevelData> levels = new();

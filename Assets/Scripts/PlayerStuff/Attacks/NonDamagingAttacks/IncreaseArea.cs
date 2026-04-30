@@ -15,7 +15,7 @@ public class IncreaseArea : Attack
         var basicAttackData = (NonDamagingAttackData)data;
         levelData = basicAttackData.GetLevelData(level);
 
-        transform.root.GetComponent<Player>().additiveAreaModifier += levelData.value;
+        transform.root.GetComponent<Player>().additiveAreaModifier += (int)levelData.value;
 
         //level--;
     }

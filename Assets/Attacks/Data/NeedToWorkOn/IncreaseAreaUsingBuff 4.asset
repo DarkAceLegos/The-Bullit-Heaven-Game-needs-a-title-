@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71e37bcaa2c6b5240b8fe2d1d94c8e69, type: 3}
+  m_Name: IncreaseAreaUsingBuff 4
+  m_EditorClassIdentifier: 
+  attackId: 50
+  attackName: Increase Area With Buff
+  attacksOnceMaxedLeveled: []
+  levelDiscriptions:
+  - Aura that Increase area by 1 for eveyone in the arua
+  icon: {fileID: -206542422392470365, guid: 06b9b27937fd8f149906635afbd5027d, type: 3}
+  prefab: {fileID: 3252152671137035060, guid: bc64293fa0f228b44b6ba7ef73a8cbc2, type: 3}
+  levels:
+  - projCount: 1
+    amount: 4
+    cooldown: 4
+    speed: 0
+    area: 0.5
+    stat: 6

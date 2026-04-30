@@ -8,7 +8,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
 
     [SerializeField] public List<string> allAttacksPlayerUnlocked = new();
 
-    public Dictionary<int,string> statNameList = new Dictionary<int, string>();
+    public Dictionary<int, string> statNameList = new Dictionary<int, string>();
 
     [SerializeField] public int additiveMaxHealthModifier;
     [SerializeField] public float percentageMaxHealthModifier = 1f;
@@ -45,6 +45,8 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
     [SerializeField] public List<SeializableEnemyCard> enemyCardInventory;
     [SerializeField] public List<SeializableEnemyCard> enemyCardDeck;
     [SerializeField] public List<SerializableAttackCard> attackCardInventory;
+    [SerializeField] public List<SerializableAttackCard> attackCardDeck;
+    [SerializeField] public List<SerializableAttackCard> attackCardDeckLocks;
     [SerializeField] public List<SerializableStatCard> statCardInventory;
     [SerializeField] public List<SerializableStatCard> statCardDeck;
 
@@ -83,7 +85,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
 
     public bool AddAttack(string attackDataId)
     {
-        if(allAttacksPlayerUnlocked.Contains(attackDataId))
+        if (allAttacksPlayerUnlocked.Contains(attackDataId))
             return false;
         allAttacksPlayerUnlocked.Add(attackDataId);
         return true;
@@ -91,10 +93,10 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
 
     public bool RemoveAttack(string attackDataId)
     {
-        if(!allAttacksPlayerUnlocked.Contains(attackDataId))
+        if (!allAttacksPlayerUnlocked.Contains(attackDataId))
             return false;
         allAttacksPlayerUnlocked.Remove(attackDataId);
-        return true ;
+        return true;
     }
 
     public void ChangeStat(int statId, float Amount)
@@ -211,7 +213,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         this.maxAttackCards = data.maxAttackCards;
         this.maxEnemyCards = data.maxEnemyCards;
         this.maxStatCards = data.maxStatCards;
-        }
+    }
 
     public void SaveData(ref GameData data)
     {
@@ -275,7 +277,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         }
         else if (whichPlace == 1)
         {
-            if(enemyCardDeck.Exists(seializableEnemyCard => seializableEnemyCard.cardId == card.cardId)) { return; }
+            if (enemyCardDeck.Exists(seializableEnemyCard => seializableEnemyCard.cardId == card.cardId)) { return; }
             enemyCardDeck.Add(seializableEnemyCard);
         }
         else
@@ -463,7 +465,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         serializableAttackCard.foilEffectName = card.foilEffect.name;
         serializableAttackCard.isFoil = card.isFoil;
         serializableAttackCard.attackId = card.attackId;
-        
+
         if (whichPlace == 0)
         {
             attackCardInventory.Add(serializableAttackCard);
@@ -471,6 +473,8 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         else if (whichPlace == 1)
         {
             allAttacksPlayerUnlocked.Add(card.attackId);
+            if (attackCardDeck.Exists(serializableAttackCard => serializableAttackCard.cardId == card.cardId)) { return; }
+            attackCardDeck.Add(serializableAttackCard);
         }
         else
         {
@@ -498,6 +502,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         else if (whichPlace == 1)
         {
             allAttacksPlayerUnlocked.Remove(card.attackId);
+            attackCardDeck.RemoveAll(serializableAttackCard => serializableAttackCard.cardId == card.cardId);
         }
         else
         {
@@ -508,16 +513,31 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
     public AttackCard GetAttackCard(int i, int whichPlace = 0)
     {
         AttackCard attackCard = ScriptableObject.CreateInstance<AttackCard>();
-
-        attackCard.cardName = attackCardInventory[i].cardName;
-        attackCard.cardText = attackCardInventory[i].cardText;
-        attackCard.cardId = attackCardInventory[i].cardId;
-        attackCard.cardBackground = Resources.Load<Sprite>("Sprites/" + attackCardInventory[i].cardBackgroundName);
-        attackCard.cardForeground = Resources.Load<Sprite>("Sprites/" + attackCardInventory[i].cardForegroundName);
-        attackCard.foilEffect = Resources.Load<Sprite>("Sprites/" + attackCardInventory[i].foilEffectName);
-        attackCard.isFoil = attackCardInventory[i].isFoil;
-
-        attackCard.attackId = attackCardInventory[i].attackId;
+        if (whichPlace == 0)
+        {
+            attackCard.cardName = attackCardInventory[i].cardName;
+            attackCard.cardText = attackCardInventory[i].cardText;
+            attackCard.cardId = attackCardInventory[i].cardId;
+            attackCard.cardBackground = Resources.Load<Sprite>("Sprites/" + attackCardInventory[i].cardBackgroundName);
+            attackCard.cardForeground = Resources.Load<Sprite>("Sprites/" + attackCardInventory[i].cardForegroundName);
+            attackCard.foilEffect = Resources.Load<Sprite>("Sprites/" + attackCardInventory[i].foilEffectName);
+            attackCard.isFoil = attackCardInventory[i].isFoil;
+            attackCard.attackId = attackCardInventory[i].attackId;
+        }
+        else if (whichPlace == 1) {
+            attackCard.cardName = attackCardDeck[i].cardName;
+            attackCard.cardText = attackCardDeck[i].cardText;
+            attackCard.cardId = attackCardDeck[i].cardId;
+            attackCard.cardBackground = Resources.Load<Sprite>("Sprites/" + attackCardDeck[i].cardBackgroundName);
+            attackCard.cardForeground = Resources.Load<Sprite>("Sprites/" + attackCardDeck[i].cardForegroundName);
+            attackCard.foilEffect = Resources.Load<Sprite>("Sprites/" + attackCardDeck[i].foilEffectName);
+            attackCard.isFoil = attackCardDeck[i].isFoil;
+            attackCard.attackId = attackCardDeck[i].attackId;
+        }
+        else
+        {
+            Debug.Log("No Inventory of the place");
+        }
 
         return attackCard;
     }

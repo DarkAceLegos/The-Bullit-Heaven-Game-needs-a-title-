@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayersDeck : MonoBehaviour//, IDataPersistence
 {
-    [SerializeField] public List<Cards> deckOfCardsAttacks = new();
+    [SerializeField] public List<AttackCard> deckOfCardsAttacks = new();
     [SerializeField] public List<EnemyCard> deckOfEnemyCards = new();
     private List<SeializableEnemyCard> enemyCards;
 

@@ -157,7 +157,7 @@ public class PlayerHealth : NetworkBehaviour
 
         if (currentHeath == 0)
         {
-            onPlayerDied?.Invoke(playerId); //might not wo
+            onPlayerDied?.Invoke(playerId); //might not do
         }
     }
 
