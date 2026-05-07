@@ -10,7 +10,7 @@ public class DeckOnClick : CardOnClickHandler
         {
             Debug.Log("Attack Card");
             PlayerMetaProgression.Instance.AddAttackCard((AttackCard)card);
-            PlayerMetaProgression.Instance.AddAttack(card.cardId);
+            PlayerMetaProgression.Instance.AddAttackCard((AttackCard)card, 1);
         }
         else if (card is EnemyCard)
         {

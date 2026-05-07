@@ -24,4 +24,30 @@ public class PlayerBaseStats : MonoBehaviour
     [SerializeField] public float percentageDuration = 1f;
     [SerializeField] public int additiveExperience;
     [SerializeField] public float percentageExperience = 1f;
+
+    public enum Stat
+    {
+        additiveMaxHealthModifier,
+        percentageMaxHealthModifier,
+        additiveDamageModifier,
+        percentageDamageModifier,
+        percentageCooldownModifier,
+        additiveProjectileModifier,
+        additiveAreaModifier,
+        percentageAreaModifier,
+        enemySpawnModifier,
+        enemyDamageModifier,
+        playerHealthRegen,
+        percentagePlayerHealthRegen,
+        percentageTreasureFind,
+        percentageTreasurGain,
+        additivePlayerMoveSpeed,
+        percentagePlayerMoveSpeed,
+        additiveProjectileSpeed,
+        percentageProjectileSpeed,
+        additiveDuration,
+        percentageDuration,
+        additiveExperience,
+        percentageExperience,
+    }
 }

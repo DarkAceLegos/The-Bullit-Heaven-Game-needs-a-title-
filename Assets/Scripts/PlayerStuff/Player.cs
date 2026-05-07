@@ -70,9 +70,15 @@ public class Player : NetworkBehaviour
         PlayerData playerData = GameMultiplayerConnectionAppoval.Instance.GetPlayerDataFromClientId(OwnerClientId);
         playerVisual.SetPlayerColor(GameMultiplayerConnectionAppoval.Instance.GetPlayerColor(playerData.colorId));
 
-        foreach (string attackId in playerMetas.allAttacksPlayerUnlocked)
+        foreach (var attackId in playerMetas.attackCardDeck)
         {
-            GameManager.Instance.allAttacks.TryGetValue(attackId, out AttackData attack);
+            GameManager.Instance.allAttacks.TryGetValue(attackId.attackId, out AttackData attack);
+            allAttacksPlayerUnlocked.Add(attack);
+        }
+
+        foreach (var attackId in playerMetas.attackCardDeckLocks)
+        {
+            GameManager.Instance.allAttacks.TryGetValue(attackId.attackId, out AttackData attack);
             allAttacksPlayerUnlocked.Add(attack);
         }
 

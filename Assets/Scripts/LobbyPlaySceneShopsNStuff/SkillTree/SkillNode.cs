@@ -126,34 +126,34 @@ public class SkillNode : MonoBehaviour, IPointerClickHandler, IDataPersistence
 
     public void StatSkillNodeComp()
     {
-        if (levelUps == null)
-        {
-            //Do alternet thing
-        }
-        else
-        {
+        if (levelUps != null)
+        {        
             foreach (var level in levelUps)
             {
-                PlayerMetaProgression.Instance.ChangeStat(((int)level.stats), level.value);
+                PlayerMetaProgression.Instance.ChangeStat((int)level.stats, level.value);
             }
         }
+
+        TryGetComponent<AltSkillNodes>(out var altSkillNodes);
+        if (altSkillNodes != null)
+            altSkillNodes.SkillUpgrade();
     }
 
     public string GetDescription()
     {
         string description = "";
 
-        if (levelUps == null)
-        {
-            //Get alt Description
-        }
-        else 
+        if (levelUps != null)
         {
             foreach (var level in levelUps)
             {
                 description += "Add " + level.value + " to " + PlayerMetaProgression.Instance.GetNameOfStat((int)level.stats) + "\n";
             }
         }
+
+        TryGetComponent<AltSkillNodes>(out var altSkillNodes);
+        if (altSkillNodes != null)
+            description += "and " + altSkillNodes.GetDescription();
 
         return description;
     }

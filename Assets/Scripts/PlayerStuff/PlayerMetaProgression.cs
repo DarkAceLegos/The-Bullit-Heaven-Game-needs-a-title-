@@ -205,9 +205,11 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         this.enemyCardInventory = data.enemyCardInventory;
         this.enemyCardDeck = data.enemyCardDeck;
         this.attackCardInventory = data.attackCardInventory;
+        this.attackCardDeck = data.attackCardDeck;
+        this.attackCardDeckLocks = data.attackCardDeckLocks;
         this.statCardInventory = data.statCardInventory;
         this.statCardDeck = data.statCardDeck;
-        this.testingCard = data.testCard;
+        //this.testingCard = data.testCard;
         this.maxSkillPoints = data.maxSkillPoints;
         this.spentSkillPoints = data.spentSkillPoints;
         this.maxAttackCards = data.maxAttackCards;
@@ -246,9 +248,11 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         data.enemyCardInventory = this.enemyCardInventory;
         data.enemyCardDeck = this.enemyCardDeck;
         data.attackCardInventory = this.attackCardInventory;
+        data.attackCardDeck = this.attackCardDeck;
+        data.attackCardDeckLocks = this.attackCardDeckLocks;
         data.statCardInventory = this.statCardInventory;
         data.statCardDeck = this.statCardDeck;
-        data.testCard = this.testingCard;
+        //data.testCard = this.testingCard;
         data.maxSkillPoints = this.maxSkillPoints;
         data.spentSkillPoints = this.spentSkillPoints;
         data.maxAttackCards = this.maxAttackCards;
@@ -472,9 +476,16 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         }
         else if (whichPlace == 1)
         {
-            allAttacksPlayerUnlocked.Add(card.attackId);
             if (attackCardDeck.Exists(serializableAttackCard => serializableAttackCard.cardId == card.cardId)) { return; }
+
+            allAttacksPlayerUnlocked.Add(card.attackId);
             attackCardDeck.Add(serializableAttackCard);
+        }
+        else if(whichPlace == 2)
+        {
+            if (attackCardDeckLocks.Exists(serializableAttackCard => serializableAttackCard.cardId == card.cardId)) { return; }
+
+            attackCardDeckLocks.Add(serializableAttackCard);
         }
         else
         {
@@ -501,8 +512,12 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         }
         else if (whichPlace == 1)
         {
-            allAttacksPlayerUnlocked.Remove(card.attackId);
+            //allAttacksPlayerUnlocked.Remove(card.attackId);
             attackCardDeck.RemoveAll(serializableAttackCard => serializableAttackCard.cardId == card.cardId);
+        }
+        else if (whichPlace == 2)
+        {
+            attackCardDeckLocks.RemoveAll(serializableAttackCard => serializableAttackCard.cardId == card.cardId);
         }
         else
         {
@@ -533,6 +548,17 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
             attackCard.foilEffect = Resources.Load<Sprite>("Sprites/" + attackCardDeck[i].foilEffectName);
             attackCard.isFoil = attackCardDeck[i].isFoil;
             attackCard.attackId = attackCardDeck[i].attackId;
+        }
+        else if (whichPlace == 2)
+        {
+            attackCard.cardName = attackCardDeckLocks[i].cardName;
+            attackCard.cardText = attackCardDeckLocks[i].cardText;
+            attackCard.cardId = attackCardDeckLocks[i].cardId;
+            attackCard.cardBackground = Resources.Load<Sprite>("Sprites/" + attackCardDeckLocks[i].cardBackgroundName);
+            attackCard.cardForeground = Resources.Load<Sprite>("Sprites/" + attackCardDeckLocks[i].cardForegroundName);
+            attackCard.foilEffect = Resources.Load<Sprite>("Sprites/" + attackCardDeckLocks[i].foilEffectName);
+            attackCard.isFoil = attackCardDeckLocks[i].isFoil;
+            attackCard.attackId = attackCardDeckLocks[i].attackId;
         }
         else
         {

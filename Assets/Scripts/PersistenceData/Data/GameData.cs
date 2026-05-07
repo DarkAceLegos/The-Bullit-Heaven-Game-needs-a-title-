@@ -40,6 +40,8 @@ public class GameData
     public List<SeializableEnemyCard> enemyCardInventory;
     public List<SeializableEnemyCard> enemyCardDeck;
     public List<SerializableAttackCard> attackCardInventory;
+    public List<SerializableAttackCard> attackCardDeck;
+    public List<SerializableAttackCard> attackCardDeckLocks;
     public List<SerializableStatCard> statCardInventory;
     public List<SerializableStatCard> statCardDeck;
 
@@ -47,7 +49,7 @@ public class GameData
     public int maxEnemyCards;
     public int maxStatCards;
 
-    public SeializableEnemyCard testCard;
+    //public SeializableEnemyCard testCard;
 
     public int coins;
     public int gems;
@@ -93,6 +95,8 @@ public class GameData
         enemyCardInventory = new List<SeializableEnemyCard>();
         enemyCardDeck = new List<SeializableEnemyCard>();
         attackCardInventory = new List<SerializableAttackCard>();
+        attackCardDeck = new List<SerializableAttackCard>();
+        attackCardDeckLocks = new List<SerializableAttackCard>();
         statCardInventory = new List<SerializableStatCard>();
         statCardDeck = new List<SerializableStatCard>();
 
@@ -100,7 +104,7 @@ public class GameData
         this.maxStatCards = 1;
         this.maxEnemyCards = 30;
 
-        testCard = new SeializableEnemyCard();
+        //testCard = new SeializableEnemyCard();
 
         this.coins = 10;
         this.gems = 0;

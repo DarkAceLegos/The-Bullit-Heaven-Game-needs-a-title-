@@ -38,10 +38,31 @@ public class PlayersDeck : MonoBehaviour//, IDataPersistence
 
             deckOfEnemyCards.Add(cards);
         }
+
+        List<SerializableAttackCard> attackCards;
+        attackCards = playerMetas.attackCardDeck;
+
+        for (int i = 0; i < attackCards.Count; i++) 
+        { 
+            AttackCard card = ScriptableObject.CreateInstance<AttackCard>();
+
+            card.cardName = attackCards[i].cardName;
+            card.cardText = attackCards[i].cardText;
+            card.cardId = attackCards[i].cardId;
+            card.cardBackground = Resources.Load<Sprite>("Sprites/" + attackCards[i].cardBackgroundName);
+            card.cardForeground = Resources.Load<Sprite>("Sprites/" + attackCards[i].cardForegroundName);
+            card.foilEffect = Resources.Load<Sprite>("Sprites/" + attackCards[i].foilEffectName);
+            card.isFoil = attackCards[i].isFoil;
+            card.attackId = attackCards[i].attackId;
+
+            deckOfCardsAttacks.Add(card);
+        }//*/
     }
 
     /*public void LoadData(GameData progression)
     {
+        Debug.Log("playerDeck Load");
+
         this.deckOfCardsAttacks.Clear();
         this.deckOfEnemyCards.Clear();
         foreach (var card in progression.enemyCardDeck)
@@ -60,6 +81,22 @@ public class PlayersDeck : MonoBehaviour//, IDataPersistence
             cards.typeOfEnemy = card.typeOfEnemy;
 
             deckOfEnemyCards.Add(cards);
+        }
+
+        for (int i = 0; i < progression.attackCardDeck.Count; i++)
+        {
+            AttackCard card = ScriptableObject.CreateInstance<AttackCard>();
+
+            card.cardName = progression.attackCardDeck[i].cardName;
+            card.cardText = progression.attackCardDeck[i].cardText;
+            card.cardId = progression.attackCardDeck[i].cardId;
+            card.cardBackground = Resources.Load<Sprite>("Sprites/" + progression.attackCardDeck[i].cardBackgroundName);
+            card.cardForeground = Resources.Load<Sprite>("Sprites/" + progression.attackCardDeck[i].cardForegroundName);
+            card.foilEffect = Resources.Load<Sprite>("Sprites/" + progression.attackCardDeck[i].foilEffectName);
+            card.isFoil = progression.attackCardDeck[i].isFoil;
+            card.attackId = progression.attackCardDeck[i].attackId;
+
+            deckOfCardsAttacks.Add(card);
         }
     }
 

@@ -31,9 +31,9 @@ public class AttackDeckUi : MonoBehaviour
         foreach (Transform child in cardHolder)
             Destroy(child.gameObject);
 
-        var randomCards = new List<AttackCard>();
+        //var randomCards = new List<AttackCard>();
 
-        foreach (var id in PlayerMetaProgression.Instance.allAttacksPlayerUnlocked)
+        /*foreach (var id in PlayerMetaProgression.Instance.allAttacksPlayerUnlocked)
         {
             foreach (var attackData in attackDatas)
             {
@@ -52,15 +52,15 @@ public class AttackDeckUi : MonoBehaviour
                     randomCards.Add(attackCard);
                 }
             }
-        }
+        }*/
 
-        foreach (var card in randomCards)
+        for (int i = 0; i < PlayerMetaProgression.Instance.attackCardDeck.Count; i++)
         {
             //Debug.Log(card.cardName);
             var entry = Instantiate(entryPrefabCard, cardHolder);
-            entry.Init(card);
+            entry.Init(PlayerMetaProgression.Instance.GetAttackCard(i, 1));
         }//*/
 
-        deckAmount.text = (PlayerMetaProgression.Instance.allAttacksPlayerUnlocked.Count + " / " + PlayerMetaProgression.Instance.maxAttackCards);
+        deckAmount.text = (PlayerMetaProgression.Instance.attackCardDeck.Count + " / " + PlayerMetaProgression.Instance.maxAttackCards);
     }
 }
