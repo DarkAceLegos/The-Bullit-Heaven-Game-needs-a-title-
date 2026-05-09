@@ -41,6 +41,7 @@ public class CardCrafter : MonoBehaviour
         
         int i = UnityEngine.Random.Range(0, uncommonAttackCards.Count - 1);
         uncommonAttackCards[i].isFoil = false; // AtSome point add a random bool
+        uncommonAttackCards[i].cardId = Guid.NewGuid().ToString();
         return uncommonAttackCards[i];
     }
 
