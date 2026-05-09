@@ -50,6 +50,8 @@ public class StatOrderComp : MonoBehaviour
         }
         if(listOrder0.Count > 0)
         {
+            //"Rnadom" pluses(+) and minises(-) Nodes
+
             foreach (var skill in listOrder0)
             {
                 skill.StatSkillNodeComp();
@@ -57,6 +59,8 @@ public class StatOrderComp : MonoBehaviour
         }
         if (listOrder1.Count > 0)
         {
+            // Setting Nodes
+
             foreach (var skill in listOrder1)
             {
                 skill.StatSkillNodeComp();
@@ -64,6 +68,8 @@ public class StatOrderComp : MonoBehaviour
         }
         if (listOrder2.Count > 0)
         {
+            // Convertion Nodes
+
             foreach (var skill in listOrder2)
             {
                 skill.StatSkillNodeComp();

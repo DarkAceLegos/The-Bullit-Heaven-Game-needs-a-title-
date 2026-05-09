@@ -7,6 +7,8 @@ public class AddingAuraSkillNode : AltSkillNodes
 
     public override string GetDescription()
     {
+        description = "Adding " + auraCard.cardName + " to your posible upgrades";
+
         return description;
     }
 

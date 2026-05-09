@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using Unity.Cinemachine;
 using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class Player : NetworkBehaviour
+public class Player : NetworkBehaviour, IDataPersistence
 {
     [SerializeField] public PlayerMetaProgression playerMetas;
 
@@ -41,6 +40,12 @@ public class Player : NetworkBehaviour
     [SerializeField] public float percentageDuration = 1f;
     [SerializeField] public int additiveExperience;
     [SerializeField] public float percentageExperience = 1f;
+    [SerializeField] public int additivePickUpRange;
+    [SerializeField] public float percentagePickUpRange = 1f;
+    [SerializeField] public int additiveAuraArea;
+    [SerializeField] public float percentageAuraArea = 1f;
+    [SerializeField] public int additiveAuraEffect;
+    [SerializeField] public float percentageAuraEffect = 1f;
 
     [SerializeField] private Rigidbody2D rb;
 
@@ -82,33 +87,6 @@ public class Player : NetworkBehaviour
             allAttacksPlayerUnlocked.Add(attack);
         }
 
-        //Debug.Log(moveAction.GetBindingDisplayString(1));
-        //Debug.Log(GetBindingText(Binding.Up));
-
-
-        additiveMaxHealthModifier = playerMetas.additiveMaxHealthModifier;
-        percentageMaxHealthModifier = playerMetas.percentageMaxHealthModifier;
-        additiveDamageModifier = playerMetas.additiveDamageModifier;
-        percentageDamageModifier = playerMetas.percentageDamageModifier;
-        percentageCooldownModifier = playerMetas.percentageCooldownModifier;
-        additiveProjectileModifier = playerMetas.additiveProjectileModifier;
-        additiveAreaModifier = playerMetas.additiveAreaModifier;
-        percentageAreaModifier = playerMetas.percentageAreaModifier;
-        enemySpawnModifier = playerMetas.enemySpawnModifier;
-        enemyDamageModifier = playerMetas.enemyDamageModifier;
-        playerHealthRegen = playerMetas.playerHealthRegen;
-        percentagePlayerHealthRegen = playerMetas.percentagePlayerHealthRegen;
-        percentageTreasureFind = playerMetas.percentageTreasureFind;
-        percentageTreasurGain = playerMetas.percentageTreasurGain;
-        additivePlayerMoveSpeed = playerMetas.additivePlayerMoveSpeed;
-        percentagePlayerMoveSpeed = playerMetas.percentagePlayerMoveSpeed;
-        additiveProjectileSpeed = playerMetas.additiveProjectileSpeed;
-        percentageProjectileSpeed = playerMetas.percentageProjectileSpeed;
-        additiveDuration = playerMetas.additiveDuration;
-        percentageDuration = playerMetas.percentageDuration;
-        additiveExperience = playerMetas.additiveExperience;
-        percentageExperience = playerMetas.percentageExperience;
-
         if (!IsServer)
         {
             this.TryGetComponent<NetworkObject>(out var playerObject);
@@ -135,7 +113,13 @@ public class Player : NetworkBehaviour
                 LoaclInstance.additiveDuration,
                 LoaclInstance.percentageDuration,
                 LoaclInstance.additiveExperience,
-                LoaclInstance.percentageExperience
+                LoaclInstance.percentageExperience, 
+                LoaclInstance.additivePickUpRange, 
+                LoaclInstance.percentagePickUpRange, 
+                LoaclInstance.additiveAuraArea, 
+                LoaclInstance.percentageAuraArea, 
+                LoaclInstance.additiveAuraEffect, 
+                LoaclInstance.percentageAuraEffect
                 );
         }
 
@@ -223,15 +207,21 @@ public class Player : NetworkBehaviour
         int additiveDuration,
         float percentageDuration,
         int additiveExperience,
-        float percentageExperience
+        float percentageExperience,
+        int additivePickUpRange,
+        float percentagePickUpRange,
+        int additiveAuraArea,
+        float percentageAuraArea ,
+        int additiveAuraEffect,
+        float percentageAuraEffect
         )
     {
         Debug.Log("Trying to sync");
 
         PlayerHealth._allPlayers[playerId].transform.root.TryGetComponent<Player>(out var player);
-        Debug.Log("Change this " + player.additiveMaxHealthModifier + " by adding this " + additiveMaxHealthModifier);
+        //Debug.Log("Change this " + player.additiveMaxHealthModifier + " by adding this " + additiveMaxHealthModifier);
         player.additiveMaxHealthModifier = additiveMaxHealthModifier;
-        Debug.Log("to this " + player.additiveMaxHealthModifier);
+        //Debug.Log("to this " + player.additiveMaxHealthModifier);
         player.percentageMaxHealthModifier = percentageMaxHealthModifier;
         player.additiveDamageModifier = additiveDamageModifier;
         player.percentageDamageModifier = percentageDamageModifier;
@@ -252,12 +242,17 @@ public class Player : NetworkBehaviour
         player.percentageDuration = percentageDuration;
         player.additiveExperience = additiveExperience;
         player.percentageExperience = percentageExperience;
-
+        player.additivePickUpRange = additivePickUpRange;
+        player.percentagePickUpRange = percentagePickUpRange;
+        player.additiveAuraArea = additiveAuraArea;
+        player.percentageAuraArea = percentageAuraArea;
+        player.additiveAuraEffect = additiveAuraEffect;
+        player.percentageAuraEffect = percentageAuraEffect;
     }
 
     private void move()
     {
-        Vector2 playerVelocity = GameInputs.Instance.GetMovmentVectorNormilzed(); //moveAction.ReadValue<Vector2>();//
+        Vector2 playerVelocity = GameInputs.Instance.GetMovmentVectorNormilzed(); //moveAction.ReadValue<Vector2>();// may need to cahnge how diection is found
 
         if (playerVelocity == Vector2.up)
         {direction = playerVelocity;}
@@ -282,55 +277,41 @@ public class Player : NetworkBehaviour
         //moveAction.Dispose();
     }
 
-    /*public string GetBindingText(Binding binding)
+    public void LoadData(GameData progression)
     {
-        switch (binding)
-        {
-            default:
-            case Binding.Up:
-                return moveAction.GetBindingDisplayString(2);
-            case Binding.Down:
-                return moveAction.GetBindingDisplayString(4);
-            case Binding.Left:
-                return moveAction.GetBindingDisplayString(6);
-            case Binding.Right:
-                return moveAction.GetBindingDisplayString(8);
-
-        }
+        Debug.Log("Loading Player data");
+        this.additiveMaxHealthModifier = progression.additiveMaxHealthModifier;
+        this.percentageMaxHealthModifier = progression.percentageMaxHealthModifier;
+        this.additiveDamageModifier = progression.additiveDamageModifier;
+        this.percentageDamageModifier = progression.percentageDamageModifier;
+        this.percentageCooldownModifier = progression.percentageCooldownModifier;
+        this.additiveProjectileModifier = progression.additiveProjectileModifier;
+        this.additiveAreaModifier = progression.additiveAreaModifier;
+        this.percentageAreaModifier = progression.percentageAreaModifier;
+        this.enemySpawnModifier = progression.enemySpawnModifier;
+        this.enemyDamageModifier = progression.enemyDamageModifier;
+        this.playerHealthRegen = progression.playerHealthRegen;
+        this.percentagePlayerHealthRegen = progression.percentagePlayerHealthRegen;
+        this.percentageTreasureFind = progression.percentageTreasureFind;
+        this.percentageTreasurGain = progression.percentageTreasurGain;
+        this.additivePlayerMoveSpeed = progression.additivePlayerMoveSpeed;
+        this.percentagePlayerMoveSpeed = progression.percentagePlayerMoveSpeed;
+        this.additiveProjectileSpeed = progression.additiveProjectileSpeed;
+        this.percentageProjectileSpeed = progression.percentageProjectileSpeed;
+        this.additiveDuration = progression.additiveDuration;
+        this.percentageDuration = progression.percentageDuration;
+        this.additiveExperience = progression.additiveExperience;
+        this.percentageExperience = progression.percentageExperience;
+        this.additivePickUpRange = progression.additivePickUpRange;
+        this.percentagePickUpRange = progression.percentagePickUpRange;
+        this.additiveAuraArea = progression.additiveAuraArea;
+        this.percentageAuraArea = progression.percentageAuraArea;
+        this.additiveAuraEffect = progression.additiveAuraEffect;
+        this.percentageAuraEffect = progression.percentageAuraEffect;
     }
 
-    public void RebindBinding(Binding binding, Action onActionRebound)
+    public void SaveData(ref GameData progression)
     {
-        InputSystem.actions.Disable();
-
-        int bindingIndex;
-
-        switch (binding)
-        {
-            default:
-                case Binding.Up:
-                bindingIndex = 2;
-                break;
-                case Binding.Down:
-                bindingIndex = 4;
-                break;
-                case Binding.Left:
-                bindingIndex = 6;
-                break;
-                case Binding.Right:
-                bindingIndex = 8;
-                break;
-        }
-
-        moveAction.PerformInteractiveRebinding(bindingIndex)
-            .OnComplete(callback =>
-            {
-                //Debug.Log(callback.action.bindings[0].path);
-                //Debug.Log(callback.action.bindings[0].overridePath);
-                callback.Dispose();
-                InputSystem.actions.Enable();
-                onActionRebound();
-
-            }).Start();
-    }*/
+        //throw new NotImplementedException();
+    }
 }

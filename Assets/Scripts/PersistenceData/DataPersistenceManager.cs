@@ -110,6 +110,8 @@ public class DataPersistenceManager : MonoBehaviour
 
         e.player.GetComponent<Player>().GetComponentInChildren<PlayerMetaProgression>().LoadData(gameData);
 
+        e.player.GetComponent<Player>().LoadData(gameData);
+
         dataPersistencesObjects.Add(e.player.GetComponent<Player>().GetComponentInChildren<PlayerMetaProgression>());
     }
 

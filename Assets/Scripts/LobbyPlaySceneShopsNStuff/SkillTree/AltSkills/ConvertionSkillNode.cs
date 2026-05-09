@@ -49,6 +49,9 @@ public class ConvertionSkillNode : AltSkillNodes
 
     public override string GetDescription()
     {
+        description = "Converts " + PlayerMetaProgression.Instance.GetNameOfStat((int)fromStat) + " to " + PlayerMetaProgression.Instance.GetNameOfStat((int)toStat) +
+            " at a ratio of " + convertionFrom + " to " + convertionTo;
+
         return description;
     }
 }

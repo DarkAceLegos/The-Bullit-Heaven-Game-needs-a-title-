@@ -29,7 +29,12 @@ public class GameData
     public float percentageDuration = 1f;
     public int additiveExperience;
     public float percentageExperience = 1f;
-    public float pickUpRange;
+    public int additivePickUpRange;
+    public float percentagePickUpRange = 1f;
+    public int additiveAuraArea;
+    public float percentageAuraArea = 1f;
+    public int additiveAuraEffect;
+    public float percentageAuraEffect = 1f;
 
     public SerializableDictionary<string, bool> skillTree;
     public SerializableDictionary<string, bool> unlocks;
@@ -84,6 +89,12 @@ public class GameData
         this.percentageDuration = 1f;
         this.additiveExperience = 0;
         this.percentageExperience = 1f;
+        this.additivePickUpRange = 0;
+        this.percentagePickUpRange = 1f;
+        this.additiveAuraArea = 0;
+        this.percentageAuraArea = 1f;
+        this.additiveAuraEffect = 0;
+        this.percentageAuraEffect = 1f;
 
         skillTree = new SerializableDictionary<string, bool>();
 

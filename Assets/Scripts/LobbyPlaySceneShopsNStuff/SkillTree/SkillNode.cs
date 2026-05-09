@@ -153,7 +153,7 @@ public class SkillNode : MonoBehaviour, IPointerClickHandler, IDataPersistence
 
         TryGetComponent<AltSkillNodes>(out var altSkillNodes);
         if (altSkillNodes != null)
-            description += "and " + altSkillNodes.GetDescription();
+            description += /*"and " +*/ altSkillNodes.GetDescription();
 
         return description;
     }

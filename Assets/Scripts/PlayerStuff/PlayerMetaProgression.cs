@@ -32,6 +32,12 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
     [SerializeField] public float percentageDuration = 1f;
     [SerializeField] public int additiveExperience;
     [SerializeField] public float percentageExperience = 1f;
+    [SerializeField] public int additivePickUpRange;
+    [SerializeField] public float percentagePickUpRange = 1f;
+    [SerializeField] public int additiveAuraArea;
+    [SerializeField] public float percentageAuraArea = 1f;
+    [SerializeField] public int additiveAuraEffect;
+    [SerializeField] public float percentageAuraEffect = 1f;
 
     [SerializeField] public int coins;
     public event EventHandler OnCoinChange;
@@ -123,6 +129,12 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         else if (statId == 19) percentageDuration += Amount;
         else if (statId == 20) additiveExperience += (int)Amount;
         else if (statId == 21) percentageExperience += Amount;
+        else if (statId == 22) additivePickUpRange += (int)Amount;
+        else if (statId == 23) percentagePickUpRange += Amount;
+        else if (statId == 24) additiveAuraArea += (int)Amount;
+        else if (statId == 25) percentageAuraArea += (int)Amount;
+        else if (statId == 26) additiveAuraEffect += (int)Amount;
+        else if (statId == 27) percentageAuraEffect += (int)Amount;
         else if (statId == 100) { maxSkillPoints += (int)Amount; spentSkillPoints += (int)Amount; }
         else if (statId == 101) maxAttackCards += (int)Amount;
         else if (statId == 102) maxEnemyCards += (int)Amount;
@@ -159,6 +171,12 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         else if (statId == 19) return percentageDuration;
         else if (statId == 20) return additiveExperience;
         else if (statId == 21) return percentageExperience;
+        else if (statId == 22) return additivePickUpRange;
+        else if (statId == 23) return percentagePickUpRange;
+        else if (statId == 24) return additiveAuraArea;
+        else if (statId == 25) return percentageAuraArea;
+        else if (statId == 26) return additiveAuraEffect;
+        else if (statId == 27) return percentageAuraEffect;
         else if (statId == 100) return maxSkillPoints;
         //else if (statId == 100) spentSkillPoints += (int)Amount;
         else if (statId == 101) return maxAttackCards;
@@ -199,6 +217,12 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         this.percentageDuration = data.percentageDuration;
         this.additiveExperience = data.additiveExperience;
         this.percentageExperience = data.percentageExperience;
+        this.additivePickUpRange = data.additivePickUpRange;
+        this.percentagePickUpRange = data.percentagePickUpRange;
+        this.additiveAuraArea = data.additiveAuraArea;
+        this.percentageAuraArea = data.percentageAuraArea;
+        this.additiveAuraEffect = data.additiveAuraEffect;
+        this.percentageAuraEffect = data.percentageAuraEffect;
         this.coins = data.coins;
         this.gems = data.gems;
         this.skillTree = data.skillTree;
@@ -242,6 +266,12 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         data.percentageDuration = this.percentageDuration;
         data.additiveExperience = this.additiveExperience;
         data.percentageExperience = this.percentageExperience;
+        data.additivePickUpRange = this.additivePickUpRange;
+        data.percentagePickUpRange = this.percentagePickUpRange;
+        data.additiveAuraArea = this.additiveAuraArea;
+        data.percentageAuraArea = this.percentageAuraArea;
+        data.additiveAuraEffect = this.additiveAuraEffect;
+        data.percentageAuraEffect = this.percentageAuraEffect;
         data.coins = this.coins;
         data.gems = this.gems;
         data.skillTree = this.skillTree;

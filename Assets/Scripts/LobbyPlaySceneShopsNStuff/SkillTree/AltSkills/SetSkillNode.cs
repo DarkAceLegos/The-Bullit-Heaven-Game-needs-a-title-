@@ -8,7 +8,7 @@ public class SetSkillNode : AltSkillNodes
 
     public override string GetDescription()
     {
-        //throw new System.NotImplementedException();
+        description = "Set " + PlayerMetaProgression.Instance.GetNameOfStat((int)stat) + " to " + amount;
 
         return description;
     }
