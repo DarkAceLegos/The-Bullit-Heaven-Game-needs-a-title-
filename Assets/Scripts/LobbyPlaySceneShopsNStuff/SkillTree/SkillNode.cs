@@ -8,7 +8,7 @@ public class SkillNode : MonoBehaviour, IPointerClickHandler, IDataPersistence
 {
     [System.Serializable]
     public struct LevelUps
-    { public stats stats; public float value; }
+    { public PlayerBaseStats.Stat stats; public float value; }
 
     [SerializeField] private string id = Guid.NewGuid().ToString();
     [SerializeField] public bool unlocked;
@@ -20,7 +20,7 @@ public class SkillNode : MonoBehaviour, IPointerClickHandler, IDataPersistence
 
     [SerializeField] private List<SkillNode> conections;
 
-    public enum stats
+    /*public enum stats
     {
         additiveMaxHealthModifier = 0,
         percentageMaxHealthModifier = 1,
@@ -44,7 +44,7 @@ public class SkillNode : MonoBehaviour, IPointerClickHandler, IDataPersistence
         percentageDuration = 19,
         additiveExperience = 20,
         percentageExperience = 21,
-    }
+    }*/
 
     public void LoadData(GameData progression)
     {

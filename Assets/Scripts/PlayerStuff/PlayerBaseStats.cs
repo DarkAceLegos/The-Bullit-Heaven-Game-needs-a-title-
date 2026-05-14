@@ -24,6 +24,12 @@ public class PlayerBaseStats : MonoBehaviour
     [SerializeField] public float percentageDuration = 1f;
     [SerializeField] public int additiveExperience;
     [SerializeField] public float percentageExperience = 1f;
+    [SerializeField] public int additivePickUpRange;
+    [SerializeField] public float percentagePickUpRange = 1f;
+    [SerializeField] public int additiveAuraArea;
+    [SerializeField] public float percentageAuraArea = 1f;
+    [SerializeField] public int additiveAuraEffect;
+    [SerializeField] public float percentageAuraEffect = 1f;
 
     public enum Stat
     {
@@ -49,5 +55,11 @@ public class PlayerBaseStats : MonoBehaviour
         percentageDuration,
         additiveExperience,
         percentageExperience,
+        additivePickUpRange,
+        percentagePickUpRange,
+        additiveAuraArea,
+        percentageAuraArea,
+        additiveAuraEffect,
+        percentageAuraEffect,
     }
 }

@@ -87,6 +87,12 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         statNameList.Add(19, "percentageDuration");
         statNameList.Add(20, "additiveExperience");
         statNameList.Add(21, "percentageExperience");
+        statNameList.Add(22, "additivePickUpRange");
+        statNameList.Add(23, "percentagePickUpRange");
+        statNameList.Add(24, "additiveAuraArea");
+        statNameList.Add(25, "percentageAuraArea");
+        statNameList.Add(26, "additiveAuraEffect");
+        statNameList.Add(27, "percentageAuraEffect");
     }
 
     public bool AddAttack(string attackDataId)
@@ -508,7 +514,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         {
             if (attackCardDeck.Exists(serializableAttackCard => serializableAttackCard.cardId == card.cardId)) { return; }
 
-            allAttacksPlayerUnlocked.Add(card.attackId);
+            //allAttacksPlayerUnlocked.Add(card.attackId);
             attackCardDeck.Add(serializableAttackCard);
         }
         else if(whichPlace == 2)
@@ -539,6 +545,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         if (whichPlace == 0)
         {
             attackCardInventory.Remove(serializableAttackCard);
+            attackCardInventory.RemoveAll(serializableAttackCard => serializableAttackCard.cardId == card.cardId);
         }
         else if (whichPlace == 1)
         {

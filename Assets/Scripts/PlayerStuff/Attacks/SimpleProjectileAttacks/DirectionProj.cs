@@ -33,7 +33,7 @@ public class DirectionProj : NetworkBehaviour
         damage = (float)((damage1 + player.additiveDamageModifier) * player.percentageDamageModifier);
         speed = (speed1 + (speed1 * player.additiveProjectileSpeed)) * player.percentageProjectileSpeed;
         duration = (duration1 + (duration1 * player.additiveDuration)) * player.percentageDuration;
-        rb.linearVelocity = speed * player.direction;
+        rb.linearVelocity = speed * player.direction; //Need to fix goes off of host direction not the player that cast
     }
 
     private void Update()

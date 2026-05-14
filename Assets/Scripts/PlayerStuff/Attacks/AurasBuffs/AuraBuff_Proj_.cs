@@ -34,10 +34,10 @@ public class AuraBuff_Proj_ : NetworkBehaviour
         PlayerHealth._allPlayers[playerId].transform.root.TryGetComponent<Player>(out var player);
         //playerStored = player;
 
-        amount = amount1; //+ player.additiveDamageModifier) * player.percentageDamageModifier;
+        amount = (amount1 + player.additiveAuraEffect) * player.percentageAuraEffect;
         //speed = (speed1 + (speed1 * player.additiveProjectileSpeed)) * player.percentageProjectileSpeed;
         duration = duration1;// + (duration1 * player.additiveDuration)) * player.percentageDuration;
-        area = (area1); //+ (area1 * player.additiveAreaModifier)) * player.percentageAreaModifier;
+        area = (area1 + player.additiveAuraArea) * player.percentageAuraArea;
         stat = stat1;
         transform.localScale = transform.localScale * area;
         rb.linearVelocity = Random.insideUnitCircle * speed;
