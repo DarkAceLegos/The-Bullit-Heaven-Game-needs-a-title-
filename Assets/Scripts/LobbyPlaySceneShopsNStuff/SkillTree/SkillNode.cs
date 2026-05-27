@@ -18,7 +18,7 @@ public class SkillNode : MonoBehaviour, IPointerClickHandler, IDataPersistence
     [SerializeField] public int order = 0;
     [SerializeField] private List<LevelUps> levelUps;
 
-    [SerializeField] private List<SkillNode> conections;
+    [SerializeField] public List<SkillNode> conections;
 
     /*public enum stats
     {
