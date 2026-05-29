@@ -65,7 +65,7 @@ public class UILineRenderer : Graphic
 
     public float GetAngle(Vector2 me, Vector2 target)
     {
-        return (float)(Mathf.Atan2(target.y - me.y, target.x - me.y) * (180/Mathf.PI)); 
+        return (float)(Mathf.Atan2(target.y - me.y, target.x - me.x) * (180/Mathf.PI)); 
     }
 
     private void DrawVerticesForPoint(Vector2 point, VertexHelper vh, float angle)
