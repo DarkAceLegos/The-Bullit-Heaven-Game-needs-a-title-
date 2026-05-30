@@ -46,6 +46,12 @@ public class SkillNode : MonoBehaviour, IPointerClickHandler, IDataPersistence
         percentageExperience = 21,
     }*/
 
+    [ContextMenu("New Guid")]
+    public void NewGuid()
+    {
+        id = Guid.NewGuid().ToString();
+    }
+
     public void LoadData(GameData progression)
     {
         progression.skillTree.TryGetValue(id, out unlocked);
