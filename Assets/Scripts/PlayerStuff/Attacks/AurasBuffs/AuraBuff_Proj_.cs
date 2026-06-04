@@ -27,7 +27,7 @@ public class AuraBuff_Proj_ : NetworkBehaviour
         enabled = IsOwner;
     }
 
-    public void Initialize(ulong playerId, int amount1, float speed1, float area1, AuraBuffHolder.Stat stat1, float duration1 = 4f)
+    public void Initialize(ulong playerId, float amount1, float speed1, float area1, AuraBuffHolder.Stat stat1, float duration1 = 4f)
     {
         //Debug.Log("I initialized");
 

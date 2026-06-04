@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71e37bcaa2c6b5240b8fe2d1d94c8e69, type: 3}
   m_Name: IncreaseAreaUsingBuff 11
   m_EditorClassIdentifier: 
-  attackId: 50
+  attackId: 61
   attackName: Increase Area With Buff
   attacksOnceMaxedLeveled: []
   levelDiscriptions:

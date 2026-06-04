@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71e37bcaa2c6b5240b8fe2d1d94c8e69, type: 3}
-  m_Name: IncreaseAreaUsingBuff 8
+  m_Name: IncreaseDurationUsingBuff
   m_EditorClassIdentifier: 
-  attackId: 50
-  attackName: Increase Area With Buff
+  attackId: 54
+  attackName: Increase Duration With Buff
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Aura that Increase area by 1 for eveyone in the arua

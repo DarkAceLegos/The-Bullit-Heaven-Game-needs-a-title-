@@ -8,7 +8,7 @@ public class AuraBuffAttackData : AttackData
     public struct LevelData
     {
         public int projCount;
-        public int amount;
+        public float amount;
         public float cooldown;
         public float speed;
         public float area;

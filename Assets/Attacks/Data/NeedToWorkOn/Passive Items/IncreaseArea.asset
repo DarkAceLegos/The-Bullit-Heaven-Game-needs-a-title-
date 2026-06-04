@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c242a4e793e63a14f87d5bb031cc89b2, type: 3}
   m_Name: IncreaseArea
   m_EditorClassIdentifier: 
-  attackId: 90
+  attackId: 80
   attackName: increase area
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
