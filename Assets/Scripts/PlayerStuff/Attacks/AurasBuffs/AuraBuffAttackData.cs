@@ -12,7 +12,7 @@ public class AuraBuffAttackData : AttackData
         public float cooldown;
         public float speed;
         public float area;
-        public AuraBuffHolder.Stat stat;
+        public PlayerBaseStats.Stat stat;
     }
 
     [SerializeField] private List<LevelData> levels = new();

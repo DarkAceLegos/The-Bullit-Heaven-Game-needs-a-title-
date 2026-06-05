@@ -10,7 +10,7 @@ public class AuraBuff_Proj_ : NetworkBehaviour
     [SerializeField] private float duration;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float area;
-    [SerializeField] public AuraBuffHolder.Stat stat;
+    [SerializeField] public PlayerBaseStats.Stat stat;
 
     [SerializeField] private float lifeTime;
     [SerializeField] private List<PlayerHealth> enemyHealths;
@@ -27,7 +27,7 @@ public class AuraBuff_Proj_ : NetworkBehaviour
         enabled = IsOwner;
     }
 
-    public void Initialize(ulong playerId, float amount1, float speed1, float area1, AuraBuffHolder.Stat stat1, float duration1 = 4f)
+    public void Initialize(ulong playerId, float amount1, float speed1, float area1, PlayerBaseStats.Stat stat1, float duration1 = 4f)
     {
         //Debug.Log("I initialized");
 

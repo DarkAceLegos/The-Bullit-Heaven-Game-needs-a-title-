@@ -36,32 +36,32 @@ public class AuraBuffHolder : MonoBehaviour
     }
 
 
-    public void AuraBuff(Stat stat, float amount)
+    public void AuraBuff(PlayerBaseStats.Stat stat, float amount)
     {
         switch (stat)
         {
-            case Stat.additiveMaxHealthModifier: player.additiveMaxHealthModifier += (int)amount; break;
-            case Stat.percentageMaxHealthModifier: player.percentageMaxHealthModifier += amount; break;
-            case Stat.additiveDamageModifier: player.additiveDamageModifier += (int)amount; break;
-            case Stat.percentageDamageModifier: player.percentageDamageModifier += amount; break;
-            case Stat.percentageCooldownModifier: player.percentageCooldownModifier += amount; break;
-            case Stat.additiveProjectileModifier: player.additiveProjectileModifier += (int)amount; break;
-            case Stat.additiveAreaModifier: player.additiveAreaModifier += (int)amount; break;
-            case Stat.percentageAreaModifier: player.percentageAreaModifier += amount; break;
-            case Stat.enemySpawnModifier: player.enemySpawnModifier += amount; break;
-            case Stat.enemyDamageModifier: player.enemyDamageModifier += amount; break;
-            case Stat.playerHealthRegen: player.playerHealthRegen += (int)amount; break;
-            case Stat.percentagePlayerHealthRegen: player.percentagePlayerHealthRegen += amount; break;
-            case Stat.percentageTreasureFind: player.percentageTreasureFind += amount; break;
-            case Stat.percentageTreasurGain: player.percentageTreasurGain += amount; break;
-            case Stat.additivePlayerMoveSpeed: player.additivePlayerMoveSpeed += (int)amount; break;
-            case Stat.percentagePlayerMoveSpeed: player.percentagePlayerMoveSpeed += amount; break;
-            case Stat.additiveProjectileSpeed: player.additiveProjectileSpeed += (int)amount; break;
-            case Stat.percentageProjectileSpeed: player.percentageProjectileSpeed += amount; break;
-            case Stat.additiveDuration: player.additiveDuration += (int)amount; break;
-            case Stat.percentageDuration: player.percentageDuration += amount; break;
-            case Stat.additiveExperience: player.additiveExperience += (int)amount; break;
-            case Stat.percentageExperience: player.percentageExperience += amount; break;
+            case PlayerBaseStats.Stat.additiveMaxHealthModifier: player.additiveMaxHealthModifier += (int)amount; break;
+            case PlayerBaseStats.Stat.percentageMaxHealthModifier: player.percentageMaxHealthModifier += amount; break;
+            case PlayerBaseStats.Stat.additiveDamageModifier: player.additiveDamageModifier += (int)amount; break;
+            case PlayerBaseStats.Stat.percentageDamageModifier: player.percentageDamageModifier += amount; break;
+            case PlayerBaseStats.Stat.percentageCooldownModifier: player.percentageCooldownModifier += amount; break;
+            case PlayerBaseStats.Stat.additiveProjectileModifier: player.additiveProjectileModifier += (int)amount; break;
+            case PlayerBaseStats.Stat.additiveAreaModifier: player.additiveAreaModifier += (int)amount; break;
+            case PlayerBaseStats.Stat.percentageAreaModifier: player.percentageAreaModifier += amount; break;
+            case PlayerBaseStats.Stat.enemySpawnModifier: player.enemySpawnModifier += amount; break;
+            case PlayerBaseStats.Stat.enemyDamageModifier: player.enemyDamageModifier += amount; break;
+            case PlayerBaseStats.Stat.playerHealthRegen: player.playerHealthRegen += (int)amount; break;
+            case PlayerBaseStats.Stat.percentagePlayerHealthRegen: player.percentagePlayerHealthRegen += amount; break;
+            case PlayerBaseStats.Stat.percentageTreasureFind: player.percentageTreasureFind += amount; break;
+            case PlayerBaseStats.Stat.percentageTreasurGain: player.percentageTreasurGain += amount; break;
+            case PlayerBaseStats.Stat.additivePlayerMoveSpeed: player.additivePlayerMoveSpeed += (int)amount; break;
+            case PlayerBaseStats.Stat.percentagePlayerMoveSpeed: player.percentagePlayerMoveSpeed += amount; break;
+            case PlayerBaseStats.Stat.additiveProjectileSpeed: player.additiveProjectileSpeed += (int)amount; break;
+            case PlayerBaseStats.Stat.percentageProjectileSpeed: player.percentageProjectileSpeed += amount; break;
+            case PlayerBaseStats.Stat.additiveDuration: player.additiveDuration += (int)amount; break;
+            case PlayerBaseStats.Stat.percentageDuration: player.percentageDuration += amount; break;
+            case PlayerBaseStats.Stat.additiveExperience: player.additiveExperience += (int)amount; break;
+            case PlayerBaseStats.Stat.percentageExperience: player.percentageExperience += amount; break;
 
 
             default:

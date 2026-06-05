@@ -25,4 +25,4 @@ MonoBehaviour:
     cooldown: 4
     speed: 0
     area: 0.5
-    stat: 6
+    stat: 0
