@@ -16,6 +16,8 @@ public class EnemyHealth : NetworkBehaviour
 
     public static Action<EnemyHealth> onEnemyKilled;
 
+    [SerializeField] public GameObject prefab;
+
     private void Awake()
     {
         if (LevelManager.Instance.level != 0)
@@ -26,6 +28,8 @@ public class EnemyHealth : NetworkBehaviour
         currentHeath = maxHealth;
     }
 
+    //readd health
+ 
     public void DamageEnemy(float damage)
     {
         enemySprite.time = 0.1f;
@@ -54,8 +58,12 @@ public class EnemyHealth : NetworkBehaviour
         //ExpPickUp.SpawnExp(experience, gameObject.transform.position);
         EnemyDiedRpc();
 
+        NetworkObject.Despawn(false);
+
+        NetworkObjectPool.Singleton.ReturnNetworkObject(NetworkObject, prefab);
+
         //PlayerMetaProgression.Instance.ChangeCoinAmount(coinsOnKill);
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     [Rpc(SendTo.Everyone)]

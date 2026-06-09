@@ -10,7 +10,7 @@ public class GameVisualManager : NetworkBehaviour
 
     [SerializeField] private List<Transform> visualObjectsPrefabs = new();
 
-    [SerializeField] private List<EnemyHealth> enemies = new();
+    [SerializeField] private List<GameObject> enemies = new();
     [SerializeField] private List<Collider2D> spawnPoints = new();
 
     [SerializeField] private LevelsEnemyDeck LevelsEnemyDeck;
@@ -108,7 +108,7 @@ public class GameVisualManager : NetworkBehaviour
     private void SpawnEnemy(NetworkObject player, int numPlaces, int numAmount, int enemyType)
     {
         Collider2D spawnPosition;
-        EnemyHealth enemy;
+        //EnemyHealth enemy;
 
         for (int i = 0; i < numPlaces; i++)
         {
@@ -118,9 +118,15 @@ public class GameVisualManager : NetworkBehaviour
             {
                 //Debug.Log(player.transform.position);
 
-                enemy = Instantiate(enemies[enemyType], (Vector3)RandomPointInSpawnArea(spawnPosition) + player.transform.position, Quaternion.identity);
+                /*enemy = Instantiate(enemies[enemyType], (Vector3)RandomPointInSpawnArea(spawnPosition) + player.transform.position, Quaternion.identity);
                 enemy.GetComponent<NetworkObject>().Spawn(true);
-                NetworkObject enemyNetworkObject = enemy.GetComponent<NetworkObject>();
+                NetworkObject enemyNetworkObject = enemy.GetComponent<NetworkObject>();//*/
+
+                NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(enemies[enemyType], (Vector3)RandomPointInSpawnArea(spawnPosition) + player.transform.position, Quaternion.identity);
+                enemyNetworkObject.GetComponent<EnemyHealth>().prefab = enemies[enemyType];
+
+
+                enemyNetworkObject.Spawn(true);
                 AddEnemyToListRpc(enemyNetworkObject);
             }//*/
         }
