@@ -20,16 +20,15 @@ public class EnemyHealth : NetworkBehaviour
 
     private void Awake()
     {
-        if (LevelManager.Instance.level != 0)
-        {
-            maxHealth = maxHealth * LevelManager.Instance.level * NetworkManager.ConnectedClients.Count;
-        }
-        //maxHealth = maxHealth * NetworkManager.ConnectedClients.Count;
+        maxHealth = maxHealth * NetworkManager.ConnectedClients.Count;
         currentHeath = maxHealth;
     }
 
-    //readd health
- 
+    public override void OnNetworkSpawn()
+    {
+        currentHeath = maxHealth * LevelManager.Instance.level;
+    }
+
     public void DamageEnemy(float damage)
     {
         enemySprite.time = 0.1f;
