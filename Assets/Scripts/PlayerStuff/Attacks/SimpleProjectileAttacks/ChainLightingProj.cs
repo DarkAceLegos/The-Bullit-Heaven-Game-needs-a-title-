@@ -17,6 +17,9 @@ public class ChainLightingProj : NetworkBehaviour
 
     [SerializeField] private List<EnemyHealth> enemyHealths;
 
+    public List<ItemList> items = new List<ItemList>();
+    public Player _player;
+
     private void Awake()
     {
         TryGetComponent(out rb);
@@ -26,13 +29,19 @@ public class ChainLightingProj : NetworkBehaviour
     public override void OnNetworkSpawn()
     {
         enabled = IsOwner;
+        //OnHitTester onHitTester = new OnHitTester();
+        //items.Add(new ItemList(onHitTester, onHitTester.GiveName(), 1));
     }
 
-    public void Initialize(ulong playerId, int damage1, float speed1, float duration1 = 4f)
+    public void Initialize(ulong playerId, int damage1, float speed1, List<ItemList> _items, float duration1 = 4f)
     {
         //Debug.Log("I initialized");
 
+        items = _items;
+
         PlayerHealth._allPlayers[playerId].transform.root.TryGetComponent<Player>(out var player);
+
+        _player = player;
 
         damage = (float)((damage1 + player.additiveDamageModifier) * player.percentageDamageModifier);
         speed = (speed1 + (speed1 * player.additiveProjectileSpeed)) * player.percentageProjectileSpeed;
@@ -76,6 +85,11 @@ public class ChainLightingProj : NetworkBehaviour
         //if(collision. == attackRange.gameObject) { Debug.Log("Returned due to attack range collition"); return; }
 
         enemyHealth.DamageEnemy(damage);
+
+        foreach (ItemList i in items)
+        {
+            i.item.OnHit(_player, enemyHealth, i.stacks);
+        }
 
         this.GetComponent<CircleCollider2D>().radius = 1.5f;
 

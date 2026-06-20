@@ -21,6 +21,9 @@ public class ChainLightiningAttack : Attack
         levelData = basicAttackData.GetLevelData(level);
 
         this.GetComponent<Collider2D>().transform.localScale = Vector3.one * levelData.cooldown; // range/area not cooldown
+
+        OnHitTester onHitTester = new OnHitTester();
+        items.Add(new ItemList(onHitTester, onHitTester.GiveName(), 1));
     }
 
     public override void Tick(NetworkObject player)
@@ -46,7 +49,7 @@ public class ChainLightiningAttack : Attack
             //direction.Normalize();//*/
             var proj1 = Instantiate(proj, player.transform.position, Quaternion.Euler(direction));
             proj1.GetComponent<NetworkObject>().Spawn(true);
-            proj1.Initialize(playerId, levelData.damage, levelData.speed);//*/
+            proj1.Initialize(playerId, levelData.damage, levelData.speed, items);//*/
         }
     }
 

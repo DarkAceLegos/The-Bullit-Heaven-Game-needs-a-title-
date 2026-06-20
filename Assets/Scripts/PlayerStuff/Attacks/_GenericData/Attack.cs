@@ -1,8 +1,11 @@
+using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
 public abstract class Attack : NetworkBehaviour
 {
+    public List<ItemList> items = new List<ItemList>();
+
     public AttackData data { get; private set; }
     public int level { get; set; }
 
