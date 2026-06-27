@@ -46,7 +46,7 @@ public class GameVisualManager : NetworkBehaviour
 
         var timeelemet = TimeSpan.FromSeconds(double.Parse(Time.timeSinceLevelLoad.ToString()));
 
-        if (Player.LoaclInstance.GetComponent<PlayersDeck>().deckOfEnemyCards.Count >= (int)timeelemet.Minutes)
+        if (Player.LoaclInstance.GetComponent<PlayersDeck>().deckOfEnemyCards.Count - 1 >= (int)timeelemet.Minutes)
         {
             SpawnEnemyRpc(e.player, Player.LoaclInstance.GetComponent<PlayersDeck>().deckOfEnemyCards[i].amountOfPacks, Player.LoaclInstance.GetComponent<PlayersDeck>().deckOfEnemyCards[i].packsSize, Player.LoaclInstance.GetComponent<PlayersDeck>().deckOfEnemyCards[i].typeOfEnemy);
         }
