@@ -201,10 +201,7 @@ public class AttackHandler : NetworkBehaviour
         {
             //Debug.Log("tryed to tick");
 
-            SpawnProjectileRpc( 
-                playerObject
-                //GameManager.Instance.playerList[0]
-                , attack.Key); //needs to be the exact player not just the first player in list 
+            SpawnProjectileRpc(playerObject, attack.Key); //needs to be the exact player not just the first player in list 
 
             //Debug.Log("this is the key " + attack.Key);
         }

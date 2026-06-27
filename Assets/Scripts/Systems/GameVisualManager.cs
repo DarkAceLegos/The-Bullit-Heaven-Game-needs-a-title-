@@ -42,12 +42,22 @@ public class GameVisualManager : NetworkBehaviour
 
     private void Instance_AfterXTime(object sender, GameManager.AfterXTimeEventArgs e)
     {
-        SpawnEnemyRpc(e.player);
+        int i = UnityEngine.Random.Range(0, Player.LoaclInstance.GetComponent<PlayersDeck>().deckOfEnemyCards.Count);
 
+        var timeelemet = TimeSpan.FromSeconds(double.Parse(Time.timeSinceLevelLoad.ToString()));
+
+        if (Player.LoaclInstance.GetComponent<PlayersDeck>().deckOfEnemyCards.Count >= (int)timeelemet.Minutes)
+        {
+            SpawnEnemyRpc(e.player, Player.LoaclInstance.GetComponent<PlayersDeck>().deckOfEnemyCards[i].amountOfPacks, Player.LoaclInstance.GetComponent<PlayersDeck>().deckOfEnemyCards[i].packsSize, Player.LoaclInstance.GetComponent<PlayersDeck>().deckOfEnemyCards[i].typeOfEnemy);
+        }
+        else
+        {
+            SpawnEnemyRpc(e.player, 0, 0, 0);
+        }
     }
 
     [Rpc(SendTo.Server)]
-    private void SpawnEnemyRpc(NetworkObjectReference playerReference)
+    private void SpawnEnemyRpc(NetworkObjectReference playerReference, int numPlaces, int numAmount, int enemyType)
     {
         playerReference.TryGet(out NetworkObject player);
 
@@ -62,17 +72,17 @@ public class GameVisualManager : NetworkBehaviour
             return;
         }
 
-        var playersDeck = Player.LoaclInstance.GetComponent<PlayersDeck>();
+        //var playersDeck = Player.LoaclInstance.GetComponent<PlayersDeck>();
 
         var wave = LevelsEnemyDeck.deck[(int)timeelemet.Minutes];
 
-        if (playersDeck.deckOfEnemyCards.Count != 0)
+        if (numAmount != 0)
         {
-            int i = UnityEngine.Random.Range(0, playersDeck.deckOfEnemyCards.Count);
+            //int i = UnityEngine.Random.Range(0, playersDeck.deckOfEnemyCards.Count);
 
             //Debug.Log(playersDeck.deckOfEnemyCards[i].amountOfPacks);
 
-            SpawnEnemy(player, playersDeck.deckOfEnemyCards[i].amountOfPacks, playersDeck.deckOfEnemyCards[i].packsSize, playersDeck.deckOfEnemyCards[i].typeOfEnemy);
+            SpawnEnemy(player, numPlaces, numAmount, enemyType);
         }
         else
         {

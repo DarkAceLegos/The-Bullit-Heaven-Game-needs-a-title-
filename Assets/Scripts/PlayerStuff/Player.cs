@@ -65,6 +65,8 @@ public class Player : NetworkBehaviour, IDataPersistence
     [SerializeField] private Collector collector;
     [SerializeField] private PickUpRange pickUpRange;
 
+    public List<ItemList> items = new List<ItemList>();
+
     public List<AttackData> GetAllPlayerUnlockedAttacks() { return allAttacksPlayerUnlocked; }
     public List<AttackData> GetPlayerNoOtherAttacks() { return noOtherAttacks; }
 

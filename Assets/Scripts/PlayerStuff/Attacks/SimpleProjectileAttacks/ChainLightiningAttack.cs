@@ -48,8 +48,9 @@ public class ChainLightiningAttack : Attack
             //Debug.Log(direction);
             //direction.Normalize();//*/
             var proj1 = Instantiate(proj, player.transform.position, Quaternion.Euler(direction));
-            proj1.GetComponent<NetworkObject>().Spawn(true);
             proj1.Initialize(playerId, levelData.damage, levelData.speed, items);//*/
+            proj1.GetComponent<NetworkObject>().Spawn(true);
+            
         }
     }
 
