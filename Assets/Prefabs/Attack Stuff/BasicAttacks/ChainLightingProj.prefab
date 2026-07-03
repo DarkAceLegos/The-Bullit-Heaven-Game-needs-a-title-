@@ -360,3 +360,6 @@ MonoBehaviour:
   lifeTime: 0
   attackRange: {fileID: 1816214104039660094}
   enemyHealths: []
+  items: []
+  _player: {fileID: 0}
+  prefab: {fileID: 7643271203608482145}

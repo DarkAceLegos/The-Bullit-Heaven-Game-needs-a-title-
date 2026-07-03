@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using Unity.Netcode;
+using UnityEditorInternal.Profiling.Memory.Experimental.FileFormat;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class ChainLightiningAttack : Attack
 {
-    [SerializeField] private ChainLightingProj proj;
+    [SerializeField] private GameObject proj;
 
     [SerializeField] private List<EnemyHealth> enemyHealths;
 
@@ -42,15 +43,22 @@ public class ChainLightiningAttack : Attack
         if (lastCast + levelData.cooldown > Time.time) { return; }
         lastCast = Time.time;
 
+        //Debug.Log("trying To Spawn Chain");
+
         for (int i = 0; i < ((levelData.projCount + player1.additiveProjectileModifier) * player1.percentageProjectileSpeed); i++)
         {
             var direction = GetClosetEnemy();//.normalized; //Vector2.Distance(enemyHealths[0].transform.position ,transform.position); //Random.insideUnitCircle;
             //Debug.Log(direction);
             //direction.Normalize();//*/
-            var proj1 = Instantiate(proj, player.transform.position, Quaternion.Euler(direction));
-            proj1.Initialize(playerId, levelData.damage, levelData.speed, items);//*/
-            proj1.GetComponent<NetworkObject>().Spawn(true);
-            
+            //var proj1 = Instantiate(proj, player.transform.position, Quaternion.Euler(direction));
+            //proj1.GetComponent<NetworkObject>().Spawn(true);
+
+            NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(proj, player.transform.position, Quaternion.Euler(direction));
+
+            enemyNetworkObject.GetComponent<ChainLightingProj>().Initialize(playerId, levelData.damage, levelData.speed, items);//*/
+            enemyNetworkObject.GetComponent<ChainLightingProj>().prefab = proj;
+
+            enemyNetworkObject.Spawn(true);
         }
     }
 

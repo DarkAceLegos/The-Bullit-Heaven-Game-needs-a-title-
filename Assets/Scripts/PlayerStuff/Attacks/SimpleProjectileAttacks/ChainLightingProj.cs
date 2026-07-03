@@ -20,6 +20,8 @@ public class ChainLightingProj : NetworkBehaviour
     public List<ItemList> items = new List<ItemList>();
     public Player _player;
 
+    [SerializeField] public GameObject prefab;
+
     private void Awake()
     {
         TryGetComponent(out rb);
@@ -36,6 +38,9 @@ public class ChainLightingProj : NetworkBehaviour
     public void Initialize(ulong playerId, int damage1, float speed1, List<ItemList> _items, float duration1 = 4f)
     {
         //Debug.Log("I initialized");
+
+        lifeTime = 0;
+        enemyHealths.Clear();
 
         items = _items;
 
@@ -59,7 +64,7 @@ public class ChainLightingProj : NetworkBehaviour
         lifeTime += Time.deltaTime;
         if(lifeTime >= duration) 
         {
-            Destroy(gameObject);
+            Die();
         }
     }
 
@@ -96,5 +101,12 @@ public class ChainLightingProj : NetworkBehaviour
         //transform.position = attackRange.GetClosetEnemy();
 
         //hit enemy -> deal Damage 
+    }
+
+    private void Die()
+    {
+        NetworkObject.Despawn(false);
+
+        NetworkObjectPool.Singleton.ReturnNetworkObject(NetworkObject, prefab);
     }
 }
