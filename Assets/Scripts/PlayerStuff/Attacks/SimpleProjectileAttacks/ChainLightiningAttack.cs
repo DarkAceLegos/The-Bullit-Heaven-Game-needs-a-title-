@@ -23,8 +23,11 @@ public class ChainLightiningAttack : Attack
 
         this.GetComponent<Collider2D>().transform.localScale = Vector3.one * levelData.cooldown; // range/area not cooldown
 
-        OnHitTester onHitTester = new OnHitTester();
-        items.Add(new ItemList(onHitTester, onHitTester.GiveName(), 1));
+        if (level == 0)
+        {
+            //ModDataTester onHitTester = new ModDataTester();
+            //items.Add(new ItemList(onHitTester, onHitTester.GiveName(), 1));
+        }
     }
 
     public override void Tick(NetworkObject player)
@@ -38,6 +41,11 @@ public class ChainLightiningAttack : Attack
         if (enemyHealths.Count == 0)
         {
             return;
+        }
+
+        foreach (ItemList i in items)
+        {
+           levelData = i.item.BasicAttackDataMod(player1, i.stacks, levelData);
         }
 
         if (lastCast + levelData.cooldown > Time.time) { return; }

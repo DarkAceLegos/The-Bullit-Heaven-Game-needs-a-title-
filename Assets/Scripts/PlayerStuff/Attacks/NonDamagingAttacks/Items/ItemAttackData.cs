@@ -7,7 +7,7 @@ public class ItemAttackData : AttackData
     [System.Serializable]
     public struct LevelData
     {
-        
+        public int num;
         public float value;
     }
 

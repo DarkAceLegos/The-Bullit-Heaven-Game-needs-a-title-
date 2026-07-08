@@ -70,7 +70,7 @@ public class EnemyHealth : NetworkBehaviour
     {
         //add RandomNess
 
-        //ExpPickUp.SpawnExp(experience, gameObject.transform.position);
+        ExpPickUp.SpawnExp(experience, gameObject.transform.position);
         //CoinPickUp.SpawnCoin(coinsOnKill, gameObject.transform.position);
     }
 }

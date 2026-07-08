@@ -2,7 +2,7 @@ using Unity.Netcode;
 using UnityEngine;
 
 [System.Serializable]
-public class ItemList : INetworkSerializable
+public class ItemList //: INetworkSerializable
 {
     public Item item;
     public string name;
@@ -15,10 +15,10 @@ public class ItemList : INetworkSerializable
         stacks = NetStacks;
     }
 
-    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+    /*public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
     {
         //serializer.SerializeValue(ref item);
         serializer.SerializeValue(ref name);
         serializer.SerializeValue(ref stacks);
-    }
+    }*/
 }

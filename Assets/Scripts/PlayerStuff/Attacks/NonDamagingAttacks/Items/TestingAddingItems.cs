@@ -16,7 +16,12 @@ public class TestingAddingItems : Attack
 
         var player = transform.root.GetComponent<Player>();
 
-        OnHitTester onHitTester = new OnHitTester();
-        player.items.Add(new ItemList(onHitTester, onHitTester.GiveName(), (int)levelData.value));
+        //OnHitTester onHitTester = new OnHitTester();
+        //player.items.Add(new ItemList(onHitTester, onHitTester.GiveName(), (int)levelData.value));
+
+        //player.GetComponentInChildren<ChainLightiningAttack>()
+
+        ModDataTester onHitTester = new ModDataTester();
+        player.GetComponentInChildren<ChainLightiningAttack>().items.Add(new ItemList(onHitTester, onHitTester.GiveName(), 1));
     }
 }

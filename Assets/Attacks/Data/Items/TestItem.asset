@@ -18,4 +18,6 @@ MonoBehaviour:
   levelDiscriptions: []
   icon: {fileID: 0}
   prefab: {fileID: 0}
-  levels: []
+  levels:
+  - num: 0
+    value: 0
