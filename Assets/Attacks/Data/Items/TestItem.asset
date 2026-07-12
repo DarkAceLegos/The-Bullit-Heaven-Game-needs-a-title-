@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1803f5396494014db99602099b79d64, type: 3}
   m_Name: TestItem
   m_EditorClassIdentifier: 
-  attackId: 
-  attackName: 
+  attackId: 1234
+  attackName: TestItem
   attacksOnceMaxedLeveled: []
-  levelDiscriptions: []
-  icon: {fileID: 0}
-  prefab: {fileID: 0}
+  levelDiscriptions:
+  - add 5 speed to Chain Lighting
+  icon: {fileID: -7069720901952774207, guid: ef06a41f27c3fec4d8a756651cd718c7, type: 3}
+  prefab: {fileID: -5975309419604699688, guid: 4b6d47e7a700a8c42b2a4b3b3ceb7563, type: 3}
   levels:
-  - num: 0
-    value: 0
+  - index: 3
+    numStacks: 5

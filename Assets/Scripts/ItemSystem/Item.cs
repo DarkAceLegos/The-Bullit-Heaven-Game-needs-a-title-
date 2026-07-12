@@ -55,3 +55,63 @@ public class ModDataTester : Item
         return basicAttackData;
     }
 }
+
+public class BasicAttackModProjCount : Item
+{
+    public override string GiveName()
+    {
+        return "BasicAttackModProjCount";
+    }
+
+    public override BasicAttackData.LevelData BasicAttackDataMod(Player player, int stacks, BasicAttackData.LevelData basicAttackData)
+    {
+        basicAttackData.projCount += stacks;
+
+        return basicAttackData;
+    }
+}
+
+public class BasicAttackModDamage : Item
+{
+    public override string GiveName()
+    {
+        return "BasicAttackModDamage";
+    }
+
+    public override BasicAttackData.LevelData BasicAttackDataMod(Player player, int stacks, BasicAttackData.LevelData basicAttackData)
+    {
+        basicAttackData.damage += stacks;
+
+        return basicAttackData;
+    }
+}
+
+public class BasicAttackModCooldown : Item
+{
+    public override string GiveName()
+    {
+        return "BasicAttackModCooldown";
+    }
+
+    public override BasicAttackData.LevelData BasicAttackDataMod(Player player, int stacks, BasicAttackData.LevelData basicAttackData)
+    {
+        basicAttackData.cooldown -= stacks;
+
+        return basicAttackData;
+    }
+}
+
+public class BasicAttackModSpeed : Item
+{
+    public override string GiveName()
+    {
+        return "BasicAttackModSpeed";
+    }
+
+    public override BasicAttackData.LevelData BasicAttackDataMod(Player player, int stacks, BasicAttackData.LevelData basicAttackData)
+    {
+        basicAttackData.speed += stacks;
+
+        return basicAttackData;
+    }
+}

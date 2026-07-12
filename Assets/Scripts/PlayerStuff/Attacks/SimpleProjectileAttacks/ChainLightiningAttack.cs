@@ -38,6 +38,8 @@ public class ChainLightiningAttack : Attack
 
         PlayerHealth._allPlayers[playerId].transform.root.TryGetComponent<Player>(out var player1);
 
+        BasicAttackData.LevelData usedLevelData = levelData;
+
         if (enemyHealths.Count == 0)
         {
             return;
@@ -45,15 +47,17 @@ public class ChainLightiningAttack : Attack
 
         foreach (ItemList i in items)
         {
-           levelData = i.item.BasicAttackDataMod(player1, i.stacks, levelData);
+            usedLevelData = i.item.BasicAttackDataMod(player1, i.stacks, levelData);
         }
 
-        if (lastCast + levelData.cooldown > Time.time) { return; }
+        //Debug.Log(usedLevelData.speed);
+
+        if (lastCast + usedLevelData.cooldown > Time.time) { return; }
         lastCast = Time.time;
 
         //Debug.Log("trying To Spawn Chain");
 
-        for (int i = 0; i < ((levelData.projCount + player1.additiveProjectileModifier) * player1.percentageProjectileSpeed); i++)
+        for (int i = 0; i < ((usedLevelData.projCount + player1.additiveProjectileModifier) * player1.percentageProjectileSpeed); i++)
         {
             var direction = GetClosetEnemy();//.normalized; //Vector2.Distance(enemyHealths[0].transform.position ,transform.position); //Random.insideUnitCircle;
             //Debug.Log(direction);
@@ -63,7 +67,7 @@ public class ChainLightiningAttack : Attack
 
             NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(proj, player.transform.position, Quaternion.Euler(direction));
 
-            enemyNetworkObject.GetComponent<ChainLightingProj>().Initialize(playerId, levelData.damage, levelData.speed, items);//*/
+            enemyNetworkObject.GetComponent<ChainLightingProj>().Initialize(playerId, usedLevelData.damage, usedLevelData.speed, items);//*/
             enemyNetworkObject.GetComponent<ChainLightingProj>().prefab = proj;
 
             enemyNetworkObject.Spawn(true);

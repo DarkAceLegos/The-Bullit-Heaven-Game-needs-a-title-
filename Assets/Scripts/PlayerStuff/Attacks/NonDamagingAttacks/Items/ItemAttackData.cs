@@ -7,8 +7,8 @@ public class ItemAttackData : AttackData
     [System.Serializable]
     public struct LevelData
     {
-        public int num;
-        public float value;
+        public int index;
+        public int numStacks;
     }
 
     [SerializeField] private List<LevelData> levels = new();
