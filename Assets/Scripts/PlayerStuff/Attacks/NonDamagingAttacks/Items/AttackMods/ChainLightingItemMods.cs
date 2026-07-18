@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Unity.Netcode;
-using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 
 public class ChainLightingItemMods : Attack
@@ -9,7 +8,7 @@ public class ChainLightingItemMods : Attack
     public Item item;
     //public ChainLithningAttackModItems itemChoses;
 
-    public override void Tick(NetworkObject player)
+    public override void Tick(NetworkObject player, int Direction = 0)
     {
         return;
     }
@@ -57,9 +56,7 @@ public class ChainLightingItemMods : Attack
                 return new BasicAttackModSpeed();
             default:
                 return null;
-        }
-    
-    
+        } 
     }
 }
 

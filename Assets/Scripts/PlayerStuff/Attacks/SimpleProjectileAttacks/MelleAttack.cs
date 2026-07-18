@@ -17,9 +17,9 @@ public class MelleAttack : Attack
         levelData = basicAttackData.GetLevelData(level);
     }
 
-    public override void Tick(NetworkObject player)
+    public override void Tick(NetworkObject player, int Direction = 0)
     {
-        //Debug.Log("in the tick");
+        //Debug.Log(Direction);
 
         ulong playerId = player.OwnerClientId;
 
@@ -30,19 +30,28 @@ public class MelleAttack : Attack
 
         Vector3 Offset = player1.direction;
 
+        if (Direction == 0)
+        { Offset = Vector3.up; }
+        else if (Direction == 1)
+        { Offset = Vector3.down; }
+        else if (Direction == 2)
+        { Offset = Vector3.left; }
+        else if (Direction == 3)
+        { Offset = Vector3.right; }
+
         for (int i = 0; i < ((levelData.projCount + player1.additiveProjectileModifier) * player1.percentageProjectileSpeed); i++)
         { 
             var rotation = Quaternion.identity;
             Vector3 direction = Vector3.zero;
             rotation.x = 0;
             rotation.y = 0;
-            if(player1.direction == Vector2.up )
+            if(Direction == 0 )
             { rotation.z = 0; direction = Vector3.up; }
-            else if (player1.direction == Vector2.down)
+            else if (Direction == 1)
             { rotation.z = 0; direction = Vector3.down; }
-            else if(player1.direction == Vector2.left ) 
+            else if(Direction == 2 ) 
             { rotation.z = 1; direction = Vector3.left; }
-            else if (player1.direction == Vector2.right)
+            else if (Direction == 3)
             { rotation.z = 1; direction = Vector3.right; }
         
             //direction.Normalize();

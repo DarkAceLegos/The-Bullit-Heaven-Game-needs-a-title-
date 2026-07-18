@@ -25,7 +25,7 @@ public class BasicRandomAttack : Attack
         //range.transform.localScale = levelData.speed;
     }
 
-    public override void Tick(NetworkObject player)
+    public override void Tick(NetworkObject player, int Direction = 0)
     {
         //Debug.Log("in the tick");
 

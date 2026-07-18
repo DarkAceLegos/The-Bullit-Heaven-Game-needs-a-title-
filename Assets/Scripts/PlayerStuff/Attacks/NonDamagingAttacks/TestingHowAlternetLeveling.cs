@@ -7,7 +7,7 @@ public class TestingHowAlternetLeveling : Attack
 
     [SerializeField] private Attack attack;
 
-    public override void Tick(NetworkObject player)
+    public override void Tick(NetworkObject player, int Direction = 0)
     {
         return;
     }

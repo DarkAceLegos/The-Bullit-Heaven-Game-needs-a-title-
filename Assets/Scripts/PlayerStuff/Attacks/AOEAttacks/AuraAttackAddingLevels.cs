@@ -7,7 +7,7 @@ public class AuraAttackAddingLevels : Attack
 
     private AOEAttackData.LevelData levelData;
 
-    public override void Tick(NetworkObject player)
+    public override void Tick(NetworkObject player, int Direction = 0)
     {
         return;
     }

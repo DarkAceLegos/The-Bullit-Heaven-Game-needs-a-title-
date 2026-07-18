@@ -4,7 +4,7 @@ using UnityEngine;
 public class TestingAddingItems : Attack
 {
     private NonDamagingAttackData.LevelData levelData;
-    public override void Tick(NetworkObject player)
+    public override void Tick(NetworkObject player, int Direction = 0)
     {
         return;
     }

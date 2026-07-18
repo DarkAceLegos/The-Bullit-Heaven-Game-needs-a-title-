@@ -25,5 +25,5 @@ public abstract class Attack : NetworkBehaviour
     }
 
     protected abstract void OnInitialize();
-    public abstract void Tick(NetworkObject player/*, List<ItemList> items*/);
+    public abstract void Tick(NetworkObject player, int Direction = 0);
 }

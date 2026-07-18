@@ -18,6 +18,8 @@ public class AttackHandler : NetworkBehaviour
 
     [SerializeField] private List<AttackData> attackList /*= Player.LoaclInstance.GetAllPlayerUnlockedAttacks()*/;
 
+    private int direction;
+
     // Need to keep watch of this to see if it is corect
     public override void OnNetworkSpawn()
     {
@@ -193,25 +195,28 @@ public class AttackHandler : NetworkBehaviour
 
         PlayerHealth._allPlayers.TryGetValue(Player.LoaclInstance.OwnerClientId, out PlayerHealth player); // need to make it not get every update
 
-        //Debug.Log(player);
-
         player.transform.root.TryGetComponent<NetworkObject>(out var playerObject); // need to make it not get every update
 
-        foreach (var attack in activeAttacks)
-        {
-            //Debug.Log("tryed to tick");
+        player.transform.root.TryGetComponent<Player>(out var player1);
 
-            SpawnProjectileRpc(playerObject, attack.Key); //needs to be the exact player not just the first player in list 
+        if(player1.direction == Vector2.up) { direction = 0; }
+        else if(player1.direction == Vector2.down) { direction = 1; }
+        else if(player1.direction == Vector2.left) { direction = 2; }
+        else if( player1.direction == Vector2.right) { direction = 3; }
 
-            //Debug.Log("this is the key " + attack.Key);
-        }
+            foreach (var attack in activeAttacks)
+            {
+                SpawnProjectileRpc(playerObject, attack.Key, direction); //needs to be the exact player not just the first player in list 
+
+                //Debug.Log("this is the key " + attack.Key);
+            }
 
         //Debug.Log("After the rpc");
 
     }
 
     [Rpc(SendTo.Server)]
-    private void SpawnProjectileRpc(NetworkObjectReference playerReference, string key)
+    private void SpawnProjectileRpc(NetworkObjectReference playerReference, string key, int direction)
     {
         if (key == "99" || key == "90") return; //need to fix
 
@@ -229,7 +234,7 @@ public class AttackHandler : NetworkBehaviour
 
         //Debug.Log("this is the attack " + attack);
 
-        attack.Tick(player);
+        attack.Tick(player, direction);
 
         //Debug.Log("trying the Rpc post" + activeAttacks);
 

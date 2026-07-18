@@ -12,6 +12,8 @@ public abstract class Item
     public virtual void OnDestroyed(Player player, int stacks) { }
 
     public virtual BasicAttackData.LevelData BasicAttackDataMod(Player player, int stacks, BasicAttackData.LevelData basicAttackData) { return basicAttackData; }
+    public virtual AOEAttackData.LevelData AOEAttackDataMod(Player player, int stacks, AOEAttackData.LevelData basicAttackData) { return basicAttackData; }
+    public virtual FollowingAttackData.LevelData FollowingAttackDataMod(Player player, int stacks, FollowingAttackData.LevelData basicAttackData) { return basicAttackData; }
 }
 
 
@@ -114,4 +116,160 @@ public class BasicAttackModSpeed : Item
 
         return basicAttackData;
     }
+}
+public class AOEAttackModProjCount : Item
+{
+    public override string GiveName()
+    {
+        return "AOEAttackModProjCount";
+    }
+
+    public override AOEAttackData.LevelData AOEAttackDataMod(Player player, int stacks, AOEAttackData.LevelData basicAttackData)
+    {
+        basicAttackData.projCount += stacks;
+
+        return basicAttackData;
+    }
+}
+
+public class AOEAttackModDamage : Item
+{
+    public override string GiveName()
+    {
+        return "AOEAttackModDamage";
+    }
+
+    public override AOEAttackData.LevelData AOEAttackDataMod(Player player, int stacks, AOEAttackData.LevelData basicAttackData)
+    {
+        basicAttackData.damage += stacks;
+
+        return basicAttackData;
+    }
+}
+
+public class AOEAttackModCooldown : Item
+{
+    public override string GiveName()
+    {
+        return "AOEAttackModCooldown";
+    }
+
+    public override AOEAttackData.LevelData AOEAttackDataMod(Player player, int stacks, AOEAttackData.LevelData basicAttackData)
+    {
+        basicAttackData.cooldown -= stacks;
+
+        return basicAttackData;
+    }
+}
+
+public class AOEAttackModSpeed : Item
+{
+    public override string GiveName()
+    {
+        return "AOEAttackModSpeed";
+    }
+
+    public override AOEAttackData.LevelData AOEAttackDataMod(Player player, int stacks, AOEAttackData.LevelData basicAttackData)
+    {
+        basicAttackData.speed += stacks;
+
+        return basicAttackData;
+    }
+}
+public class AOEAttackModArea : Item
+{
+    public override string GiveName()
+    {
+        return "AOEAttackModArea";
+    }
+
+    public override AOEAttackData.LevelData AOEAttackDataMod(Player player, int stacks, AOEAttackData.LevelData basicAttackData)
+    {
+        basicAttackData.area += stacks;
+
+        return basicAttackData;
+    }
+}
+public class FollowingAttackModProjCount : Item
+{
+    public override string GiveName()
+    {
+        return "FollowingAttackModProjCount";
+    }
+
+    public override FollowingAttackData.LevelData FollowingAttackDataMod(Player player, int stacks, FollowingAttackData.LevelData basicAttackData)
+    {
+        basicAttackData.projCount += stacks;
+
+        return basicAttackData;
+    }
+}
+
+public class FollowingAttackModDamage : Item
+{
+    public override string GiveName()
+    {
+        return "FollowingAttackModDamage";
+    }
+
+    public override FollowingAttackData.LevelData FollowingAttackDataMod(Player player, int stacks, FollowingAttackData.LevelData basicAttackData)
+    {
+        basicAttackData.damage += stacks;
+
+        return basicAttackData;
+    }
+}
+
+public class FollowingAttackModCooldown : Item
+{
+    public override string GiveName()
+    {
+        return "FollowingAttackModCooldown";
+    }
+
+    public override FollowingAttackData.LevelData FollowingAttackDataMod(Player player, int stacks, FollowingAttackData.LevelData basicAttackData)
+    {
+        basicAttackData.cooldown -= stacks;
+
+        return basicAttackData;
+    }
+}
+
+public class FollowingAttackModSpeed : Item
+{
+    public override string GiveName()
+    {
+        return "FollowingAttackModSpeed";
+    }
+
+    public override FollowingAttackData.LevelData FollowingAttackDataMod(Player player, int stacks, FollowingAttackData.LevelData basicAttackData)
+    {
+        basicAttackData.speed += stacks;
+
+        return basicAttackData;
+    }
+}
+public class FolloingAttackModArea : Item
+{
+    public override string GiveName()
+    {
+        return "FollowingAttackModArea";
+    }
+
+    public override FollowingAttackData.LevelData FollowingAttackDataMod(Player player, int stacks, FollowingAttackData.LevelData basicAttackData)
+    {
+        basicAttackData.Area += stacks;
+
+        return basicAttackData;
+    }
+}
+
+public class AltProjMovement : Item
+{
+    public override string GiveName()
+    {
+        return "AltProjMovement";
+    }
+
+
 }
