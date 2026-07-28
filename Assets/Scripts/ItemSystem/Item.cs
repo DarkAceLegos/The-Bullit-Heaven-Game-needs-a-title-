@@ -249,7 +249,7 @@ public class FollowingAttackModSpeed : Item
         return basicAttackData;
     }
 }
-public class FolloingAttackModArea : Item
+public class FollowingAttackModArea : Item
 {
     public override string GiveName()
     {

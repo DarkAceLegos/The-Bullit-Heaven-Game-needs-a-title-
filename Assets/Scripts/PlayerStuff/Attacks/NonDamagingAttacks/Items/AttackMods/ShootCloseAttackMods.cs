@@ -1,8 +1,7 @@
-using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
-public class ChainLightingItemMods : Attack
+public class ShootCloseAttackMods : Attack
 {
     private ItemAttackData.LevelData levelData;
     public Item item;
@@ -28,13 +27,13 @@ public class ChainLightingItemMods : Attack
         item = GetItem(levelData.index);
         //player.GetComponentInChildren<ChainLightiningAttack>().items.Add(new ItemList(onHitTester, onHitTester.GiveName(), 1));
 
-        var chainLightiningAttack = player.GetComponentInChildren<ChainLightiningAttack>();
+        var chainLightiningAttack = player.GetComponentInChildren<ShootCloseestEnemyAttack>();
 
-        foreach (var i in chainLightiningAttack.items) 
-        { 
-            if(i.name == item.GiveName())
-            { 
-                i.stacks += levelData.numStacks; 
+        foreach (var i in chainLightiningAttack.items)
+        {
+            if (i.name == item.GiveName())
+            {
+                i.stacks += levelData.numStacks;
                 return;
             }
         }
@@ -44,8 +43,8 @@ public class ChainLightingItemMods : Attack
 
     public Item GetItem(int item)
     {
-        switch (item) 
-        { 
+        switch (item)
+        {
             case (int)BasicAttackModItems.ProjCount:
                 return new BasicAttackModProjCount();
             case (int)BasicAttackModItems.Damage:
@@ -56,14 +55,6 @@ public class ChainLightingItemMods : Attack
                 return new BasicAttackModSpeed();
             default:
                 return null;
-        } 
+        }
     }
-}
-
-public enum BasicAttackModItems
-{
-    ProjCount,
-    Damage,
-    Cooldown,
-    Speed
 }

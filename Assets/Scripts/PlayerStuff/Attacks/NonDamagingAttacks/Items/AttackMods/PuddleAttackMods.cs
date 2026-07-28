@@ -1,8 +1,7 @@
-using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
-public class ChainLightingItemMods : Attack
+public class PuddleAttackMods : Attack
 {
     private ItemAttackData.LevelData levelData;
     public Item item;
@@ -28,13 +27,13 @@ public class ChainLightingItemMods : Attack
         item = GetItem(levelData.index);
         //player.GetComponentInChildren<ChainLightiningAttack>().items.Add(new ItemList(onHitTester, onHitTester.GiveName(), 1));
 
-        var chainLightiningAttack = player.GetComponentInChildren<ChainLightiningAttack>();
+        var chainLightiningAttack = player.GetComponentInChildren<AoeAttack>();
 
-        foreach (var i in chainLightiningAttack.items) 
-        { 
-            if(i.name == item.GiveName())
-            { 
-                i.stacks += levelData.numStacks; 
+        foreach (var i in chainLightiningAttack.items)
+        {
+            if (i.name == item.GiveName())
+            {
+                i.stacks += levelData.numStacks;
                 return;
             }
         }
@@ -44,26 +43,20 @@ public class ChainLightingItemMods : Attack
 
     public Item GetItem(int item)
     {
-        switch (item) 
-        { 
-            case (int)BasicAttackModItems.ProjCount:
-                return new BasicAttackModProjCount();
-            case (int)BasicAttackModItems.Damage:
-                return new BasicAttackModDamage();
-            case (int)BasicAttackModItems.Cooldown:
-                return new BasicAttackModCooldown();
-            case (int)BasicAttackModItems.Speed:
-                return new BasicAttackModSpeed();
+        switch (item)
+        {
+            case (int)AOEAttackModsItems.ProjCount:
+                return new AOEAttackModProjCount();
+            case (int)AOEAttackModsItems.Damage:
+                return new AOEAttackModDamage();
+            case (int)AOEAttackModsItems.Cooldown:
+                return new AOEAttackModCooldown();
+            case (int)AOEAttackModsItems.Speed:
+                return new AOEAttackModSpeed();
+            case (int)AOEAttackModsItems.Area:
+                return new AOEAttackModArea();
             default:
                 return null;
-        } 
+        }
     }
-}
-
-public enum BasicAttackModItems
-{
-    ProjCount,
-    Damage,
-    Cooldown,
-    Speed
 }

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1822490819840498363}
   - component: {fileID: 8974595735020716838}
-  - component: {fileID: -5975309419604699688}
+  - component: {fileID: -4175109302943639554}
   m_Layer: 0
-  m_Name: ChainLightiningMods
+  m_Name: ShootCloseAttackMods
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3666268661
+  GlobalObjectIdHash: 1187853762
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -58,7 +58,7 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
---- !u!114 &-5975309419604699688
+--- !u!114 &-4175109302943639554
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6208725698981320963}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bd8c3d567e3a0f4184175098278fa2f, type: 3}
+  m_Script: {fileID: 11500000, guid: 6eafb11a635ee794a9778c3b711e9761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
