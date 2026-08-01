@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShootCloseestEnemyAttack : Attack
 {
-    [SerializeField] private ShootClosetEnemyProj proj;
+    [SerializeField] private GameObject proj;
 
     [SerializeField] private List<EnemyHealth> enemyHealths;
 
@@ -41,7 +41,15 @@ public class ShootCloseestEnemyAttack : Attack
             var direction = GetClosetEnemy();//.normalized; //Vector2.Distance(enemyHealths[0].transform.position ,transform.position); //Random.insideUnitCircle;
             //Debug.Log(direction);
             //direction.Normalize();//*/
-            var proj1 = Instantiate(proj, player.transform.position, Quaternion.Euler(direction));
+
+            NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(proj, player.transform.position, Quaternion.Euler(direction));
+
+            enemyNetworkObject.GetComponent<ShootClosetEnemyProj>().Initialize(playerId, levelData.damage, levelData.speed);//*/
+            enemyNetworkObject.GetComponent<ShootClosetEnemyProj>().prefab = proj;
+
+            enemyNetworkObject.Spawn(true);
+
+            /*var proj1 = Instantiate(proj, player.transform.position, Quaternion.Euler(direction));
             proj1.GetComponent<NetworkObject>().Spawn(true);
             proj1.Initialize(playerId, levelData.damage, levelData.speed);//*/
         }

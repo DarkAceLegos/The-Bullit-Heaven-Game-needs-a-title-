@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1803f5396494014db99602099b79d64, type: 3}
   m_Name: ChainLightiningCooldown
   m_EditorClassIdentifier: 
-  attackId: 
-  attackName: 
+  attackId: 6.1
+  attackName: Decrease Chain Lighting cooldown by 1
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
-  - Decrease Chainlighting cooldown by 1
+  - Decrease Chain Lighting cooldown by 1
   icon: {fileID: -2993178445623368436, guid: b79a60e3316f48542878a5e7821ccf50, type: 3}
   prefab: {fileID: -5975309419604699688, guid: 4b6d47e7a700a8c42b2a4b3b3ceb7563, type: 3}
   levels:

@@ -11,6 +11,8 @@ public class MelleProj : NetworkBehaviour
 
     [SerializeField] private float lifeTime;
 
+    [SerializeField] public GameObject prefab;
+
     private void Awake()
     {
         TryGetComponent(out rb);
@@ -25,6 +27,8 @@ public class MelleProj : NetworkBehaviour
     public void Initialize(ulong playerId, int damage1, float speed1, float duration1 = .25f)
     {
         //Debug.Log("I initialized");
+
+        lifeTime = 0;
 
         PlayerHealth._allPlayers[playerId].transform.root.TryGetComponent<Player>(out var player);
 
@@ -44,7 +48,7 @@ public class MelleProj : NetworkBehaviour
         lifeTime += Time.deltaTime;
         if(lifeTime >= duration) 
         {
-            Destroy(gameObject);
+            Die();
         }
     }
 
@@ -58,5 +62,12 @@ public class MelleProj : NetworkBehaviour
         enemyHealth.DamageEnemy(damage);
 
         //hit enemy -> deal Damage 
+    }
+
+    private void Die()
+    {
+        NetworkObject.Despawn(false);
+
+        NetworkObjectPool.Singleton.ReturnNetworkObject(NetworkObject, prefab);
     }
 }

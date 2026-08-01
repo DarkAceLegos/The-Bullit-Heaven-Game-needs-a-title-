@@ -72,8 +72,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  proj: {fileID: 4235645765053515930, guid: 0eaae7259e9cd6841821036d3ad941de, type: 3}
-  enemyHealths: []
+  items: []
+  proj: {fileID: 7643271203608482145, guid: 0eaae7259e9cd6841821036d3ad941de, type: 3}
 --- !u!58 &5317611055941822705
 CircleCollider2D:
   m_ObjectHideFlags: 0

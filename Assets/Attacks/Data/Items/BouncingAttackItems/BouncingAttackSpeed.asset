@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1803f5396494014db99602099b79d64, type: 3}
   m_Name: BouncingAttackSpeed
   m_EditorClassIdentifier: 
-  attackId: 
-  attackName: 
+  attackId: 5.4
+  attackName: Increase the speed of Bouncing attack by 1
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
-  - Increase the speed of Chainlightining by 1
+  - Increase the speed of Bouncing attack by 1
   icon: {fileID: -2993178445623368436, guid: b79a60e3316f48542878a5e7821ccf50, type: 3}
   prefab: {fileID: 2457330276836103926, guid: c1f218fecf7e41a4797151244f2d19d8, type: 3}
   levels:

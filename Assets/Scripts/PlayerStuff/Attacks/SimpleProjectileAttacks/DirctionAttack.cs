@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class DirctionAttack : Attack
 {
-    [SerializeField] private DirectionProj proj;
+    [SerializeField] private GameObject proj;
 
     private BasicAttackData.LevelData levelData;
     private float lastCast;
@@ -37,14 +37,20 @@ public class DirctionAttack : Attack
             if (Direction == 0)
             { rotation.z = 0; direction = Vector3.up; }
             else if (Direction == 1)
-            { rotation.z = 0; direction = Vector3.down; }
+            { rotation.z = -180; direction = Vector3.down; }
             else if (Direction == 2)
             { rotation.z = 1; direction = Vector3.left; }
             else if (Direction == 3)
-            { rotation.z = 1; direction = Vector3.right; }
+            { rotation.z = -1; direction = Vector3.right; }
 
-            var proj1 = Instantiate(proj, player.transform.position , rotation);
-            proj1.GetComponent<NetworkObject>().Spawn(true);
+            NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(proj, player.transform.position, rotation);
+
+            enemyNetworkObject.GetComponent<DirectionProj>().Initialize(playerId, levelData.damage, levelData.speed);
+            enemyNetworkObject.GetComponent<DirectionProj>().prefab = proj;
+
+            enemyNetworkObject.Spawn(true);
+
+            /*proj1.GetComponent<NetworkObject>().Spawn(true);
             proj1.Initialize(playerId, levelData.damage, levelData.speed);//*/
         }
     }

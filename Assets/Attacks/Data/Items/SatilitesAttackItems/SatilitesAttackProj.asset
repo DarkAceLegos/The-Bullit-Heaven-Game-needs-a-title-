@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1803f5396494014db99602099b79d64, type: 3}
   m_Name: SatilitesAttackProj
   m_EditorClassIdentifier: 
-  attackId: 
+  attackId: 10.4
   attackName: 
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
-  - Decrease Chainlighting cooldown by 1
+  - Increase Satilites attack projectile count by 1
   icon: {fileID: -2993178445623368436, guid: b79a60e3316f48542878a5e7821ccf50, type: 3}
   prefab: {fileID: 6977611274111291375, guid: 91d18468057f677499de3b300dfac0dc, type: 3}
   levels:

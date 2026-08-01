@@ -16,6 +16,8 @@ public class AuraBuff_Proj_ : NetworkBehaviour
     [SerializeField] private List<PlayerHealth> enemyHealths;
     //private Player playerStored;
 
+    [SerializeField] public GameObject prefab;
+
     private void Awake()
     {
         TryGetComponent(out rb);
@@ -30,6 +32,9 @@ public class AuraBuff_Proj_ : NetworkBehaviour
     public void Initialize(ulong playerId, float amount1, float speed1, float area1, PlayerBaseStats.Stat stat1, float duration1 = 4f)
     {
         //Debug.Log("I initialized");
+
+        lifeTime = 0;
+        enemyHealths.Clear();
 
         PlayerHealth._allPlayers[playerId].transform.root.TryGetComponent<Player>(out var player);
         //playerStored = player;
@@ -57,7 +62,7 @@ public class AuraBuff_Proj_ : NetworkBehaviour
         lifeTime += Time.deltaTime;
         if (lifeTime >= duration)
         {
-            Destroy(gameObject);
+            Die();
         }
     }
 
@@ -85,5 +90,12 @@ public class AuraBuff_Proj_ : NetworkBehaviour
         enemyHealth.transform.root.GetComponent<AuraBuffHolder>().AuraBuff(stat, -amount);
 
         enemyHealths.Remove(enemyHealth);
+    }
+
+    private void Die()
+    {
+        NetworkObject.Despawn(false);
+
+        NetworkObjectPool.Singleton.ReturnNetworkObject(NetworkObject, prefab);
     }
 }

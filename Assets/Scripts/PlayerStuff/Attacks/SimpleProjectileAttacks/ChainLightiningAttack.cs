@@ -47,7 +47,7 @@ public class ChainLightiningAttack : Attack
 
         foreach (ItemList i in items)
         {
-            usedLevelData = i.item.BasicAttackDataMod(player1, i.stacks, levelData);
+            usedLevelData = i.item.BasicAttackDataMod(player1, i.stacks, levelData); // need to add to rest
         }
 
         //Debug.Log(usedLevelData.speed);

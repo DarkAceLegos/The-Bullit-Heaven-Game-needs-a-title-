@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ShootUpEffectedByGravityAttack : Attack
 {
-    [SerializeField] private ShootUpEffectedByGravityProj proj;
+    [SerializeField] private GameObject proj;
 
     private BasicAttackData.LevelData levelData;
     private float lastCast;
@@ -32,7 +32,15 @@ public class ShootUpEffectedByGravityAttack : Attack
         {
             var direction = Random.insideUnitCircle;
             direction.Normalize();
-            var proj1 = Instantiate(proj, player.transform.position , Quaternion.identity);
+
+            NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(proj, player.transform.position, Quaternion.Euler(direction));
+
+            enemyNetworkObject.GetComponent<ShootUpEffectedByGravityProj>().Initialize(playerId, levelData.damage, levelData.speed);//*/
+            enemyNetworkObject.GetComponent<ShootUpEffectedByGravityProj>().prefab = proj;
+
+            enemyNetworkObject.Spawn(true);
+
+            /*var proj1 = Instantiate(proj, player.transform.position , Quaternion.identity);
             proj1.GetComponent<NetworkObject>().Spawn(true);
             proj1.Initialize(playerId, levelData.damage, levelData.speed);//*/
         }

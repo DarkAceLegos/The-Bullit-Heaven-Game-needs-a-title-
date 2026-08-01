@@ -11,6 +11,8 @@ public class ShootUpEffectedByGravityProj : NetworkBehaviour
 
     [SerializeField] private float lifeTime;
 
+    [SerializeField] public GameObject prefab;
+
     private void Awake()
     {
         TryGetComponent(out rb);
@@ -27,6 +29,8 @@ public class ShootUpEffectedByGravityProj : NetworkBehaviour
         //Debug.Log("I initialized");
 
         //Debug.Log(Player.LoaclInstance);
+
+        lifeTime = 0;
 
         PlayerHealth._allPlayers[playerId].transform.root.TryGetComponent<Player>(out var player);
 
@@ -49,7 +53,7 @@ public class ShootUpEffectedByGravityProj : NetworkBehaviour
         lifeTime += Time.deltaTime;
         if(lifeTime >= duration) 
         {
-            Destroy(gameObject);
+            Die();
         }
     }
 
@@ -63,5 +67,12 @@ public class ShootUpEffectedByGravityProj : NetworkBehaviour
         enemyHealth.DamageEnemy(damage);
 
         //hit enemy -> deal Damage 
+    }
+
+    private void Die()
+    {
+        NetworkObject.Despawn(false);
+
+        NetworkObjectPool.Singleton.ReturnNetworkObject(NetworkObject, prefab);
     }
 }

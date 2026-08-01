@@ -18,6 +18,8 @@ public class AuraAttackProj : NetworkBehaviour//, INetworkPrefabInstanceHandler
     [SerializeField] private List<EnemyHealth> enemyHealths;
     private Player playerStored;
 
+    [SerializeField] public GameObject prefab;
+
     private void Awake()
     {
         TryGetComponent(out rb);
@@ -32,6 +34,9 @@ public class AuraAttackProj : NetworkBehaviour//, INetworkPrefabInstanceHandler
     public void Initialize(ulong playerId, int damage1, float speed1, float area1, float duration1 = 4f)
     {
         //Debug.Log("I initialized");
+
+        lifeTime = 0;
+        enemyHealths.Clear();
 
         PlayerHealth._allPlayers[playerId].transform.root.TryGetComponent<Player>(out var player);
         playerStored = player;
@@ -61,7 +66,7 @@ public class AuraAttackProj : NetworkBehaviour//, INetworkPrefabInstanceHandler
         lifeTime += Time.deltaTime;
         if (lifeTime >= duration)
         {
-            Destroy(gameObject);
+            Die();
         }
     }
 
@@ -104,5 +109,12 @@ public class AuraAttackProj : NetworkBehaviour//, INetworkPrefabInstanceHandler
         { return; }
 
         enemyHealths.Remove(enemyHealth);
+    }
+
+    private void Die()
+    {
+        NetworkObject.Despawn(false);
+
+        NetworkObjectPool.Singleton.ReturnNetworkObject(NetworkObject, prefab);
     }
 }

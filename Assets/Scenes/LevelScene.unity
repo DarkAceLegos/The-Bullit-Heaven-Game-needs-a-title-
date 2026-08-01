@@ -473710,9 +473710,9 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   PooledPrefabsList:
   - Prefab: {fileID: 1071440698647426449, guid: d0a4e301bb2e54e4d81ace68f1dcbcc3, type: 3}
-    PrewarmCount: 1000
+    PrewarmCount: 500
   - Prefab: {fileID: 1071440698647426449, guid: 732a4cac3bbe2964bb2e353a4c4320ce, type: 3}
-    PrewarmCount: 100
+    PrewarmCount: 500
   - Prefab: {fileID: 1071440698647426449, guid: df878aeef7a53d5489e75e71c992dc3a, type: 3}
     PrewarmCount: 100
   - Prefab: {fileID: 1071440698647426449, guid: 051a2472f2c9dd940a00f9e22cdac678, type: 3}
@@ -473720,6 +473720,28 @@ MonoBehaviour:
   - Prefab: {fileID: 1071440698647426449, guid: 77763a8f1cce2ab40a1556c0ace5c187, type: 3}
     PrewarmCount: 100
   - Prefab: {fileID: 7643271203608482145, guid: f1a09b70718f09147ae4f7aba4dad86f, type: 3}
+    PrewarmCount: 100
+  - Prefab: {fileID: 1353118902356978076, guid: 834ad36fc146d9a47b13f8a42245c929, type: 3}
+    PrewarmCount: 100
+  - Prefab: {fileID: 7643271203608482145, guid: 0eaae7259e9cd6841821036d3ad941de, type: 3}
+    PrewarmCount: 100
+  - Prefab: {fileID: 7643271203608482145, guid: 9ff4fd7b44312cd44a5284021e4c58e8, type: 3}
+    PrewarmCount: 100
+  - Prefab: {fileID: 7643271203608482145, guid: 6bfbb3f504952614398165808cc6f6a5, type: 3}
+    PrewarmCount: 100
+  - Prefab: {fileID: 7643271203608482145, guid: 15ed53b809dc3a54ca40ab1109a9c208, type: 3}
+    PrewarmCount: 100
+  - Prefab: {fileID: 7643271203608482145, guid: a744ffd659cc00d43ab0e1558d530900, type: 3}
+    PrewarmCount: 100
+  - Prefab: {fileID: 7643271203608482145, guid: eb06266c5794a2a40931d88a4c87ffb5, type: 3}
+    PrewarmCount: 100
+  - Prefab: {fileID: 7643271203608482145, guid: ed91615ca5664f640ad89b71dace152a, type: 3}
+    PrewarmCount: 100
+  - Prefab: {fileID: 5682771613856766798, guid: 84d96e5be63f1fd4388ca0f86d252f50, type: 3}
+    PrewarmCount: 100
+  - Prefab: {fileID: 1353118902356978076, guid: dde90c403eba4be46a3a4eefa0e4de9a, type: 3}
+    PrewarmCount: 100
+  - Prefab: {fileID: 1353118902356978076, guid: e9ec1e776000c174993437680963739c, type: 3}
     PrewarmCount: 100
 --- !u!4 &1368900658
 Transform:

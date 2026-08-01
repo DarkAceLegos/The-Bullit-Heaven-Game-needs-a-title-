@@ -70,6 +70,8 @@ public class LevelingUp : GameBaseState
         var randomAttack = new List<AttackData>();
         while (randomAttack.Count < 3 && availableAttacks.Count > 0)
         {
+            //If Want Raity Based Cards for leveling up Method
+
             int randomIndex = UnityEngine.Random.Range(0, availableAttacks.Count);
             randomAttack.Add(availableAttacks[randomIndex]);
             availableAttacks.RemoveAt(randomIndex);

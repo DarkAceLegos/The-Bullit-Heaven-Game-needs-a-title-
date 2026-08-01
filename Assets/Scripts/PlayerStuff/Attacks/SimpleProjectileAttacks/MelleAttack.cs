@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MelleAttack : Attack
 {
-    [SerializeField] private MelleProj proj;
+    [SerializeField] private GameObject proj;
 
     private BasicAttackData.LevelData levelData;
     private float lastCast;
@@ -53,8 +53,15 @@ public class MelleAttack : Attack
             { rotation.z = 1; direction = Vector3.left; }
             else if (Direction == 3)
             { rotation.z = 1; direction = Vector3.right; }
-        
-            //direction.Normalize();
+
+            NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(proj, (player.transform.position + Offset) + (i * (direction)), rotation);
+
+            enemyNetworkObject.GetComponent<MelleProj>().Initialize(playerId, levelData.damage, levelData.speed);
+            enemyNetworkObject.GetComponent<MelleProj>().prefab = proj;
+
+            enemyNetworkObject.Spawn(true);
+
+            /*//direction.Normalize();
             var proj1 = Instantiate(proj, (player.transform.position + Offset) + (i * (direction)), rotation);
             proj1.GetComponent<NetworkObject>().Spawn(true);
             proj1.Initialize(playerId, levelData.damage, levelData.speed);//*/

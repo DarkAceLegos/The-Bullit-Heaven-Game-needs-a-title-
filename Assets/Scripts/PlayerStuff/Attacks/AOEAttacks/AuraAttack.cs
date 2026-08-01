@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class AuraAttack : Attack
 {
-    [SerializeField] private AuraAttackProj proj;
+    [SerializeField] private GameObject proj;
     [SerializeField] private AOEAttackData AddingAttack;
 
     private AOEAttackData.LevelData levelData;
@@ -43,7 +43,15 @@ public class AuraAttack : Attack
         {
             /*var direction = Random.insideUnitCircle;
             direction.Normalize();*/
-            var proj1 = Instantiate(proj, player.transform.position, Quaternion.identity);
+
+            NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(proj, player.transform.position, Quaternion.identity);
+
+            enemyNetworkObject.GetComponent<AuraAttackProj>().Initialize(playerId, levelData.damage, levelData.speed, levelData.area);
+            enemyNetworkObject.GetComponent<AuraAttackProj>().prefab = proj;
+
+            enemyNetworkObject.Spawn(true);
+
+            /*var proj1 = Instantiate(proj, player.transform.position, Quaternion.identity);
             proj1.GetComponent<NetworkObject>().Spawn(true);
             proj1.Initialize(playerId, levelData.damage, levelData.speed, levelData.area);//*/
         }

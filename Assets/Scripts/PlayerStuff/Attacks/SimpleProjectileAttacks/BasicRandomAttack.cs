@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 public class BasicRandomAttack : Attack
 {
-    [SerializeField] private BasicRandomProj proj;
+    [SerializeField] private GameObject proj;
     //[SerializeField] private Collider2D range;
 
     //[SerializeField] private List<EnemyHealth> enemyHealths;
@@ -48,7 +48,15 @@ public class BasicRandomAttack : Attack
             direction.y = 0;
             //Debug.Log(direction);
             direction.Normalize();//*/
-            var proj1 = Instantiate(proj, player.transform.position, direction);
+
+            NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(proj, player.transform.position, direction);
+
+            enemyNetworkObject.GetComponent<BasicRandomProj>().Initialize(playerId, levelData.damage, levelData.speed);//*/
+            enemyNetworkObject.GetComponent<BasicRandomProj>().prefab = proj;
+
+            enemyNetworkObject.Spawn(true);
+
+            /*var proj1 = Instantiate(proj, player.transform.position, direction);
             proj1.GetComponent<NetworkObject>().Spawn(true);
             proj1.Initialize(playerId, levelData.damage, levelData.speed);//*/
         }

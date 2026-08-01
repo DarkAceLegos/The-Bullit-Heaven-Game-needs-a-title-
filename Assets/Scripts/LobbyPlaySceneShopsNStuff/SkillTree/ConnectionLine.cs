@@ -28,4 +28,14 @@ public class ConnectionLine : MonoBehaviour
     {
         return (float)(Mathf.Atan2(target.y - me.y, target.x - me.x) * (180 / Mathf.PI));
     }
+
+    public void Show()
+    {
+        gameObject.SetActive(true);
+    }
+
+    private void Hide()
+    {
+        gameObject.SetActive(false);
+    }
 }

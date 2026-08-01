@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1803f5396494014db99602099b79d64, type: 3}
   m_Name: DirectionalAttackDamage
   m_EditorClassIdentifier: 
-  attackId: 
-  attackName: 
+  attackId: 7.2
+  attackName: Increase damage of Dirctional attack by 1
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
-  - Increase damage of Chainlighting by 1
+  - Increase damage of Dirctional attack by 1
   icon: {fileID: -2993178445623368436, guid: b79a60e3316f48542878a5e7821ccf50, type: 3}
   prefab: {fileID: -7536016301860685883, guid: c7fb4504f568a6c4b8df35e676260091, type: 3}
   levels:

@@ -71,4 +71,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  proj: {fileID: 387583777738454346, guid: 6bfbb3f504952614398165808cc6f6a5, type: 3}
+  items: []
+  proj: {fileID: 7643271203608482145, guid: 6bfbb3f504952614398165808cc6f6a5, type: 3}

@@ -16,6 +16,7 @@ public class AOEProjectile : NetworkBehaviour
     [SerializeField] private List<EnemyHealth> enemyHealths;
     private Player playerStored;
 
+    [SerializeField] public GameObject prefab;
     private void Awake()
     {
         TryGetComponent(out rb);
@@ -30,6 +31,9 @@ public class AOEProjectile : NetworkBehaviour
     public void Initialize(ulong playerId,int damage1, float speed1, float area1, float duration1 = 4f)
     {
         //Debug.Log("I initialized");
+
+        lifeTime = 0;
+        enemyHealths.Clear();
 
         PlayerHealth._allPlayers[playerId].transform.root.TryGetComponent<Player>(out var player);
         playerStored = player;
@@ -55,7 +59,7 @@ public class AOEProjectile : NetworkBehaviour
         lifeTime += Time.deltaTime;
         if (lifeTime >= duration)
         {
-            Destroy(gameObject);
+            Die();
         }
     }
 
@@ -98,5 +102,12 @@ public class AOEProjectile : NetworkBehaviour
         { return; }
 
         enemyHealths.Remove(enemyHealth);
+    }
+
+    private void Die()
+    {
+        NetworkObject.Despawn(false);
+
+        NetworkObjectPool.Singleton.ReturnNetworkObject(NetworkObject, prefab);
     }
 }

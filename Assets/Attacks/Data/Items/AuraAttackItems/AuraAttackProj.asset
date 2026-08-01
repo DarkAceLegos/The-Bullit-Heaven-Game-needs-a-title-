@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1803f5396494014db99602099b79d64, type: 3}
   m_Name: AuraAttackProj
   m_EditorClassIdentifier: 
-  attackId: 
-  attackName: 
+  attackId: 4.4
+  attackName: Increase attack Aura proj count by 1
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Increase attack Aura proj count by 1

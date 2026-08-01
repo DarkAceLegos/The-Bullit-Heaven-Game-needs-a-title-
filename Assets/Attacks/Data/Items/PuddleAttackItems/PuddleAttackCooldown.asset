@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1803f5396494014db99602099b79d64, type: 3}
   m_Name: PuddleAttackCooldown
   m_EditorClassIdentifier: 
-  attackId: 
-  attackName: 
+  attackId: 3.2
+  attackName: Decrease Puddle attack cooldown by 1
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
-  - Decrease Chainlighting cooldown by 1
+  - Decrease Puddle attack cooldown by 1
   icon: {fileID: -2993178445623368436, guid: b79a60e3316f48542878a5e7821ccf50, type: 3}
   prefab: {fileID: 7614004808998244500, guid: feed1c0253965a241acbad9488f26773, type: 3}
   levels:

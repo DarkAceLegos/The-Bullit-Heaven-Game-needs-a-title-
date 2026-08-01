@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class AuraBuff_Attack_ : Attack
 {
-    [SerializeField] private AuraBuff_Proj_ proj;
+    [SerializeField] private GameObject proj;
 
     private AuraBuffAttackData.LevelData levelData;
     private float lastCast;
@@ -32,7 +32,15 @@ public class AuraBuff_Attack_ : Attack
         {
             var direction = Random.insideUnitCircle;
             direction.Normalize();
-            var proj1 = Instantiate(proj, player.transform.position, Quaternion.identity);
+
+            NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(proj, player.transform.position, Quaternion.identity);
+
+            enemyNetworkObject.GetComponent<AuraBuff_Proj_>().Initialize(playerId, levelData.amount, levelData.speed, levelData.area, levelData.stat);
+            enemyNetworkObject.GetComponent<AuraBuff_Proj_>().prefab = proj;
+
+            enemyNetworkObject.Spawn(true);
+
+            /*var proj1 = Instantiate(proj, player.transform.position, Quaternion.identity);
             proj1.GetComponent<NetworkObject>().Spawn(true);
             proj1.Initialize(playerId, levelData.amount, levelData.speed, levelData.area, levelData.stat);//*/
         }

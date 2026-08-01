@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BouncingProjAttack : Attack
 {
-    [SerializeField] private BounceingProj proj;
+    [SerializeField] private GameObject proj;
 
     private BasicAttackData.LevelData levelData;
     private float lastCast;
@@ -35,7 +35,15 @@ public class BouncingProjAttack : Attack
             direction.y = 0;
             //Debug.Log(direction);
             direction.Normalize();//*/
-            var proj1 = Instantiate(proj, player.transform.position, direction);
+
+            NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(proj, player.transform.position, direction);
+
+            enemyNetworkObject.GetComponent<BounceingProj>().Initialize(playerId, levelData.damage, levelData.speed);
+            enemyNetworkObject.GetComponent<BounceingProj>().prefab = proj;
+
+            enemyNetworkObject.Spawn(true);
+
+            /*var proj1 = Instantiate(proj, player.transform.position, direction);
             proj1.GetComponent<NetworkObject>().Spawn(true);
             proj1.Initialize(playerId, levelData.damage, levelData.speed);//*/
         }

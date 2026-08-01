@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LightingBoltsAttack : Attack
 {
-    [SerializeField] private LightingBoltsProj proj;
+    [SerializeField] private GameObject proj;
 
     private BasicAttackData.LevelData levelData;
     private float lastCast;
@@ -41,7 +41,15 @@ public class LightingBoltsAttack : Attack
             int randomInt = Random.Range(0,enemyHealths.Count);
             //var direction = Random.insideUnitCircle;
             //direction.Normalize();
-            var proj1 = Instantiate(proj, enemyHealths[randomInt].transform.position , Quaternion.identity);
+
+            NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(proj, enemyHealths[randomInt].transform.position, Quaternion.identity);
+
+            enemyNetworkObject.GetComponent<LightingBoltsProj>().Initialize(playerId, levelData.damage, levelData.speed);
+            enemyNetworkObject.GetComponent<LightingBoltsProj>().prefab = proj;
+
+            enemyNetworkObject.Spawn(true);
+
+            /*var proj1 = Instantiate(proj, enemyHealths[randomInt].transform.position , Quaternion.identity);
             proj1.GetComponent<NetworkObject>().Spawn(true);
             proj1.Initialize(playerId, levelData.damage, levelData.speed);//*/
         }
