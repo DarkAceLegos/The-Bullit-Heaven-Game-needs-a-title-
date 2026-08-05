@@ -36,6 +36,15 @@ public class AuraAttack : Attack
 
         ulong playerId = player.OwnerClientId;
 
+        PlayerHealth._allPlayers[playerId].transform.root.TryGetComponent<Player>(out Player player1);
+
+        AOEAttackData.LevelData usedLevelData = levelData;
+
+        foreach (ItemList i in items)
+        {
+            usedLevelData = i.item.AOEAttackDataMod(player1, i.stacks, levelData); // need to add to rest
+        }
+
         if (lastCast + levelData.cooldown > Time.time) { return; }
         lastCast = Time.time;
 

@@ -18,6 +18,9 @@ public class AuraBuff_Proj_ : NetworkBehaviour
 
     [SerializeField] public GameObject prefab;
 
+    public List<ItemList> items = new List<ItemList>();
+    public Player _player;
+
     private void Awake()
     {
         TryGetComponent(out rb);

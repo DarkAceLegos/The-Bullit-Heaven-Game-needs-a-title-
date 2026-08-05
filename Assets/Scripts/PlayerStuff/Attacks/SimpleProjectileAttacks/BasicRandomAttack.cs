@@ -38,6 +38,13 @@ public class BasicRandomAttack : Attack
             return;
         }*/
 
+        BasicAttackData.LevelData usedLevelData = levelData;
+
+        foreach (ItemList i in items)
+        {
+            usedLevelData = i.item.BasicAttackDataMod(player1, i.stacks, levelData); // need to add to rest
+        }
+
         if (lastCast + levelData.cooldown > Time.time) { return; }
         lastCast = Time.time;
 

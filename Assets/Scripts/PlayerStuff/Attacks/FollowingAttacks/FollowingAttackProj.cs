@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Globalization;
 using Unity.Netcode;
 using UnityEngine;
@@ -14,6 +15,9 @@ public class FollowingAttackProj : NetworkBehaviour
     [SerializeField] private float lifeTime;
 
     [SerializeField] public GameObject prefab;
+
+    public List<ItemList> items = new List<ItemList>();
+    public Player _player;
 
     private void Awake()
     {
@@ -33,6 +37,8 @@ public class FollowingAttackProj : NetworkBehaviour
         lifeTime = 0;
 
         PlayerHealth._allPlayers[playerId].transform.root.TryGetComponent<Player>(out var player);
+
+        _player = player;
 
         damage = (float)((damage1 + player.additiveDamageModifier) * player.percentageDamageModifier);
         speed = (speed1 + (speed1 * player.additiveProjectileSpeed)) * player.percentageProjectileSpeed;
@@ -70,6 +76,11 @@ public class FollowingAttackProj : NetworkBehaviour
 
         if (!collision.transform.TryGetComponent(out EnemyHealth enemyHealth)) //|| !enemyHealth.IsOwner)
         { return; }
+
+        foreach (ItemList i in items)
+        {
+            i.item.OnHit(_player, enemyHealth, i.stacks);
+        }
 
         enemyHealth.DamageEnemy(damage);
 

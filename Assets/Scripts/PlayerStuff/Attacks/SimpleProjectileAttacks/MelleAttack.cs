@@ -25,6 +25,13 @@ public class MelleAttack : Attack
 
         player.TryGetComponent<Player>(out Player player1);
 
+        BasicAttackData.LevelData usedLevelData = levelData;
+
+        foreach (ItemList i in items)
+        {
+            usedLevelData = i.item.BasicAttackDataMod(player1, i.stacks, levelData); // need to add to rest
+        }
+
         if (lastCast + levelData.cooldown > Time.time) { return; }
         lastCast = Time.time;
 

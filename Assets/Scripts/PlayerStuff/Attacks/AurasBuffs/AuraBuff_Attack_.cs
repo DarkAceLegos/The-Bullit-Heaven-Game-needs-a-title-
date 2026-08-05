@@ -25,6 +25,13 @@ public class AuraBuff_Attack_ : Attack
 
         PlayerHealth._allPlayers[playerId].transform.root.TryGetComponent<Player>(out Player player1);
 
+        AuraBuffAttackData.LevelData usedLevelData = levelData;
+
+        foreach (ItemList i in items)
+        {
+            //usedLevelData = i.item.(player1, i.stacks, levelData); // need to add to rest
+        }
+
         if (lastCast + levelData.cooldown > Time.time) { return; }
         lastCast = Time.time;
 

@@ -14,9 +14,13 @@ public class AOEProjectile : NetworkBehaviour
 
     [SerializeField] private float lifeTime;
     [SerializeField] private List<EnemyHealth> enemyHealths;
-    private Player playerStored;
+    //private Player playerStored;
 
     [SerializeField] public GameObject prefab;
+
+    public List<ItemList> items = new List<ItemList>();
+    public Player _player;
+
     private void Awake()
     {
         TryGetComponent(out rb);
@@ -36,7 +40,7 @@ public class AOEProjectile : NetworkBehaviour
         enemyHealths.Clear();
 
         PlayerHealth._allPlayers[playerId].transform.root.TryGetComponent<Player>(out var player);
-        playerStored = player;
+        _player = player;
 
         damage = (float)((damage1 + player.additiveDamageModifier) * player.percentageDamageModifier);
         //speed = (speed1 + (speed1 * player.additiveProjectileSpeed)) * player.percentageProjectileSpeed;
@@ -70,6 +74,11 @@ public class AOEProjectile : NetworkBehaviour
         if (!collision.transform.TryGetComponent(out EnemyHealth enemyHealth)) //|| !enemyHealth.IsOwner)
         { return; }
 
+        foreach (ItemList i in items)
+        {
+            i.item.OnHit(_player, enemyHealth, i.stacks);
+        }
+
         enemyHealths.Add(enemyHealth);
 
         //enemyHealth.DamageEnemy(damage);
@@ -88,10 +97,15 @@ public class AOEProjectile : NetworkBehaviour
 
         foreach (var enemy in enemyHealths)
         {
-            enemy.DamageEnemy(damage);
+            foreach (ItemList i in items)
+            {
+                i.item.OnHit(_player, enemyHealth, i.stacks);
+            }
+
+            enemy.DamageEnemy(damage);            
         }
 
-        attackInterval = .5f / playerStored.percentageCooldownModifier;
+        attackInterval = .5f / _player.percentageCooldownModifier;
     }
 
     private void OnTriggerExit2D(Collider2D collision)

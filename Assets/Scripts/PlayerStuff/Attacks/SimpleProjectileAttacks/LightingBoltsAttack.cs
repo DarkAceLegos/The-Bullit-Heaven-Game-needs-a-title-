@@ -28,6 +28,13 @@ public class LightingBoltsAttack : Attack
 
         PlayerHealth._allPlayers[playerId].transform.root.TryGetComponent<Player>(out var player1);
 
+        BasicAttackData.LevelData usedLevelData = levelData;
+
+        foreach (ItemList i in items)
+        {
+            usedLevelData = i.item.BasicAttackDataMod(player1, i.stacks, levelData); // need to add to rest
+        }
+
         if (enemyHealths.Count == 0)
         {
             return;
