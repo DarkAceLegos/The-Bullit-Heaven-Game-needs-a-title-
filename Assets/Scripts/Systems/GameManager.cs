@@ -31,6 +31,8 @@ public class GameManager : NetworkBehaviour
     private float lastSpawnTime; //move to game manager
     private bool isGamePaused = false;
 
+    [SerializeField] private List<GameObject> prefabs = new();
+
     public event EventHandler<AfterXTimeEventArgs> AfterXTime;
     public class AfterXTimeEventArgs : EventArgs {
         public NetworkObject player;
@@ -201,5 +203,10 @@ public class GameManager : NetworkBehaviour
     public void AddAttackToAllAttackList(string attackId, AttackData attackData)
     {
         allAttacks[attackId] = attackData;
+    }
+
+    public GameObject GetPrefab(int num)
+    {
+        return prefabs[num];
     }
 }

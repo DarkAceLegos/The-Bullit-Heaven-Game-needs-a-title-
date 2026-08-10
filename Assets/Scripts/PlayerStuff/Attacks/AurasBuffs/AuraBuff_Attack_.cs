@@ -17,7 +17,7 @@ public class AuraBuff_Attack_ : Attack
         levelData = basicAttackData.GetLevelData(level);
     }
 
-    public override void Tick(NetworkObject player, int Direction = 0)
+    public override void Tick(NetworkObject player, int Direction = 0, bool skipCooldown = false)
     {
         //Debug.Log("in the tick");
 
@@ -32,8 +32,11 @@ public class AuraBuff_Attack_ : Attack
             //usedLevelData = i.item.(player1, i.stacks, levelData); // need to add to rest
         }
 
-        if (lastCast + levelData.cooldown > Time.time) { return; }
-        lastCast = Time.time;
+        if (!skipCooldown)
+        {
+            if (lastCast + usedLevelData.cooldown > Time.time) { return; }
+            lastCast = Time.time;
+        }
 
         for (int i = 0; i < levelData.projCount; ++i) //+ player1.additiveProjectileModifier) * player1.percentageProjectileSpeed); i++)
         {

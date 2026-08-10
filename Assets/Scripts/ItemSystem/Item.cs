@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
 
@@ -39,7 +41,28 @@ public class OnHitTester : Item
 
     public override void OnHit(Player player, EnemyHealth enemyHealth, int stacks)
     {
-        Debug.Log(enemyHealth.ToString() + " Hit enemy " + stacks);
+        //Debug.Log(enemyHealth.ToString() + " Hit enemy " + stacks);
+
+        //Ticks attack
+
+        /*player.TryGetComponent(out NetworkObject networkObject);
+
+        player.GetComponentInChildren<ChainLightiningAttack>().Tick(networkObject, 5);*/
+
+        //Spwan a prefab
+
+        /*GameObject proj = GameManager.Instance.GetPrefab(0);
+
+        player.TryGetComponent(out NetworkObject networkObject);
+
+        List<ItemList> items = new List<ItemList>();
+
+        NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(proj, player.transform.position, Quaternion.identity);
+
+        enemyNetworkObject.GetComponent<ChainLightingProj>().Initialize(networkObject.OwnerClientId, 1, 1, items);
+        enemyNetworkObject.GetComponent<ChainLightingProj>().prefab = proj;
+
+        enemyNetworkObject.Spawn(true);*/
     }
 }
 

@@ -30,7 +30,7 @@ public class AuraAttack : Attack
         }
     }
 
-    public override void Tick(NetworkObject player, int Direction = 0)
+    public override void Tick(NetworkObject player, int Direction = 0, bool skipCooldown = false)
     {
         //Debug.Log("in the tick");
 
@@ -45,8 +45,11 @@ public class AuraAttack : Attack
             usedLevelData = i.item.AOEAttackDataMod(player1, i.stacks, levelData); // need to add to rest
         }
 
-        if (lastCast + levelData.cooldown > Time.time) { return; }
-        lastCast = Time.time;
+        if (!skipCooldown)
+        {
+            if (lastCast + usedLevelData.cooldown > Time.time) { return; }
+            lastCast = Time.time;
+        }
 
         for (int i = 0; i < levelData.projCount; i++)
         {

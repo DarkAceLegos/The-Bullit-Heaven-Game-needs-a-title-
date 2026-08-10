@@ -89,12 +89,14 @@ public class ChainLightingProj : NetworkBehaviour
 
         //if(collision. == attackRange.gameObject) { Debug.Log("Returned due to attack range collition"); return; }
 
-        enemyHealth.DamageEnemy(damage);
-
         foreach (ItemList i in items)
         {
+            //Debug.Log(i.name);
+
             i.item.OnHit(_player, enemyHealth, i.stacks);
         }
+
+        enemyHealth.DamageEnemy(damage);
 
         this.GetComponent<CircleCollider2D>().radius = 1.5f;
 

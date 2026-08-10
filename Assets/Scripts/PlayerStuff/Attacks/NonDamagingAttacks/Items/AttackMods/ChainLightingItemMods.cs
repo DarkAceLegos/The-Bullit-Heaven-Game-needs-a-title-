@@ -8,7 +8,7 @@ public class ChainLightingItemMods : Attack
     public Item item;
     //public ChainLithningAttackModItems itemChoses;
 
-    public override void Tick(NetworkObject player, int Direction = 0)
+    public override void Tick(NetworkObject player, int Direction = 0, bool skipCooldown = false)
     {
         return;
     }

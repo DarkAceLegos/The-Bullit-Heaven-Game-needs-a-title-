@@ -17,7 +17,7 @@ public class IncreaseAreaAura : Attack
         levelData = basicAttackData.GetLevelData(level);
     }
 
-    public override void Tick(NetworkObject player, int Direction = 0)
+    public override void Tick(NetworkObject player, int Direction = 0, bool skipCooldown = false)
     {
         //Debug.Log("in the tick");
 

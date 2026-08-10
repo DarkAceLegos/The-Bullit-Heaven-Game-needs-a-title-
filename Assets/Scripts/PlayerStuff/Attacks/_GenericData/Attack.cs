@@ -25,5 +25,5 @@ public abstract class Attack : NetworkBehaviour
     }
 
     protected abstract void OnInitialize();
-    public abstract void Tick(NetworkObject player, int Direction = 0);
+    public abstract void Tick(NetworkObject player, int Direction = 0, bool skipCooldown = false);
 }

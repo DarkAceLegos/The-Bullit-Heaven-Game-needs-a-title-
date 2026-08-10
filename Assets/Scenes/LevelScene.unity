@@ -472205,6 +472205,8 @@ MonoBehaviour:
   deathTime: 1800
   miniBossSpawn: 480
   spawnedEnemies: []
+  prefabs:
+  - {fileID: 7643271203608482145, guid: f1a09b70718f09147ae4f7aba4dad86f, type: 3}
 --- !u!4 &797258132
 Transform:
   m_ObjectHideFlags: 0

@@ -25,12 +25,12 @@ public class ChainLightiningAttack : Attack
 
         if (level == 0)
         {
-            //ModDataTester onHitTester = new ModDataTester();
-            //items.Add(new ItemList(onHitTester, onHitTester.GiveName(), 1));
+            OnHitTester onHitTester = new OnHitTester();
+            items.Add(new ItemList(onHitTester, onHitTester.GiveName(), 1));
         }
     }
 
-    public override void Tick(NetworkObject player, int Direction = 0)
+    public override void Tick(NetworkObject player, int Direction = 0, bool skipCooldown = false)
     {
         //Debug.Log("in the tick");
 
@@ -51,9 +51,11 @@ public class ChainLightiningAttack : Attack
         }
 
         //Debug.Log(usedLevelData.speed);
-
-        if (lastCast + usedLevelData.cooldown > Time.time) { return; }
-        lastCast = Time.time;
+        if (!skipCooldown) 
+        { 
+            if (lastCast + usedLevelData.cooldown > Time.time) { return; }
+            lastCast = Time.time; 
+        }
 
         //Debug.Log("trying To Spawn Chain");
 

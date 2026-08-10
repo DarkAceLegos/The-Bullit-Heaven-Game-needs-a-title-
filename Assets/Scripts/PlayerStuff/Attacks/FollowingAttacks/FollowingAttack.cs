@@ -17,7 +17,7 @@ public class FollowingAttack : Attack
         levelData = AttackData.GetLevelData(level);
     }
 
-    public override void Tick(NetworkObject player, int Direction = 0)
+    public override void Tick(NetworkObject player, int Direction = 0, bool skipCooldown = false)
     {
         //Debug.Log("in the tick");
 
@@ -32,8 +32,11 @@ public class FollowingAttack : Attack
             usedLevelData = i.item.FollowingAttackDataMod(player1, i.stacks, levelData); // need to add to rest
         }
 
-        if (lastCast + levelData.cooldown > Time.time) { return; }
-        lastCast = Time.time;
+        if (!skipCooldown)
+        {
+            if (lastCast + usedLevelData.cooldown > Time.time) { return; }
+            lastCast = Time.time;
+        }
 
         for (int i = 0; i < ((levelData.projCount + player1.additiveProjectileModifier) * player1.percentageProjectileSpeed); i++)
         {

@@ -5,7 +5,7 @@ public class IncreaseArea : Attack
 {
     private NonDamagingAttackData.LevelData levelData;
 
-    public override void Tick(NetworkObject player, int Direction = 0)
+    public override void Tick(NetworkObject player, int Direction = 0, bool skipCooldown = false)
     {
         return;
     }
