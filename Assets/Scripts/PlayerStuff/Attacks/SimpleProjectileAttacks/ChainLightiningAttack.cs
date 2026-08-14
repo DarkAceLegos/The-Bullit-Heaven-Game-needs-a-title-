@@ -12,6 +12,7 @@ public class ChainLightiningAttack : Attack
 
     private BasicAttackData.LevelData levelData;
     private float lastCast;
+    private bool hasPlayerItems = false;
 
     protected override void OnInitialize()
     {
@@ -23,11 +24,11 @@ public class ChainLightiningAttack : Attack
 
         this.GetComponent<Collider2D>().transform.localScale = Vector3.one * levelData.cooldown; // range/area not cooldown
 
-        if (level == 0)
+        /*if (level == 0)
         {
             OnHitTester onHitTester = new OnHitTester();
             items.Add(new ItemList(onHitTester, onHitTester.GiveName(), 1));
-        }
+        }//*/
     }
 
     public override void Tick(NetworkObject player, int Direction = 0, bool skipCooldown = false)
@@ -37,6 +38,15 @@ public class ChainLightiningAttack : Attack
         ulong playerId = player.OwnerClientId;
 
         PlayerHealth._allPlayers[playerId].transform.root.TryGetComponent<Player>(out var player1);
+
+        if(!hasPlayerItems)
+        {
+            foreach(ItemList item in player1.items)
+            {
+                items.Add(item);
+            }
+            hasPlayerItems = true;
+        }
 
         BasicAttackData.LevelData usedLevelData = levelData;
 
@@ -57,17 +67,20 @@ public class ChainLightiningAttack : Attack
             lastCast = Time.time; 
         }
 
+        foreach (ItemList i in items)
+        {
+            i.item.OnCast(player1, i.stacks); // need to add to rest
+        }
+
         //Debug.Log("trying To Spawn Chain");
 
-        for (int i = 0; i < ((usedLevelData.projCount + player1.additiveProjectileModifier) * player1.percentageProjectileSpeed); i++)
+        for (int i = 0; i < ((usedLevelData.projCount + player1.additiveProjectileModifier)); i++)
         {
-            var direction = GetClosetEnemy();//.normalized; //Vector2.Distance(enemyHealths[0].transform.position ,transform.position); //Random.insideUnitCircle;
-            //Debug.Log(direction);
-            //direction.Normalize();//*/
-            //var proj1 = Instantiate(proj, player.transform.position, Quaternion.Euler(direction));
-            //proj1.GetComponent<NetworkObject>().Spawn(true);
+            var direction = GetClosetEnemy();
 
-            NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(proj, player.transform.position, Quaternion.Euler(direction));
+            var startLocal = player.transform.position;
+
+            NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(proj, startLocal, Quaternion.Euler(direction));
 
             enemyNetworkObject.GetComponent<ChainLightingProj>().Initialize(playerId, usedLevelData.damage, usedLevelData.speed, items);//*/
             enemyNetworkObject.GetComponent<ChainLightingProj>().prefab = proj;
@@ -92,8 +105,10 @@ public class ChainLightiningAttack : Attack
     {
         //Debug.Log("collision exit");
         if (!collision.transform.TryGetComponent(out EnemyHealth enemyHealth)) //|| !enemyHealth.IsOwner)
-        { //Debug.Log("returned"); 
-            return; }
+        { 
+            //Debug.Log("returned"); 
+            return; 
+        }
         //collision.transform.TryGetComponent(out EnemyHealth enemyHealth);
         enemyHealths.Remove(enemyHealth);
     }

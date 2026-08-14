@@ -7,6 +7,7 @@ public class DirctionAttack : Attack
 
     private BasicAttackData.LevelData levelData;
     private float lastCast;
+    private bool hasPlayerItems = false;
 
     protected override void OnInitialize()
     {
@@ -25,6 +26,15 @@ public class DirctionAttack : Attack
 
         PlayerHealth._allPlayers[playerId].transform.root.TryGetComponent<Player>(out var player1);
 
+        if (!hasPlayerItems)
+        {
+            foreach (ItemList item in player1.items)
+            {
+                items.Add(item);
+            }
+            hasPlayerItems = true;
+        }
+
         BasicAttackData.LevelData usedLevelData = levelData;
 
         foreach (ItemList i in items)
@@ -36,6 +46,11 @@ public class DirctionAttack : Attack
         {
             if (lastCast + usedLevelData.cooldown > Time.time) { return; }
             lastCast = Time.time;
+        }
+
+        foreach (ItemList i in items)
+        {
+            i.item.OnCast(player1, i.stacks); // need to add to rest
         }
 
         for (int i = 0; i < ((levelData.projCount + player1.additiveProjectileModifier) * player1.percentageProjectileSpeed); i++)
@@ -52,6 +67,8 @@ public class DirctionAttack : Attack
             { rotation.z = 1; direction = Vector3.left; }
             else if (Direction == 3)
             { rotation.z = -1; direction = Vector3.right; }
+
+            var startLocal = player.transform.position;
 
             NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(proj, player.transform.position, rotation);
 

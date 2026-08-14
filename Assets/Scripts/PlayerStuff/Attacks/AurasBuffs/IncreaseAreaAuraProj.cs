@@ -57,7 +57,7 @@ public class IncreaseAreaAuraProj : NetworkBehaviour
         lifeTime += Time.deltaTime;
         if (lifeTime >= duration)
         {
-            Destroy(gameObject);
+            Die();
         }
     }
 
@@ -85,5 +85,17 @@ public class IncreaseAreaAuraProj : NetworkBehaviour
         enemyHealth.transform.root.GetComponent<Player>().additiveAreaModifier -= (int)damage;
 
         enemyHealths.Remove(enemyHealth);
+    }
+
+    private void Die()
+    {
+        /*foreach (ItemList i in items)
+        {
+            i.item.OnDestroyed(_player, i.stacks);
+        }
+
+        NetworkObject.Despawn(false);
+
+        NetworkObjectPool.Singleton.ReturnNetworkObject(NetworkObject, prefab);*/
     }
 }

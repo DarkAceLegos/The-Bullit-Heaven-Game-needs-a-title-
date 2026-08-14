@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 public class ExpPickUp : MonoBehaviour, Icollectible
@@ -22,6 +23,23 @@ public class ExpPickUp : MonoBehaviour, Icollectible
     public void SpawnExp(int value, Vector3 pos)
     {
         amountOfExp = value;
+
+        //var list = FindAnyObjectByType<RealObjectPooler>().expGameObjects;
+
+        //Debug.Log(list.Count);
+
+        /*foreach (var obj in list) 
+        {
+            if (!obj.activeInHierarchy)
+            {
+                //ObjectPooler.SpawnObject(gameObject, pos, Quaternion.identity, ObjectPooler.PoolType.Exp);
+                continue;
+            }
+            else 
+            {
+                Debug.Log("no more emptys");
+            }
+        }//*/
 
         ObjectPooler.SpawnObject(gameObject, pos, Quaternion.identity, ObjectPooler.PoolType.Exp);
     }

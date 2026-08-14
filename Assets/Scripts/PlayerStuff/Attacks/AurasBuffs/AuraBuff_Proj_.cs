@@ -97,6 +97,11 @@ public class AuraBuff_Proj_ : NetworkBehaviour
 
     private void Die()
     {
+        foreach (ItemList i in items)
+        {
+            i.item.OnDestroyed(_player, i.stacks);
+        }
+
         NetworkObject.Despawn(false);
 
         NetworkObjectPool.Singleton.ReturnNetworkObject(NetworkObject, prefab);

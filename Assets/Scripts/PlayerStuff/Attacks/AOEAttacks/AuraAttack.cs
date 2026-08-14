@@ -9,6 +9,7 @@ public class AuraAttack : Attack
     private AOEAttackData.LevelData levelData;
     private float lastCast;
     private bool max = false;
+    private bool hasPlayerItems = false;
 
     protected override void OnInitialize()
     {
@@ -40,6 +41,15 @@ public class AuraAttack : Attack
 
         AOEAttackData.LevelData usedLevelData = levelData;
 
+        if (!hasPlayerItems)
+        {
+            foreach (ItemList item in player1.items)
+            {
+                items.Add(item);
+            }
+            hasPlayerItems = true;
+        }
+
         foreach (ItemList i in items)
         {
             usedLevelData = i.item.AOEAttackDataMod(player1, i.stacks, levelData); // need to add to rest
@@ -51,10 +61,17 @@ public class AuraAttack : Attack
             lastCast = Time.time;
         }
 
+        foreach (ItemList i in items)
+        {
+            i.item.OnCast(player1, i.stacks); // need to add to rest
+        }
+
         for (int i = 0; i < levelData.projCount; i++)
         {
             /*var direction = Random.insideUnitCircle;
             direction.Normalize();*/
+
+            var startLocal = player.transform.position;
 
             NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(proj, player.transform.position, Quaternion.identity);
 
