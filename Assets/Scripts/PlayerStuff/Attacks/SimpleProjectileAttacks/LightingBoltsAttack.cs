@@ -67,7 +67,16 @@ public class LightingBoltsAttack : Attack
             //var direction = Random.insideUnitCircle;
             //direction.Normalize();
 
-            NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(proj, enemyHealths[randomInt].transform.position, Quaternion.identity);
+            Vector3 startLocal = enemyHealths[randomInt].transform.position;
+
+            foreach (ItemList j in items)
+            {
+                proj = j.item.AttackChangeProj(player1, j.stacks, proj);
+                //direction = j.item.AttackDirectionMod(player1, j.stacks, direction, usedLevelData.projCount + player1.additiveProjectileModifier, i);
+                startLocal = j.item.AttackStartLocationMod(player1, j.stacks, startLocal, usedLevelData.projCount + player1.additiveProjectileModifier, i);
+            }
+
+            NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(proj, startLocal, Quaternion.identity);
 
             enemyNetworkObject.GetComponent<LightingBoltsProj>().Initialize(playerId, levelData.damage, levelData.speed);
             enemyNetworkObject.GetComponent<LightingBoltsProj>().prefab = proj;

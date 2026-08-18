@@ -80,6 +80,13 @@ public class ChainLightiningAttack : Attack
 
             var startLocal = player.transform.position;
 
+            foreach (ItemList j in items)
+            {
+                proj = j.item.AttackChangeProj(player1, j.stacks, proj);
+                direction = j.item.AttackDirectionMod(player1, j.stacks, direction, usedLevelData.projCount + player1.additiveProjectileModifier, i);
+                startLocal = j.item.AttackStartLocationMod(player1, j.stacks, startLocal, usedLevelData.projCount + player1.additiveProjectileModifier, i);
+            }
+
             NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(proj, startLocal, Quaternion.Euler(direction));
 
             enemyNetworkObject.GetComponent<ChainLightingProj>().Initialize(playerId, usedLevelData.damage, usedLevelData.speed, items);//*/

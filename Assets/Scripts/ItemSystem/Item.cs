@@ -11,7 +11,7 @@ public abstract class Item
     public virtual void UpdateAttack(Player player, int stacks) { }
     public virtual void UpdateEnemy(EnemyHealth enemyHealth, int stacks) { }
 
-    public virtual void OnHit(Player player , EnemyHealth enemyHealth, int stacks) { }
+    public virtual void OnHit(Player player , EnemyHealth enemyHealth, GameObject proj, int stacks) { }
     public virtual void OnHitPlayer(Player player, int stacks) { }
 
     public virtual void OnDestroyed(Player player, int stacks) { }
@@ -21,8 +21,8 @@ public abstract class Item
     public virtual void OnCast(Player player, int stacks) { }
 
     public virtual GameObject AttackChangeProj(Player player, int stacks, GameObject proj) { return proj; }
-    public virtual Vector3 AttackDirectionMod(Player player, int stacks, Vector3 destinaton, int projCount) { return destinaton; }
-    public virtual Vector3 AttackStartLocationMod(Player player, int stacks, Vector3 startLocal, int projCount) { return startLocal; }
+    public virtual Vector3 AttackDirectionMod(Player player, int stacks, Vector3 destinaton, int projCount, int whichProj) { return destinaton; }
+    public virtual Vector3 AttackStartLocationMod(Player player, int stacks, Vector3 startLocal, int projCount, int whichProj) { return startLocal; }
 
     public virtual BasicAttackData.LevelData BasicAttackDataMod(Player player, int stacks, BasicAttackData.LevelData basicAttackData) { return basicAttackData; }
     public virtual AOEAttackData.LevelData AOEAttackDataMod(Player player, int stacks, AOEAttackData.LevelData basicAttackData) { return basicAttackData; }
@@ -50,7 +50,7 @@ public class OnHitTester : Item
         return "OnHitTest";
     }
 
-    public override void OnHit(Player player, EnemyHealth enemyHealth, int stacks)
+    public override void OnHit(Player player, EnemyHealth enemyHealth, GameObject proj, int stacks)
     {
         //Debug.Log(enemyHealth.ToString() + " Hit enemy " + stacks);
 

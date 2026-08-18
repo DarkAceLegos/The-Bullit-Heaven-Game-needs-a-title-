@@ -79,7 +79,7 @@ public class FollowingAttackProj : NetworkBehaviour
 
         foreach (ItemList i in items)
         {
-            i.item.OnHit(_player, enemyHealth, i.stacks);
+            i.item.OnHit(_player, enemyHealth, prefab, i.stacks);
         }
 
         enemyHealth.DamageEnemy(damage);

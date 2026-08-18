@@ -55,12 +55,19 @@ public class ShootUpEffectedByGravityAttack : Attack
 
         for (int i = 0; i < ((levelData.projCount + player1.additiveProjectileModifier) * player1.percentageProjectileSpeed); i++)
         {
-            var direction = Random.insideUnitCircle;
+            Vector3 direction = Random.insideUnitCircle;
             direction.Normalize();
 
             var startLocal = player.transform.position;
 
-            NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(proj, player.transform.position, Quaternion.Euler(direction));
+            foreach (ItemList j in items)
+            {
+                proj = j.item.AttackChangeProj(player1, j.stacks, proj);
+                direction = j.item.AttackDirectionMod(player1, j.stacks, direction, usedLevelData.projCount + player1.additiveProjectileModifier, i);
+                startLocal = j.item.AttackStartLocationMod(player1, j.stacks, startLocal, usedLevelData.projCount + player1.additiveProjectileModifier, i);
+            }
+
+            NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(proj, startLocal, Quaternion.Euler(direction));
 
             enemyNetworkObject.GetComponent<ShootUpEffectedByGravityProj>().Initialize(playerId, levelData.damage, levelData.speed);//*/
             enemyNetworkObject.GetComponent<ShootUpEffectedByGravityProj>().prefab = proj;

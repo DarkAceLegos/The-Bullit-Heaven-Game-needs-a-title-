@@ -93,7 +93,7 @@ public class ChainLightingProj : NetworkBehaviour
         {
             //Debug.Log(i.name);
 
-            i.item.OnHit(_player, enemyHealth, i.stacks);
+            i.item.OnHit(_player, enemyHealth, prefab, i.stacks);
         }
 
         enemyHealth.DamageEnemy(damage);

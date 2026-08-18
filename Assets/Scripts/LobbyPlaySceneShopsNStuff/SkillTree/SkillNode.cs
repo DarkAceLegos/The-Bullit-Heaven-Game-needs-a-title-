@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -19,6 +20,13 @@ public class SkillNode : MonoBehaviour, IPointerClickHandler, IDataPersistence
     [SerializeField] private List<LevelUps> levelUps;
 
     [SerializeField] public List<SkillNode> conections;
+
+    public static event EventHandler<OnUnlockedEventArgs> OnUnlocked;
+
+    public class OnUnlockedEventArgs : EventArgs
+    {
+        public string id_;
+    }
 
     /*public enum stats
     {
@@ -52,6 +60,11 @@ public class SkillNode : MonoBehaviour, IPointerClickHandler, IDataPersistence
         id = Guid.NewGuid().ToString();
     }
 
+    public string GetId()
+    {
+        return id;
+    }
+
     public void LoadData(GameData progression)
     {
         progression.skillTree.TryGetValue(id, out unlocked);
@@ -79,9 +92,9 @@ public class SkillNode : MonoBehaviour, IPointerClickHandler, IDataPersistence
                 { return; }
             }
             GetComponent<Image>().color = Color.green;
-            ShowConections();
             unlocked = true;
-            if (PlayerMetaProgression.Instance.coins > SkillCost.Instance.cost && PlayerMetaProgression.Instance.spentSkillPoints <= 0)
+            ShowConections();            
+            if (PlayerMetaProgression.Instance.coins >= SkillCost.Instance.cost && PlayerMetaProgression.Instance.spentSkillPoints <= 0)
             { 
                 PlayerMetaProgression.Instance.ChangeCoinAmount(-SkillCost.Instance.cost);
                 PlayerMetaProgression.Instance.ChangeStat(100, 1);
@@ -111,7 +124,7 @@ public class SkillNode : MonoBehaviour, IPointerClickHandler, IDataPersistence
     }
 
     public void Show()
-    {
+    {        
         gameObject.SetActive(true);
     }
 
@@ -128,6 +141,10 @@ public class SkillNode : MonoBehaviour, IPointerClickHandler, IDataPersistence
             conections.Show();
             conections.clickable = true;
         }
+        OnUnlocked?.Invoke(this, new OnUnlockedEventArgs
+        {
+            id_ = id,
+        });
     }
 
     public void StatSkillNodeComp()

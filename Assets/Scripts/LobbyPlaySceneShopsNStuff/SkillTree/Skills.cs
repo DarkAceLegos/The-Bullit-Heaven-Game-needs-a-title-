@@ -5,7 +5,7 @@ public class Skills : MonoBehaviour
 {
     [SerializeField] private List<SkillNode> skillNodes;
 
-    private void Start()
+    private void Awake()
     {
         skillNodes.Clear();
         foreach (var child in this.GetComponentsInChildren<SkillNode>())
@@ -13,6 +13,7 @@ public class Skills : MonoBehaviour
             skillNodes.Add(child);
         }
 
+        //Debug.Log("Done Awake");
     }
 
     private void OnEnable()
@@ -21,5 +22,7 @@ public class Skills : MonoBehaviour
         {
             if (node.unlocked && node.clickable) { node.ShowConections(); }
         }
+
+        //Debug.Log("Done OnEnable");
     }
 }

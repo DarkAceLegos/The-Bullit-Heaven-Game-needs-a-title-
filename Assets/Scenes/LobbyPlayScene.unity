@@ -210,11 +210,11 @@ PrefabInstance:
     - target: {fileID: 3603919684488498252, guid: 7b7431b1d1383f34a9206ca36da0cc2f, type: 3}
       propertyPath: endNode
       value: 
-      objectReference: {fileID: 606264253}
+      objectReference: {fileID: 69456783}
     - target: {fileID: 3603919684488498252, guid: 7b7431b1d1383f34a9206ca36da0cc2f, type: 3}
       propertyPath: startNode
       value: 
-      objectReference: {fileID: 1145900133}
+      objectReference: {fileID: 606264253}
     - target: {fileID: 7870833974244028958, guid: 7b7431b1d1383f34a9206ca36da0cc2f, type: 3}
       propertyPath: m_Name
       value: Conection Line (71)
@@ -1417,8 +1417,8 @@ MonoBehaviour:
   - stats: 2
     value: 1
   conections:
-  - {fileID: 1319897466}
-  - {fileID: 1053698700}
+  - {fileID: 563328224}
+  - {fileID: 29758234}
 --- !u!1001 &29758231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1595,7 +1595,7 @@ MonoBehaviour:
   - stats: 2
     value: 1
   conections:
-  - {fileID: 1319897466}
+  - {fileID: 24768950}
   - {fileID: 81028702}
 --- !u!1 &31770522
 GameObject:
@@ -3538,8 +3538,8 @@ MonoBehaviour:
   - {fileID: 1319897466}
   - {fileID: 1253994701}
   - {fileID: 906668719}
-  - {fileID: 1361168350}
   - {fileID: 1820049789}
+  - {fileID: 29758234}
 --- !u!1001 &83761747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39627,8 +39627,8 @@ MonoBehaviour:
   - stats: 17
     value: 0.1
   conections:
-  - {fileID: 1528612829}
-  - {fileID: 2112180009}
+  - {fileID: 99522677}
+  - {fileID: 1105997469}
 --- !u!1001 &870581656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48099,9 +48099,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1080, y: -146}
+  m_AnchoredPosition: {x: -330, y: 149}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 1.7300683, y: 0.20445344}
+  m_Pivot: {x: 0.12414578, y: 0.8016194}
 --- !u!114 &1115687418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50282,6 +50282,7 @@ MonoBehaviour:
     value: 0.1
   conections:
   - {fileID: 1505149055}
+  - {fileID: 1790096048}
 --- !u!1001 &1191256984
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55569,7 +55570,8 @@ MonoBehaviour:
     value: 0.1
   conections:
   - {fileID: 913856657}
-  - {fileID: 526860479}
+  - {fileID: 569969143}
+  - {fileID: 1194279863}
 --- !u!1001 &1324996584
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73173,7 +73175,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.9998627, y: 0}
+  m_AnchoredPosition: {x: 1.9999237, y: 0}
   m_SizeDelta: {x: 5000, y: 5000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1799063091
@@ -84101,6 +84103,7 @@ GameObject:
   - component: {fileID: 2068494208}
   - component: {fileID: 2068494210}
   - component: {fileID: 2068494209}
+  - component: {fileID: 2068494211}
   m_Layer: 5
   m_Name: Conections
   m_TagString: Untagged
@@ -84287,6 +84290,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 0
+--- !u!114 &2068494211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068494207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2e2ccc4ea21f2948ba951ec78422af8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillNodes: []
 --- !u!1 &2069449875
 GameObject:
   m_ObjectHideFlags: 0
