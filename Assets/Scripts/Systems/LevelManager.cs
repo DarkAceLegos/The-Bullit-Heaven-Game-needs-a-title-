@@ -55,6 +55,8 @@ public class LevelManager : NetworkBehaviour
         experiance -= expToNextLevel;
         level++;
 
+        //OnLevelUp
+
         SyncExpRpc(experiance);
         SyncLevelRpc(level);
     }

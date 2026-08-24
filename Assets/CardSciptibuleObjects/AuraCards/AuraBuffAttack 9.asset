@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c881043157d8af4aada2bafa9636846, type: 3}
-  m_Name: TestStatCard
+  m_Script: {fileID: 11500000, guid: fbb10d61ad1015d4dabe00ce5e914349, type: 3}
+  m_Name: AuraBuffAttack 9
   m_EditorClassIdentifier: 
   cardName: 
   cardText: 
@@ -19,5 +19,4 @@ MonoBehaviour:
   cardForeground: {fileID: 0}
   foilEffect: {fileID: 0}
   isFoil: 0
-  statId: 
-  statChangeAmount: []
+  attackId: 59

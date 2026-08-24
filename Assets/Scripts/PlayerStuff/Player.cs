@@ -17,7 +17,7 @@ public class Player : NetworkBehaviour, IDataPersistence
 
     public static Player LoaclInstance { get; private set; }
 
-    public float moveSpeed;
+    public float moveSpeed = 4f;
     [SerializeField] public int additiveMaxHealthModifier;
     [SerializeField] public float percentageMaxHealthModifier = 1f;
     [SerializeField] public int additiveDamageModifier;
