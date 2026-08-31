@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fbb10d61ad1015d4dabe00ce5e914349, type: 3}
-  m_Name: AuraBuffAttack 2
+  m_Name: CooldownBuffAttack
   m_EditorClassIdentifier: 
-  cardName: 
-  cardText: 
+  cardName: Increase Cooldown With Buff
+  cardText: Aura that decrease cooldown by 0.01 for eveyone in the area
   cardId: 
-  cardBackground: {fileID: 0}
+  cardBackground: {fileID: -7069720901952774207, guid: ad0af6a07a8c4ca488a650093232a37f, type: 3}
   cardForeground: {fileID: 0}
-  foilEffect: {fileID: 0}
+  foilEffect: {fileID: -7069720901952774207, guid: ad0af6a07a8c4ca488a650093232a37f, type: 3}
   isFoil: 0
-  attackId: 52
+  attackId: 51

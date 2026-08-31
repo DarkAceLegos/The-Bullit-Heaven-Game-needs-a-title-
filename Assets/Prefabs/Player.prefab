@@ -446,6 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5222297a4dbff814e9d659ebd4a2189a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  circleCollider: {fileID: 2534799657826590300}
 --- !u!1 &3703151698663380674
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,6 +855,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2b4153ff88b123e43a1845468d61e1e9, type: 2}
   collector: {fileID: 4077690493105278959}
   pickUpRange: {fileID: 4811021453028750536}
+  items: []
 --- !u!114 &3595837932151883963
 MonoBehaviour:
   m_ObjectHideFlags: 0

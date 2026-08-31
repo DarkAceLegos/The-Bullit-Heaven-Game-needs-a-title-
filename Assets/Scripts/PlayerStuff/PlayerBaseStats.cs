@@ -60,6 +60,6 @@ public class PlayerBaseStats : MonoBehaviour
         additiveAuraArea,
         percentageAuraArea,
         additiveAuraEffect,
-        percentageAuraEffect,
+        percentageAuraEffect,   
     }
 }

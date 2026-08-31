@@ -62,6 +62,12 @@ public class AuraBuffHolder : MonoBehaviour
             case PlayerBaseStats.Stat.percentageDuration: player.percentageDuration += amount; break;
             case PlayerBaseStats.Stat.additiveExperience: player.additiveExperience += (int)amount; break;
             case PlayerBaseStats.Stat.percentageExperience: player.percentageExperience += amount; break;
+            case PlayerBaseStats.Stat.additivePickUpRange: player.SetAdditivePickUpRange(player.additivePickUpRange + (int)amount); break;
+            case PlayerBaseStats.Stat.percentagePickUpRange: player.SetPercentagePickUpRange(player.percentagePickUpRange + amount); break;
+            case PlayerBaseStats.Stat.additiveAuraArea: player.additiveAuraArea += (int)amount; break;
+            case PlayerBaseStats.Stat.percentageAuraArea: player.percentageAuraArea += amount; break;
+            case PlayerBaseStats.Stat.additiveAuraEffect: player.additiveAuraEffect += (int)amount; break;
+            case PlayerBaseStats.Stat.percentageAuraEffect: player.percentageAuraEffect += amount; break;
 
 
             default:

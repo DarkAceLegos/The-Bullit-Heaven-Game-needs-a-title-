@@ -41,7 +41,14 @@ public class IncreaseStat : Attack
             case PlayerBaseStats.Stat.percentageDuration: player.percentageDuration += levelData.value; break;
             case PlayerBaseStats.Stat.additiveExperience: player.additiveExperience += (int)levelData.value; break;
             case PlayerBaseStats.Stat.percentageExperience: player.percentageExperience += levelData.value; break;
-                //case PlayerBaseStats.Stat.
+            case PlayerBaseStats.Stat.additivePickUpRange: player.SetAdditivePickUpRange(player.additivePickUpRange + (int)levelData.value); break; 
+            case PlayerBaseStats.Stat.percentagePickUpRange: player.SetPercentagePickUpRange(player.percentagePickUpRange + levelData.value); break;
+            case PlayerBaseStats.Stat.additiveAuraArea: player.additiveAuraArea += (int)levelData.value; break;
+            case PlayerBaseStats.Stat.percentageAuraArea: player.percentageAuraArea += levelData.value; break;
+            case PlayerBaseStats.Stat.additiveAuraEffect: player.additiveAuraEffect += (int)levelData.value; break;
+            case PlayerBaseStats.Stat.percentageAuraEffect: player.percentageAuraEffect += levelData.value; break;
+
+            //case PlayerBaseStats.Stat.
 
 
             default:

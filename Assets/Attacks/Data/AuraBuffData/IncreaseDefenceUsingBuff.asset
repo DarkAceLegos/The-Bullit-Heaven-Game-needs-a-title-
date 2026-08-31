@@ -16,7 +16,7 @@ MonoBehaviour:
   attackName: Increase Defence With Buff
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
-  - Aura that Increase area by 1 for eveyone in the arua
+  - Aura that Increase defence by 1% for eveyone in the area
   icon: {fileID: -206542422392470365, guid: 06b9b27937fd8f149906635afbd5027d, type: 3}
   prefab: {fileID: 3252152671137035060, guid: bc64293fa0f228b44b6ba7ef73a8cbc2, type: 3}
   levels:

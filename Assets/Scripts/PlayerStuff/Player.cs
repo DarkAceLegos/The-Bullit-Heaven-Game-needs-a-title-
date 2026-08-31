@@ -65,6 +65,14 @@ public class Player : NetworkBehaviour, IDataPersistence
     [SerializeField] private Collector collector;
     [SerializeField] private PickUpRange pickUpRange;
 
+    public event EventHandler<PickUpRangeEventArgs> OnPickUpRangeChange;
+
+    public class PickUpRangeEventArgs : EventArgs
+    {
+        public int _additivePickUpRange;
+        public float _percentagePickUpRange = 1f;
+    }
+
     public List<ItemList> items = new List<ItemList>();
 
     public List<AttackData> GetAllPlayerUnlockedAttacks() { return allAttacksPlayerUnlocked; }
@@ -154,6 +162,11 @@ public class Player : NetworkBehaviour, IDataPersistence
             {
                 player = Player.LoaclInstance.NetworkObject,
                 clientId = Player.LoaclInstance.OwnerClientId,
+            });
+            OnPickUpRangeChange?.Invoke(this, new PickUpRangeEventArgs
+            {
+                _additivePickUpRange = additivePickUpRange,
+                _percentagePickUpRange = percentagePickUpRange
             });
         }
         else
@@ -315,5 +328,27 @@ public class Player : NetworkBehaviour, IDataPersistence
     public void SaveData(ref GameData progression)
     {
         //throw new NotImplementedException();
+    }
+
+    public void SetAdditivePickUpRange(int newPickUpRange)
+    {
+        additivePickUpRange = newPickUpRange;
+
+        OnPickUpRangeChange?.Invoke(this, new PickUpRangeEventArgs
+        {
+            _additivePickUpRange = additivePickUpRange,
+            _percentagePickUpRange = percentagePickUpRange
+        });
+    }
+
+    public void SetPercentagePickUpRange(float newPercentagePickUpRange)
+    {
+        percentagePickUpRange = newPercentagePickUpRange;
+
+        OnPickUpRangeChange?.Invoke(this, new PickUpRangeEventArgs
+        {
+            _additivePickUpRange = additivePickUpRange,
+            _percentagePickUpRange = percentagePickUpRange
+        });
     }
 }
