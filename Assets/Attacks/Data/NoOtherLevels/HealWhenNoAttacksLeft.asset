@@ -14,11 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackId: 99
   attackName: Heal
+  attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Heals you for 50 Hp.
   - Heals you for 50 Hp.
   icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   prefab: {fileID: -477287753565412272, guid: db43f87be0ebc004d9737b6e460d9ee0, type: 3}
   levels:
-  - value: 50
-  - value: 50
+  - stat: 
+    value:
+    - 50
+  - stat: 
+    value:
+    - 50

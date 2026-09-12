@@ -14,11 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackId: 98
   attackName: Coins
+  attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Gain 10 coins.
   - Gain 10 coins.
   icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   prefab: {fileID: 5017562780985731447, guid: 5b6d0702808aaaf45b1f74fc91c2f52e, type: 3}
   levels:
-  - value: 10
-  - value: 10
+  - stat: 00000000
+    value:
+    - 10
+  - stat: 
+    value:
+    - 10

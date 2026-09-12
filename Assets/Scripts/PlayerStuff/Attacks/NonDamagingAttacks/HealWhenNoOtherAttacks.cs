@@ -15,7 +15,7 @@ public class HealWhenNoOtherAttacks : Attack
         var basicAttackData = (NonDamagingAttackData)data;
         levelData = basicAttackData.GetLevelData(level);
 
-        transform.root.GetComponentInChildren<PlayerHealth>().changeHealth((int)levelData.value);
+        transform.root.GetComponentInChildren<PlayerHealth>().changeHealth((int)levelData.value[0]);
 
         level--;
     }

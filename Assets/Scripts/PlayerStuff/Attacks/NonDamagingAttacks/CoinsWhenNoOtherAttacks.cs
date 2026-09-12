@@ -15,6 +15,8 @@ public class CoinsWhenNoOtherAttacks : Attack
         var basicAttackData = (NonDamagingAttackData)data;
         levelData = basicAttackData.GetLevelData(level);
 
+        transform.root.GetComponentInChildren<PlayerMetaProgression>().ChangeCoinAmount((int)(levelData.value[0] * Player.LoaclInstance.percentageTreasurGain));
+
         level--;
     }
 }

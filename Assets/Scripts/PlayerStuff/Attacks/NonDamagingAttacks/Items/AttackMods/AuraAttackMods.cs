@@ -24,21 +24,28 @@ public class AuraAttackMods : Attack
 
         //player.GetComponentInChildren<ChainLightiningAttack>()
 
-        item = GetItem(levelData.index);
+        //item = GetItem(levelData.index[0]);
         //player.GetComponentInChildren<ChainLightiningAttack>().items.Add(new ItemList(onHitTester, onHitTester.GiveName(), 1));
 
-        var chainLightiningAttack = player.GetComponentInChildren<AuraAttack>();
+        //var chainLightiningAttack = player.GetComponentInChildren<AuraAttack>();
 
-        foreach (var i in chainLightiningAttack.items)
+        for (int j = 0; j < levelData.index.Count; j++)
         {
-            if (i.name == item.GiveName())
-            {
-                i.stacks += levelData.numStacks;
-                return;
-            }
-        }
+            GiveItems(player, j);
 
-        chainLightiningAttack.items.Add(new ItemList(item, item.GiveName(), 1));
+            /*item = GetItem(levelData.index[j]);
+
+            foreach (var i in chainLightiningAttack.items)
+            {
+                if (i.name == item.GiveName())
+                {
+                    i.stacks += levelData.numStacks[j];
+                    return;
+                }
+            }
+
+            chainLightiningAttack.items.Add(new ItemList(item, item.GiveName(), levelData.numStacks[j]));*/
+        }
     }
 
     public Item GetItem(int item)
@@ -59,7 +66,26 @@ public class AuraAttackMods : Attack
                 return null;
         }
     }
+
+    private void GiveItems(Player player, int j)
+    {
+        var chainLightiningAttack = player.GetComponentInChildren<AuraAttack>();
+
+        item = GetItem(levelData.index[j]);
+
+        foreach (var i in chainLightiningAttack.items)
+        {
+            if (i.name == item.GiveName())
+            {
+                i.stacks += levelData.numStacks[j];
+                return;
+            }
+        }
+
+        chainLightiningAttack.items.Add(new ItemList(item, item.GiveName(), levelData.numStacks[j]));
+    }
 }
+
 
 public enum AOEAttackModsItems
 {

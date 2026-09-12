@@ -20,5 +20,5 @@ MonoBehaviour:
   icon: {fileID: -2993178445623368436, guid: b79a60e3316f48542878a5e7821ccf50, type: 3}
   prefab: {fileID: -5975309419604699688, guid: 4b6d47e7a700a8c42b2a4b3b3ceb7563, type: 3}
   levels:
-  - index: 0
-    numStacks: 1
+  - index: 03000000
+    numStacks: 01000000

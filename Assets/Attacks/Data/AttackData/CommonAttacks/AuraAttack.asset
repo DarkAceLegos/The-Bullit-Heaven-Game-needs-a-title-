@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 719dcd8766816bc42a831d5fde51664a, type: 3}
+  m_Name: AuraAttack
+  m_EditorClassIdentifier: 
+  attackId: 4c
+  attackName: Aura
+  attacksOnceMaxedLeveled: []
+  levelDiscriptions:
+  - Aura
+  - Area
+  - Cooldown
+  - Damage
+  - Area
+  - Damage
+  - Area
+  - CoolDown
+  - Damage
+  - Area
+  icon: {fileID: -2413806693520163455, guid: 6c547d3ef21a4de41b0de74121faae13, type: 3}
+  prefab: {fileID: -5113802887871975, guid: ca75f560d3ea279459ac9a22540d60a9, type: 3}
+  levels:
+  - projCount: 1
+    damage: 5
+    cooldown: 4
+    speed: 0
+    area: 0.5
+  - projCount: 1
+    damage: 5
+    cooldown: 4
+    speed: 0
+    area: 1
+  - projCount: 1
+    damage: 5
+    cooldown: 3.9
+    speed: 0
+    area: 1
+  - projCount: 1
+    damage: 10
+    cooldown: 3.9
+    speed: 0
+    area: 1
+  - projCount: 1
+    damage: 10
+    cooldown: 3.9
+    speed: 0
+    area: 1.5
+  - projCount: 1
+    damage: 15
+    cooldown: 3.9
+    speed: 0
+    area: 1.5
+  - projCount: 1
+    damage: 15
+    cooldown: 3.9
+    speed: 0
+    area: 2
+  - projCount: 1
+    damage: 15
+    cooldown: 3.5
+    speed: 0
+    area: 2
+  - projCount: 1
+    damage: 20
+    cooldown: 3.5
+    speed: 0
+    area: 2
+  - projCount: 1
+    damage: 15
+    cooldown: 3.5
+    speed: 0
+    area: 3

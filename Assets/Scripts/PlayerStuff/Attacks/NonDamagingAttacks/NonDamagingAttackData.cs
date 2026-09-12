@@ -8,8 +8,9 @@ public class NonDamagingAttackData : AttackData
     [System.Serializable]
     public struct LevelData
     {
-        public PlayerBaseStats.Stat stat;
-        public float value;
+        public List<PlayerBaseStats.Stat> stat;
+        public List<float> value;
+        //public SerializableDictionary<PlayerBaseStats.Stat, int> listBuffes;
     }
 
     [SerializeField] private List<LevelData> levels = new();
