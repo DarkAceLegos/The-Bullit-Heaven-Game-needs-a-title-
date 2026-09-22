@@ -5,6 +5,7 @@ public class AuraAttack : Attack
 {
     [SerializeField] private GameObject proj;
     [SerializeField] private AOEAttackData AddingAttack;
+    [SerializeField] private GameObject art;
 
     private AOEAttackData.LevelData levelData;
     private float lastCast;
@@ -19,13 +20,30 @@ public class AuraAttack : Attack
 
         levelData = basicAttackData.GetLevelData(level);
 
+        transform.root.TryGetComponent<Player>(out Player player);
+
+        art.transform.localScale = Vector3.one * ((levelData.area + player.additiveAreaModifier) * player.percentageAreaModifier);
+
         if(level == basicAttackData.maxLevel)
         { 
             if(max) { return; }
+            if(!IsOwner) { return; }
             //if(!IsOwner) {return;}
             //if(!Player.LoaclInstance.allAttacksPlayerUnlocked.Contains(basicAttackData)) { return; }
 
-            basicAttackData.AddingAttacksOnceMaxedLeveled();
+            //basicAttackData.AddingAttacksOnceMaxedLeveled();
+
+            foreach (SerializableAttackCard card in Player.LoaclInstance.playerMetas.attackCardDeck)
+            {
+                if (card.attackId == basicAttackData.attackId)
+                {
+                    foreach(string attackToAdd in card.addIfMax)
+                    {
+                        GameManager.Instance.allAttacks.TryGetValue(attackToAdd, out AttackData attack);
+                        Player.LoaclInstance.allAttacksPlayerUnlocked.Add(attack);
+                    }
+                }
+            }
 
             max = true;
         }

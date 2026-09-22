@@ -1,9 +1,11 @@
+using Unity.Burst.Intrinsics;
 using Unity.Netcode;
 using UnityEngine;
 
 public class IncreaseAreaAura : Attack
 {
     [SerializeField] private IncreaseAreaAuraProj proj;
+    [SerializeField] private GameObject art;
 
     private AOEAttackData.LevelData levelData;
     private float lastCast;
@@ -15,6 +17,10 @@ public class IncreaseAreaAura : Attack
         //Debug.Log(basicAttackData);
 
         levelData = basicAttackData.GetLevelData(level);
+
+        transform.root.TryGetComponent<Player>(out Player player);
+
+        art.transform.localScale = Vector3.one * ((levelData.area + player.additiveAreaModifier) * player.percentageAreaModifier);
     }
 
     public override void Tick(NetworkObject player, int Direction = 0, bool skipCooldown = false)

@@ -19,5 +19,14 @@ public abstract class AttackData : ScriptableObject
         foreach (AttackData attack in attacksOnceMaxedLeveled) {
             Player.LoaclInstance.allAttacksPlayerUnlocked.Add(attack);
         }
+
+    }
+
+    public void AddingAttackOnceMaxedLevelDeck(List<AttackData> attacks)
+    {
+        foreach (AttackData attack in attacks)
+        {
+            Player.LoaclInstance.allAttacksPlayerUnlocked.Add(attack);
+        }
     }
 }

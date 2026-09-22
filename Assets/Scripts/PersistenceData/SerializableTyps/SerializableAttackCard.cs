@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -11,4 +12,5 @@ public class SerializableAttackCard
     [SerializeField] public string foilEffectName;
     [SerializeField] public bool isFoil;
     [SerializeField] public string attackId;
+    [SerializeField] public List<string> addIfMax;
 }

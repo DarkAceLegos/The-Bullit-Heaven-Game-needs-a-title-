@@ -37,6 +37,7 @@ public class AOEProjectile : NetworkBehaviour
         //Debug.Log("I initialized");
 
         lifeTime = 0;
+        transform.localScale = Vector3.one;
         enemyHealths.Clear();
 
         PlayerHealth._allPlayers[playerId].transform.root.TryGetComponent<Player>(out var player);

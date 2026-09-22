@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackId: 4
   attackName: Aura
+  attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Aura
   - Area
@@ -32,49 +33,49 @@ MonoBehaviour:
     damage: 5
     cooldown: 4
     speed: 0
-    area: 0.5
+    area: 2
   - projCount: 1
     damage: 5
     cooldown: 4
     speed: 0
-    area: 1
+    area: 2.5
   - projCount: 1
     damage: 5
     cooldown: 3.9
     speed: 0
-    area: 1
+    area: 2.5
   - projCount: 1
     damage: 10
     cooldown: 3.9
     speed: 0
-    area: 1
+    area: 2.5
   - projCount: 1
     damage: 10
     cooldown: 3.9
     speed: 0
-    area: 1.5
+    area: 3
   - projCount: 1
     damage: 15
     cooldown: 3.9
     speed: 0
-    area: 1.5
+    area: 3
   - projCount: 1
     damage: 15
     cooldown: 3.9
     speed: 0
-    area: 2
+    area: 3.5
   - projCount: 1
     damage: 15
     cooldown: 3.5
     speed: 0
-    area: 2
+    area: 3.5
   - projCount: 1
     damage: 20
     cooldown: 3.5
     speed: 0
-    area: 2
+    area: 3.5
   - projCount: 1
     damage: 15
     cooldown: 3.5
     speed: 0
-    area: 3
+    area: 4

@@ -35,6 +35,7 @@ public class FollowingAttackProj : NetworkBehaviour
         //Debug.Log("I initialized");
 
         lifeTime = 0;
+        transform.localScale = Vector3.one;
 
         PlayerHealth._allPlayers[playerId].transform.root.TryGetComponent<Player>(out var player);
 

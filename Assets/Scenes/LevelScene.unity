@@ -472202,6 +472202,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c1f76ab90f3fcf4eaa053b52876e6f0, type: 2}
   - {fileID: 11400000, guid: 333689a1eb36a494f8f446a44c989d05, type: 2}
   - {fileID: 11400000, guid: b2186acd5e143db429e7fa38d046eef1, type: 2}
+  - {fileID: 11400000, guid: b5d5d7a28ccc00540aa6b36cd8a5b6c0, type: 2}
+  - {fileID: 11400000, guid: c3300186bc6be764bac523f796da0a95, type: 2}
+  - {fileID: 11400000, guid: 3faeb686f1c90424bad7b7885521030d, type: 2}
+  - {fileID: 11400000, guid: 0d5bab931c6808b4fb0c99859b1356ec, type: 2}
+  - {fileID: 11400000, guid: d562fb7d5aa2b5d4f91ecddb651a721c, type: 2}
   deathTime: 1800
   miniBossSpawn: 480
   spawnedEnemies: []
@@ -475736,6 +475741,7 @@ MonoBehaviour:
   - Prefab: {fileID: 5648248743118813263, guid: f4f33dc7690d5ba47a5b45061137c3d1, type: 3}
     PrewarmCount: 100
     poolType: 4
+  expGameObjects: []
 --- !u!1 &1842490323
 GameObject:
   m_ObjectHideFlags: 0

@@ -505,6 +505,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         serializableAttackCard.foilEffectName = card.foilEffect.name;
         serializableAttackCard.isFoil = card.isFoil;
         serializableAttackCard.attackId = card.attackId;
+        serializableAttackCard.addIfMax = card.addIfMax;
 
         if (whichPlace == 0)
         {
@@ -541,6 +542,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
         serializableAttackCard.foilEffectName = card.foilEffect.name;
         serializableAttackCard.isFoil = card.isFoil;
         serializableAttackCard.attackId = card.attackId;
+        serializableAttackCard.addIfMax = card.addIfMax;
 
         if (whichPlace == 0)
         {
@@ -575,6 +577,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
             attackCard.foilEffect = Resources.Load<Sprite>("Sprites/" + attackCardInventory[i].foilEffectName);
             attackCard.isFoil = attackCardInventory[i].isFoil;
             attackCard.attackId = attackCardInventory[i].attackId;
+            attackCard.addIfMax = attackCardInventory[i].addIfMax;
         }
         else if (whichPlace == 1) {
             attackCard.cardName = attackCardDeck[i].cardName;
@@ -585,6 +588,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
             attackCard.foilEffect = Resources.Load<Sprite>("Sprites/" + attackCardDeck[i].foilEffectName);
             attackCard.isFoil = attackCardDeck[i].isFoil;
             attackCard.attackId = attackCardDeck[i].attackId;
+            attackCard.addIfMax = attackCardInventory[i].addIfMax;
         }
         else if (whichPlace == 2)
         {
@@ -596,6 +600,7 @@ public class PlayerMetaProgression : MonoBehaviour, IDataPersistence
             attackCard.foilEffect = Resources.Load<Sprite>("Sprites/" + attackCardDeckLocks[i].foilEffectName);
             attackCard.isFoil = attackCardDeckLocks[i].isFoil;
             attackCard.attackId = attackCardDeckLocks[i].attackId;
+            attackCard.addIfMax = attackCardInventory[i].addIfMax;
         }
         else
         {
