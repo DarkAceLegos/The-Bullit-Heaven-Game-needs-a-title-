@@ -16,7 +16,6 @@ public class AuraAttack : Attack
     {
         var basicAttackData = (AOEAttackData)data;
 
-        //Debug.Log(basicAttackData);
 
         levelData = basicAttackData.GetLevelData(level);
 
@@ -27,20 +26,24 @@ public class AuraAttack : Attack
         if(level == basicAttackData.maxLevel)
         { 
             if(max) { return; }
-            if(!IsOwner) { return; }
             //if(!IsOwner) {return;}
             //if(!Player.LoaclInstance.allAttacksPlayerUnlocked.Contains(basicAttackData)) { return; }
 
             //basicAttackData.AddingAttacksOnceMaxedLeveled();
 
+            Debug.Log("max Level");
+
             foreach (SerializableAttackCard card in Player.LoaclInstance.playerMetas.attackCardDeck)
             {
+                Debug.Log(card);
+
                 if (card.attackId == basicAttackData.attackId)
                 {
+                    Debug.Log("Id Are the same");
                     foreach(string attackToAdd in card.addIfMax)
                     {
                         GameManager.Instance.allAttacks.TryGetValue(attackToAdd, out AttackData attack);
-                        Player.LoaclInstance.allAttacksPlayerUnlocked.Add(attack);
+                        player.allAttacksPlayerUnlocked.Add(attack);
                     }
                 }
             }
