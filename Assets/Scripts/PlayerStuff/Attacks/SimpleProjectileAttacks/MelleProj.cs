@@ -28,7 +28,7 @@ public class MelleProj : NetworkBehaviour
         enabled = IsOwner;
     }
 
-    public void Initialize(ulong playerId, int damage1, float speed1, float duration1 = .25f)
+    public void Initialize(ulong playerId, int damage1, float speed1, List<ItemList> _items, float duration1 = .25f)
     {
         //Debug.Log("I initialized");
 

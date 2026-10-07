@@ -24,31 +24,8 @@ public class AuraAttack : Attack
         art.transform.localScale = Vector3.one * ((levelData.area + player.additiveAreaModifier) * player.percentageAreaModifier);
 
         if(level == basicAttackData.maxLevel)
-        { 
-            if(max) { return; }
-            //if(!IsOwner) {return;}
-            //if(!Player.LoaclInstance.allAttacksPlayerUnlocked.Contains(basicAttackData)) { return; }
-
-            //basicAttackData.AddingAttacksOnceMaxedLeveled();
-
-            Debug.Log("max Level");
-
-            foreach (SerializableAttackCard card in Player.LoaclInstance.playerMetas.attackCardDeck)
-            {
-                Debug.Log(card);
-
-                if (card.attackId == basicAttackData.attackId)
-                {
-                    Debug.Log("Id Are the same");
-                    foreach(string attackToAdd in card.addIfMax)
-                    {
-                        GameManager.Instance.allAttacks.TryGetValue(attackToAdd, out AttackData attack);
-                        player.allAttacksPlayerUnlocked.Add(attack);
-                    }
-                }
-            }
-
-            max = true;
+        {
+            UnlockLevels(player, basicAttackData);
         }
     }
 
@@ -103,7 +80,7 @@ public class AuraAttack : Attack
 
             NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(proj, startLocal, Quaternion.identity);
 
-            enemyNetworkObject.GetComponent<AuraAttackProj>().Initialize(playerId, levelData.damage, levelData.speed, levelData.area);
+            enemyNetworkObject.GetComponent<AuraAttackProj>().Initialize(playerId, levelData.damage, levelData.speed, levelData.area, items);
             enemyNetworkObject.GetComponent<AuraAttackProj>().prefab = proj;
 
             enemyNetworkObject.Spawn(true);
@@ -111,6 +88,23 @@ public class AuraAttack : Attack
             /*var proj1 = Instantiate(proj, player.transform.position, Quaternion.identity);
             proj1.GetComponent<NetworkObject>().Spawn(true);
             proj1.Initialize(playerId, levelData.damage, levelData.speed, levelData.area);//*/
+        }
+    }
+
+    private void UnlockLevels(Player player, AOEAttackData basicAttackData)
+    {
+        foreach (SerializableAttackCard card in Player.LoaclInstance.playerMetas.attackCardDeck)
+        {
+            Debug.Log(card);
+
+            if (card.attackId == basicAttackData.attackId)
+            {
+                foreach (string attackToAdd in card.addIfMax)
+                {
+                    GameManager.Instance.allAttacks.TryGetValue(attackToAdd, out AttackData attack);
+                    player.allAttacksPlayerUnlocked.Add(attack);
+                }
+            }
         }
     }
 }

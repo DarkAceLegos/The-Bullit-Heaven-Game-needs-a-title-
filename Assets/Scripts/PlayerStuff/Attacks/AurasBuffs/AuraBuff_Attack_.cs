@@ -16,6 +16,26 @@ public class AuraBuff_Attack_ : Attack
         //Debug.Log(basicAttackData);
 
         levelData = basicAttackData.GetLevelData(level);
+
+        transform.root.TryGetComponent<Player>(out Player player);
+
+        if (level == basicAttackData.maxLevel)
+        {
+            foreach (SerializableAttackCard card in Player.LoaclInstance.playerMetas.attackCardDeck)
+            {
+                Debug.Log(card);
+
+                if (card.attackId == basicAttackData.attackId)
+                {
+                    Debug.Log("Id Are the same");
+                    foreach (string attackToAdd in card.addIfMax)
+                    {
+                        GameManager.Instance.allAttacks.TryGetValue(attackToAdd, out AttackData attack);
+                        player.allAttacksPlayerUnlocked.Add(attack);
+                    }
+                }
+            }
+        }
     }
 
     public override void Tick(NetworkObject player, int Direction = 0, bool skipCooldown = false)
@@ -77,6 +97,23 @@ public class AuraBuff_Attack_ : Attack
             /*var proj1 = Instantiate(proj, player.transform.position, Quaternion.identity);
             proj1.GetComponent<NetworkObject>().Spawn(true);
             proj1.Initialize(playerId, levelData.amount, levelData.speed, levelData.area, levelData.stat);//*/
+        }
+    }
+
+    private void UnlockLevels(Player player, AuraBuffAttackData basicAttackData)
+    {
+        foreach (SerializableAttackCard card in Player.LoaclInstance.playerMetas.attackCardDeck)
+        {
+            Debug.Log(card);
+
+            if (card.attackId == basicAttackData.attackId)
+            {
+                foreach (string attackToAdd in card.addIfMax)
+                {
+                    GameManager.Instance.allAttacks.TryGetValue(attackToAdd, out AttackData attack);
+                    player.allAttacksPlayerUnlocked.Add(attack);
+                }
+            }
         }
     }
 }

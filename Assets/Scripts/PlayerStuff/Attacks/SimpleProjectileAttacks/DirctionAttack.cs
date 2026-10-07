@@ -16,6 +16,28 @@ public class DirctionAttack : Attack
         //Debug.Log(basicAttackData);
 
         levelData = basicAttackData.GetLevelData(level);
+
+        transform.root.TryGetComponent<Player>(out Player player);
+
+        if (level == basicAttackData.maxLevel)
+        {
+            UnlockLevels(player, basicAttackData);
+
+           /* foreach (SerializableAttackCard card in Player.LoaclInstance.playerMetas.attackCardDeck)
+            {
+                Debug.Log(card);
+
+                if (card.attackId == basicAttackData.attackId)
+                {
+                    Debug.Log("Id Are the same");
+                    foreach (string attackToAdd in card.addIfMax)
+                    {
+                        GameManager.Instance.allAttacks.TryGetValue(attackToAdd, out AttackData attack);
+                        player.allAttacksPlayerUnlocked.Add(attack);
+                    }
+                }
+            }//*/
+        }
     }
 
     public override void Tick(NetworkObject player, int Direction = 0, bool skipCooldown = false)
@@ -79,13 +101,30 @@ public class DirctionAttack : Attack
 
             NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(proj, startLocal, rotation);
 
-            enemyNetworkObject.GetComponent<DirectionProj>().Initialize(playerId, levelData.damage, levelData.speed);
+            enemyNetworkObject.GetComponent<DirectionProj>().Initialize(playerId, levelData.damage, levelData.speed, items);
             enemyNetworkObject.GetComponent<DirectionProj>().prefab = proj;
 
             enemyNetworkObject.Spawn(true);
 
             /*proj1.GetComponent<NetworkObject>().Spawn(true);
             proj1.Initialize(playerId, levelData.damage, levelData.speed);//*/
+        }
+    }
+
+    private void UnlockLevels(Player player, BasicAttackData basicAttackData)
+    {
+        foreach (SerializableAttackCard card in Player.LoaclInstance.playerMetas.attackCardDeck)
+        {
+            Debug.Log(card);
+
+            if (card.attackId == basicAttackData.attackId)
+            {
+                foreach (string attackToAdd in card.addIfMax)
+                {
+                    GameManager.Instance.allAttacks.TryGetValue(attackToAdd, out AttackData attack);
+                    player.allAttacksPlayerUnlocked.Add(attack);
+                }
+            }
         }
     }
 }

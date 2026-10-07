@@ -28,7 +28,7 @@ public class BasicRandomProj : NetworkBehaviour
         enabled = IsOwner;
     }
 
-    public void Initialize(ulong playerId, int damage1, float speed1, float duration1 = 1f)
+    public void Initialize(ulong playerId, int damage1, float speed1, List<ItemList> _items, float duration1 = 1f)
     {
         //Debug.Log("I initialized");
 

@@ -24,6 +24,13 @@ public class ChainLightiningAttack : Attack
 
         this.GetComponent<Collider2D>().transform.localScale = Vector3.one * levelData.cooldown; // range/area not cooldown
 
+        transform.root.TryGetComponent<Player>(out Player player);
+
+        if (level == basicAttackData.maxLevel)
+        {
+            UnlockLevels(player, basicAttackData);
+        }
+
         /*if (level == 0)
         {
             OnHitTester onHitTester = new OnHitTester();
@@ -93,6 +100,23 @@ public class ChainLightiningAttack : Attack
             enemyNetworkObject.GetComponent<ChainLightingProj>().prefab = proj;
 
             enemyNetworkObject.Spawn(true);
+        }
+    }
+
+    private void UnlockLevels(Player player, BasicAttackData basicAttackData)
+    {
+        foreach (SerializableAttackCard card in Player.LoaclInstance.playerMetas.attackCardDeck)
+        {
+            Debug.Log(card);
+
+            if (card.attackId == basicAttackData.attackId)
+            {
+                foreach (string attackToAdd in card.addIfMax)
+                {
+                    GameManager.Instance.allAttacks.TryGetValue(attackToAdd, out AttackData attack);
+                    player.allAttacksPlayerUnlocked.Add(attack);
+                }
+            }
         }
     }
 

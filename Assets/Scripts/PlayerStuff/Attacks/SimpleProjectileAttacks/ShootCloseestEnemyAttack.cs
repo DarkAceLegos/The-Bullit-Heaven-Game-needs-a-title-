@@ -19,6 +19,13 @@ public class ShootCloseestEnemyAttack : Attack
         //Debug.Log(basicAttackData);
 
         levelData = basicAttackData.GetLevelData(level);
+
+        transform.root.TryGetComponent<Player>(out Player player);
+
+        if (level == basicAttackData.maxLevel)
+        {
+            UnlockLevels(player, basicAttackData);
+        }
     }
 
     public override void Tick(NetworkObject player, int Direction = 0, bool skipCooldown = false)
@@ -78,7 +85,7 @@ public class ShootCloseestEnemyAttack : Attack
 
             NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(proj, startLocal, Quaternion.Euler(direction));
 
-            enemyNetworkObject.GetComponent<ShootClosetEnemyProj>().Initialize(playerId, levelData.damage, levelData.speed);//*/
+            enemyNetworkObject.GetComponent<ShootClosetEnemyProj>().Initialize(playerId, levelData.damage, levelData.speed, items);//*/
             enemyNetworkObject.GetComponent<ShootClosetEnemyProj>().prefab = proj;
 
             enemyNetworkObject.Spawn(true);
@@ -86,6 +93,23 @@ public class ShootCloseestEnemyAttack : Attack
             /*var proj1 = Instantiate(proj, player.transform.position, Quaternion.Euler(direction));
             proj1.GetComponent<NetworkObject>().Spawn(true);
             proj1.Initialize(playerId, levelData.damage, levelData.speed);//*/
+        }
+    }
+
+    private void UnlockLevels(Player player, BasicAttackData basicAttackData)
+    {
+        foreach (SerializableAttackCard card in Player.LoaclInstance.playerMetas.attackCardDeck)
+        {
+            Debug.Log(card);
+
+            if (card.attackId == basicAttackData.attackId)
+            {
+                foreach (string attackToAdd in card.addIfMax)
+                {
+                    GameManager.Instance.allAttacks.TryGetValue(attackToAdd, out AttackData attack);
+                    player.allAttacksPlayerUnlocked.Add(attack);
+                }
+            }
         }
     }
 

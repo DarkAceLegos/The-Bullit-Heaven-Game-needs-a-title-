@@ -111,6 +111,7 @@ public class BasicAttackModProjCount : Item
         return basicAttackData;
     }
 }
+
 public class BasicAttackModDamage : Item
 {
     public override string GiveName()
@@ -125,6 +126,7 @@ public class BasicAttackModDamage : Item
         return basicAttackData;
     }
 }
+
 public class BasicAttackModCooldown : Item
 {
     public override string GiveName()
@@ -139,6 +141,7 @@ public class BasicAttackModCooldown : Item
         return basicAttackData;
     }
 }
+
 public class BasicAttackModSpeed : Item
 {
     public override string GiveName()
@@ -153,6 +156,7 @@ public class BasicAttackModSpeed : Item
         return basicAttackData;
     }
 }
+
 public class AOEAttackModProjCount : Item
 {
     public override string GiveName()
@@ -167,6 +171,7 @@ public class AOEAttackModProjCount : Item
         return basicAttackData;
     }
 }
+
 public class AOEAttackModDamage : Item
 {
     public override string GiveName()
@@ -181,6 +186,7 @@ public class AOEAttackModDamage : Item
         return basicAttackData;
     }
 }
+
 public class AOEAttackModCooldown : Item
 {
     public override string GiveName()
@@ -195,6 +201,7 @@ public class AOEAttackModCooldown : Item
         return basicAttackData;
     }
 }
+
 public class AOEAttackModSpeed : Item
 {
     public override string GiveName()
@@ -209,6 +216,7 @@ public class AOEAttackModSpeed : Item
         return basicAttackData;
     }
 }
+
 public class AOEAttackModArea : Item
 {
     public override string GiveName()
@@ -223,6 +231,7 @@ public class AOEAttackModArea : Item
         return basicAttackData;
     }
 }
+
 public class FollowingAttackModProjCount : Item
 {
     public override string GiveName()
@@ -237,6 +246,7 @@ public class FollowingAttackModProjCount : Item
         return basicAttackData;
     }
 }
+
 public class FollowingAttackModDamage : Item
 {
     public override string GiveName()
@@ -251,6 +261,7 @@ public class FollowingAttackModDamage : Item
         return basicAttackData;
     }
 }
+
 public class FollowingAttackModCooldown : Item
 {
     public override string GiveName()
@@ -265,6 +276,7 @@ public class FollowingAttackModCooldown : Item
         return basicAttackData;
     }
 }
+
 public class FollowingAttackModSpeed : Item
 {
     public override string GiveName()
@@ -279,6 +291,7 @@ public class FollowingAttackModSpeed : Item
         return basicAttackData;
     }
 }
+
 public class FollowingAttackModArea : Item
 {
     public override string GiveName()
@@ -308,6 +321,7 @@ public class BasicAttackModProjCountScalingHp : Item
         return basicAttackData;
     }
 }
+
 public class BasicAttackModDamageScalingHp : Item
 {
     public override string GiveName()
@@ -322,6 +336,7 @@ public class BasicAttackModDamageScalingHp : Item
         return basicAttackData;
     }
 }
+
 public class BasicAttackModCooldownScalingHp : Item
 {
     public override string GiveName()
@@ -336,6 +351,7 @@ public class BasicAttackModCooldownScalingHp : Item
         return basicAttackData;
     }
 }
+
 public class BasicAttackModSpeedScalingHp : Item
 {
     public override string GiveName()
@@ -350,6 +366,7 @@ public class BasicAttackModSpeedScalingHp : Item
         return basicAttackData;
     }
 }
+
 public class AOEAttackModProjCountScalingHp : Item
 {
     public override string GiveName()
@@ -364,6 +381,7 @@ public class AOEAttackModProjCountScalingHp : Item
         return basicAttackData;
     }
 }
+
 public class AOEAttackModDamageScalingHp : Item
 {
     public override string GiveName()
@@ -378,6 +396,7 @@ public class AOEAttackModDamageScalingHp : Item
         return basicAttackData;
     }
 }
+
 public class AOEAttackModCooldownScalingHp : Item
 {
     public override string GiveName()
@@ -392,6 +411,7 @@ public class AOEAttackModCooldownScalingHp : Item
         return basicAttackData;
     }
 }
+
 public class AOEAttackModSpeedScalingHp : Item
 {
     public override string GiveName()
@@ -406,6 +426,7 @@ public class AOEAttackModSpeedScalingHp : Item
         return basicAttackData;
     }
 }
+
 public class AOEAttackModAreaScalingHp : Item
 {
     public override string GiveName()
@@ -420,6 +441,7 @@ public class AOEAttackModAreaScalingHp : Item
         return basicAttackData;
     }
 }
+
 public class FollowingAttackModProjCountScalingHp : Item
 {
     public override string GiveName()
@@ -434,6 +456,7 @@ public class FollowingAttackModProjCountScalingHp : Item
         return basicAttackData;
     }
 }
+
 public class FollowingAttackModDamageScalingHp : Item
 {
     public override string GiveName()
@@ -448,6 +471,7 @@ public class FollowingAttackModDamageScalingHp : Item
         return basicAttackData;
     }
 }
+
 public class FollowingAttackModCooldownScalingHp : Item
 {
     public override string GiveName()
@@ -462,6 +486,7 @@ public class FollowingAttackModCooldownScalingHp : Item
         return basicAttackData;
     }
 }
+
 public class FollowingAttackModSpeedScalingHp : Item
 {
     public override string GiveName()
@@ -476,6 +501,7 @@ public class FollowingAttackModSpeedScalingHp : Item
         return basicAttackData;
     }
 }
+
 public class FollowingAttackModAreaScalingHp : Item
 {
     public override string GiveName()
@@ -505,6 +531,7 @@ public class BasicAttackModProjCountScalingSpeed : Item
         return basicAttackData;
     }
 }
+
 public class BasicAttackModDamageScalingSpeed : Item
 {
     public override string GiveName()
@@ -519,6 +546,7 @@ public class BasicAttackModDamageScalingSpeed : Item
         return basicAttackData;
     }
 }
+
 public class BasicAttackModCooldownScalingSpeed : Item
 {
     public override string GiveName()
@@ -533,6 +561,7 @@ public class BasicAttackModCooldownScalingSpeed : Item
         return basicAttackData;
     }
 }
+
 public class BasicAttackModSpeedScalingSpeed : Item
 {
     public override string GiveName()
@@ -547,6 +576,7 @@ public class BasicAttackModSpeedScalingSpeed : Item
         return basicAttackData;
     }
 }
+
 public class AOEAttackModProjCountScalingSpeed : Item
 {
     public override string GiveName()
@@ -561,6 +591,7 @@ public class AOEAttackModProjCountScalingSpeed : Item
         return basicAttackData;
     }
 }
+
 public class AOEAttackModDamageScalingSpeed : Item
 {
     public override string GiveName()
@@ -575,6 +606,7 @@ public class AOEAttackModDamageScalingSpeed : Item
         return basicAttackData;
     }
 }
+
 public class AOEAttackModCooldownScalingSpeed : Item
 {
     public override string GiveName()
@@ -589,6 +621,7 @@ public class AOEAttackModCooldownScalingSpeed : Item
         return basicAttackData;
     }
 }
+
 public class AOEAttackModSpeedScalingSpeed : Item
 {
     public override string GiveName()
@@ -603,6 +636,7 @@ public class AOEAttackModSpeedScalingSpeed : Item
         return basicAttackData;
     }
 }
+
 public class AOEAttackModAreaScalingSpeed : Item
 {
     public override string GiveName()
@@ -617,6 +651,7 @@ public class AOEAttackModAreaScalingSpeed : Item
         return basicAttackData;
     }
 }
+
 public class FollowingAttackModProjCountScalingSpeed : Item
 {
     public override string GiveName()
@@ -631,6 +666,7 @@ public class FollowingAttackModProjCountScalingSpeed : Item
         return basicAttackData;
     }
 }
+
 public class FollowingAttackModDamageScalingSpeed : Item
 {
     public override string GiveName()
@@ -645,6 +681,7 @@ public class FollowingAttackModDamageScalingSpeed : Item
         return basicAttackData;
     }
 }
+
 public class FollowingAttackModCooldownScalingSpeed : Item
 {
     public override string GiveName()
@@ -659,6 +696,7 @@ public class FollowingAttackModCooldownScalingSpeed : Item
         return basicAttackData;
     }
 }
+
 public class FollowingAttackModSpeedScalingSpeed : Item
 {
     public override string GiveName()
@@ -673,6 +711,7 @@ public class FollowingAttackModSpeedScalingSpeed : Item
         return basicAttackData;
     }
 }
+
 public class FollowingAttackModAreaScalingSpeed : Item
 {
     public override string GiveName()
@@ -702,6 +741,7 @@ public class BasicAttackModProjCountScalingLevel : Item
         return basicAttackData;
     }
 }
+
 public class BasicAttackModDamageScalingLevel : Item
 {
     public override string GiveName()
@@ -716,6 +756,7 @@ public class BasicAttackModDamageScalingLevel : Item
         return basicAttackData;
     }
 }
+
 public class BasicAttackModCooldownScalingLevel : Item
 {
     public override string GiveName()
@@ -730,6 +771,7 @@ public class BasicAttackModCooldownScalingLevel : Item
         return basicAttackData;
     }
 }
+
 public class BasicAttackModSpeedScalingLevel : Item
 {
     public override string GiveName()
@@ -744,6 +786,7 @@ public class BasicAttackModSpeedScalingLevel : Item
         return basicAttackData;
     }
 }
+
 public class AOEAttackModProjCountScalingLevel : Item
 {
     public override string GiveName()
@@ -758,6 +801,7 @@ public class AOEAttackModProjCountScalingLevel : Item
         return basicAttackData;
     }
 }
+
 public class AOEAttackModDamageScalingLevel : Item
 {
     public override string GiveName()
@@ -772,6 +816,7 @@ public class AOEAttackModDamageScalingLevel : Item
         return basicAttackData;
     }
 }
+
 public class AOEAttackModCooldownScalingLevel : Item
 {
     public override string GiveName()
@@ -786,6 +831,7 @@ public class AOEAttackModCooldownScalingLevel : Item
         return basicAttackData;
     }
 }
+
 public class AOEAttackModSpeedScalingLevel : Item
 {
     public override string GiveName()
@@ -800,6 +846,7 @@ public class AOEAttackModSpeedScalingLevel : Item
         return basicAttackData;
     }
 }
+
 public class AOEAttackModAreaScalingLevel : Item
 {
     public override string GiveName()
@@ -814,6 +861,7 @@ public class AOEAttackModAreaScalingLevel : Item
         return basicAttackData;
     }
 }
+
 public class FollowingAttackModProjCountScalingLevel : Item
 {
     public override string GiveName()
@@ -828,6 +876,7 @@ public class FollowingAttackModProjCountScalingLevel : Item
         return basicAttackData;
     }
 }
+
 public class FollowingAttackModDamageScalingLevel : Item
 {
     public override string GiveName()
@@ -842,6 +891,7 @@ public class FollowingAttackModDamageScalingLevel : Item
         return basicAttackData;
     }
 }
+
 public class FollowingAttackModCooldownScalingLevel : Item
 {
     public override string GiveName()
@@ -856,6 +906,7 @@ public class FollowingAttackModCooldownScalingLevel : Item
         return basicAttackData;
     }
 }
+
 public class FollowingAttackModSpeedScalingLevel : Item
 {
     public override string GiveName()
@@ -870,6 +921,7 @@ public class FollowingAttackModSpeedScalingLevel : Item
         return basicAttackData;
     }
 }
+
 public class FollowingAttackModAreaScalingLevel : Item
 {
     public override string GiveName()
@@ -894,4 +946,28 @@ public class AltProjMovement : Item
     }
 
 
+}
+
+public class EnemyDeathEffect : Item
+{
+    public override string GiveName()
+    {
+        return "EnemyDeathEffect";
+    }
+
+    public override void OnEnemyDie(Player player, EnemyHealth enemyHealth, int stacks)
+    {
+        GameObject proj = GameManager.Instance.GetPrefab(0);
+
+        player.TryGetComponent(out NetworkObject networkObject);
+
+        List<ItemList> items = new List<ItemList>();
+
+        NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(proj, player.transform.position, Quaternion.identity);
+
+        enemyNetworkObject.GetComponent<AOEProjectile>().Initialize(networkObject.OwnerClientId, 1, 0, 1, items);
+        enemyNetworkObject.GetComponent<AOEProjectile>().prefab = proj;
+
+        enemyNetworkObject.Spawn(true);
+    }
 }

@@ -12,5 +12,8 @@ public class SerializableAttackCard
     [SerializeField] public string foilEffectName;
     [SerializeField] public bool isFoil;
     [SerializeField] public string attackId;
+    [SerializeField] public int maxLevel;
+    [SerializeField] public int unlockLevel;
+    [SerializeField] public bool unlockMaxOrAt0;
     [SerializeField] public List<string> addIfMax;
 }

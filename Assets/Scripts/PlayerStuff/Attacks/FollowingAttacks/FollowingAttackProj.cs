@@ -30,7 +30,7 @@ public class FollowingAttackProj : NetworkBehaviour
         enabled = IsOwner;
     }
 
-    public void Initialize(ulong playerId, int damage1, float speed1, float area1, float duration1 = 4f)
+    public void Initialize(ulong playerId, int damage1, float speed1, float area1, List<ItemList> _items, float duration1 = 4f)
     {
         //Debug.Log("I initialized");
 

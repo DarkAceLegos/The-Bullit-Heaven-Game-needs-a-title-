@@ -19,6 +19,13 @@ public class LightingBoltsAttack : Attack
         //Debug.Log(basicAttackData);
 
         levelData = basicAttackData.GetLevelData(level);
+
+        transform.root.TryGetComponent<Player>(out Player player);
+
+        if (level == basicAttackData.maxLevel)
+        {
+            UnlockLevels(player, basicAttackData);
+        }
     }
 
     public override void Tick(NetworkObject player, int Direction = 0, bool skipCooldown = false)
@@ -78,7 +85,7 @@ public class LightingBoltsAttack : Attack
 
             NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(proj, startLocal, Quaternion.identity);
 
-            enemyNetworkObject.GetComponent<LightingBoltsProj>().Initialize(playerId, levelData.damage, levelData.speed);
+            enemyNetworkObject.GetComponent<LightingBoltsProj>().Initialize(playerId, levelData.damage, levelData.speed, items);
             enemyNetworkObject.GetComponent<LightingBoltsProj>().prefab = proj;
 
             enemyNetworkObject.Spawn(true);
@@ -108,5 +115,22 @@ public class LightingBoltsAttack : Attack
         { Debug.Log("returned"); return; }
         //collision.transform.TryGetComponent(out EnemyHealth enemyHealth);
         enemyHealths.Remove(enemyHealth);
+    }
+
+    private void UnlockLevels(Player player, BasicAttackData basicAttackData)
+    {
+        foreach (SerializableAttackCard card in Player.LoaclInstance.playerMetas.attackCardDeck)
+        {
+            Debug.Log(card);
+
+            if (card.attackId == basicAttackData.attackId)
+            {
+                foreach (string attackToAdd in card.addIfMax)
+                {
+                    GameManager.Instance.allAttacks.TryGetValue(attackToAdd, out AttackData attack);
+                    player.allAttacksPlayerUnlocked.Add(attack);
+                }
+            }
+        }
     }
 }
