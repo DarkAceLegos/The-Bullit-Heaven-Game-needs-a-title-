@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SatilitesAttackCooldown
   m_EditorClassIdentifier: 
   attackId: 10.2
-  attackName: 
+  attackName: Satellites
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Decrease Satilites attack cooldown by 1

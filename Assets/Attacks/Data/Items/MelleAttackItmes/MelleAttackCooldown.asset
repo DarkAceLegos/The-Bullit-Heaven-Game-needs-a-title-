@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MelleAttackCooldown
   m_EditorClassIdentifier: 
   attackId: 9.1
-  attackName: Decrease Melee attack cooldown by 1
+  attackName: Melee Attack
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Decrease Melee attack cooldown by 1

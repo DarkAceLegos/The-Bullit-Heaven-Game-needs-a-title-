@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DirectionalAttackProj
   m_EditorClassIdentifier: 
   attackId: 7.3
-  attackName: Increase Dirctional attack Projectile count by 1
+  attackName: Directional Attack
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Increase Dirctional attack Projectile count by 1

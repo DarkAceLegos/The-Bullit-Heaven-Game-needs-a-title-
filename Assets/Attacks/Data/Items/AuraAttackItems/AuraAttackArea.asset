@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AuraAttackArea
   m_EditorClassIdentifier: 
   attackId: 4.1
-  attackName: Increase attack Aura area by 1
+  attackName: Aura Attack
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Increase attack Aura area by 1

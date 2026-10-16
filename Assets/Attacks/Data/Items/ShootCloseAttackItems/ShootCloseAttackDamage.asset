@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ShootCloseAttackDamage
   m_EditorClassIdentifier: 
   attackId: 11.2
-  attackName: Increase damage of Shoot Closest attack by 1
+  attackName: Shoot Closes Enemy
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Increase damage of Shoot Closest attack by 1

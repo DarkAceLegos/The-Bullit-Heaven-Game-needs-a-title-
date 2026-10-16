@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LightiningBoltAttackCooldown
   m_EditorClassIdentifier: 
   attackId: 8.1
-  attackName: Decrease Lightining Bolt cooldown by 1
+  attackName: Lightning Bolts
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Decrease Lightining Bolt cooldown by 1

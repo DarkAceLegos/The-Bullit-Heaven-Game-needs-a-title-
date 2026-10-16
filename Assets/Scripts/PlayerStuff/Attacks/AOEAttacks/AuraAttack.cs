@@ -9,7 +9,7 @@ public class AuraAttack : Attack
 
     private AOEAttackData.LevelData levelData;
     private float lastCast;
-    private bool max = false;
+    //private bool max = false;
     private bool hasPlayerItems = false;
 
     protected override void OnInitialize()

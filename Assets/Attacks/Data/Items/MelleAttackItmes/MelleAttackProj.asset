@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MelleAttackProj
   m_EditorClassIdentifier: 
   attackId: 9.3
-  attackName: Increase Melee attack Projectile count by 1
+  attackName: Melee Attack
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Increase Melee attack Projectile count by 1

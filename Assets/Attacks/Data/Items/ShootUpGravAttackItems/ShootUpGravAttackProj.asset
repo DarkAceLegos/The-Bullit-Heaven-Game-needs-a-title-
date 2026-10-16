@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ShootUpGravAttackProj
   m_EditorClassIdentifier: 
   attackId: 12.3
-  attackName: Increase Shoot Up Effectied by Gravity Projectile count by 1
+  attackName: Up Attack Effected by Gravity
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Increase Shoot Up Effectied by Gravity Projectile count by 1

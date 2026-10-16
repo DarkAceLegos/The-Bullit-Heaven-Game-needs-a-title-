@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ShootUpGravAttackSpeed
   m_EditorClassIdentifier: 
   attackId: 12.4
-  attackName: Increase the speed of Shoot Up Effectied by Gravity by 1
+  attackName: Up Attack Effected by Gravity
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Increase the speed of Shoot Up Effectied by Gravity by 1

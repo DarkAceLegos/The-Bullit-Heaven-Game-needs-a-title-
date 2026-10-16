@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ShootUpGravAttackDamage
   m_EditorClassIdentifier: 
   attackId: 12.2
-  attackName: Increase damage of Shoot Up Effectied by Gravity by 1
+  attackName: Up Attack Effected by Gravity
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Increase damage of Shoot Up Effectied by Gravity by 1

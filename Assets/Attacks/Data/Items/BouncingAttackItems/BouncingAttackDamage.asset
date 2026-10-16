@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BouncingAttackDamage
   m_EditorClassIdentifier: 
   attackId: 5.2
-  attackName: Increase damage of Bouncing attack by 1
+  attackName: Bouncing Proj
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Increase damage of Bouncing attack by 1

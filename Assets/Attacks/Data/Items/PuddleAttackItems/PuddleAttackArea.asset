@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PuddleAttackArea
   m_EditorClassIdentifier: 
   attackId: 3.1
-  attackName: Increase Puddle attack area by 1
+  attackName: Drop Puddles
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Increase Puddle attack area by 1

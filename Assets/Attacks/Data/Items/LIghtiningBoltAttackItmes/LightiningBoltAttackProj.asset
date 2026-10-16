@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LightiningBoltAttackProj
   m_EditorClassIdentifier: 
   attackId: 8.3
-  attackName: Increase Lightining Bolt Projectile count by 1
+  attackName: Lightning Bolts
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Increase Lightining Bolt Projectile count by 1

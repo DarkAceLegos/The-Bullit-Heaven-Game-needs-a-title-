@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ChainLightiningCooldown
   m_EditorClassIdentifier: 
   attackId: 6.1
-  attackName: Decrease Chain Lighting cooldown by 1
+  attackName: Chain Lightning
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Decrease Chain Lighting cooldown by 1

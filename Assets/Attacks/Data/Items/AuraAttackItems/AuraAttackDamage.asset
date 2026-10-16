@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AuraAttackDamage
   m_EditorClassIdentifier: 
   attackId: 4.3
-  attackName: Increase attack Aura damge by 1
+  attackName: Aura Attack
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Increase attack Aura damge by 1

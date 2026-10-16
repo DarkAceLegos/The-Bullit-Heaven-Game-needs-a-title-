@@ -12,6 +12,7 @@ public class BasicAttackData : AttackData
         public int damage;
         public float cooldown;
         public float speed;
+        public float area;
     }
 
     [SerializeField] private List<LevelData> levels = new();

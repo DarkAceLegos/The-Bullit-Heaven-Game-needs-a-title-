@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ShootUpGravAttackCooldown
   m_EditorClassIdentifier: 
   attackId: 12.1
-  attackName: Decrease Shoot Up Effectied by Gravity cooldown by 1
+  attackName: Up Attack Effected by Gravity
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Decrease Shoot Up Effectied by Gravity cooldown by 1

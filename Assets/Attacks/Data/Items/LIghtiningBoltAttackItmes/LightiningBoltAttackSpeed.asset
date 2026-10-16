@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LightiningBoltAttackSpeed
   m_EditorClassIdentifier: 
   attackId: 8.4
-  attackName: Increase the speed of Lightining Bolt by 1
+  attackName: Lightning Bolts
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Increase the speed of Lightining Bolt by 1

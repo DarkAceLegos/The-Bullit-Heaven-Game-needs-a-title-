@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SatilitesAttackProj
   m_EditorClassIdentifier: 
   attackId: 10.4
-  attackName: 
+  attackName: Satellites
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Increase Satilites attack projectile count by 1

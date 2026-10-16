@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SatilitesAttackDamage
   m_EditorClassIdentifier: 
   attackId: 10.3
-  attackName: 
+  attackName: Satellites
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Increase Satilites attack damage by 1

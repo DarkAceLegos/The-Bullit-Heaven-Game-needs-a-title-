@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MelleAttackDamage
   m_EditorClassIdentifier: 
   attackId: 9.2
-  attackName: Increase damage of Melee attack by 1
+  attackName: Melee Attack
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Increase damage of Melee attack by 1

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ShootCloseAttackCooldown
   m_EditorClassIdentifier: 
   attackId: 11.1
-  attackName: Decrease Shoot Closest attack cooldown by 1
+  attackName: Shoot Closes Enemy
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Decrease Shoot Closest attack cooldown by 1

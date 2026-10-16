@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LightiningBoltAttackDamage
   m_EditorClassIdentifier: 
   attackId: 8.2
-  attackName: Increase damage of Lightining Bolt by 1
+  attackName: Lightning Bolts
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Increase damage of Lightining Bolt by 1

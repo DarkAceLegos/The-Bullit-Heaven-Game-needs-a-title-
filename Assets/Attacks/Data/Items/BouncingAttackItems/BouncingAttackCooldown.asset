@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BouncingAttackCooldown
   m_EditorClassIdentifier: 
   attackId: 5.1
-  attackName: Decrease Bouncing attack cooldown by 1
+  attackName: Bouncing Proj
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Decrease Bouncing attack cooldown by 1

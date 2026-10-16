@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ChainLightiningProj
   m_EditorClassIdentifier: 
   attackId: 6.3
-  attackName: Increase Chain Lighting Projectile count by 1
+  attackName: Chain Lightning
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Increase Chain Lighting Projectile count by 1

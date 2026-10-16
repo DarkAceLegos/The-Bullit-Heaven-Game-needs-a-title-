@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PuddleAttackProj
   m_EditorClassIdentifier: 
   attackId: 3.4
-  attackName: Increase Puddle attack Projectiel count by 1
+  attackName: Drop Puddles
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Increase Puddle attack Projectiel count by 1

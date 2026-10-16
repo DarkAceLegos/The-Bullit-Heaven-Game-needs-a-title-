@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DirectionalAttackSpeed
   m_EditorClassIdentifier: 
   attackId: 7.4
-  attackName: Increase the speed of Dirctional attack by 1
+  attackName: Directional Attack
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Increase the speed of Dirctional attack by 1

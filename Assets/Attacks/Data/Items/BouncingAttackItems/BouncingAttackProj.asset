@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BouncingAttackProj
   m_EditorClassIdentifier: 
   attackId: 5.3
-  attackName: Increase Bouncing attack Projectile count by 1
+  attackName: Bouncing Proj
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Increase Bouncing attack projectile count by 1

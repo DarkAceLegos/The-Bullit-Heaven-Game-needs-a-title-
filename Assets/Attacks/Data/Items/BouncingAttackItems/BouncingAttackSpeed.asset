@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BouncingAttackSpeed
   m_EditorClassIdentifier: 
   attackId: 5.4
-  attackName: Increase the speed of Bouncing attack by 1
+  attackName: Bouncing Proj
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Increase the speed of Bouncing attack by 1

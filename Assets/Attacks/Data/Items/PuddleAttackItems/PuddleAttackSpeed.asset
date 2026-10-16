@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: PuddleAttackSpeed
   m_EditorClassIdentifier: 
   attackId: 3.5
-  attackName: Increase Puddle attack speed by 1
+  attackName: Drop Puddles
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
-  - Increase Puddle attack speed by 1
+  - Increase Puddle movement speed by 1
   icon: {fileID: -2993178445623368436, guid: b79a60e3316f48542878a5e7821ccf50, type: 3}
   prefab: {fileID: 7614004808998244500, guid: feed1c0253965a241acbad9488f26773, type: 3}
   levels:

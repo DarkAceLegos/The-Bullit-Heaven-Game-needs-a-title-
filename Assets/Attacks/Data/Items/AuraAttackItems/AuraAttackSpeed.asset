@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: AuraAttackSpeed
   m_EditorClassIdentifier: 
   attackId: 4.5
-  attackName: Increase attack Aura speed by 1
+  attackName: Aura Attack
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
-  - Increase attack Aura speed by 1
+  - Increase attack Aura move speed by 1
   icon: {fileID: -2993178445623368436, guid: b79a60e3316f48542878a5e7821ccf50, type: 3}
   prefab: {fileID: 8309314134525291155, guid: ef3e36fa4ba401a4d9057da3112f72c8, type: 3}
   levels:

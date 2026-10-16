@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AuraAttackProj
   m_EditorClassIdentifier: 
   attackId: 4.4
-  attackName: Increase attack Aura proj count by 1
+  attackName: Aura Attack
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Increase attack Aura proj count by 1

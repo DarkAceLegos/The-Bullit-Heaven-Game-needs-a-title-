@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AuraAttackCooldown
   m_EditorClassIdentifier: 
   attackId: 4.2
-  attackName: Decrease attack Aura cooldown by 1
+  attackName: Aura Attack
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
   - Decrease attack Aura cooldown by 1
