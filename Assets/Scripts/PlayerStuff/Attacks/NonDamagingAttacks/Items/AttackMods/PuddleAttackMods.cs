@@ -48,11 +48,11 @@ public class PuddleAttackMods : Attack
         }
     }
 
-    public Item GetItem(int item)
+    public Item GetItem(AttackMods.ModType item)
     {
         switch (item)
         {
-            case (int)AOEAttackModsItems.ProjCount:
+            /*case (int)AOEAttackModsItems.ProjCount:
                 return new AOEAttackModProjCount();
             case (int)AOEAttackModsItems.Damage:
                 return new AOEAttackModDamage();
@@ -61,7 +61,7 @@ public class PuddleAttackMods : Attack
             case (int)AOEAttackModsItems.Speed:
                 return new AOEAttackModSpeed();
             case (int)AOEAttackModsItems.Area:
-                return new AOEAttackModArea();
+                return new AOEAttackModArea();*/
             default:
                 return null;
         }

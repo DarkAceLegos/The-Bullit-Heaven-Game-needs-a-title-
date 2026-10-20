@@ -49,11 +49,11 @@ public class SatilitesAttackMods : Attack
         }
     }
 
-    public Item GetItem(int item)
+    public Item GetItem(AttackMods.ModType item)
     {
         switch (item)
         {
-            case (int)FollowingAttackModsItems.ProjCount:
+            /*case (int)FollowingAttackModsItems.ProjCount:
                 return new FollowingAttackModProjCount();
             case (int)FollowingAttackModsItems.Damage:
                 return new FollowingAttackModDamage();
@@ -62,7 +62,7 @@ public class SatilitesAttackMods : Attack
             case (int)FollowingAttackModsItems.Speed:
                 return new FollowingAttackModSpeed();
             case (int)FollowingAttackModsItems.Area:
-                return new FollowingAttackModArea();
+                return new FollowingAttackModArea();*/
             default:
                 return null;
         }

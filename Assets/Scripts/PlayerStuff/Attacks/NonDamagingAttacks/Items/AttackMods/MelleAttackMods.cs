@@ -48,17 +48,17 @@ public class MelleAttackMods : Attack
         }
     }
 
-    public Item GetItem(int item)
+    public Item GetItem(AttackMods.ModType item)
     {
         switch (item)
         {
-            case (int)BasicAttackModItems.ProjCount:
+            case AttackMods.ModType.ProjectileMod:
                 return new BasicAttackModProjCount();
-            case (int)BasicAttackModItems.Damage:
+            case AttackMods.ModType.DamageMod:
                 return new BasicAttackModDamage();
-            case (int)BasicAttackModItems.Cooldown:
+            case AttackMods.ModType.CooldownMod:
                 return new BasicAttackModCooldown();
-            case (int)BasicAttackModItems.Speed:
+            case AttackMods.ModType.SpeedMod:
                 return new BasicAttackModSpeed();
             default:
                 return null;

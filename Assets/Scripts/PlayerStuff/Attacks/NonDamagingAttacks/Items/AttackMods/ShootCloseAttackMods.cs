@@ -48,18 +48,18 @@ public class ShootCloseAttackMods : Attack
         }
     }
 
-    public Item GetItem(int item)
+    public Item GetItem(AttackMods.ModType item)
     {
         switch (item)
         {
-            case (int)BasicAttackModItems.ProjCount:
+            /*case (int)BasicAttackModItems.ProjCount:
                 return new BasicAttackModProjCount();
             case (int)BasicAttackModItems.Damage:
                 return new BasicAttackModDamage();
             case (int)BasicAttackModItems.Cooldown:
                 return new BasicAttackModCooldown();
             case (int)BasicAttackModItems.Speed:
-                return new BasicAttackModSpeed();
+                return new BasicAttackModSpeed();*/
             default:
                 return null;
         }

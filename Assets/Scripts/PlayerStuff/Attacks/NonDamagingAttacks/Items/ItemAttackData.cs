@@ -7,7 +7,7 @@ public class ItemAttackData : AttackData
     [System.Serializable]
     public struct LevelData
     {
-        public List<int> index;
+        public List<AttackMods.ModType> index;
         public List<int> numStacks;
         //public List<int> stacks;
         //public SerializableDictionary<int, int> items;
