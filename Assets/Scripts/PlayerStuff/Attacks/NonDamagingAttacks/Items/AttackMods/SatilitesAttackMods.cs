@@ -53,16 +53,16 @@ public class SatilitesAttackMods : Attack
     {
         switch (item)
         {
-            /*case (int)FollowingAttackModsItems.ProjCount:
+            case AttackMods.ModType.ProjectileMod:
                 return new FollowingAttackModProjCount();
-            case (int)FollowingAttackModsItems.Damage:
+            case AttackMods.ModType.DamageMod:
                 return new FollowingAttackModDamage();
-            case (int)FollowingAttackModsItems.Cooldown:
+            case AttackMods.ModType.CooldownMod:
                 return new FollowingAttackModCooldown();
-            case (int)FollowingAttackModsItems.Speed:
+            case AttackMods.ModType.SpeedMod:
                 return new FollowingAttackModSpeed();
-            case (int)FollowingAttackModsItems.Area:
-                return new FollowingAttackModArea();*/
+            case AttackMods.ModType.AreaMod:
+                return new FollowingAttackModArea();
             default:
                 return null;
         }

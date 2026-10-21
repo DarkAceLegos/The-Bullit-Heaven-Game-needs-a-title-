@@ -52,16 +52,16 @@ public class PuddleAttackMods : Attack
     {
         switch (item)
         {
-            /*case (int)AOEAttackModsItems.ProjCount:
+            case AttackMods.ModType.ProjectileMod:
                 return new AOEAttackModProjCount();
-            case (int)AOEAttackModsItems.Damage:
+            case AttackMods.ModType.DamageMod:
                 return new AOEAttackModDamage();
-            case (int)AOEAttackModsItems.Cooldown:
+            case AttackMods.ModType.CooldownMod:
                 return new AOEAttackModCooldown();
-            case (int)AOEAttackModsItems.Speed:
+            case AttackMods.ModType.SpeedMod:
                 return new AOEAttackModSpeed();
-            case (int)AOEAttackModsItems.Area:
-                return new AOEAttackModArea();*/
+            case AttackMods.ModType.AreaMod:
+                return new AOEAttackModArea();
             default:
                 return null;
         }

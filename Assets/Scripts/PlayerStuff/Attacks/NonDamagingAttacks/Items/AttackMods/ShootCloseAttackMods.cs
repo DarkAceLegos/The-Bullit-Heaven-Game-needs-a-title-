@@ -52,14 +52,14 @@ public class ShootCloseAttackMods : Attack
     {
         switch (item)
         {
-            /*case (int)BasicAttackModItems.ProjCount:
+            case AttackMods.ModType.ProjectileMod:
                 return new BasicAttackModProjCount();
-            case (int)BasicAttackModItems.Damage:
+            case AttackMods.ModType.DamageMod:
                 return new BasicAttackModDamage();
-            case (int)BasicAttackModItems.Cooldown:
+            case AttackMods.ModType.CooldownMod:
                 return new BasicAttackModCooldown();
-            case (int)BasicAttackModItems.Speed:
-                return new BasicAttackModSpeed();*/
+            case AttackMods.ModType.SpeedMod:
+                return new BasicAttackModSpeed();
             default:
                 return null;
         }
