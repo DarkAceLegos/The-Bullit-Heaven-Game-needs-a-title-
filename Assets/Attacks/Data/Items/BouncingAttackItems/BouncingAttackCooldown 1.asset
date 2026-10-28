@@ -16,7 +16,7 @@ MonoBehaviour:
   attackName: Bouncing Proj
   attacksOnceMaxedLeveled: []
   levelDiscriptions:
-  - Decrease Bouncing attack cooldown by 2
+  - Decrease Bouncing attack cooldown by 2%
   icon: {fileID: -2993178445623368436, guid: b79a60e3316f48542878a5e7821ccf50, type: 3}
   prefab: {fileID: 2457330276836103926, guid: c1f218fecf7e41a4797151244f2d19d8, type: 3}
   levels:

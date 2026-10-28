@@ -106,7 +106,7 @@ public class BasicAttackModProjCount : Item
 
     public override BasicAttackData.LevelData BasicAttackDataMod(Player player, int stacks, BasicAttackData.LevelData basicAttackData)
     {
-        basicAttackData.projCount += stacks;
+        basicAttackData.projCount = basicAttackData.projCount * stacks / 100;
 
         return basicAttackData;
     }
@@ -121,7 +121,7 @@ public class BasicAttackModDamage : Item
 
     public override BasicAttackData.LevelData BasicAttackDataMod(Player player, int stacks, BasicAttackData.LevelData basicAttackData)
     {
-        basicAttackData.damage += stacks;
+        basicAttackData.damage *= stacks / 100;
 
         return basicAttackData;
     }
@@ -136,7 +136,7 @@ public class BasicAttackModCooldown : Item
 
     public override BasicAttackData.LevelData BasicAttackDataMod(Player player, int stacks, BasicAttackData.LevelData basicAttackData)
     {
-        basicAttackData.cooldown -= stacks;
+        basicAttackData.cooldown *= -stacks / 100;
 
         return basicAttackData;
     }
@@ -151,7 +151,7 @@ public class BasicAttackModSpeed : Item
 
     public override BasicAttackData.LevelData BasicAttackDataMod(Player player, int stacks, BasicAttackData.LevelData basicAttackData)
     {
-        basicAttackData.speed += stacks;
+        basicAttackData.speed *= stacks / 100;
 
         return basicAttackData;
     }
@@ -166,7 +166,7 @@ public class AOEAttackModProjCount : Item
 
     public override AOEAttackData.LevelData AOEAttackDataMod(Player player, int stacks, AOEAttackData.LevelData basicAttackData)
     {
-        basicAttackData.projCount += stacks;
+        basicAttackData.projCount *= stacks / 100;
 
         return basicAttackData;
     }
@@ -181,7 +181,7 @@ public class AOEAttackModDamage : Item
 
     public override AOEAttackData.LevelData AOEAttackDataMod(Player player, int stacks, AOEAttackData.LevelData basicAttackData)
     {
-        basicAttackData.damage += stacks;
+        basicAttackData.damage *= stacks / 100;
 
         return basicAttackData;
     }
@@ -196,7 +196,7 @@ public class AOEAttackModCooldown : Item
 
     public override AOEAttackData.LevelData AOEAttackDataMod(Player player, int stacks, AOEAttackData.LevelData basicAttackData)
     {
-        basicAttackData.cooldown -= stacks;
+        basicAttackData.cooldown *= -stacks / 100;
 
         return basicAttackData;
     }
@@ -211,7 +211,7 @@ public class AOEAttackModSpeed : Item
 
     public override AOEAttackData.LevelData AOEAttackDataMod(Player player, int stacks, AOEAttackData.LevelData basicAttackData)
     {
-        basicAttackData.speed += stacks;
+        basicAttackData.speed *= stacks / 100;
 
         return basicAttackData;
     }
@@ -226,7 +226,7 @@ public class AOEAttackModArea : Item
 
     public override AOEAttackData.LevelData AOEAttackDataMod(Player player, int stacks, AOEAttackData.LevelData basicAttackData)
     {
-        basicAttackData.area += stacks;
+        basicAttackData.area *= stacks / 100;
 
         return basicAttackData;
     }
@@ -241,7 +241,7 @@ public class FollowingAttackModProjCount : Item
 
     public override FollowingAttackData.LevelData FollowingAttackDataMod(Player player, int stacks, FollowingAttackData.LevelData basicAttackData)
     {
-        basicAttackData.projCount += stacks;
+        basicAttackData.projCount *= stacks / 100;
 
         return basicAttackData;
     }
@@ -256,7 +256,7 @@ public class FollowingAttackModDamage : Item
 
     public override FollowingAttackData.LevelData FollowingAttackDataMod(Player player, int stacks, FollowingAttackData.LevelData basicAttackData)
     {
-        basicAttackData.damage += stacks;
+        basicAttackData.damage *= stacks / 100;
 
         return basicAttackData;
     }
@@ -271,7 +271,7 @@ public class FollowingAttackModCooldown : Item
 
     public override FollowingAttackData.LevelData FollowingAttackDataMod(Player player, int stacks, FollowingAttackData.LevelData basicAttackData)
     {
-        basicAttackData.cooldown -= stacks;
+        basicAttackData.cooldown *= -stacks / 100;
 
         return basicAttackData;
     }
@@ -286,7 +286,7 @@ public class FollowingAttackModSpeed : Item
 
     public override FollowingAttackData.LevelData FollowingAttackDataMod(Player player, int stacks, FollowingAttackData.LevelData basicAttackData)
     {
-        basicAttackData.speed += stacks;
+        basicAttackData.speed *= stacks / 100;
 
         return basicAttackData;
     }
@@ -301,7 +301,7 @@ public class FollowingAttackModArea : Item
 
     public override FollowingAttackData.LevelData FollowingAttackDataMod(Player player, int stacks, FollowingAttackData.LevelData basicAttackData)
     {
-        basicAttackData.Area += stacks;
+        basicAttackData.Area *= stacks / 100;
 
         return basicAttackData;
     }
