@@ -73,7 +73,7 @@ public class BasicRandomAttack : Attack
             i.item.OnCast(player1, i.stacks); // need to add to rest
         }
 
-        for (int i = 0; i < ((levelData.projCount + player1.additiveProjectileModifier) * player1.percentageProjectileSpeed); i++)
+        for (int i = 0; i < (usedLevelData.projCount + player1.additiveProjectileModifier); i++)
         {
             Vector3 direction = Random.insideUnitSphere * 360;
 
@@ -87,6 +87,11 @@ public class BasicRandomAttack : Attack
                 proj = j.item.AttackChangeProj(player1, j.stacks, proj);
                 //direction = j.item.AttackDirectionMod(player1, j.stacks, direction, usedLevelData.projCount + player1.additiveProjectileModifier, i);
                 startLocal = j.item.AttackStartLocationMod(player1, j.stacks, startLocal, usedLevelData.projCount + player1.additiveProjectileModifier, i);
+            }
+
+            foreach (ItemList j in items)
+            {
+                j.item.AttackDirectionMod(player1, j.stacks, direction, usedLevelData.projCount + player1.additiveProjectileModifier, i);
             }
 
             NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(proj, startLocal, Quaternion.Euler(direction));
