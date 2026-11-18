@@ -22,6 +22,13 @@ public class ShootCloseestEnemyAttack : Attack
 
         transform.root.TryGetComponent<Player>(out Player player);
 
+        if (level == 0)
+        {
+            Item item = new AltProjFireTest();
+
+            items.Add(new ItemList(item, item.GiveName(), 1));
+        }
+
         if (level == basicAttackData.maxLevel)
         {
             UnlockLevels(player, basicAttackData);
@@ -68,7 +75,7 @@ public class ShootCloseestEnemyAttack : Attack
             i.item.OnCast(player1, i.stacks); // need to add to rest
         }
 
-        for (int i = 0; i < ((levelData.projCount + player1.additiveProjectileModifier) * player1.percentageProjectileSpeed); i++)
+        for (int i = 0; i < (levelData.projCount + player1.additiveProjectileModifier); i++)
         {
             var direction = GetClosetEnemy();//.normalized; //Vector2.Distance(enemyHealths[0].transform.position ,transform.position); //Random.insideUnitCircle;
                                              //Debug.Log(direction);
@@ -81,6 +88,11 @@ public class ShootCloseestEnemyAttack : Attack
                 proj = j.item.AttackChangeProj(player1, j.stacks, proj);
                 direction = j.item.AttackDirectionMod(player1, j.stacks, direction, usedLevelData.projCount + player1.additiveProjectileModifier, i);
                 startLocal = j.item.AttackStartLocationMod(player1, j.stacks, startLocal, usedLevelData.projCount + player1.additiveProjectileModifier, i);
+            }
+
+            foreach (ItemList j in items)
+            {
+                j.item.AttackDirectionMod(player1, j.stacks, direction, usedLevelData.projCount + player1.additiveProjectileModifier, i);
             }
 
             NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(proj, startLocal, Quaternion.Euler(direction));

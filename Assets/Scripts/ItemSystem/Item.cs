@@ -953,14 +953,41 @@ public class FollowingAttackModAreaScalingLevel : Item
 }
 
 
-public class AltProjMovement : Item
+public class AltProjFireTest : Item
 {
     public override string GiveName()
     {
-        return "AltProjMovement";
+        return "AltProjFireTest";
     }
 
+    public override Vector3 AttackDirectionMod(Player player, int stacks, Vector3 destinaton, int projCount, int whichProj)
+    {
+        //Debug.Log(projCount + " " + whichProj);
 
+        if (projCount % 2 == 0) {
+            if (whichProj % 2 == 0) {
+                destinaton.z = destinaton.z + (destinaton.z * whichProj / projCount);
+            }
+            else if (whichProj % 2 == 1) {
+                destinaton.z = destinaton.z - (destinaton.z * (whichProj - 1) / projCount);
+            }
+        }
+        else if(projCount % 2 == 1) {
+            if (whichProj % 2 == 0)
+            {
+                destinaton.z = destinaton.z + (destinaton.z * whichProj / projCount);
+            }
+            else if (whichProj % 2 == 1)
+            {
+                if (whichProj != 0) {
+                    destinaton.z = destinaton.z - (destinaton.z * (whichProj - 1) / projCount);
+                }
+            }
+        }
+
+        return destinaton;
+    }
+    
 }
 
 public class EnemyDeathEffect : Item

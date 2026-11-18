@@ -99,6 +99,11 @@ public class DirctionAttack : Attack
                 startLocal = j.item.AttackStartLocationMod(player1, j.stacks, startLocal, usedLevelData.projCount + player1.additiveProjectileModifier, i);
             }
 
+            foreach (ItemList j in items)
+            {
+                j.item.AttackDirectionMod(player1, j.stacks, direction, usedLevelData.projCount + player1.additiveProjectileModifier, i);
+            }
+
             NetworkObject enemyNetworkObject = NetworkObjectPool.Singleton.GetNetworkObject(proj, startLocal, rotation);
 
             enemyNetworkObject.GetComponent<DirectionProj>().Initialize(playerId, levelData.damage, levelData.speed, items);
