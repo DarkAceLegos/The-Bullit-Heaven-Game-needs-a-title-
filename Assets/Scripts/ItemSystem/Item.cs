@@ -962,29 +962,30 @@ public class AltProjFireTest : Item
 
     public override Vector3 AttackDirectionMod(Player player, int stacks, Vector3 destinaton, int projCount, int whichProj)
     {
-        //Debug.Log(projCount + " " + whichProj);
+        float angularDiffence = 22.5f;
+        angularDiffence = 45 / projCount;       
 
         if (projCount % 2 == 0) {
             if (whichProj % 2 == 0) {
-                destinaton.z = destinaton.z + (destinaton.z * whichProj / projCount);
+                destinaton.z = destinaton.z + (angularDiffence * whichProj); //(destinaton.z * whichProj / projCount);
             }
             else if (whichProj % 2 == 1) {
-                destinaton.z = destinaton.z - (destinaton.z * (whichProj - 1) / projCount);
+                destinaton.z = destinaton.z - (angularDiffence * whichProj); //(destinaton.z * (whichProj - 1) / projCount);
             }
         }
         else if(projCount % 2 == 1) {
             if (whichProj % 2 == 0)
             {
-                destinaton.z = destinaton.z + (destinaton.z * whichProj / projCount);
+                destinaton.z = destinaton.z + (angularDiffence * whichProj);
             }
             else if (whichProj % 2 == 1)
             {
-                if (whichProj != 0) {
-                    destinaton.z = destinaton.z - (destinaton.z * (whichProj - 1) / projCount);
-                }
+                if (whichProj != 0) 
+                    destinaton.z = destinaton.z - (angularDiffence * whichProj);                
             }
         }
 
+        Debug.Log(whichProj + " " + destinaton.z);
         return destinaton;
     }
     
