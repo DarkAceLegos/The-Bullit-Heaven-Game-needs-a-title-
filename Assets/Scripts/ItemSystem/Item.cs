@@ -963,7 +963,7 @@ public class AltProjFireTest : Item
     public override Vector3 AttackDirectionMod(Player player, int stacks, Vector3 destinaton, int projCount, int whichProj)
     {
         float angularDiffence = 22.5f;
-        angularDiffence = 45 / projCount;       
+        angularDiffence = 90 / projCount;       
 
         if (projCount % 2 == 0) {
             if (whichProj % 2 == 0) {
@@ -985,7 +985,7 @@ public class AltProjFireTest : Item
             }
         }
 
-        Debug.Log(whichProj + " " + destinaton.z);
+        //Debug.Log(whichProj + " " + destinaton.z);
         return destinaton;
     }
     

@@ -75,9 +75,11 @@ public class ShootCloseestEnemyAttack : Attack
             i.item.OnCast(player1, i.stacks); // need to add to rest
         }
 
+        var direction = GetClosetEnemy();
+
         for (int i = 0; i < (levelData.projCount + player1.additiveProjectileModifier); i++)
         {
-            var direction = GetClosetEnemy();//.normalized; //Vector2.Distance(enemyHealths[0].transform.position ,transform.position); //Random.insideUnitCircle;
+            //var direction = GetClosetEnemy();//.normalized; //Vector2.Distance(enemyHealths[0].transform.position ,transform.position); //Random.insideUnitCircle;
                                              //Debug.Log(direction);
                                              //direction.Normalize();//*/
 
