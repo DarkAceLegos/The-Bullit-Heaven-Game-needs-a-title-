@@ -79,12 +79,12 @@ public class ChainLightiningAttack : Attack
             i.item.OnCast(player1, i.stacks); // need to add to rest
         }
 
+        var direction = GetClosetEnemy();
+
         //Debug.Log("trying To Spawn Chain");
 
         for (int i = 0; i < ((usedLevelData.projCount + player1.additiveProjectileModifier)); i++)
-        {
-            var direction = GetClosetEnemy();
-
+        {            
             var startLocal = player.transform.position;
 
             foreach (ItemList j in items)

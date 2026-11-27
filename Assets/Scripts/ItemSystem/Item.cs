@@ -966,6 +966,9 @@ public class AltProjFireTest : Item
         angularDiffence = 90 / projCount;       
 
         if (projCount % 2 == 0) {
+
+            destinaton.z += (angularDiffence / 2);
+
             if (whichProj % 2 == 0) {
                 destinaton.z = destinaton.z + (angularDiffence * whichProj); //(destinaton.z * whichProj / projCount);
             }
